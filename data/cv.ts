@@ -41,14 +41,13 @@ export const cv = {
       note: "I joined as an intern in September 2017, went part-time in December 2017, full-time as a full-stack developer in June 2018, and led the frontend team from December 2021.",
     },
   ] satisfies Job[],
-  // No degree claimed: a major and how much of it was finished (the owner's call, 2026-10-11).
+  // The major and the years, no degree claimed (the owner's call, 2026-10-11).
   education: {
     school: "Ho Chi Minh City University of Education",
     href: "https://hcmue.edu.vn",
     major: "Software Technology",
     start: "2014",
     end: "2017",
-    body: "Studied for three years and finished over 80% of the curriculum.",
   },
   stack: [
     "HTML5 / CSS3 / Vanilla JS",

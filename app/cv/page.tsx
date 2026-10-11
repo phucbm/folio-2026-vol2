@@ -78,7 +78,6 @@ export default function CvPage() {
               {cv.education.start} to {cv.education.end}
             </p>
           </div>
-          <p className="mt-1">{cv.education.body}</p>
         </div>
       </section>
 
