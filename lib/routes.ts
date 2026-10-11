@@ -19,7 +19,6 @@ export const staticRoutes: StaticRoute[] = [
   { path: "/oss", section: "§4", title: "Open source", description: "Packages and repos I've built and open-sourced, with stars and downloads." },
   { path: "/reading", section: "§5", title: "Reading", description: "The books I've read, from Goodreads, as a bibliography with short reviews." },
   { path: "/references", section: "§6", title: "References", description: "Links I've saved: articles, tools and demos, as a list of references." },
-  { path: "/now", section: "§7", title: "Now", description: "What I'm working on right now." },
   { path: "/stats", appendix: "§A", title: "Stats", description: "The charts behind Table 1: commits per week, books per year, package downloads." },
   { path: "/colophon", appendix: "§B", title: "Colophon", description: "How this site is built, set and hosted." },
   { path: "/errata", appendix: "§C", title: "Errata", description: "What changed on this site, version by version." },

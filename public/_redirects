@@ -26,5 +26,6 @@
 /shipped /oss 301
 /connect / 301
 /uses /colophon#tools 301
+/now / 301
 /components/* https://ui.phucbm.com 301
 /components https://ui.phucbm.com 301

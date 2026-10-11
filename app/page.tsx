@@ -95,6 +95,7 @@ export default function Home() {
 
       <section aria-labelledby="contact" className="mt-14 max-w-measure">
         <h2 id="contact" className="text-2xl">Contact</h2>
+        <p className="mt-4">I'm open to new opportunities.</p>
         <dl className="mt-4 grid grid-cols-[5.5rem_1fr] gap-y-1">
           {contactLinks.map((link) => (
             <div key={link.label} className="contents">
