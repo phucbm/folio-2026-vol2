@@ -47,7 +47,7 @@ The `label` utility (muted, small) is the one secondary style: running head, cap
 
 ## Motion
 
-Still by default. The one live element is Figure 0 (part 6). Pointer effects behind `FINE_POINTER` / `fine-pointer:`, all of them off under reduced motion (`.claude/docs/performance.md`).
+Still by default. The one live element is the pluckable line of Figure 0 (part 6), on `/stats` only; the home page shows Figure 0 as the still calendar. Pointer effects behind `FINE_POINTER` / `fine-pointer:`, all of them off under reduced motion (`.claude/docs/performance.md`).
 
 ## Don't
 

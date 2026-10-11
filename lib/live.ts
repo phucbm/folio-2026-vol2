@@ -45,6 +45,8 @@ interface Live {
   github?: {
     commitsByYear: Record<string, number>
     contributionsPerWeek: { week: string; count: number }[]
+    // The last 53 weeks, Sunday first, as on a GitHub profile. Missing in data fetched before it existed.
+    contributionsPerDay?: { date: string; count: number }[]
     repos: Record<string, RepoStats>
   }
   npm?: {

@@ -10,7 +10,7 @@ import { formatDate } from "@/lib/utils"
 
 export const metadata: Metadata = {
   title: "Stats",
-  description: "The charts behind Table 1: contributions per week, commits per year, books per year, npm downloads.",
+  description: "The charts behind Table 1: contributions per week and per day, commits per year, books per year, npm downloads.",
 }
 
 // The supplementary material behind Table 1, numbered the way a paper numbers it (Figure S1, Table S1)
@@ -31,7 +31,7 @@ export default function StatsPage() {
       <section aria-labelledby="contributions" className="mt-14">
         <h2 id="contributions" className="text-2xl">Contributions</h2>
         <div className="my-6">
-          {github ? <Figure0 /> : <Pending>run <code>pnpm data</code> for GitHub</Pending>}
+          {github ? <Figure0 weekly /> : <Pending>run <code>pnpm data</code> for GitHub</Pending>}
         </div>
         {commits.length > 0 && (
           <div className="my-6">

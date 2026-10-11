@@ -70,7 +70,7 @@ const decode = (s) => s
 const badTitle = (title) => /attention required|just a moment|access denied|forbidden|not found|^\d{3}\b|ssl handshake/i.test(title)
 
 const sources = {
-  // Contributions per week (Figure 0) and commits per year (Table 1), one GraphQL call per year:
+  // Contributions per week (Figure 0a), per day for the last year (Figure 0b) and commits per year (Table 1), one GraphQL call per year:
   // `contributionsCollection` spans at most a year. Private work counts only if the profile shares it.
   async github() {
     const token = githubToken()
@@ -101,14 +101,22 @@ const sources = {
       }
     }
 
-    // Weeks start on Monday (ISO), keyed by that Monday's date.
+    // Weeks start on Sunday, as the columns of GitHub's calendar do, keyed by that Sunday's date.
+    const sundayOf = (iso) => {
+      const date = new Date(`${iso}T00:00:00Z`)
+      date.setUTCDate(date.getUTCDate() - date.getUTCDay())
+      return date.toISOString().slice(0, 10)
+    }
     const weeks = new Map()
     for (const d of days) {
-      const date = new Date(`${d.date}T00:00:00Z`)
-      date.setUTCDate(date.getUTCDate() - ((date.getUTCDay() + 6) % 7))
-      const key = date.toISOString().slice(0, 10)
+      const key = sundayOf(d.date)
       weeks.set(key, (weeks.get(key) ?? 0) + d.contributionCount)
     }
+    // The calendar on a GitHub profile: this week and the 52 before it, day by day.
+    const today = now.toISOString().slice(0, 10)
+    const start = new Date(`${sundayOf(today)}T00:00:00Z`)
+    start.setUTCDate(start.getUTCDate() - 52 * 7)
+    const calendarFrom = start.toISOString().slice(0, 10)
 
     // Stars and descriptions for the repos on /oss.
     const repos = {}
@@ -124,6 +132,10 @@ const sources = {
     live.github = {
       commitsByYear,
       contributionsPerWeek: [...weeks].sort(([a], [b]) => a.localeCompare(b)).map(([week, count]) => ({ week, count })),
+      contributionsPerDay: days
+        .filter((d) => d.date >= calendarFrom && d.date <= today)
+        .sort((a, b) => a.date.localeCompare(b.date))
+        .map((d) => ({ date: d.date, count: d.contributionCount })),
       repos,
     }
   },

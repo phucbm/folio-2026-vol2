@@ -21,7 +21,7 @@ const counts: Record<string, number> = {
   ...(references.length ? { "/references": references.length } : {}),
 };
 
-// The paper's front matter (plan 001, "Home page"): name, abstract, Table 1, Figure 0, contents,
+// The paper's front matter (plan 001, "Home page"): name, abstract, Table 1, Figure 0 (the calendar), contents,
 // contact. No lists of latest items. Ask joins after launch.
 export default function Home() {
   return (
