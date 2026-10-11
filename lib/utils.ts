@@ -25,3 +25,11 @@ export function reactNodeToText(node: ReactNode): string {
   if (isValidElement(node)) return reactNodeToText((node.props as { children?: ReactNode }).children)
   return ""
 }
+
+const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+
+/** "2026-04-29" → "29 Apr 2026". Plain string work, so server and client agree whatever the timezone. */
+export function formatDate(date: string): string {
+  const [y, m, d] = date.split("-").map(Number)
+  return `${d} ${MONTHS[m - 1]} ${y}`
+}

@@ -15,6 +15,12 @@ Ported from perxel-web-2026 (2026-10-11, plan 001 part 2), trimmed to one locale
 - Frontmatter fields and writing rules: the `copywriting` skill, section 5.
 - The collection list for the scripts is `scripts/content-collections.mjs`. A new collection: add it there, give it `types.ts` and `index.ts`, add a kind to `lib/content/catalog.ts`.
 
+## Pages and data
+
+- Single pages with prose (`/now`, `/uses`, `/colophon`, the about text on the home page) are `content/pages/<name>.mdx`, imported statically by their route (`import Body, {meta} from "@/content/pages/now.mdx"`). Frontmatter: `title`, `description`, optional `updated`. Not a collection: no catalog entry, not linted, so check the `copywriting` skill by hand.
+- `/perxel` reads `data/perxel.ts` (one line per case study, linking to perxel.com/en/works). Contact links: `contactLinks` in `lib/site.ts`.
+- Every page is listed in `staticRoutes` (`lib/routes.ts`), which feeds the sitemap, llms.txt and the home page's contents.
+
 ## Reading frontmatter without importing MDX
 
 `scripts/content-meta.mjs` writes every collection file's frontmatter to `content/meta.generated.json`, and `scripts/content-body.mjs` its plain text to `content/body.generated.json` (both gitignored). `pnpm dev`, `pnpm build` and `pnpm typecheck` run it first; `next dev` re-runs it on any `.mdx` change (`next.config.ts`). Collections read `metaOf("<collection>/<file>")`. Only the `[slug]` entry routes import the `.mdx` itself (`await import(\`@/content/notes/${slug}.mdx\`)`), so a listing page never ships the components a post uses. Only `app/content.json/route.ts` imports the body file.

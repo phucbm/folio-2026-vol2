@@ -1,6 +1,6 @@
 # 001 — Rebuild phucbm.com (folio 2026 vol. 2)
 
-Status: parts 1 and 2 done (2026-10-11), preview at https://phucbm-com-2026-vol2.bmp.workers.dev. Written 2026-10-11.
+Status: parts 1, 2 and 2b done (2026-10-11), preview at https://phucbm-com-2026-vol2.bmp.workers.dev. Written 2026-10-11.
 
 ## Why
 
@@ -83,7 +83,7 @@ Deferred 2026-10-11: content and layout first; picked up after launch. Same infr
 
 1. ~~Scaffold: Next 16 static, fonts, tokens, layout shell, deploy to a preview URL.~~ Done 2026-10-11: Next 16.3.8 static export, Cloudflare static assets (`wrangler.toml`, worker `phucbm-com-2026-vol2`), Source Serif 4 / Source Sans 3 / IBM Plex Mono self-hosted (`.claude/docs/performance.md`), tokens in `app/globals.css`, running head + colophon, placeholder home and 404.
 2. ~~Content engine + lint + skills ported.~~ Done 2026-10-11: collections `notes` and `archived` (MDX, frontmatter via `content/meta.generated.json`), pure catalog with tests, `content:lint` + hook, `copywriting` and `visuals` skills rewritten for this site, visuals runner with `gallery` and `code` templates, `/content.json`, `/sitemap.xml`, `/llms.txt`, `/feed.xml`, `/robots.txt`. Details: `.claude/docs/content.md`.
-2b. Move the existing content over (decided 2026-10-11, ahead of parts 3-6 so the preview fills up): about, now, uses, colophon, the 2 phucbm-web posts (as notes), the 4 folio-2026 projects (Perxel one-liners or archived figures). Plain pages and entry routes, styled properly in parts 3-5.
+2b. ~~Move the existing content over.~~ Done 2026-10-11: N-001 (How I Built My Blog, grammar revised with the owner's approval), `/notes` + entry route, `/now` (rewritten: Perxel, OpenWallet, OpenRace, open to new opportunities), `/uses`, `/colophon` (rewritten for this stack; the old design-inspirations list dropped, the design is the owner's own idea), `/perxel` (the four folio-2026 projects are all Perxel case studies: one line each in `data/perxel.ts`), the about text on the home page, contact links. Skipped: the WordPress-stacks post (an outline only, and client-facing: Perxel), Tina's demo post.
 3. Home page (abstract, Table 1, contents) and the design system written down (`.claude/docs/design.md`).
 4. `/archived` + entry pages, then the Perxel link to it.
 5. `/notes` + the first few notes.
@@ -94,8 +94,10 @@ Deferred 2026-10-11: content and layout first; picked up after launch. Same infr
 
 ## Next session
 
-- Start part 2b (move the existing content over). Load the `copywriting` skill first; revisions of the owner's old text are shown as before/after pairs, not applied.
-- Entry routes (`/notes/[slug]`, `/archived/[slug]`) can only be added together with their first `.mdx` (see `.claude/docs/content.md`). Add each new page to `staticRoutes` in `lib/routes.ts`.
+- Start part 3 (home page, design system). The about text on the home page is the old folio-2026 copy, placeholder until the abstract is written.
+- Still open from 2b, proposed and not yet answered: grammar fixes for `/uses` (MacBook, macOS, plurals) and dash fixes in the about text; whether the "300+" counts stay; the yt-dlp link points to youtube-dl; ViiVue dates (resume: Sep 2017 to May 2025, plan: 2018-2024).
+- The repo will be open source: no secrets, private data or local paths in commits.
+- `/archived/[slug]` can only be added together with its first `.mdx` (see `.claude/docs/content.md`). Add each new page to `staticRoutes` in `lib/routes.ts`.
 - `scripts/visuals/cli.mjs` captures the preview by default (`ORIGIN`); switch it to https://phucbm.com at launch (part 8).
 - Part 1 notes: `next/font` preloads every file in a family, so the sans italic is a separate family (`lib/fonts.ts`, the `em/i/cite` rule in `app/globals.css`). Deploy with `pnpm run deploy` (`pnpm deploy` is pnpm's built-in); wrangler is logged in as the owner's account.
 

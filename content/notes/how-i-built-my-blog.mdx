@@ -1,0 +1,36 @@
+---
+title: "How I Built My Blog"
+excerpt: "The 2025 edition, on Next.js and MDX: less maintaining, more writing."
+tags: ["general"]
+date: "2025-10-31"
+status: "published"
+number: 1
+---
+
+Took me less than a week to deploy this new version of my blog. If you're interested in the technology behind it, or planning to build your own blog, I hope this post helps.
+
+> This stack gives me back the time to focus on writing instead of maintaining code.
+
+## The stack
+
+This blog relies only on Next.js, with MDX support from Nextra.
+
+- **Next.js** v16.0.1
+- **React** v19.2.0
+- **Nextra** v4.6.0
+- **TailwindCSS** v4.1.16
+- **PageFind** v1.4.0
+
+The previous versions of my website were built on WordPress, which cost quite a lot of effort to maintain. Then I switched to something much simpler, Jekyll, deployed as a static site on GitHub Pages. But that was too limited: Jekyll uses plain markdown, and I wanted interactive elements right inside my posts. After a few years of leaving it alone, I found Nextra.
+
+I have been using Nextra to create an internal documentation site for my team. My mind kind of exploded the moment I learned a React component can live inside a Markdown file. That's when I knew I could rebuild my blog.
+
+## The CMS
+
+There's actually no CMS, or no real one. If a post needs no new component, I can just open my GitHub repo and write there, with all the markdown editor support. In that case, GitHub is the CMS.
+
+All the content on this site is written in MDX. If you’re not familiar with MDX, it’s a combination of Markdown and JSX. And in order to have MDX rendered on the site with basic elements (buttons, links, images, tables) and custom React components, you would need `@next/mdx` and [some setup steps](https://nextjs.org/docs/app/guides/mdx). I didn't go through the MDX setup in Next.js. Thanks to Nextra, I could skip that and go straight to structuring and styling my blog.
+
+## The styling
+
+I use TailwindCSS for this site as all of my components are using it.
