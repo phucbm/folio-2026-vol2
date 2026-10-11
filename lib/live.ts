@@ -89,6 +89,9 @@ export const github = data.github
 export const npm = data.npm
 export const wordpress = data.wordpress
 
+// Active installs as WordPress.org shows them: the floor of a bucket, so "<10", "10+", "1,000+".
+export const formatInstalls = (n: number) => (n < 10 ? "<10" : `${n.toLocaleString("en-US")}+`)
+
 // Newest first, each with its alias by date (lib/aliases.ts): B-001 is the first book I finished,
 // R-001 the first link I saved. The source's URL is the ID.
 const newestFirst = <T extends object>(prefix: string, items: T[], dateOf: (item: T) => string | undefined) => {

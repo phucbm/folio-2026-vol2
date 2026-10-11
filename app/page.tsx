@@ -72,7 +72,7 @@ export default function Home() {
                   <NoteMark letter={marks.get(row)} />
                 </th>
                 <NumCell value={row.thisYear} />
-                <NumCell value={row.allTime} last />
+                <NumCell value={row.allTime} format={row.format} last />
               </tr>
             ))}
           </tbody>

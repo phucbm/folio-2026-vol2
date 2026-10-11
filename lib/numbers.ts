@@ -1,6 +1,6 @@
 import { catalogByKind } from "@/lib/content/site-catalog"
 import { projects } from "@/data/projects"
-import { books, github, npm, wordpress } from "@/lib/live"
+import { books, formatInstalls, github, npm, wordpress } from "@/lib/live"
 
 // Table 1 on the home page: the numbers, this year and all time. Every figure is computed at build
 // time, never typed: the content catalog, plus `lib/live.ts` for the outside sources. `null` is a
@@ -11,6 +11,8 @@ export interface NumberRow {
   allTime: number | null
   // The section that backs the row.
   href?: string
+  // How a figure is shown, when not as a plain number.
+  format?: (n: number) => string
   // A table note, for a row whose figure needs explaining: lettered a, b, … under the table.
   note?: string
 }
@@ -74,8 +76,9 @@ export const numbers: NumberRow[] = [
   },
   {
     label: "WordPress installs",
-    note: "Sites running my WordPress plugins now, as WordPress.org counts them: rounded down, so 1,000 means 1,000 or more. It keeps no history, so there is no count for this year.",
+    note: "Sites running my WordPress plugins today, rounded down as WordPress.org shows them. It keeps no history, so this year is blank.",
     thisYear: null,
+    format: formatInstalls,
     allTime: plugins ? sum(plugins.map((p) => p.activeInstalls)) : null,
     href: "/stats",
   },

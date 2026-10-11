@@ -26,10 +26,10 @@ export function FigureCaption({ n, children }: { n: string; children?: ReactNode
 }
 
 /** A figure in a table: mono, right-aligned; a figure not measured yet is a blank cell. */
-export function NumCell({ value, last }: { value: number | null | undefined; last?: boolean }) {
+export function NumCell({ value, last, format }: { value: number | null | undefined; last?: boolean; format?: (n: number) => string }) {
   return (
     <td className={`num py-1.5 text-right align-baseline ${last ? "" : "pr-4"}`}>
-      {value == null ? <span className="sr-only">not measured</span> : value.toLocaleString("en-US")}
+      {value == null ? <span className="sr-only">not measured</span> : (format ?? ((n) => n.toLocaleString("en-US")))(value)}
     </td>
   )
 }

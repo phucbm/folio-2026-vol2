@@ -8,7 +8,7 @@ import { exhibit } from "@/lib/exhibits"
 import { Figure1 } from "@/components/plots/Figure1"
 import { Plot } from "@/components/plots/Plot"
 import { booksPerYear, downloadsPerMonth } from "@/lib/figures"
-import { fetchedAt, github, wordpress } from "@/lib/live"
+import { fetchedAt, formatInstalls, github, wordpress } from "@/lib/live"
 import { formatDate } from "@/lib/utils"
 
 export const metadata: Metadata = pageMetadata("/stats")
@@ -86,7 +86,7 @@ export default function StatsPage() {
         <h2 id="plugins" className="text-2xl">WordPress plugins</h2>
         {wordpress ? (
           <div className="my-6">
-            <TableCaption n="5">WordPress.org rounds installs down: 1,000 means 1,000 or more, and under 10 shows as 0.</TableCaption>
+            <TableCaption n="5">Installs are rounded down, as WordPress.org shows them.</TableCaption>
             <table className="mt-2 w-full border-collapse border-y border-ink text-[0.9375rem]">
               <thead className="border-b border-rule">
                 <tr className="label text-left">
@@ -99,7 +99,7 @@ export default function StatsPage() {
                 {wordpress.plugins.map((p) => (
                   <tr key={p.slug}>
                     <th scope="row" className="py-1.5 pr-4 text-left font-normal"><A href={p.url}>{p.name}</A></th>
-                    <NumCell value={p.activeInstalls} />
+                    <NumCell value={p.activeInstalls} format={formatInstalls} />
                     <NumCell value={p.downloads} last />
                   </tr>
                 ))}
