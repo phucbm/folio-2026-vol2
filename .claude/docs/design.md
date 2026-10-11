@@ -49,12 +49,16 @@ Checked after every build by `scripts/check-paper.mjs`; how to apply them: the `
 - **Lists of entries** (`/notes`, `/projects`, `/reading`, `/references`): one flat list, newest first, alias column in `num`, title, date in `num`, divided by `rule` hairlines. No groups: the order is the timeline, and what a group said goes in a `label` on the row (`Perxel`, `ViiVue`).
 - **Links**: `accent`, underlined at 35% and solid on hover. No buttons for navigation.
 
+## The mark
+
+"pb" in Source Serif 4 at 600, drawn as outlines (no font): the favicon (`app/icon.svg`, `favicon.ico`, `apple-icon.png`) and the logo before the name in the running head and the colophon (`components/layout/Logo.tsx`). Ink letters in a rounded square with a `rule` hairline; on hover the square fills with ink and the letters turn paper. The icon and the logo share one path: change them together. It is the one rounded box and the one mark beside a link.
+
 ## Motion
 
 Still by default. The one live element is the pluckable line of Figure 1 (part 6), on `/stats` only; the home page shows Figure 1 as the still calendar. Pointer effects behind `FINE_POINTER` / `fine-pointer:`, all of them off under reduced motion (`.claude/docs/performance.md`).
 
 ## Don't
 
-- No cards, shadows, gradients, rounded boxes, icons beside links, or hero sections.
+- No cards, shadows, gradients, rounded boxes, icons beside links, or hero sections (the mark is the one exception).
 - No "latest posts" on the home page: the contents and Table 1 point to the sections.
 - No fourth font, no second accent, no dark mode by inversion.
