@@ -5,6 +5,7 @@ import { NumCell, Pending, TableCaption } from "@/components/content/Table"
 import { ossRepos, repoPath } from "@/data/oss"
 import { github, npm } from "@/lib/live"
 import { formatDate } from "@/lib/utils"
+import { A } from "@/components/content/A"
 
 const title = "Open source"
 const description = "Packages and repos I've built and open-sourced, with stars and downloads."
@@ -50,7 +51,7 @@ export default function OssPage() {
               return (
                 <tr key={repo} className="border-t border-rule first:border-t-0">
                   <th scope="row" className="py-1.5 pr-4 text-left align-baseline font-normal">
-                    <a href={stats?.url ?? `https://github.com/${full}`} className="break-all">{repo}</a>
+                    <A href={stats?.url ?? `https://github.com/${full}`} className="break-all">{repo}</A>
                   </th>
                   <NumCell value={stats?.stars} />
                   <NumCell value={stats?.commits} />
@@ -78,7 +79,7 @@ export default function OssPage() {
               {packages.map((p) => (
                 <tr key={p.name} className="border-t border-rule first:border-t-0">
                   <th scope="row" className="py-1.5 pr-4 text-left align-baseline font-normal">
-                    <a href={`https://www.npmjs.com/package/${p.name}`} className="break-all">{p.name}</a>
+                    <A href={`https://www.npmjs.com/package/${p.name}`} className="break-all">{p.name}</A>
                   </th>
                   <NumCell value={p.downloadsLastMonth} />
                   <NumCell value={p.downloadsTotal} />

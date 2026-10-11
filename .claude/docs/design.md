@@ -46,8 +46,8 @@ Checked after every build by `scripts/check-paper.mjs`; how to apply them: the `
 - **Table captions go above the table**, figure captions below the figure, as in a paper: `Table 1.` (or `Figure 3.`) in semibold ink, then one sentence in `label`.
 - **Contents**: section label, title as a link, dotted leaders to a count in `num`. Pages without a count get no leader.
 - **List of Tables, List of Figures** (home page, after the contents): every numbered table and figure, from `lib/exhibits.ts`. Label in `num`, the caption's first sentence as a link to its anchor, dotted leaders to the section it is in. A new table or figure goes in `lib/exhibits.ts` first; `TableCaption` / `FigureCaption` (`components/content/Table.tsx`) read their caption from there, so the list and the page never disagree. Tables in a note's MDX are not numbered.
-- **Lists of entries** (`/notes`, `/projects`, `/reading`, `/references`): one flat list, newest first, alias column in `num`, title, date in `num`, divided by `rule` hairlines. No groups: the order is the timeline, and what a group said goes in a `label` on the row (`Perxel`, `ViiVue`).
-- **Links**: `accent`, underlined at 35% and solid on hover. No buttons for navigation.
+- **Lists of entries** (`/notes`, `/projects`, `/reading`, `/references`): one flat list, newest first, alias column in `num`, title, date in `num`, divided by `rule` hairlines (`/projects` shows no date: the date only orders and numbers it). No groups: the order is the timeline, and what a group said goes in a `label` on the row (`Perxel`, `ViiVue`).
+- **Links**: `accent`, underlined at 35% and solid on hover. No buttons for navigation. Every `<a>` is `A` (`components/content/A.tsx`, also MDX's `a`): an outside http(s) link opens in a new tab; `check-paper` fails the build on one that does not.
 
 ## The mark
 

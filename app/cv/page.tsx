@@ -6,6 +6,7 @@ import { PageHeader } from "@/components/content/PageHeader"
 import { cv } from "@/data/cv"
 import { contactLinks } from "@/lib/site"
 import { formatMonth } from "@/lib/utils"
+import { A } from "@/components/content/A"
 
 const title = "CV"
 const description = "Phuc Bui's resume: frontend engineer in Ho Chi Minh City, at Perxel and before that ViiVue."
@@ -19,7 +20,7 @@ const links = contactLinks.filter((link) => ["Email", "GitHub", "LinkedIn", "npm
 function withLinks(text: string) {
   return text.split(/(\[[^\]]+\]\([^)]+\))/).map((part, i) => {
     const link = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/)
-    return link ? <a key={i} href={link[2]}>{link[1]}</a> : <Fragment key={i}>{part}</Fragment>
+    return link ? <A key={i} href={link[2]}>{link[1]}</A> : <Fragment key={i}>{part}</Fragment>
   })
 }
 
@@ -37,7 +38,7 @@ export default function CvPage() {
           <div key={link.label} className="contents">
             <dt className="label pt-0.5">{link.label}</dt>
             <dd>
-              <a href={link.href}>{link.name}</a>
+              <A href={link.href}>{link.name}</A>
             </dd>
           </div>
         ))}
@@ -50,7 +51,7 @@ export default function CvPage() {
             <li key={job.company} className="border-b border-rule py-4">
               <div className="flex flex-wrap items-baseline justify-between gap-x-4">
                 <p>
-                  <span className="font-semibold">{job.role}</span>, <a href={job.href}>{job.company}</a>
+                  <span className="font-semibold">{job.role}</span>, <A href={job.href}>{job.company}</A>
                 </p>
                 <p className="label num">
                   {formatMonth(job.start)} to {job.end ? formatMonth(job.end) : "present"}
@@ -73,7 +74,7 @@ export default function CvPage() {
           <div className="flex flex-wrap items-baseline justify-between gap-x-4">
             <p>
               <span className="font-semibold">{cv.education.major}</span>,{" "}
-              <a href={cv.education.href}>{cv.education.school}</a>
+              <A href={cv.education.href}>{cv.education.school}</A>
             </p>
             <p className="label num">
               {cv.education.start} to {cv.education.end}
@@ -93,7 +94,7 @@ export default function CvPage() {
           {cv.clients.map((client, i) => (
             <Fragment key={i}>
               {i > 0 && ", "}
-              {typeof client === "string" ? client : <a href={client.href}>{client.name}</a>}
+              {typeof client === "string" ? client : <A href={client.href}>{client.name}</A>}
             </Fragment>
           ))}
         </p>

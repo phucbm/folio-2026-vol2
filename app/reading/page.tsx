@@ -4,6 +4,7 @@ import { PageHeader } from "@/components/content/PageHeader"
 import { Pending } from "@/components/content/Table"
 import { books } from "@/lib/live"
 import { formatDate } from "@/lib/utils"
+import { A } from "@/components/content/A"
 
 const title = "Reading"
 const description = "The books I've read, from Goodreads, as a bibliography with short reviews."
@@ -19,7 +20,7 @@ export default function ReadingPage() {
     <article className="max-w-measure">
       <PageHeader label="§4" title="Reading" />
       <p>
-        I track my reading on <a href="https://www.goodreads.com/phucbm">Goodreads</a>, and this list comes from
+        I track my reading on <A href="https://www.goodreads.com/phucbm">Goodreads</A>, and this list comes from
         there. Lately it's mostly history and memoirs: real people's lives fascinate me.
       </p>
       {books.length === 0 ? (
@@ -32,7 +33,7 @@ export default function ReadingPage() {
               <div>
                 <p lang={VIETNAMESE.test(book.title) ? "vi" : undefined}>
                   {book.author}
-                  {book.year && <> (<span className="num">{book.year}</span>)</>}. <a href={book.url}><cite>{book.title}</cite></a>.
+                  {book.year && <> (<span className="num">{book.year}</span>)</>}. <A href={book.url}><cite>{book.title}</cite></A>.
                 </p>
                 <p className="label mt-1">
                   {book.read && <>Read <span className="num">{formatDate(book.read)}</span></>}

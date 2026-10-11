@@ -1,5 +1,6 @@
 import type { ComponentProps } from "react"
 import type { MDXComponents } from "mdx/types"
+import { A } from "@/components/content/A"
 import { reactNodeToText, slugify } from "@/lib/utils"
 
 // Prose styling for every compiled .mdx (notes, pages). Next wires it up for
@@ -16,6 +17,7 @@ const components: MDXComponents = {
       {children}
     </h3>
   ),
+  a: A,
   p: (props: ComponentProps<"p">) => <p className="my-4" {...props} />,
   ul: (props: ComponentProps<"ul">) => <ul className="my-4 list-disc pl-5 marker:text-ink-muted [&>li]:my-1" {...props} />,
   ol: (props: ComponentProps<"ol">) => <ol className="my-4 list-decimal pl-5 marker:text-ink-muted [&>li]:my-1" {...props} />,

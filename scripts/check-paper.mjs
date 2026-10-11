@@ -102,6 +102,15 @@ for (const file of pages) {
   }
 }
 
+// --- 6. Outside links open in a new tab (the A component, components/content/A.tsx) -----------------
+for (const file of pages) {
+  const page = "/" + relative(OUT, file).replace(/\.html$/, "").replace(/^index$/, "")
+  const body = htmlOf(file).replace(/<script[\s\S]*?<\/script>/g, " ")
+  for (const [tag, href] of body.matchAll(/<a\b[^>]*\bhref="(https?:\/\/[^"]+)"[^>]*>/g)) {
+    if (!href.startsWith("https://phucbm.com") && !/\btarget="_blank"/.test(tag)) fail(`${page}: ${href} does not open in a new tab (use A from components/content/A.tsx).`)
+  }
+}
+
 if (errors.length) {
   console.error(`check-paper: ${errors.length} problem${errors.length > 1 ? "s" : ""}\n` + [...new Set(errors)].map((e) => `  ${e}`).join("\n"))
   console.error("Rules: .claude/docs/design.md (The paper's parts) · the `paper` skill")

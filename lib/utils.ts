@@ -34,8 +34,8 @@ export function formatDate(date: string): string {
   return `${d} ${MONTHS[m - 1]} ${y}`
 }
 
-/** "2023-05" → "May 2023". */
+/** "2023-05" → "May 2023"; a year alone ("2023") stays "2023". */
 export function formatMonth(month: string): string {
   const [y, m] = month.split("-").map(Number)
-  return `${MONTHS[m - 1]} ${y}`
+  return m ? `${MONTHS[m - 1]} ${y}` : `${y}`
 }

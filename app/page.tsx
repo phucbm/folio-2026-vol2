@@ -10,6 +10,7 @@ import { books, references } from "@/lib/live";
 import { Figure1 } from "@/components/plots/Figure1";
 import { NumCell, TableCaption } from "@/components/content/Table";
 import { exhibits, type ExhibitKind } from "@/lib/exhibits";
+import { A } from "@/components/content/A";
 
 // Counts shown beside a section in the contents, where the section is a list.
 const counts: Record<string, number> = {
@@ -32,7 +33,7 @@ export default function Home() {
           Frontend engineer · Ho Chi Minh City · <span className="num">v{site.version}</span>
         </p>
         <p className="label mt-1">
-          <Link href="/cv">Curriculum vitae</Link> · <a href="#contact">Contact</a>
+          <Link href="/cv">Curriculum vitae</Link> · <A href="#contact">Contact</A>
         </p>
       </header>
 
@@ -106,7 +107,7 @@ export default function Home() {
             <div key={link.label} className="contents">
               <dt className="label pt-0.5">{link.label}</dt>
               <dd>
-                <a href={link.href}>{link.name}</a>
+                <A href={link.href}>{link.name}</A>
               </dd>
             </div>
           ))}
