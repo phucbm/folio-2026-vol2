@@ -12,3 +12,6 @@ content/meta.generated.json
 content/body.generated.json
 # Raw captures for `pnpm visuals`.
 .visuals/
+
+# Owner fill-in files for drafting content (private notes, never committed).
+intake/

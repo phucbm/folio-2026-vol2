@@ -3,8 +3,8 @@ import type { BaseMeta } from "@/lib/content/schema"
 export interface ArchivedMeta extends BaseMeta {
   // "Figure 3". Authored and unique across archived projects (content:lint).
   figure: number
-  // The year it shipped.
-  year: number
+  // The year it shipped. Optional until the owner fills it in; figures are numbered by it.
+  year?: number
   client?: string
   // What I did on it, in a few words ("front-end, animation").
   role?: string

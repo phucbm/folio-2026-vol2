@@ -208,7 +208,7 @@ export const fileRules = [
     test: (fm, rel) => {
       if (collectionOf(rel) !== "archived") return null;
       const data = fm !== null && parseFm(fm);
-      return data && !(Number.isInteger(data.year) && data.year >= 2000) ? "Archived projects need `year` (e.g. `year: 2019`)." : null;
+      return data && data.year !== undefined && !(Number.isInteger(data.year) && data.year >= 2000) ? "`year` is a four-digit year (e.g. `year: 2019`)." : null;
     },
   },
   {

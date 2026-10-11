@@ -82,7 +82,7 @@ The site is set like a research paper; the copy follows the paper's habits, not 
 **Frontmatter** (first thing in the file, before imports; compiled to `meta`):
 - Every entry: `title`, `excerpt` (one or two sentences: the listing line, meta description and feed summary), `tags` (lowercase list, first is primary; may be empty), `status` (`"draft"` / `"published"` / `"unlisted"`). Optional: `seoTitle`, `updated`, `related` (slugs in the same collection), `projects` (archived slugs the entry is about), `featureImage`, `ogImage`.
 - Notes: `number` (the next free one: `grep -h '^number:' content/notes/*.mdx | sort -n | tail -1`, plus one; never renumber a published note) and `date`.
-- Archived: `figure` (unique, never renumbered once published), `year`, optional `client`, `role` (a few words), `stack` (plain names), `url` (the live site, if it still exists).
+- Archived: `figure` (unique, never renumbered once published), optional `year` (figures are numbered by it once known), `client`, `role` (a few words), `stack` (plain names), `url` (the live site, if it still exists).
 - **Quote every date** (`date: "2026-10-11"`). **No `slug` field.**
 - `updated`: set by hand when a published entry changes in a way readers should know (not typos). Never on a new entry. The hook reminds you.
 

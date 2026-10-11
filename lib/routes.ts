@@ -12,6 +12,7 @@ export interface StaticRoute {
 export const staticRoutes: StaticRoute[] = [
   { path: "/", title: "Phuc Bui", description: "Front matter: the abstract, Table 1 and the contents." },
   { path: "/notes", section: "§1", title: "Notes", description: "Lab notebook: short notes, small findings and how I built things." },
+  { path: "/archived", section: "§2", title: "Archived", description: "ViiVue work, 2017 to 2025: one figure per project, with the year, the stack and what I learned." },
   { path: "/perxel", section: "§3", title: "Perxel", description: "Client work at Perxel, one line each, linking to the case studies on perxel.com." },
   { path: "/now", section: "§7", title: "Now", description: "What I'm working on right now." },
   { path: "/uses", title: "Uses", description: "Hardware, apps and tools I use." },
