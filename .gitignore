@@ -15,3 +15,6 @@ content/body.generated.json
 
 # Owner fill-in files for drafting content (private notes, never committed).
 intake/
+
+# editors
+.idea/
