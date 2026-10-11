@@ -93,14 +93,16 @@ Not in this plan: launch (point phucbm.com here, archive the old repos) and MCP 
 
 ## Carried over
 
-For the next plan (launch, or content first). Nothing here blocks the site from building.
+Launched on phucbm.com 2026-10-12 (plan 002). What is left, for the next plan. Nothing here blocks a deploy.
 
 **Waiting on the owner**
 - Archived text: `intake/archived.md` (gitignored), one block per project. Then draft the 20 entries, renumber figures by year (oldest first; `year` is optional until then), and redo the plates (`public/images/archived/<slug>-plate.webp`, quick hand crops of Perxel's captures) as `visuals` recipes. RMIT Experience Day 2023 has no capture (maybe `rmit-2024.jpg`). All 20 are in Perxel's `perxel-web-2026/data/portfolio/projects.ts` (minus Growtrics, Perxel's).
 - Copy to read: the abstract (the "tables more than hero banners" line), the intro lines on `/archived`, `/oss`, `/reading`, `/references`, notes N-002 to N-004 (drafts), the Data section on `/colophon` (links N-003: publish it or drop the link).
 - ~~Daily rebuild~~: deleted 2026-10-12 (plan 002, refresh on visit).
 - GA4 measurement ID (load it as perxel-web-2026 does: first input or after 15 s).
-- Not checked in a browser yet: the whole site, and Figure 1's pluck (needs a mouse on an `lg` screen).
+- Not checked in a browser yet, even after launch: the whole site, and Figure 1's pluck (needs a mouse on an `lg` screen). Ask the owner before driving Chrome.
+- One of the two notes is a draft, so the live site lists one note.
+- Old projects not cleaned up yet (owner to decide): the `phucbm/phucbm.com` repo (last commit 2026-05-07), folio-2026's TinaCMS Cloud project if there is one, and the old workflow's GitHub Actions secrets.
 
 **At launch**
 - ~~Confirm which Worker serves phucbm.com~~: it was `phucbm-com-2026` (folio-2026). Launched 2026-10-12: the custom domain moved to `phucbm-com-2026-vol2` (`routes` in `wrangler.toml`); the old Worker and its `phucbm-com-2026-session` KV deleted.

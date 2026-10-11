@@ -1,6 +1,6 @@
 # 002: Live data, refreshed on visit
 
-Status: **live on phucbm.com 2026-10-12.** Waiting on the owner's `GITHUB_TOKEN` (below). Owner asked (2026-10-12): no daily deploy; the numbers refresh when someone visits, on Cloudflare's free plan.
+Status: **live on phucbm.com 2026-10-12.** Waiting on the owner's `GITHUB_TOKEN` (below). The rest of what is open: plan 001, "Carried over". Owner asked (2026-10-12): no daily deploy; the numbers refresh when someone visits, on Cloudflare's free plan.
 
 ## Why
 
