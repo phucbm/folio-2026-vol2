@@ -31,6 +31,9 @@ export default function Home() {
         <p className="label mt-3">
           Frontend engineer · Ho Chi Minh City · <span className="num">v{site.version}</span>
         </p>
+        <p className="label mt-1">
+          <Link href="/cv">Curriculum vitae</Link> · <a href="#contact">Contact</a>
+        </p>
       </header>
 
       <section aria-labelledby="abstract" className="mt-10 max-w-measure">

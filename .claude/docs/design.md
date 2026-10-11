@@ -40,7 +40,7 @@ The `label` utility (muted, small) is the one secondary style: running head, cap
 Checked after every build by `scripts/check-paper.mjs`; how to apply them: the `paper` skill.
 
 
-- **Labels** are exact and mono: `§1`, `N-047`, `Figure 3`, `Table 1`. List aliases (`N-`, `P-`, `B-`, `R-`) are positions by date (`.claude/docs/content.md`). Sections are numbered (`§1`) and back matter lettered as appendices (`§A`), both in `staticRoutes` (`lib/routes.ts`); only the numbered ones go in the running head.
+- **Labels** are exact and mono: `§1`, `N-047`, `Figure 3`, `Table 1`. List aliases (`N-`, `P-`, `B-`, `R-`) are positions by date (`.claude/docs/content.md`). Sections are numbered (`§1`) and back matter lettered as appendices (`§A`), both in `staticRoutes` (`lib/routes.ts`); the numbered ones go in the running head, the lettered ones in the foot (`components/layout/Colophon.tsx`).
 - **Title block** (`components/content/PageHeader.tsx`): label above, serif title, a `label` meta line below.
 - **Tables**: rules only, no fills and no vertical lines. A heavy `ink` rule above and below (`border-y border-ink`), a `rule` hairline under the header. Header cells `label`, left-aligned for words, right-aligned for figures. Figures in `num`, right-aligned, `toLocaleString("en-US")`. A figure not measured yet is a blank cell (with `sr-only` text), never a typed number or a dash. MDX tables get the same through `mdx-components.tsx`.
 - **Table captions go above the table**, figure captions below the figure, as in a paper: `Table 1.` (or `Figure 3.`) in semibold ink, then one sentence in `label`.

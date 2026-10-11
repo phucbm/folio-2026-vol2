@@ -1,4 +1,9 @@
+import Link from "next/link";
 import { site } from "@/lib/site";
+import { staticRoutes } from "@/lib/routes";
+
+// The back matter, in contents order: the running head has the sections, the foot the appendices.
+const appendices = staticRoutes.filter((route) => route.appendix);
 
 export function Colophon() {
   return (
@@ -7,9 +12,17 @@ export function Colophon() {
         <span>
           © <span className="num">{new Date().getFullYear()}</span> {site.name}
         </span>
-        <span>
-          Set in Source Serif 4, Source Sans 3 and IBM Plex Mono · <span className="num">v{site.version}</span>
-        </span>
+        <nav aria-label="Appendices">
+          <ul className="flex flex-wrap gap-x-3 gap-y-1">
+            {appendices.map((route) => (
+              <li key={route.path}>
+                <Link href={route.path} className="text-ink-muted no-underline hover:text-ink">
+                  <span className="num">{route.appendix}</span> {route.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </div>
     </footer>
   );
