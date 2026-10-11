@@ -7,3 +7,8 @@ out/
 .wrangler/
 next-env.d.ts
 *.tsbuildinfo
+# Generated from content/*.mdx by scripts/content-meta.mjs (build and dev run it).
+content/meta.generated.json
+content/body.generated.json
+# Raw captures for `pnpm visuals`.
+.visuals/
