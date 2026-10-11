@@ -1,47 +1,89 @@
 import Link from "next/link";
-import About, { meta as aboutMeta } from "@/content/pages/about.mdx";
+import Abstract from "@/content/pages/abstract.mdx";
 import { contactLinks, site } from "@/lib/site";
 import { staticRoutes } from "@/lib/routes";
 import { catalogByKind } from "@/lib/content/site-catalog";
+import { numbers } from "@/lib/numbers";
 import { perxelWorks } from "@/data/perxel";
 
 // Counts shown beside a section in the contents, where the section is a list.
 const counts: Record<string, number> = {
   "/notes": catalogByKind("note").length,
+  "/archived": catalogByKind("archived").length,
   "/perxel": perxelWorks.length,
 };
 
-// Interim front matter: the about text moved over from folio-2026 (plan 001, part 2b). Part 3
-// replaces it with the abstract, Table 1 and Figure 0.
+// The paper's front matter (plan 001, "Home page"): name, abstract, Table 1, Figure 0, contents,
+// contact. No lists of latest items. Figure 0 joins with the data pipeline (part 6), Ask after launch.
 export default function Home() {
-  const { description } = aboutMeta as { description: string };
   return (
-    <article className="max-w-measure">
-      <h1 className="text-4xl md:text-5xl tracking-tight">{site.name}</h1>
-      <p className="label mt-3">
-        Frontend engineer · Ho Chi Minh City · <span className="num">v{site.version}</span>
-      </p>
+    <article>
+      <header className="max-w-measure">
+        <h1 className="text-4xl md:text-5xl tracking-tight">{site.name}</h1>
+        <p className="label mt-3">
+          Frontend engineer · Ho Chi Minh City · <span className="num">v{site.version}</span>
+        </p>
+      </header>
 
-      <p className="mt-10 text-lg">{description}</p>
-      <About />
+      <section aria-labelledby="abstract" className="mt-10 max-w-measure">
+        <h2 id="abstract" className="label font-sans font-semibold uppercase tracking-[0.08em] text-ink">
+          Abstract
+        </h2>
+        <div className="mt-1 [&>p:first-child]:mt-0">
+          <Abstract />
+        </div>
+      </section>
 
-      <section className="mt-14">
-        <h2 className="text-2xl">Contents</h2>
-        <ol className="mt-4 border-t border-rule">
+      <section aria-labelledby="table-1" className="mt-14 max-w-measure">
+        <p id="table-1" className="label">
+          <span className="font-semibold text-ink">Table 1.</span> The numbers, this year and all time. Commits,
+          books and packages are not measured yet.
+        </p>
+        <table className="mt-2 w-full border-collapse border-y border-ink text-[0.9375rem]">
+          <thead className="border-b border-rule">
+            <tr className="label text-left">
+              <th scope="col" className="py-1.5 pr-4 font-normal">Measure</th>
+              <th scope="col" className="py-1.5 pr-4 text-right font-normal">
+                <span className="num">{new Date().getFullYear()}</span>
+              </th>
+              <th scope="col" className="py-1.5 text-right font-normal">All time</th>
+            </tr>
+          </thead>
+          <tbody>
+            {numbers.map((row) => (
+              <tr key={row.label}>
+                <th scope="row" className="py-1.5 pr-4 text-left font-normal">
+                  {row.href ? <Link href={row.href}>{row.label}</Link> : row.label}
+                </th>
+                <Cell value={row.thisYear} />
+                <Cell value={row.allTime} last />
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </section>
+
+      <nav aria-labelledby="contents" className="mt-14 max-w-measure">
+        <h2 id="contents" className="text-2xl">Contents</h2>
+        <ol className="mt-4">
           {staticRoutes.filter((r) => r.path !== "/").map((route) => (
-            <li key={route.path} className="flex items-baseline gap-3 border-b border-rule py-2">
+            <li key={route.path} className="flex items-baseline gap-3 py-1">
               <span className="num w-8 shrink-0 text-ink-muted">{route.section ?? ""}</span>
               <Link href={route.path}>{route.title}</Link>
               {counts[route.path] !== undefined && (
-                <span className="num ml-auto text-ink-muted">{counts[route.path]}</span>
+                <>
+                  {/* Dot leaders, as in a printed table of contents. */}
+                  <span aria-hidden className="mx-1 flex-1 -translate-y-[0.25em] border-b border-dotted border-ink-muted/60" />
+                  <span className="num text-ink-muted">{counts[route.path]}</span>
+                </>
               )}
             </li>
           ))}
         </ol>
-      </section>
+      </nav>
 
-      <section className="mt-14">
-        <h2 className="text-2xl">Contact</h2>
+      <section aria-labelledby="contact" className="mt-14 max-w-measure">
+        <h2 id="contact" className="text-2xl">Contact</h2>
         <dl className="mt-4 grid grid-cols-[5.5rem_1fr] gap-y-1">
           {contactLinks.map((link) => (
             <div key={link.label} className="contents">
@@ -54,5 +96,14 @@ export default function Home() {
         </dl>
       </section>
     </article>
+  );
+}
+
+/** A figure in Table 1: mono, right-aligned; a figure not measured yet is left blank. */
+function Cell({ value, last }: { value: number | null; last?: boolean }) {
+  return (
+    <td className={`num py-1.5 text-right ${last ? "" : "pr-4"}`}>
+      {value === null ? <span className="sr-only">not measured</span> : value.toLocaleString("en-US")}
+    </td>
   );
 }

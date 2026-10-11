@@ -4,7 +4,7 @@ import { reactNodeToText, slugify } from "@/lib/utils"
 
 // Prose styling for every compiled .mdx (notes, archived projects, pages). Next wires it up for
 // each MDX module, so routes pass no `components`. h2/h3 get ids from their text, for anchors and
-// a contents list. A first pass: part 3 writes the design down and refines it.
+// a contents list. The rules behind it: .claude/docs/design.md.
 const components: MDXComponents = {
   h2: ({ children, ...props }: ComponentProps<"h2">) => (
     <h2 id={slugify(reactNodeToText(children))} className="text-2xl mt-12 mb-3 scroll-mt-8" {...props}>

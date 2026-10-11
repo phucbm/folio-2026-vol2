@@ -1,6 +1,6 @@
 # 001 — Rebuild phucbm.com (folio 2026 vol. 2)
 
-Status: parts 1, 2 and 2b done (2026-10-11), preview at https://phucbm-com-2026-vol2.bmp.workers.dev. Written 2026-10-11.
+Status: parts 1, 2, 2b and 3 done (2026-10-11), preview at https://phucbm-com-2026-vol2.bmp.workers.dev. Written 2026-10-11.
 
 ## Why
 
@@ -33,7 +33,7 @@ No lists of latest items. The home page is the paper's front matter:
 | § | Route | What | Entry page |
 |---|---|---|---|
 | 1 | `/notes` | Lab notebook: short notes, TILs, small findings. `N-###`, dated, tagged | `/notes/[slug]` |
-| 2 | `/archived` | ViiVue work 2018–2024, about a dozen projects, as figures (plate, caption, year). **Linked from perxel.com** | `/archived/[slug]`: screenshot(s), 2–3 paragraphs, stack, year, what I learned. Not a full case study |
+| 2 | `/archived` | ViiVue work 2017-2025, 19 projects, as figures (plate, caption, year). **Linked from perxel.com** | `/archived/[slug]`: screenshot(s), 2–3 paragraphs, stack, year, what I learned. Not a full case study |
 | 3 | `/perxel` | Current client work: one line each, linking out to the Perxel case study. Nothing written twice | none |
 | 4 | `/oss` | Open source hub: packages and repos, stars, npm/jsDelivr downloads, links to the component registry (ui.phucbm.com) | maybe `/oss/[slug]` for the main ones |
 | 5 | `/reading` | Bibliography from Goodreads, with short reviews | none at first |
@@ -84,7 +84,7 @@ Deferred 2026-10-11: content and layout first; picked up after launch. Same infr
 1. ~~Scaffold: Next 16 static, fonts, tokens, layout shell, deploy to a preview URL.~~ Done 2026-10-11: Next 16.3.8 static export, Cloudflare static assets (`wrangler.toml`, worker `phucbm-com-2026-vol2`), Source Serif 4 / Source Sans 3 / IBM Plex Mono self-hosted (`.claude/docs/performance.md`), tokens in `app/globals.css`, running head + colophon, placeholder home and 404.
 2. ~~Content engine + lint + skills ported.~~ Done 2026-10-11: collections `notes` and `archived` (MDX, frontmatter via `content/meta.generated.json`), pure catalog with tests, `content:lint` + hook, `copywriting` and `visuals` skills rewritten for this site, visuals runner with `gallery` and `code` templates, `/content.json`, `/sitemap.xml`, `/llms.txt`, `/feed.xml`, `/robots.txt`. Details: `.claude/docs/content.md`.
 2b. ~~Move the existing content over.~~ Done 2026-10-11: N-001 (How I Built My Blog, grammar revised with the owner's approval), `/notes` + entry route, `/now` (rewritten: Perxel, OpenWallet, OpenRace, open to new opportunities), `/uses`, `/colophon` (rewritten for this stack; the old design-inspirations list dropped, the design is the owner's own idea), `/perxel` (the four folio-2026 projects are all Perxel case studies: one line each in `data/perxel.ts`), the about text on the home page, contact links. Skipped: the WordPress-stacks post (an outline only, and client-facing: Perxel), Tina's demo post.
-3. Home page (abstract, Table 1, contents) and the design system written down (`.claude/docs/design.md`).
+3. ~~Home page (abstract, Table 1, contents) and the design system written down (`.claude/docs/design.md`).~~ Done 2026-10-11: abstract drafted (`content/pages/abstract.mdx`, replaces the old about text, awaiting the owner's approval), Table 1 from `lib/numbers.ts` (notes and projects counted; commits, books, packages blank until part 6), contents with dot leaders and counts, `.claude/docs/design.md`. Figure 0 waits for part 6.
 4. `/archived` + entry pages, then the Perxel link to it.
 5. `/notes` + the first few notes.
 6. Data pipeline: Table 1, `/stats`, `/oss`, `/reading`, Figure 0.
@@ -94,8 +94,11 @@ Deferred 2026-10-11: content and layout first; picked up after launch. Same infr
 
 ## Next session
 
-- Start part 3 (home page, design system). The about text on the home page is the old folio-2026 copy, placeholder until the abstract is written.
-- Still open from 2b, proposed and not yet answered: grammar fixes for `/uses` (MacBook, macOS, plurals) and dash fixes in the about text; whether the "300+" counts stay; the yt-dlp link points to youtube-dl; ViiVue dates (resume: Sep 2017 to May 2025, plan: 2018-2024).
+- Start part 4 (`/archived`). The project list is Perxel's private portfolio: `perxel-web-2026/data/portfolio/projects.ts`, the entries with `role: "Lead Frontend Developer"`, minus Growtrics (owner: it is Perxel's), so 19 projects (screenshots in that repo's `public/projects/`). Summaries are empty there, so each figure's text needs the owner.
+- ViiVue dates (LinkedIn, checked 2026-10-11): Sep 2017 to Jul 2025. Intern Sep-Nov 2017, part-time Dec 2017-May 2018, full-stack developer Jun 2018-Dec 2021, lead front-end developer Dec 2021-Jul 2025. Perxel freelance from Apr 2022 (overlapping), full-time from Mar 2026.
+- Part 3 is committed but not deployed: `pnpm run deploy` to see it on the preview, and look at the home page in a browser (not checked visually yet).
+- Abstract draft to confirm: the "tables more than hero banners" line.
+- Done after part 3 (owner's go-ahead): `/uses` grammar, yt-dlp link now points to yt-dlp, "300+" dropped with the old about text.
 - The repo will be open source: no secrets, private data or local paths in commits.
 - `/archived/[slug]` can only be added together with its first `.mdx` (see `.claude/docs/content.md`). Add each new page to `staticRoutes` in `lib/routes.ts`.
 - `scripts/visuals/cli.mjs` captures the preview by default (`ORIGIN`); switch it to https://phucbm.com at launch (part 8).
@@ -113,5 +116,4 @@ Deferred 2026-10-11: content and layout first; picked up after launch. Same infr
 
 - Which repo serves phucbm.com today (`folio-2026` as the `phucbm-com-2026` Worker, or `phucbm-web`)? Decides the redirect list and the cutover.
 - Archived on perxel.com: one link from `/works`, or per-project links? (Perxel copy, `copywriting` skill applies there.)
-- The list of ViiVue projects and their screenshots (owner, before part 4).
 - GitHub "private contributions" must be on in the profile for Table 1's commit count to include private repos.

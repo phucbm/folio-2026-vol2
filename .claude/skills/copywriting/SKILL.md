@@ -56,7 +56,7 @@ The site is set like a research paper; the copy follows the paper's habits, not 
 |---|---|---|
 | Engineering notes, experiments, TILs, opinions, how I built something | **here**, `/notes` | the full entry |
 | Client-facing posts (services, how Perxel works, why a client should pick X) | **perxel.com** insights | nothing, or a one-line note that links there if it is also a personal finding |
-| ViiVue work, 2018 to 2024 | **here**, `/archived` | a figure: screenshots, 2 or 3 paragraphs, stack, year, what I learned. Not a case study |
+| ViiVue work, 2017 to 2025 | **here**, `/archived` | a figure: screenshots, 2 or 3 paragraphs, stack, year, what I learned. Not a case study |
 | Current client work (Perxel) | **perxel.com** works | one line in `/perxel`, linking to the case study. Nothing written twice |
 | Open source packages | **here**, `/oss` | what it does, numbers from the pipeline, link to the repo and docs (ui.phucbm.com for components) |
 

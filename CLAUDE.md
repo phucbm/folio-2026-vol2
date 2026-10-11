@@ -17,3 +17,4 @@ Plan and status: `.claude/plans/001-rebuild.md`.
 
 @.claude/docs/content.md
 @.claude/docs/performance.md
+@.claude/docs/design.md
