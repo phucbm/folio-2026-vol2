@@ -9,7 +9,7 @@ const sections = staticRoutes.filter((route) => route.section);
  *  The sections are labels in mono (`§1`), each with its title for screen readers and on hover. */
 export function RunningHead() {
   return (
-    <header className="w-full max-w-measure-wide mx-auto px-4 sm:px-6">
+    <header className="print:hidden w-full max-w-measure-wide mx-auto px-4 sm:px-6">
       <div className="label flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-b border-rule py-3">
         <Link href="/" className="text-ink-muted no-underline hover:text-ink">
           {site.name}

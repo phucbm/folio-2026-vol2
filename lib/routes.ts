@@ -21,4 +21,5 @@ export const staticRoutes: StaticRoute[] = [
   { path: "/stats", appendix: "§A", title: "Stats", description: "The charts behind Table 1: commits per week, books per year, package downloads." },
   { path: "/colophon", appendix: "§B", title: "Colophon", description: "How this site is built, set and hosted." },
   { path: "/errata", appendix: "§C", title: "Errata", description: "What changed on this site, version by version." },
+  { path: "/cv", appendix: "§D", title: "Curriculum vitae", description: "My resume on one page: experience, stack and clients." },
 ]
