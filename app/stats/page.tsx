@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { shareMetadata } from "@/lib/og"
 import Link from "next/link"
 import { PageHeader } from "@/components/content/PageHeader"
 import { FigureCaption, NumCell, Pending, TableCaption } from "@/components/content/Table"
@@ -9,10 +10,10 @@ import { booksPerYear, downloadsPerMonth } from "@/lib/figures"
 import { fetchedAt, github } from "@/lib/live"
 import { formatDate } from "@/lib/utils"
 
-export const metadata: Metadata = {
-  title: "Stats",
-  description: "The charts behind Table 1: contributions per week and per day, commits per year, books per year, npm downloads.",
-}
+const title = "Stats"
+const description = "The charts behind Table 1: contributions per week and per day, commits per year, books per year, npm downloads."
+
+export const metadata: Metadata = { title, description, ...shareMetadata("/stats", { title, description }) }
 
 // The data behind Table 1. Its tables and figures are numbered with the rest of the site (lib/exhibits.ts).
 export default function StatsPage() {

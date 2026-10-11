@@ -1,12 +1,13 @@
 import type { Metadata } from "next"
+import { shareMetadata } from "@/lib/og"
 import { PageHeader } from "@/components/content/PageHeader"
 import { projects } from "@/data/projects"
 import { formatMonth } from "@/lib/utils"
 
-export const metadata: Metadata = {
-  title: "Projects",
-  description: "Every project, one line each, newest first: Perxel, freelance and ViiVue.",
-}
+const title = "Projects"
+const description = "Every project, one line each, newest first: Perxel, freelance and ViiVue."
+
+export const metadata: Metadata = { title, description, ...shareMetadata("/projects", { title, description }) }
 
 // One list by date, like /notes: alias, title and line, then the month and where I did it.
 export default function ProjectsPage() {

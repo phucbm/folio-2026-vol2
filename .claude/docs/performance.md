@@ -26,6 +26,15 @@ Rules carried over from perxel-web-2026 (`.claude/docs/performance.md` there), p
   fonttools subset IBMPlexMono-Regular.ttf --unicodes="U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2190-2199,U+2212,U+2215,U+2248,U+2260,U+2264-2265,U+221E,U+FEFF,U+FFFD" $F --flavor=woff2 --output-file=ibm-plex-mono-latin.woff2
   ```
 
+- **Share cards** (`lib/fonts/og/*.ttf`, build time only, never shipped): Satori reads neither woff2 nor variable fonts, so static TTF instances are cut from the three files above: serif at 500, sans at 400, mono as is.
+
+  ```sh
+  fonttools varLib.instancer source-serif-4-latin-vi.woff2 wght=500 -o og/source-serif-4-500.ttf
+  fonttools varLib.instancer source-sans-3-latin-vi.woff2 wght=400 -o og/source-sans-3-400.ttf
+  python -c "from fontTools.ttLib import TTFont; f=TTFont('ibm-plex-mono-latin.woff2'); f.flavor=None; f.save('og/ibm-plex-mono-400.ttf')"
+  # then set flavor=None and save the two instances again: the instancer keeps woff2
+  ```
+
 ## Motion
 
 - Pointer effects only behind `FINE_POINTER` (`lib/media.ts`, CSS `fine-pointer:`), and off under `REDUCED_MOTION`. `app/globals.css` also flattens every CSS transition and animation under reduced motion.

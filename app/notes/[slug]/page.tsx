@@ -5,6 +5,7 @@ import { catalogByKind } from "@/lib/content/site-catalog"
 import { displayDate } from "@/lib/content/collections"
 import { PageHeader } from "@/components/content/PageHeader"
 import { formatDate } from "@/lib/utils"
+import { shareMetadata } from "@/lib/og"
 
 export const dynamicParams = false
 
@@ -18,9 +19,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
   const note = notesAll.find((n) => n.slug === slug)
   if (!note) return {}
+  const title = note.seoTitle ?? note.title
   return {
-    title: note.seoTitle ?? note.title,
+    title,
     description: note.excerpt,
+    ...shareMetadata(`/notes/${slug}`, { title, description: note.excerpt }),
     ...(note.status === "unlisted" ? { robots: { index: false } } : {}),
   }
 }

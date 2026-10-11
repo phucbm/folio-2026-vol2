@@ -32,6 +32,8 @@ An entry route can only exist once its collection has at least one `.mdx`: with 
 
 Built from it, all static and rebuilt on deploy: `/content.json` (full text, for the MCP later), `/sitemap.xml` (plus `staticRoutes` in `lib/routes.ts`), `/llms.txt`, `/feed.xml` (notes, RSS 2.0), `/robots.txt`. A new section page goes in `staticRoutes`.
 
+**Share cards** (2026-10-11, after perxel-web's `lib/og.tsx`): `app/og/[...path]/route.tsx` draws one 1200×630 PNG per `staticRoutes` page and per note (`notesAll`) at build time, to `out/og/<path>.png` (`/` → `/og/index.png`), with `next/og` and the layout in `lib/og.tsx` (running head, label, serif title, description, ink rule, date and version). Every page spreads `shareMetadata(path, { title, description })` into its metadata (Open Graph and Twitter); the layout's is the home page's. A new page needs both: its route in `staticRoutes` and the `shareMetadata` call.
+
 ## MDX
 
 `@next/mdx` with `remark-gfm` (tables, footnotes), `remark-frontmatter` and `remark-mdx-frontmatter` (frontmatter as `meta`), named by package in `next.config.ts` (Turbopack). Prose styling: `mdx-components.tsx` (a first pass; part 3 refines it). Types: `mdx.d.ts`.

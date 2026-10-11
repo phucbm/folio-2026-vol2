@@ -1,15 +1,19 @@
 import type { Metadata, Viewport } from "next";
 import { fontVariables } from "@/lib/fonts";
 import { site } from "@/lib/site";
+import { shareMetadata } from "@/lib/og";
 import { RunningHead } from "@/components/layout/RunningHead";
 import { Colophon } from "@/components/layout/Colophon";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(site.url),
+  // Under `next dev`, absolute URLs (og:image) point at the dev server, so the cards can be checked before a deploy.
+  metadataBase: new URL(process.env.NODE_ENV === "development" ? `http://localhost:${process.env.PORT ?? 3000}` : site.url),
   title: { default: site.name, template: `%s · ${site.name}` },
   description: site.description,
   alternates: { types: { "application/rss+xml": "/feed.xml" } },
+  // The home page's card; a page without its own (404) falls back to it.
+  ...shareMetadata("/", { title: site.name, description: site.description }),
 };
 
 export const viewport: Viewport = {

@@ -1,13 +1,14 @@
 import type { Metadata } from "next"
+import { shareMetadata } from "@/lib/og"
 import Link from "next/link"
 import { PageHeader } from "@/components/content/PageHeader"
 import { catalogByKind } from "@/lib/content/site-catalog"
 import { formatDate } from "@/lib/utils"
 
-export const metadata: Metadata = {
-  title: "Notes",
-  description: "Lab notebook: short notes, small findings and how I built things.",
-}
+const title = "Notes"
+const description = "Lab notebook: short notes, small findings and how I built things."
+
+export const metadata: Metadata = { title, description, ...shareMetadata("/notes", { title, description }) }
 
 export default function NotesPage() {
   const notes = catalogByKind("note")

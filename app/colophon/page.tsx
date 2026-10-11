@@ -1,11 +1,16 @@
 import type { Metadata } from "next"
+import { shareMetadata } from "@/lib/og"
 import Body, { meta as rawMeta } from "@/content/pages/colophon.mdx"
 import { PageHeader } from "@/components/content/PageHeader"
 import { formatDate } from "@/lib/utils"
 
 const meta = rawMeta as { title: string; description: string; updated?: string }
 
-export const metadata: Metadata = { title: meta.title, description: meta.description }
+export const metadata: Metadata = {
+  title: meta.title,
+  description: meta.description,
+  ...shareMetadata("/colophon", { title: meta.title, description: meta.description }),
+}
 
 export default function Page() {
   return (

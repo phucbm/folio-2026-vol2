@@ -1,12 +1,13 @@
 import type { Metadata } from "next"
+import { shareMetadata } from "@/lib/og"
 import { PageHeader } from "@/components/content/PageHeader"
 import { errata } from "@/data/errata"
 import { formatDate } from "@/lib/utils"
 
-export const metadata: Metadata = {
-  title: "Errata",
-  description: "What changed on this site, version by version.",
-}
+const title = "Errata"
+const description = "What changed on this site, version by version."
+
+export const metadata: Metadata = { title, description, ...shareMetadata("/errata", { title, description }) }
 
 // The changelog, as a paper's errata: version, date, what changed. Newest first.
 export default function ErrataPage() {

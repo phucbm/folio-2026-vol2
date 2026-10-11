@@ -1,13 +1,14 @@
 import type { Metadata } from "next"
+import { shareMetadata } from "@/lib/og"
 import { PageHeader } from "@/components/content/PageHeader"
 import { Pending } from "@/components/content/Table"
 import { books } from "@/lib/live"
 import { formatDate } from "@/lib/utils"
 
-export const metadata: Metadata = {
-  title: "Reading",
-  description: "The books I've read, from Goodreads, as a bibliography with short reviews.",
-}
+const title = "Reading"
+const description = "The books I've read, from Goodreads, as a bibliography with short reviews."
+
+export const metadata: Metadata = { title, description, ...shareMetadata("/reading", { title, description }) }
 
 // Vietnamese letters that English never uses: a review written in Vietnamese gets `lang="vi"`.
 const VIETNAMESE = /[ăâđêôơưạảấầẩẫậắằẳẵặẹẻẽếềểễệỉịọỏốồổỗộớờởỡợụủứừửữựỳỵỷỹ]/i
