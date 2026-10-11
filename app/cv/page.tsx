@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { shareMetadata } from "@/lib/og"
+import { pageMetadata } from "@/lib/seo"
 import Link from "next/link"
 import { Fragment } from "react"
 import { PageHeader } from "@/components/content/PageHeader"
@@ -8,10 +8,7 @@ import { contactLinks } from "@/lib/site"
 import { formatMonth } from "@/lib/utils"
 import { A } from "@/components/content/A"
 
-const title = "CV"
-const description = "Phuc Bui's resume: frontend engineer in Ho Chi Minh City, at Perxel and before that ViiVue."
-
-export const metadata: Metadata = { title, description, ...shareMetadata("/cv", { title, description }) }
+export const metadata: Metadata = pageMetadata("/cv")
 
 // The links a CV needs; Discord and X stay on the home page.
 const links = contactLinks.filter((link) => ["Email", "GitHub", "LinkedIn", "npm"].includes(link.label))

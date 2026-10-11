@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { shareMetadata } from "@/lib/og"
+import { pageMetadata } from "@/lib/seo"
 import { PageHeader } from "@/components/content/PageHeader"
 import { Pending } from "@/components/content/Table"
 import { references } from "@/lib/live"
@@ -7,10 +7,7 @@ import { contactLinks } from "@/lib/site"
 import { formatDate } from "@/lib/utils"
 import { A } from "@/components/content/A"
 
-const title = "References"
-const description = "Links I've saved: articles, tools and demos, as a list of references."
-
-export const metadata: Metadata = { title, description, ...shareMetadata("/references", { title, description }) }
+export const metadata: Metadata = pageMetadata("/references")
 
 const discord = contactLinks.find((link) => link.label === "Discord")
 

@@ -11,6 +11,10 @@ import { Figure1 } from "@/components/plots/Figure1";
 import { NumCell, TableCaption } from "@/components/content/Table";
 import { exhibits, type ExhibitKind } from "@/lib/exhibits";
 import { A } from "@/components/content/A";
+import { JsonLd } from "@/components/content/JsonLd";
+import { pageMetadata, siteJsonLd } from "@/lib/seo";
+
+export const metadata = pageMetadata("/");
 
 // Counts shown beside a section in the contents, where the section is a list.
 const counts: Record<string, number> = {
@@ -113,6 +117,7 @@ export default function Home() {
           ))}
         </dl>
       </section>
+      <JsonLd data={siteJsonLd()} />
     </article>
   );
 }

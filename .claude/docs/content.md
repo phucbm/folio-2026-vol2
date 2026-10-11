@@ -32,7 +32,9 @@ An entry route can only exist once its collection has at least one `.mdx`: with 
 
 Built from it, all static and rebuilt on deploy: `/content.json` (full text, for the MCP later), `/sitemap.xml` (plus `staticRoutes` in `lib/routes.ts`), `/llms.txt`, `/feed.xml` (notes, RSS 2.0), `/robots.txt`. A new section page goes in `staticRoutes`.
 
-**Share cards** (2026-10-11, after perxel-web's `lib/og.tsx`): `app/og/[...path]/route.tsx` draws one 1200×630 PNG per `staticRoutes` page and per note (`notesAll`) at build time, to `out/og/<path>.png` (`/` → `/og/index.png`), with `next/og` and the layout in `lib/og.tsx` (running head, label, serif title, description, ink rule, date and version). Every page spreads `shareMetadata(path, { title, description })` into its metadata (Open Graph and Twitter); the layout's is the home page's. A new page needs both: its route in `staticRoutes` and the `shareMetadata` call.
+**Share cards** (2026-10-11, after perxel-web's `lib/og.tsx`): `app/og/[...path]/route.tsx` draws one 1200×630 PNG per `staticRoutes` page and per note (`notesAll`) at build time, to `out/og/<path>.png` (`/` → `/og/index.png`), with `next/og` and the layout in `lib/og.tsx` (running head, label, serif title, description, ink rule, date and version). The layout's card is the home page's (the 404 falls back to it).
+
+**Search metadata** (`lib/seo.ts`): a page's title and description live once, in `staticRoutes`; the page exports `metadata = pageMetadata("/path")`, which gives the `<title>`, description, canonical URL, feed link and `shareMetadata` (Open Graph, Twitter). A note's `generateMetadata` builds the same from its frontmatter (`seoTitle ?? title`, `excerpt`) with `og:type` article. JSON-LD (`components/content/JsonLd.tsx`): `WebSite` and `Person` on the home page, `BlogPosting` on each note. `scripts/check-seo.mjs` runs after `check-paper` in `pnpm build` and fails it on a page without a single unique title, description, canonical to itself, Open Graph and Twitter tags or a built card, or a sitemap that is not exactly the indexable pages. A new page needs its route in `staticRoutes` and the `pageMetadata` call, nothing else.
 
 ## MDX
 

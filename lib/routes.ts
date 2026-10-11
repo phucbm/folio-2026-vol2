@@ -1,6 +1,6 @@
-// The site's static pages, in contents order. Read by the sitemap, llms.txt and the home page's
-// contents; a new section page is added here when it is built (plan 001). Entry pages come from
-// the content catalog instead.
+// The site's static pages, in contents order. Read by the sitemap, llms.txt, the home page's
+// contents and each page's metadata (title, description, share card: lib/seo.ts); a new section
+// page is added here when it is built (plan 001). Entry pages come from the content catalog instead.
 export interface StaticRoute {
   path: string
   title: string
@@ -18,8 +18,8 @@ export const staticRoutes: StaticRoute[] = [
   { path: "/oss", section: "§3", title: "Open source", description: "Packages and repos I've built and open-sourced, with stars and downloads." },
   { path: "/reading", section: "§4", title: "Reading", description: "The books I've read, from Goodreads, as a bibliography with short reviews." },
   { path: "/references", section: "§5", title: "References", description: "Links I've saved: articles, tools and demos, as a list of references." },
-  { path: "/stats", appendix: "§A", title: "Stats", description: "The charts behind Table 1: commits per week, books per year, package downloads." },
+  { path: "/stats", appendix: "§A", title: "Stats", description: "The charts behind Table 1: contributions per week and per day, commits per year, books per year, npm downloads." },
   { path: "/colophon", appendix: "§B", title: "Colophon", description: "How this site is built, set and hosted." },
   { path: "/errata", appendix: "§C", title: "Errata", description: "What changed on this site, version by version." },
-  { path: "/cv", appendix: "§D", title: "Curriculum vitae", description: "My resume on one page: experience, stack and clients." },
+  { path: "/cv", appendix: "§D", title: "Curriculum vitae", description: "Phuc Bui's resume: frontend engineer in Ho Chi Minh City, at Perxel and before that ViiVue." },
 ]

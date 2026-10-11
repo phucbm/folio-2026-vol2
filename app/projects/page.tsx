@@ -1,13 +1,10 @@
 import type { Metadata } from "next"
-import { shareMetadata } from "@/lib/og"
+import { pageMetadata } from "@/lib/seo"
 import { PageHeader } from "@/components/content/PageHeader"
 import { projects } from "@/data/projects"
 import { A } from "@/components/content/A"
 
-const title = "Projects"
-const description = "Every project, one line each, newest first: Perxel, freelance and ViiVue."
-
-export const metadata: Metadata = { title, description, ...shareMetadata("/projects", { title, description }) }
+export const metadata: Metadata = pageMetadata("/projects")
 
 // One list by date, like /notes: alias, title and line, then where I did it. The date orders the
 // list and numbers it; it is not shown.

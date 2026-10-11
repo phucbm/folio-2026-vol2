@@ -3,7 +3,7 @@
 Plan and status: `.claude/plans/001-rebuild.md`.
 
 ## Commands
-- `pnpm dev`, `pnpm build` (static export to `out/`, then `scripts/check-paper.mjs`: fails on broken paper rules), `pnpm typecheck`
+- `pnpm dev`, `pnpm build` (static export to `out/`, then `scripts/check-paper.mjs` and `scripts/check-seo.mjs`: fail on broken paper rules or missing search metadata), `pnpm typecheck`
 - `pnpm test`: Vitest, the content catalog only (`lib/content/catalog.ts`). Not a general test suite.
 - `pnpm content:lint [files]`: prose and frontmatter rules for `content/notes/*.mdx`; runs on every `.mdx` write through the hook in `.claude/settings.json`.
 - `pnpm visuals <inventory|status|build>`: images for entries (the `visuals` skill).

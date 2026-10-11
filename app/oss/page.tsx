@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { shareMetadata } from "@/lib/og"
+import { pageMetadata } from "@/lib/seo"
 import { PageHeader } from "@/components/content/PageHeader"
 import { NumCell, Pending, TableCaption } from "@/components/content/Table"
 import { ossRepos, repoPath } from "@/data/oss"
@@ -7,10 +7,7 @@ import { github, npm } from "@/lib/live"
 import { formatDate } from "@/lib/utils"
 import { A } from "@/components/content/A"
 
-const title = "Open source"
-const description = "Packages and repos I've built and open-sourced, with stars and downloads."
-
-export const metadata: Metadata = { title, description, ...shareMetadata("/oss", { title, description }) }
+export const metadata: Metadata = pageMetadata("/oss")
 
 const head = "py-1.5 font-normal"
 

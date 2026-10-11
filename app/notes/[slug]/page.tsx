@@ -5,7 +5,10 @@ import { catalogByKind } from "@/lib/content/site-catalog"
 import { displayDate } from "@/lib/content/collections"
 import { PageHeader } from "@/components/content/PageHeader"
 import { formatDate } from "@/lib/utils"
+import { site } from "@/lib/site"
 import { shareMetadata } from "@/lib/og"
+import { alternates, noteJsonLd } from "@/lib/seo"
+import { JsonLd } from "@/components/content/JsonLd"
 
 export const dynamicParams = false
 
@@ -20,10 +23,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const note = notesAll.find((n) => n.slug === slug)
   if (!note) return {}
   const title = note.seoTitle ?? note.title
+  const path = `/notes/${slug}`
+  const share = shareMetadata(path, { title, description: note.excerpt })
   return {
     title,
     description: note.excerpt,
-    ...shareMetadata(`/notes/${slug}`, { title, description: note.excerpt }),
+    alternates: alternates(path),
+    ...share,
+    openGraph: {
+      ...share.openGraph,
+      type: "article",
+      publishedTime: note.date,
+      ...(note.updated ? { modifiedTime: note.updated } : {}),
+      authors: [site.url],
+      tags: note.tags,
+    },
     ...(note.status === "unlisted" ? { robots: { index: false } } : {}),
   }
 }
@@ -51,6 +65,9 @@ export default async function NotePage({ params }: Props) {
         }
       />
       <Body />
+      <JsonLd
+        data={noteJsonLd({ url: `/notes/${slug}`, title: note.title, excerpt: note.excerpt, date: note.date, dateModified: note.updated ?? note.date, tags: note.tags })}
+      />
     </article>
   )
 }
