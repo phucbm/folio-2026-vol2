@@ -76,8 +76,9 @@ export const numbers: NumberRow[] = [
   },
   {
     label: "WordPress installs",
-    note: "Sites running my WordPress plugins today, rounded down as WordPress.org shows them. It keeps no history, so this year is blank.",
-    thisYear: null,
+    note: "Sites running my WordPress plugins today, rounded down as WordPress.org shows them. It keeps no history, so this year counts the plugins listed this year.",
+    // Blank in a year with no new plugin, rather than a 0 that reads as lost installs.
+    thisYear: plugins?.some((p) => p.added.startsWith(String(year))) ? sum(plugins.filter((p) => p.added.startsWith(String(year))).map((p) => p.activeInstalls)) : null,
     format: formatInstalls,
     allTime: plugins ? sum(plugins.map((p) => p.activeInstalls)) : null,
     href: "/stats",

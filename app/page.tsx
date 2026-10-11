@@ -71,7 +71,7 @@ export default function Home() {
                   {row.href ? <Link href={row.href}>{row.label}</Link> : row.label}
                   <NoteMark letter={marks.get(row)} />
                 </th>
-                <NumCell value={row.thisYear} />
+                <NumCell value={row.thisYear} format={row.format} />
                 <NumCell value={row.allTime} format={row.format} last />
               </tr>
             ))}
