@@ -50,6 +50,17 @@ export interface RepoStats {
   lastCommit?: string
 }
 
+export interface WordpressPlugin {
+  slug: string
+  name: string
+  // "YYYY-MM-DD", the day WordPress.org listed it.
+  added: string
+  // Rounded down by WordPress.org: 1000 means "1,000+".
+  activeInstalls: number
+  downloads: number
+  url: string
+}
+
 interface Live {
   fetchedAt: Record<string, string>
   github?: {
@@ -66,6 +77,7 @@ interface Live {
     packages: NpmPackage[]
     downloadsPerMonth: { month: string; downloads: number }[]
   }
+  wordpress?: { plugins: WordpressPlugin[] }
   books?: Book[]
   references?: Reference[]
 }
@@ -75,6 +87,7 @@ const data = live as Live
 export const fetchedAt = data.fetchedAt
 export const github = data.github
 export const npm = data.npm
+export const wordpress = data.wordpress
 
 // Newest first, each with its alias by date (lib/aliases.ts): B-001 is the first book I finished,
 // R-001 the first link I saved. The source's URL is the ID.

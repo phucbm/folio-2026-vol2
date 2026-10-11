@@ -1,6 +1,6 @@
 import { catalogByKind } from "@/lib/content/site-catalog"
 import { projects } from "@/data/projects"
-import { books, github, npm } from "@/lib/live"
+import { books, github, npm, wordpress } from "@/lib/live"
 
 // Table 1 on the home page: the numbers, this year and all time. Every figure is computed at build
 // time, never typed: the content catalog, plus `lib/live.ts` for the outside sources. `null` is a
@@ -21,6 +21,7 @@ const sum = (values: number[]) => values.reduce((n, v) => n + v, 0)
 
 const commits = github ? Object.entries(github.commitsByYear) : null
 const packages = npm?.packages
+const plugins = wordpress?.plugins
 const repos = github ? Object.values(github.repos) : null
 // jsDelivr hits by year through both routes (npm and GitHub), only once both are measured.
 const hits = packages?.every((p) => p.jsdelivrHitsByYear) && github?.jsdelivrHitsByYear
@@ -64,6 +65,19 @@ export const numbers: NumberRow[] = [
     thisYear: npm ? sum(npm.downloadsPerMonth.filter((m) => m.month.startsWith(String(year))).map((m) => m.downloads)) : null,
     allTime: packages ? sum(packages.map((p) => p.downloadsTotal)) : null,
     href: "/oss",
+  },
+  {
+    label: "WordPress plugins",
+    thisYear: plugins ? plugins.filter((p) => p.added.startsWith(String(year))).length : null,
+    allTime: plugins ? plugins.length : null,
+    href: "/stats",
+  },
+  {
+    label: "WordPress installs",
+    note: "Sites running my WordPress plugins now, as WordPress.org counts them: rounded down, so 1,000 means 1,000 or more. It keeps no history, so there is no count for this year.",
+    thisYear: null,
+    allTime: plugins ? sum(plugins.map((p) => p.activeInstalls)) : null,
+    href: "/stats",
   },
   {
     label: "jsDelivr hits",

@@ -18,7 +18,7 @@ export const staticRoutes: StaticRoute[] = [
   { path: "/oss", section: "§3", title: "Open source", description: "Packages and repos I've built and open-sourced, with stars and downloads." },
   { path: "/reading", section: "§4", title: "Reading", description: "The books I've read, from Goodreads, as a bibliography with short reviews." },
   { path: "/references", section: "§5", title: "References", description: "Links I've saved: articles, tools and demos, as a list of references." },
-  { path: "/stats", appendix: "§A", title: "Stats", description: "The charts behind Table 1: contributions per week and per day, commits per year, books per year, npm downloads." },
+  { path: "/stats", appendix: "§A", title: "Stats", description: "The charts behind Table 1: contributions per week and per day, commits per year, books per year, npm downloads, WordPress plugins." },
   { path: "/colophon", appendix: "§B", title: "Colophon", description: "How this site is built, set and hosted." },
   { path: "/errata", appendix: "§C", title: "Errata", description: "What changed on this site, version by version." },
   { path: "/cv", appendix: "§D", title: "Curriculum vitae", description: "Phuc Bui's resume: frontend engineer in Ho Chi Minh City, at Perxel and before that ViiVue." },

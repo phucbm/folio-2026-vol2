@@ -7,7 +7,7 @@
 //   pnpm data github npm only those
 //
 // Tokens: GITHUB_TOKEN (falls back to `gh auth token`), DISCORD_BOT_TOKEN + DISCORD_CHANNEL_ID
-// (in .env.local). Goodreads, npm and jsDelivr need none.
+// (in .env.local). Goodreads, npm, jsDelivr and WordPress.org need none.
 import { execSync } from "node:child_process"
 import { readFileSync, writeFileSync, existsSync } from "node:fs"
 
@@ -17,6 +17,7 @@ const GITHUB_SINCE = 2017
 // The npm account is phucbui96; the packages are scoped @phucbm or unscoped.
 const NPM_MAINTAINER = "phucbui96"
 const GOODREADS_USER = "91506536"
+const WORDPRESS_USER = "phucbm"
 
 const live = existsSync(OUT) ? JSON.parse(readFileSync(OUT, "utf8")) : {}
 live.fetchedAt ??= {}
@@ -272,6 +273,25 @@ const sources = {
       packages: packages.sort((a, b) => b.downloadsLastMonth - a.downloadsLastMonth),
       // Totals per calendar month, the current (partial) one included; plots drop it.
       downloadsPerMonth: [...monthly].sort(([a], [b]) => a.localeCompare(b)).map(([month, downloads]) => ({ month, downloads })),
+    }
+  },
+
+  // My plugins on WordPress.org. Active installs come rounded down by WordPress (1,000+ reads 1000);
+  // downloads are the all-time total. WordPress keeps no install history, so there is no "by year".
+  async wordpress() {
+    const r = await json(`https://api.wordpress.org/plugins/info/1.2/?action=query_plugins&request[author]=${WORDPRESS_USER}&request[per_page]=100`)
+    if (!r.plugins?.length) throw new Error("no plugins")
+    live.wordpress = {
+      plugins: r.plugins
+        .map((p) => ({
+          slug: p.slug,
+          name: decode(p.name),
+          added: p.added,
+          activeInstalls: p.active_installs,
+          downloads: p.downloaded,
+          url: `https://wordpress.org/plugins/${p.slug}/`,
+        }))
+        .sort((a, b) => b.activeInstalls - a.activeInstalls || b.downloads - a.downloads),
     }
   },
 

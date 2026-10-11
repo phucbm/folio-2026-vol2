@@ -3,7 +3,8 @@
     "github": "2026-10-11T16:19:47.281Z",
     "npm": "2026-10-11T16:20:48.206Z",
     "goodreads": "2026-10-11T09:39:27.653Z",
-    "discord": "2026-10-11T09:39:32.368Z"
+    "discord": "2026-10-11T09:39:32.368Z",
+    "wordpress": "2026-10-11T16:48:34.158Z"
   },
   "github": {
     "commitsByYear": {
@@ -5205,5 +5206,41 @@
         "Portfolio"
       ]
     }
-  ]
+  ],
+  "wordpress": {
+    "plugins": [
+      {
+        "slug": "acf-icomoon",
+        "name": "Support For Icomoon with Advanced Custom Fields",
+        "added": "2021-09-03",
+        "activeInstalls": 1000,
+        "downloads": 11551,
+        "url": "https://wordpress.org/plugins/acf-icomoon/"
+      },
+      {
+        "slug": "perxel-image-optimizer",
+        "name": "Perxel Image Optimizer",
+        "added": "2026-09-21",
+        "activeInstalls": 0,
+        "downloads": 160,
+        "url": "https://wordpress.org/plugins/perxel-image-optimizer/"
+      },
+      {
+        "slug": "perxel-ai-translate",
+        "name": "Perxel AI Translate",
+        "added": "2026-09-23",
+        "activeInstalls": 0,
+        "downloads": 145,
+        "url": "https://wordpress.org/plugins/perxel-ai-translate/"
+      },
+      {
+        "slug": "perxel-accordion-for-tinymce",
+        "name": "Perxel Accordion for TinyMCE",
+        "added": "2026-09-30",
+        "activeInstalls": 0,
+        "downloads": 98,
+        "url": "https://wordpress.org/plugins/perxel-accordion-for-tinymce/"
+      }
+    ]
+  }
 }
