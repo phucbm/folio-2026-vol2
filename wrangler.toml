@@ -1,0 +1,9 @@
+# Static assets only: `next build` writes `out/`, Cloudflare serves it. No Worker script.
+name = "phucbm-com-2026-vol2"
+compatibility_date = "2026-10-01"
+
+[assets]
+directory = "./out"
+# `/notes` serves `out/notes.html`; unknown URLs get `out/404.html` with a 404 status.
+html_handling = "auto-trailing-slash"
+not_found_handling = "404-page"

@@ -4,3 +4,6 @@ out/
 .env*
 !.env.example
 .DS_Store
+.wrangler/
+next-env.d.ts
+*.tsbuildinfo

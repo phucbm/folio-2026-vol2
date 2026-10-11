@@ -1,0 +1,127 @@
+@import "tailwindcss";
+
+/* ── Breakpoints: the one place for CSS. JS twin: `lib/media.ts` (same values, change both). ──
+   Widths are Tailwind's `sm` 40rem, `md` 48rem, `lg` 64rem, restated here so they read in one place.
+   In markup use `md:` / `max-lg:` / `fine-pointer:` / `touch:`; in this file use `@variant <name> { }`
+   inside a rule. Never a raw width or pointer `@media`. */
+@theme {
+    --breakpoint-sm: 40rem;
+    --breakpoint-md: 48rem;
+    --breakpoint-lg: 64rem;
+}
+/* A hovering pointer on an `lg` screen: every pointer-driven effect (`FINE_POINTER`). */
+@custom-variant fine-pointer (@media (hover: hover) and (pointer: fine) and (width >= 64rem));
+/* Its complement: touch, or a screen below `lg`. */
+@custom-variant touch (@media not all and (hover: hover) and (pointer: fine) and (width >= 64rem));
+
+/* ── Tokens ──
+   Warm off-white and ink, one accent for links. Light only: dark mode comes when it is designed
+   properly, not as an inverted afterthought. */
+:root {
+    color-scheme: light;
+
+    --paper: #f7f5f0;
+    --ink: #1c1b19;
+    /* Secondary text: captions, dates, the running head. 5.4:1 on paper. */
+    --ink-muted: #625e57;
+    /* Hairlines: table rules, the running head's underline. */
+    --rule: #d8d2c6;
+    /* Links. matplotlib's C0 (#1f77b4) darkened to pass AA as text (5.3:1); plots use the real C0. */
+    --accent: #1a6399;
+    --plot: #1f77b4;
+
+    /* The paper's measure, and the wider column tables and figures may take. */
+    --measure: 38rem;
+    --measure-wide: 52rem;
+}
+
+@theme inline {
+    --color-paper: var(--paper);
+    --color-ink: var(--ink);
+    --color-ink-muted: var(--ink-muted);
+    --color-rule: var(--rule);
+    --color-accent: var(--accent);
+    --color-plot: var(--plot);
+
+    --font-serif: var(--font-source-serif), Georgia, serif;
+    --font-sans: var(--font-source-sans), ui-sans-serif, system-ui, sans-serif;
+    --font-mono: var(--font-plex-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+
+    --container-measure: var(--measure);
+    --container-measure-wide: var(--measure-wide);
+}
+
+@layer base {
+    html {
+        @apply bg-paper text-ink font-sans;
+        font-size: 17px;
+        -webkit-text-size-adjust: 100%;
+        text-rendering: optimizeLegibility;
+        @variant md {
+            font-size: 18px;
+        }
+    }
+    body {
+        @apply bg-paper leading-[1.6] antialiased;
+        /* Running text uses old-style figures; tables and mono switch to lining/tabular. */
+        font-variant-numeric: oldstyle-nums proportional-nums;
+    }
+    h1, h2, h3, h4 {
+        @apply font-serif font-medium text-ink;
+        font-variant-numeric: lining-nums;
+        text-wrap: balance;
+        line-height: 1.2;
+    }
+    p, li {
+        text-wrap: pretty;
+    }
+    a {
+        @apply text-accent underline decoration-1 underline-offset-[0.2em];
+        text-decoration-color: color-mix(in srgb, var(--accent) 35%, transparent);
+        transition: text-decoration-color 150ms;
+    }
+    a:hover {
+        text-decoration-color: currentColor;
+    }
+    :focus-visible {
+        @apply outline-2 outline-offset-2 outline-accent rounded-[2px];
+    }
+    ::selection {
+        background: color-mix(in srgb, var(--plot) 22%, transparent);
+    }
+    hr {
+        @apply border-rule;
+    }
+    /* Sans italic is its own family (see `lib/fonts.ts`); titles keep the serif's own slant. */
+    :is(em, i, cite):not(:is(h1, h2, h3, h4) *) {
+        font-family: var(--font-source-sans-italic), var(--font-sans);
+    }
+    code, kbd, samp, pre {
+        @apply font-mono;
+        font-size: 0.875em;
+    }
+}
+
+/* Numbers, dates, IDs: mono, lining, slashed zero off. */
+@utility num {
+    @apply font-mono;
+    font-variant-numeric: lining-nums tabular-nums;
+    font-size: 0.875em;
+    letter-spacing: -0.01em;
+}
+
+/* Small secondary label: captions, the running head, table headers. */
+@utility label {
+    @apply text-ink-muted;
+    font-size: 0.8125rem;
+    line-height: 1.4;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+    }
+}

@@ -1,6 +1,6 @@
 # 001 — Rebuild phucbm.com (folio 2026 vol. 2)
 
-Status: planned, nothing built. Written 2026-10-11.
+Status: part 1 done (2026-10-11), preview at https://phucbm-com-2026-vol2.bmp.workers.dev. Written 2026-10-11.
 
 ## Why
 
@@ -63,9 +63,9 @@ All numbers computed at build time, never typed by hand. Cached in a generated J
 - Notes, projects: from the content catalog.
 - Rebuilt on every deploy; a scheduled rebuild (GitHub Actions cron, e.g. daily) keeps the numbers fresh between posts.
 
-## MCP and Ask
+## MCP and Ask (deferred)
 
-Same infra as Perxel: the perxel-mcp kit (`kit/core`, `kit/ask`), deployed a second time.
+Deferred 2026-10-11: content and layout first; picked up after launch. Same infra as Perxel: the perxel-mcp kit (`kit/core`, `kit/ask`), deployed a second time.
 
 - `phucbm-mcp` Worker at `mcp.phucbm.com`, its own `mcp.config.ts` (`slug`, tools, `ask` with `allowedOrigins: ["https://phucbm.com"]`, a personal system prompt, handoff to email and socials).
 - Tools: search notes, get an item, list packages, get stats; reads this site's `/content.json`.
@@ -81,19 +81,26 @@ Same infra as Perxel: the perxel-mcp kit (`kit/core`, `kit/ask`), deployed a sec
 
 ## Parts (one per turn, each confirmed before the next)
 
-1. Scaffold: Next 16 static, fonts, tokens, layout shell, deploy to a preview URL.
+1. ~~Scaffold: Next 16 static, fonts, tokens, layout shell, deploy to a preview URL.~~ Done 2026-10-11: Next 16.3.8 static export, Cloudflare static assets (`wrangler.toml`, worker `phucbm-com-2026-vol2`), Source Serif 4 / Source Sans 3 / IBM Plex Mono self-hosted (`.claude/docs/performance.md`), tokens in `app/globals.css`, running head + colophon, placeholder home and 404.
 2. Content engine + lint + skills ported.
 3. Home page (abstract, Table 1, contents) and the design system written down (`.claude/docs/design.md`).
 4. `/archived` + entry pages, then the Perxel link to it.
 5. `/notes` + the first few notes.
 6. Data pipeline: Table 1, `/stats`, `/oss`, `/reading`, Figure 0.
 7. Remaining pages (`/perxel`, `/references`, `/now`, `/uses`, `/colophon`, `/errata`) and migration + redirects.
-8. MCP + Ask.
-9. Launch: point phucbm.com here, archive the old repos.
+8. Launch: point phucbm.com here, archive the old repos.
+9. Later: MCP + Ask (deferred, see above).
+
+## Next session
+
+- Start part 2 (content engine + lint + skills, from perxel-web-2026: `/Users/bmp/PHUC-LOCAL/perxel/perxel-web-2026`).
+- The preview is still the placeholder; the owner noticed it has no content yet. Ask at the start whether to move the existing content over (about, now, uses, colophon, the 2 phucbm-web posts, the four folio-2026 projects) right after part 2, ahead of parts 3–6, so the preview fills up sooner.
+- Part 1 notes: `next/font` preloads every file in a family, so the sans italic is a separate family (`lib/fonts.ts`, the `em/i/cite` rule in `app/globals.css`). Deploy with `pnpm deploy`; wrangler is logged in as the owner's account.
 
 ## Decided (2026-10-11)
 
-- English only.
+- English only (fonts still carry Vietnamese glyphs for project and place names).
+- MCP + Ask deferred until after launch: content and layout first.
 - No newsletter for now.
 - Bookmarks: keep the Discord channel feed from `phucbm-web`.
 - Analytics: GA4 (owner provides the measurement ID). Load it the way perxel-web-2026 does (on first input or after 15 s), and no cookie banner unless the GA4 setup needs one.
