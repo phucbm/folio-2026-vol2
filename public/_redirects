@@ -1,0 +1,29 @@
+# Old URLs from folio-2026 (Astro) and phucbm-web (Nextra), so nothing indexed 404s (plan 001, part 7).
+# Cloudflare static assets reads this file from out/. Most specific rules first.
+
+# folio-2026: the four case studies are Perxel's, so they go to perxel.com.
+/work/openwallet https://perxel.com/en/works/openwallet 301
+/work/khatra https://perxel.com/en/works/khatra 301
+/work/dta-luxury https://perxel.com/en/works/dta-luxury 301
+/work/growtrics https://perxel.com/en/works/growtrics 301
+/work/page/* /perxel 301
+/work /perxel 301
+/about / 301
+/resume / 301
+/privacy / 301
+/terms / 301
+/cookies / 301
+/hello-world / 301
+
+# phucbm-web
+/posts/how-i-built-my-blog /notes/how-i-built-my-blog 301
+/posts/my-recommended-wordpress-stacks /notes 301
+/posts /notes 301
+/tags/* /notes 301
+/rss.xml /feed.xml 301
+/bookmarks /references 301
+/goodreads /reading 301
+/shipped /oss 301
+/connect / 301
+/components/* https://ui.phucbm.com 301
+/components https://ui.phucbm.com 301

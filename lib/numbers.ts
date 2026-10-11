@@ -17,17 +17,17 @@ const notes = catalogByKind("note")
 const archived = catalogByKind("archived")
 
 export const numbers: NumberRow[] = [
-  { label: "Commits", thisYear: null, allTime: null },
+  { label: "Commits", thisYear: null, allTime: null, href: "/stats" },
   {
     label: "Notes",
     thisYear: notes.filter((note) => note.year === year).length,
     allTime: notes.length,
     href: "/notes",
   },
-  { label: "Books read", thisYear: null, allTime: null },
-  { label: "Projects, archived", thisYear: archived.filter((item) => item.year === year).length, allTime: archived.length },
+  { label: "Books read", thisYear: null, allTime: null, href: "/reading" },
+  { label: "Projects, archived", thisYear: archived.filter((item) => item.year === year).length, allTime: archived.length, href: "/archived" },
   // Perxel entries carry no date, so only the all-time count.
   { label: "Projects, Perxel", thisYear: null, allTime: perxelWorks.length, href: "/perxel" },
-  { label: "Packages", thisYear: null, allTime: null },
-  { label: "Downloads per month", thisYear: null, allTime: null },
+  { label: "Packages", thisYear: null, allTime: null, href: "/oss" },
+  { label: "Downloads per month", thisYear: null, allTime: null, href: "/oss" },
 ]

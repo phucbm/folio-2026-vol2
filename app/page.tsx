@@ -5,12 +5,20 @@ import { staticRoutes } from "@/lib/routes";
 import { catalogByKind } from "@/lib/content/site-catalog";
 import { numbers } from "@/lib/numbers";
 import { perxelWorks } from "@/data/perxel";
+import { ossGroups } from "@/data/oss";
+import { books } from "@/data/reading";
+import { references } from "@/data/references";
+import { NumCell } from "@/components/content/Table";
 
 // Counts shown beside a section in the contents, where the section is a list.
 const counts: Record<string, number> = {
   "/notes": catalogByKind("note").length,
   "/archived": catalogByKind("archived").length,
   "/perxel": perxelWorks.length,
+  "/oss": ossGroups.reduce((n, group) => n + group.repos.length, 0),
+  // Counted once the pipeline fills them (part 6); an empty list gets no count.
+  ...(books.length ? { "/reading": books.length } : {}),
+  ...(references.length ? { "/references": references.length } : {}),
 };
 
 // The paper's front matter (plan 001, "Home page"): name, abstract, Table 1, Figure 0, contents,
@@ -55,8 +63,8 @@ export default function Home() {
                 <th scope="row" className="py-1.5 pr-4 text-left font-normal">
                   {row.href ? <Link href={row.href}>{row.label}</Link> : row.label}
                 </th>
-                <Cell value={row.thisYear} />
-                <Cell value={row.allTime} last />
+                <NumCell value={row.thisYear} />
+                <NumCell value={row.allTime} last />
               </tr>
             ))}
           </tbody>
@@ -96,14 +104,5 @@ export default function Home() {
         </dl>
       </section>
     </article>
-  );
-}
-
-/** A figure in Table 1: mono, right-aligned; a figure not measured yet is left blank. */
-function Cell({ value, last }: { value: number | null; last?: boolean }) {
-  return (
-    <td className={`num py-1.5 text-right ${last ? "" : "pr-4"}`}>
-      {value === null ? <span className="sr-only">not measured</span> : value.toLocaleString("en-US")}
-    </td>
   );
 }

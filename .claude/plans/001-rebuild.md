@@ -88,12 +88,13 @@ Deferred 2026-10-11: content and layout first; picked up after launch. Same infr
 4. `/archived` + entry pages, then the Perxel link to it. In progress: layout and 20 placeholder drafts done, text waits on `intake/archived.md`. Not a blocker (owner, 2026-10-11): finish the whole site first, the owner fills the gaps after seeing it.
 5. `/notes` + the first few notes.
 6. Data pipeline: Table 1, `/stats`, `/oss`, `/reading`, Figure 0.
-7. Remaining pages (`/perxel`, `/references`, `/now`, `/uses`, `/colophon`, `/errata`) and migration + redirects.
+7. ~~Remaining pages and migration + redirects.~~ Done 2026-10-11 (ahead of 5 and 6, owner: see the full site first): `/oss` (§4, Table 2, repo list from phucbm-web's /shipped in `data/oss.ts`), `/reading` (§5), `/references` (§6), `/stats`, `/errata` (`data/errata.ts`), all in `staticRoutes`; Table 1 rows link to them. Their data modules (`data/oss.ts` `ossStats`, `data/reading.ts`, `data/references.ts`) are empty until part 6, and the pages show a visible `[TODO: ...]` (`Pending` in `components/content/Table.tsx`) meanwhile. Redirects in `public/_redirects` (folio-2026 and phucbm-web URLs), checked on the preview. Intro lines on the new pages are drafts awaiting the owner's approval.
 8. Launch: point phucbm.com here, archive the old repos.
 9. Later: MCP + Ask (deferred, see above).
 
 ## Next session
 
+- Cloudflare `_redirects`: a specific path loses to a splat on the same prefix (`/posts/x` went to `/posts/*`'s target), so list old URLs one by one where a specific one matters.
 - Preview builds drafts: `pnpm run deploy` sets `SHOW_DRAFTS=1` (`lib/content/collections.ts`), so placeholders show on the preview, and `robots.txt` then disallows everything. Remove the flag from the deploy script at launch (part 8). Parts 3 and 4 deployed 2026-10-11.
 - Part 4 in progress (committed 2026-10-11): `app/archived/page.tsx` (figures in a two-column grid, caption below the plate), `app/archived/[slug]/page.tsx` (plate, a facts table, the body), `/archived` in `staticRoutes` as §2. The intro line on `/archived` is a draft awaiting the owner's approval. 
 - Projects: all 20 in Perxel's `perxel-web-2026/data/portfolio/projects.ts` with `role: "Lead Frontend Developer"`, minus Growtrics (it is Perxel's). Figures numbered by year, oldest first. Plates from Perxel's captures (`public/projects/` there: full-page desktop and mobile JPGs, some MP4s), through `visuals` recipes; RMIT Experience Day 2023 has none (maybe `rmit-2024.jpg`).

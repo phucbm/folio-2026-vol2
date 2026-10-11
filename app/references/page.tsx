@@ -1,0 +1,42 @@
+import type { Metadata } from "next"
+import { PageHeader } from "@/components/content/PageHeader"
+import { Pending } from "@/components/content/Table"
+import { references } from "@/data/references"
+import { contactLinks } from "@/lib/site"
+import { formatDate } from "@/lib/utils"
+
+export const metadata: Metadata = {
+  title: "References",
+  description: "Links I've saved: articles, tools and demos, as a list of references.",
+}
+
+const discord = contactLinks.find((link) => link.label === "Discord")
+
+// References in citation format: source, title, the URL's host, the day I saved it. Newest first.
+export default function ReferencesPage() {
+  return (
+    <article className="max-w-measure">
+      <PageHeader label="§6" title="References" />
+      <p>
+        Links I've saved: articles, tools and demos I keep coming back to. I bookmark them into a channel on my
+        Discord server, and this list comes from there.
+        {discord && <> <a href={discord.href}>Join the server</a> to see new ones as I add them.</>}
+      </p>
+      {references.length === 0 ? (
+        <Pending>the links come from the Discord channel in part 6</Pending>
+      ) : (
+        <ol className="mt-8 border-t border-rule">
+          {references.map((ref, i) => (
+            <li key={ref.url} className="grid grid-cols-[2.5rem_1fr] gap-x-3 border-b border-rule py-3">
+              <span className="num pt-0.5 text-ink-muted">[{i + 1}]</span>
+              <p>
+                {ref.source}. <a href={ref.url}>{ref.title}</a>.{" "}
+                <span className="label">Saved <span className="num">{formatDate(ref.saved)}</span></span>
+              </p>
+            </li>
+          ))}
+        </ol>
+      )}
+    </article>
+  )
+}
