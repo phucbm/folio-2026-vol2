@@ -1,9 +1,9 @@
 {
   "fetchedAt": {
-    "github": "2026-10-11T09:33:28.298Z",
-    "npm": "2026-10-11T09:34:29.354Z",
-    "goodreads": "2026-10-11T09:34:29.938Z",
-    "discord": "2026-10-11T09:34:35.441Z"
+    "github": "2026-10-11T09:38:44.758Z",
+    "npm": "2026-10-11T09:39:26.955Z",
+    "goodreads": "2026-10-11T09:39:27.653Z",
+    "discord": "2026-10-11T09:39:32.368Z"
   },
   "github": {
     "commitsByYear": {
@@ -2070,16 +2070,6 @@
         "stars": 5,
         "url": "https://github.com/phucbm/claude-usage-monitor"
       },
-      "phucbm/react-hanzi-input": {
-        "description": "Chinese handwriting input component for React — canvas pad, stroke capture, and candidate picker powered by Google IME.",
-        "stars": 0,
-        "url": "https://github.com/phucbm/react-hanzi-input"
-      },
-      "phucbm/food-tour-sg": {
-        "description": "Chatbot để tìm quán ăn ngon ở Sài Gòn",
-        "stars": 0,
-        "url": "https://github.com/phucbm/food-tour-sg"
-      },
       "phucbm/clyrics": {
         "description": "Chinese lyrics powered by AI so anyone can learn from music they love",
         "stars": 0,
@@ -2090,6 +2080,16 @@
         "stars": 0,
         "url": "https://github.com/phucbm/claudify"
       },
+      "phucbm/food-tour-sg": {
+        "description": "Chatbot để tìm quán ăn ngon ở Sài Gòn",
+        "stars": 0,
+        "url": "https://github.com/phucbm/food-tour-sg"
+      },
+      "phucbm/nextra-docs-starter": {
+        "description": "Nextra docs template with Next.js 16, React 19, Tailwind v4 and improved search UI.",
+        "stars": 50,
+        "url": "https://github.com/phucbm/nextra-docs-starter"
+      },
       "phucbm/nextra-blog-starter": {
         "description": "A template for deploying Nextra blogs with built-in features like search, tags, and more.",
         "stars": 7,
@@ -2099,6 +2099,11 @@
         "description": "Từ điển Trung - Hán Việt, phân tích chữ Hán, bộ thủ.",
         "stars": 2,
         "url": "https://github.com/phucbm/xue-hanzi"
+      },
+      "phucbm/react-hanzi-input": {
+        "description": "Chinese handwriting input component for React — canvas pad, stroke capture, and candidate picker powered by Google IME.",
+        "stars": 0,
+        "url": "https://github.com/phucbm/react-hanzi-input"
       },
       "phucbm/lipsum-generator": {
         "description": "🧢 A Chrome extension that generates Lorem Ipsum, trusted by 5,000 weekly users",
@@ -2115,16 +2120,6 @@
         "stars": 1,
         "url": "https://github.com/phucbm/normalized-mouse-position"
       },
-      "phucbm/nextra-docs-starter": {
-        "description": "Nextra docs template with Next.js 16, React 19, Tailwind v4 and improved search UI.",
-        "stars": 50,
-        "url": "https://github.com/phucbm/nextra-docs-starter"
-      },
-      "phucbm/jquery-scroll-direction-plugin": {
-        "description": "↕️ A lightweight jQuery plugin to detect scroll direction.",
-        "stars": 7,
-        "url": "https://github.com/phucbm/jquery-scroll-direction-plugin"
-      },
       "phucbm/magnetic-button": {
         "description": "A lightweight TypeScript library that creates smooth magnetic attraction effects for HTML elements",
         "stars": 3,
@@ -2134,6 +2129,11 @@
         "description": "A series of cursor effects.",
         "stars": 7,
         "url": "https://github.com/phucbm/cursor-effects"
+      },
+      "phucbm/jquery-scroll-direction-plugin": {
+        "description": "↕️ A lightweight jQuery plugin to detect scroll direction.",
+        "stars": 7,
+        "url": "https://github.com/phucbm/jquery-scroll-direction-plugin"
       },
       "viivue/easy-select": {
         "description": "❄️  Customizing select is easier than ever",

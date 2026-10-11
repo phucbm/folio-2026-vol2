@@ -1,0 +1,44 @@
+---
+title: "Three Font Families in 106 KB"
+excerpt: "A serif, a sans and a mono, self-hosted and cut down with fonttools to the characters this site uses, Vietnamese included."
+tags: ["performance", "fonts"]
+date: "2026-10-11"
+status: "draft"
+number: 4
+related: ["rebuilding-as-a-research-paper"]
+---
+
+This site uses three typefaces, one job each: Source Serif 4 for titles, Source Sans 3 for reading, IBM Plex Mono for numbers. A normal page loads 106 KB of fonts for all three. They are self-hosted, and each is one variable file cut down to the weights and characters the site actually uses.
+
+## The files
+
+| Face | Cut | Size (KB) |
+|---|---|---|
+| Source Serif 4 | Weight 400-600, optical size pinned at 32 | 50 |
+| Source Sans 3 | Weight 300-700 | 41 |
+| Source Sans 3 Italic | Weight 300-700, only on pages that use it | 41 |
+| IBM Plex Mono | Regular, latin only | 15 |
+
+The serif keeps 109 KB with its optical size axis. I only use it for titles, so I pinned the axis at 32 (the display size) and the file dropped to 50 KB.
+
+## How
+
+Two steps with [fonttools](https://github.com/fonttools/fonttools), from the variable fonts in the google/fonts repo. First pin the axes I don't need:
+
+```sh
+fonttools varLib.instancer "SourceSerif4[opsz,wght].ttf" wght=400:600 opsz=32 -o serif-cut.ttf
+```
+
+Then keep only the characters and OpenType features the site uses, and write woff2:
+
+```sh
+fonttools subset serif-cut.ttf --unicodes="$U" \
+  --layout-features=kern,liga,onum,lnum,tnum,frac \
+  --flavor=woff2 --output-file=source-serif-4-latin-vi.woff2
+```
+
+`$U` is Google's latin and Vietnamese ranges (project and place names like *Hiểu Chữ Hán* need the Vietnamese letters) plus the few symbols a paper uses: arrows, ≈, ≠, ≤, ≥, the minus sign. A character outside the cut falls back to a system font, so adding one means adding its range and running the commands again. The full command is in the repo's `performance.md`.
+
+## The italic is its own family
+
+`next/font` preloads every file in a family. With the italic in the same family as the roman, every page fetched both, even pages with no italic on them. So the italic is a separate family, set only on `em`, `i` and `cite`, and the browser fetches it only when one of those is on the page.

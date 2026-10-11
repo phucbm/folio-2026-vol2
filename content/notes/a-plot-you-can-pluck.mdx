@@ -1,0 +1,53 @@
+---
+title: "A Plot You Can Pluck"
+excerpt: "Figure 0 on the home page is a matplotlib-style line plot drawn as SVG on the server. Move a mouse across the line and it rings like a string."
+tags: ["animation", "svg"]
+date: "2026-10-11"
+status: "draft"
+number: 3
+related: ["rebuilding-as-a-research-paper"]
+---
+
+Figure 0 on the home page is my GitHub contributions per week, drawn to look like a plot straight out of matplotlib. It is plain SVG rendered at build time, and the line is the only thing on the site that moves: cross it with the cursor and a wave runs along it, then settles back onto the data.
+
+## Looking like matplotlib
+
+Most of the look is matplotlib's defaults, copied as numbers:
+
+| Part | Default |
+|---|---|
+| Spines | All four, 0.8px |
+| Ticks | Outside, 3.5px long, 0.8px wide |
+| Line colour | C0, `#1f77b4` |
+| Margin inside the axes | 5% on each end |
+| Tick steps | 1, 2, 2.5 or 5 × 10ⁿ |
+| Grid | None |
+
+The tick labels are in the site's mono face instead of DejaVu Sans. SVG text scales with the viewBox, so a plot drawn for a 640px column would have unreadable 5px labels on a phone. I render the plot twice, at 360 and 640 units wide, and CSS shows one.
+
+## The pluck
+
+The spring is the one from `WaveLine` on Perxel's site: a row of columns, each pulled back to rest and dragged by its neighbours, so a push at one point travels outwards.
+
+```ts
+for (let j = 0; j < cols; j++) {
+  vel[j] += -0.02 * height[j] - 0.022 * vel[j] // spring back, damping
+  height[j] = clamp(height[j] + vel[j], -MAX_BEND, MAX_BEND)
+}
+// three passes: each column drags its neighbours
+for (let j = 0; j < cols; j++) {
+  if (j > 0) push[j - 1] += 0.22 * (height[j] - height[j - 1])
+  if (j < cols - 1) push[j + 1] += 0.22 * (height[j] - height[j + 1])
+}
+```
+
+The data has more than 500 weekly points, and a wave moves one column per step. Running the spring on the points would tie its speed to how dense the data is. So the spring runs on its own grid, one column every 6 units, and each data point reads the offset of the two columns either side of it. The wave moves at the same speed whatever the data.
+
+A pluck happens when the cursor crosses the line: I keep which side of the line the cursor was on, and when the sign flips I push the nearest columns in the direction it was moving, harder the faster it went. The ends are pinned at the spines, like a string.
+
+## When it stays still
+
+- No mouse, or a screen under 1024px: no listeners at all, the server's path is all there is.
+- Reduced motion: the same.
+- Off screen: an `IntersectionObserver` stops the loop.
+- On screen but settled: the loop skips drawing until the next pluck.

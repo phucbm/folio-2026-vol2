@@ -1,0 +1,43 @@
+---
+title: "Rebuilding phucbm.com as a Research Paper"
+excerpt: "My last two sites looked like a template and a terminal. This one is set like a paper: numbered sections, an abstract, results as tables."
+tags: ["general", "design"]
+date: "2026-10-11"
+status: "draft"
+number: 2
+related: ["how-i-built-my-blog"]
+---
+
+This is the third version of my site since 2025. The first two each had a look that wasn't quite mine, so this time I borrowed the look of something that has worked for a few centuries: the research paper. Numbered sections, an abstract instead of a hero, numbers in tables, projects as figures with captions.
+
+## What was wrong before
+
+| Version | Stack | What it looked like |
+|---|---|---|
+| phucbm-web (2025) | Nextra | Industrial brutalism, everything in monospace |
+| folio-2026 | Astro, TinaCMS | A starter theme I never fully made my own |
+| This one | Next.js, static export | A paper |
+
+The Astro site still read as a template: the theme's name in titles and storage keys, the CMS's demo post, a cookie banner with no analytics behind it, and case studies that were one sentence each. Before that, the Nextra site was my second monospace, brutalist take in a row. I didn't want a third.
+
+## Why a paper
+
+I like data more than decoration, and a paper is a format built to show data calmly. It also gives every part of a personal site a place that already has a name:
+
+| Site part | Paper part |
+|---|---|
+| Intro | Abstract |
+| My numbers (commits, books, downloads) | Table 1 |
+| Notes like this one | Lab notebook entries, `N-002` |
+| Old client work | Figures with captions |
+| Bookmarks | References |
+| Books | Bibliography |
+| Changelog | Errata |
+
+What I left out is the costume: no Computer Modern everywhere, no small caps, no footnote markers on every line. The structure is academic; the sentences are not.
+
+## The stack
+
+Writing on [Perxel](https://perxel.com/en)'s site is fast because of its content engine: MDX files, a linter for the prose, and skills that tell the AI how to write and illustrate an entry. All of it is built on Next.js, so I used the same stack and copied the parts over instead of porting them to Astro.
+
+Every page is static (`output: "export"`) and served from Cloudflare's static assets, with no server at all. The numbers in Table 1 are fetched from GitHub, npm and Goodreads at build time, and a scheduled rebuild keeps them fresh. The one moving thing is Figure 0, my contributions per week, which you can pluck with the cursor ([N-003](/notes/a-plot-you-can-pluck)).
