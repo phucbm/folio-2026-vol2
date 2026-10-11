@@ -11,6 +11,8 @@ export interface NumberRow {
   allTime: number | null
   // The section that backs the row.
   href?: string
+  // A table note, for a row whose figure needs explaining: lettered a, b, … under the table.
+  note?: string
 }
 
 const year = new Date().getFullYear()
@@ -19,6 +21,11 @@ const sum = (values: number[]) => values.reduce((n, v) => n + v, 0)
 
 const commits = github ? Object.entries(github.commitsByYear) : null
 const packages = npm?.packages
+const repos = github ? Object.values(github.repos) : null
+// jsDelivr hits by year through both routes (npm and GitHub), only once both are measured.
+const hits = packages?.every((p) => p.jsdelivrHitsByYear) && github?.jsdelivrHitsByYear
+  ? [...packages.map((p) => p.jsdelivrHitsByYear!), ...Object.values(github.jsdelivrHitsByYear)]
+  : null
 
 export const numbers: NumberRow[] = [
   {
@@ -56,6 +63,20 @@ export const numbers: NumberRow[] = [
     label: "npm downloads",
     thisYear: npm ? sum(npm.downloadsPerMonth.filter((m) => m.month.startsWith(String(year))).map((m) => m.downloads)) : null,
     allTime: packages ? sum(packages.map((p) => p.downloadsTotal)) : null,
+    href: "/oss",
+  },
+  {
+    label: "jsDelivr hits",
+    note: "Files served by jsDelivr from my npm packages and public GitHub repos, both ways it serves them. A hit is one file request, not one visitor.",
+    thisYear: hits ? sum(hits.map((h) => h[year] ?? 0)) : null,
+    allTime: hits ? sum(hits.map((h) => sum(Object.values(h)))) : null,
+    href: "/oss",
+  },
+  {
+    label: "GitHub stars",
+    note: "Stars on the repos in §3 Open source.",
+    thisYear: repos?.every((r) => r.starsByYear) ? sum(repos.map((r) => r.starsByYear![year] ?? 0)) : null,
+    allTime: repos ? sum(repos.map((r) => r.stars)) : null,
     href: "/oss",
   },
 ]

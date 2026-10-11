@@ -60,6 +60,26 @@ function ossRepos() {
   return [...src.matchAll(/^  "([^"]+)",$/gm)].map((m) => (m[1].includes("/") ? m[1] : `${GITHUB_USER}/${m[1]}`))
 }
 
+// jsDelivr hits per calendar year since `created`, for a path such as "npm/<name>" or
+// "gh/<owner>/<repo>". A period may not end in the future, so this year is the rolling last year
+// (`period=year`, daily) cut at January 1. Years without hits are left out.
+// A year that has ended never changes: `known` is the last fetch's result, reused for every past
+// year when that fetch ran this year, so a daily run makes one call per path, not one per year.
+const thisYear = new Date().getUTCFullYear()
+const fetchedThisYear = (source) => live.fetchedAt[source]?.startsWith(String(thisYear))
+async function jsdelivrByYear(path, created, known) {
+  const byYear = {}
+  if (known) for (const [year, hits] of Object.entries(known)) if (Number(year) < thisYear) byYear[year] = hits
+  for (let year = Math.max(Number(created.slice(0, 4)), 2017); !known && year < thisYear; year++) {
+    const r = await json(`https://data.jsdelivr.com/v1/stats/packages/${path}?period=${year}`)
+    if (r.hits.total) byYear[year] = r.hits.total
+  }
+  const r = await json(`https://data.jsdelivr.com/v1/stats/packages/${path}?period=year`)
+  const hits = Object.entries(r.hits.dates).filter(([d]) => d.startsWith(String(thisYear))).reduce((n, [, v]) => n + v, 0)
+  if (hits) byYear[thisYear] = hits
+  return byYear
+}
+
 const ENTITIES = { amp: "&", lt: "<", gt: ">", quot: '"', apos: "'", nbsp: " ", reg: "®", copy: "©", trade: "™", mdash: "—", ndash: "–", rsquo: "’", lsquo: "‘", hellip: "…" }
 const decode = (s) => s
   .replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(Number(n)))
@@ -118,8 +138,20 @@ const sources = {
     start.setUTCDate(start.getUTCDate() - 52 * 7)
     const calendarFrom = start.toISOString().slice(0, 10)
 
-    // For the repos on /oss: when each started, its commits on the default branch and the last one.
+    // For the repos on /oss: when each started, its commits on the default branch and the last one,
+    // and its stars by the year they were given (Table 1).
     const repos = {}
+    async function starsByYear(owner, name) {
+      const byYear = {}
+      for (let after = null; ; ) {
+        const { repository: r } = await gql(`{ repository(owner: "${owner}", name: "${name}") {
+          stargazers(first: 100${after ? `, after: "${after}"` : ""}) { edges { starredAt } pageInfo { hasNextPage endCursor } }
+        } }`)
+        for (const { starredAt } of r.stargazers.edges) byYear[starredAt.slice(0, 4)] = (byYear[starredAt.slice(0, 4)] ?? 0) + 1
+        if (!r.stargazers.pageInfo.hasNextPage) return byYear
+        after = r.stargazers.pageInfo.endCursor
+      }
+    }
     await pool(ossRepos(), 6, async (full) => {
       try {
         const [owner, name] = full.split("/")
@@ -131,6 +163,7 @@ const sources = {
         repos[full] = {
           description: r.description ?? undefined,
           stars: r.stargazerCount,
+          starsByYear: r.stargazerCount ? await starsByYear(owner, name) : {},
           url: r.url,
           created: r.createdAt.slice(0, 10),
           commits: head?.history.totalCount,
@@ -138,6 +171,32 @@ const sources = {
         }
       } catch (err) {
         console.warn(`  github: ${full}: ${err.message}`)
+      }
+    })
+
+    // jsDelivr hits through its GitHub route (cdn.jsdelivr.net/gh/<owner>/<repo>), which most sites
+    // use rather than the npm one: every public repo I own, plus the /oss repos under other owners.
+    const owned = []
+    for (let after = null; ; ) {
+      const { user } = await gql(`{ user(login: "${GITHUB_USER}") {
+        repositories(first: 100, ownerAffiliations: OWNER, privacy: PUBLIC, isFork: false${after ? `, after: "${after}"` : ""}) {
+          nodes { nameWithOwner createdAt } pageInfo { hasNextPage endCursor }
+        } } }`)
+      owned.push(...user.repositories.nodes.map((r) => ({ full: r.nameWithOwner, created: r.createdAt })))
+      if (!user.repositories.pageInfo.hasNextPage) break
+      after = user.repositories.pageInfo.endCursor
+    }
+    const cdnRepos = [...owned, ...Object.entries(repos).filter(([full]) => !owned.some((r) => r.full === full)).map(([full, r]) => ({ full, created: r.created }))]
+    // Every repo is kept, an empty one too, so the next run knows its past years.
+    const knownCdn = fetchedThisYear("github") ? live.github?.jsdelivrHitsByYear ?? {} : {}
+    const jsdelivr = {}
+    let cdnFailed = false
+    await pool(cdnRepos, 4, async ({ full, created }) => {
+      try {
+        jsdelivr[full] = await jsdelivrByYear(`gh/${full}`, created, knownCdn[full])
+      } catch (err) {
+        cdnFailed = true
+        console.warn(`  jsdelivr: gh/${full}: ${err.message}`)
       }
     })
 
@@ -149,11 +208,13 @@ const sources = {
         .sort((a, b) => a.date.localeCompare(b.date))
         .map((d) => ({ date: d.date, count: d.contributionCount })),
       repos,
+      // A partial count would read as a drop; keep the last full one instead.
+      jsdelivrHitsByYear: cdnFailed ? live.github?.jsdelivrHitsByYear : jsdelivr,
     }
   },
 
   // Every package I maintain on npm: downloads last month and in total, monthly totals, and
-  // jsDelivr hits for the same package (the CDN serves npm packages too).
+  // jsDelivr hits for the same package (the CDN serves npm packages too), last month and per year.
   async npm() {
     const search = await json(`https://registry.npmjs.org/-/v1/search?text=maintainer:${NPM_MAINTAINER}&size=250`)
     const names = search.objects.map((o) => o.package.name)
@@ -180,6 +241,7 @@ const sources = {
       return days
     }
 
+    const knownCdn = new Map(fetchedThisYear("npm") ? (live.npm?.packages ?? []).map((p) => [p.name, p.jsdelivrHitsByYear]) : [])
     const monthly = new Map()
     const packages = await pool(names, 2, async (name) => {
       const path = encodeURIComponent(name).replace("%40", "@")
@@ -189,6 +251,7 @@ const sources = {
       ])
       const created = doc.time?.created ?? "2017-01-01"
       const days = await history(path, created)
+      const hitsByYear = await jsdelivrByYear(`npm/${name}`, created, knownCdn.get(name)).catch(() => null)
       for (const d of days) {
         const month = d.day.slice(0, 7)
         monthly.set(month, (monthly.get(month) ?? 0) + d.downloads)
@@ -201,6 +264,7 @@ const sources = {
         downloadsLastMonth: days.slice(-30).reduce((n, d) => n + d.downloads, 0),
         downloadsTotal: days.reduce((n, d) => n + d.downloads, 0),
         jsdelivrHitsLastMonth: cdn?.hits?.total ?? null,
+        jsdelivrHitsByYear: hitsByYear,
       }
     })
 

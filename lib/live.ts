@@ -33,11 +33,15 @@ export interface NpmPackage {
   downloadsLastMonth: number
   downloadsTotal: number
   jsdelivrHitsLastMonth: number | null
+  // Calendar years with any hits. Null when jsDelivr failed; missing in data fetched before it existed.
+  jsdelivrHitsByYear?: Record<string, number> | null
 }
 
 export interface RepoStats {
   description?: string
   stars: number
+  // Stars by the year they were given. Missing in data fetched before it existed.
+  starsByYear?: Record<string, number>
   url: string
   // "YYYY-MM-DD". Missing in data fetched before they existed.
   created?: string
@@ -54,6 +58,9 @@ interface Live {
     // The last 53 weeks, Sunday first, as on a GitHub profile. Missing in data fetched before it existed.
     contributionsPerDay?: { date: string; count: number }[]
     repos: Record<string, RepoStats>
+    // jsDelivr hits through the GitHub route, by repo ("owner/name") then calendar year. Missing in
+    // data fetched before it existed.
+    jsdelivrHitsByYear?: Record<string, Record<string, number>>
   }
   npm?: {
     packages: NpmPackage[]

@@ -34,6 +34,33 @@ export function NumCell({ value, last }: { value: number | null | undefined; las
   )
 }
 
+/** Table notes, as in a paper: the rows that carry a note get a superscript letter (a, b, …) in row
+ *  order, and the notes follow under the table's bottom rule. `noteMarks` gives each row its letter;
+ *  `TableNotes` prints the notes in the same order. */
+export const noteLetter = (i: number) => String.fromCharCode(97 + i)
+
+export function noteMarks<T extends { note?: string }>(rows: T[]): Map<T, string> {
+  return new Map(rows.filter((row) => row.note).map((row, i) => [row, noteLetter(i)]))
+}
+
+export function NoteMark({ letter }: { letter?: string }) {
+  return letter ? <sup className="label ml-0.5 italic">{letter}</sup> : null
+}
+
+export function TableNotes({ notes }: { notes: (string | undefined)[] }) {
+  const list = notes.filter((note): note is string => Boolean(note))
+  if (list.length === 0) return null
+  return (
+    <div className="label mt-2 space-y-0.5">
+      {list.map((note, i) => (
+        <p key={i}>
+          <span className="italic">{noteLetter(i)}.</span> {note}
+        </p>
+      ))}
+    </div>
+  )
+}
+
 /** Where a page still waits on data or copy: visible on the preview, gone once the gap is filled. */
 export function Pending({ children }: { children: ReactNode }) {
   return <p className="label my-4">[TODO: {children}]</p>

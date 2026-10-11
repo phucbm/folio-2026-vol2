@@ -1,7 +1,7 @@
 {
   "fetchedAt": {
-    "github": "2026-10-11T14:55:42.334Z",
-    "npm": "2026-10-11T09:39:26.955Z",
+    "github": "2026-10-11T16:19:47.281Z",
+    "npm": "2026-10-11T16:20:48.206Z",
     "goodreads": "2026-10-11T09:39:27.653Z",
     "discord": "2026-10-11T09:39:32.368Z"
   },
@@ -3527,33 +3527,10 @@
       }
     ],
     "repos": {
-      "phucbm/claudify": {
-        "description": "Claude Plugin - Bootstrap .claude/ structure for any existing repo.",
-        "stars": 0,
-        "url": "https://github.com/phucbm/claudify",
-        "created": "2026-04-13",
-        "commits": 8,
-        "lastCommit": "2026-04-20"
-      },
-      "phucbm/hieu-chu-han": {
-        "description": "Từ điển Trung - Hán Việt, phân tích chữ Hán, bộ thủ.",
-        "stars": 2,
-        "url": "https://github.com/phucbm/xue-hanzi",
-        "created": "2026-04-12",
-        "commits": 172,
-        "lastCommit": "2026-08-02"
-      },
-      "phucbm/react-hanzi-input": {
-        "description": "Chinese handwriting input component for React — canvas pad, stroke capture, and candidate picker powered by Google IME.",
-        "stars": 0,
-        "url": "https://github.com/phucbm/react-hanzi-input",
-        "created": "2026-04-28",
-        "commits": 8,
-        "lastCommit": "2026-04-28"
-      },
       "phucbm/clyrics": {
         "description": "Chinese lyrics powered by AI so anyone can learn from music they love",
         "stars": 0,
+        "starsByYear": {},
         "url": "https://github.com/phucbm/clyrics",
         "created": "2026-05-01",
         "commits": 116,
@@ -3562,62 +3539,104 @@
       "phucbm/food-tour-sg": {
         "description": "Chatbot để tìm quán ăn ngon ở Sài Gòn",
         "stars": 0,
+        "starsByYear": {},
         "url": "https://github.com/phucbm/food-tour-sg",
         "created": "2026-01-27",
         "commits": 24,
         "lastCommit": "2026-04-20"
       },
+      "phucbm/react-hanzi-input": {
+        "description": "Chinese handwriting input component for React — canvas pad, stroke capture, and candidate picker powered by Google IME.",
+        "stars": 0,
+        "starsByYear": {},
+        "url": "https://github.com/phucbm/react-hanzi-input",
+        "created": "2026-04-28",
+        "commits": 8,
+        "lastCommit": "2026-04-28"
+      },
+      "phucbm/claudify": {
+        "description": "Claude Plugin - Bootstrap .claude/ structure for any existing repo.",
+        "stars": 0,
+        "starsByYear": {},
+        "url": "https://github.com/phucbm/claudify",
+        "created": "2026-04-13",
+        "commits": 8,
+        "lastCommit": "2026-04-20"
+      },
+      "phucbm/hieu-chu-han": {
+        "description": "Từ điển Trung - Hán Việt, phân tích chữ Hán, bộ thủ.",
+        "stars": 2,
+        "starsByYear": {
+          "2026": 2
+        },
+        "url": "https://github.com/phucbm/xue-hanzi",
+        "created": "2026-04-12",
+        "commits": 172,
+        "lastCommit": "2026-08-02"
+      },
       "phucbm/claude-usage-monitor": {
         "description": "Multiple Claude.ai accounts tracked right from your Mac menu bar.",
         "stars": 5,
+        "starsByYear": {
+          "2026": 5
+        },
         "url": "https://github.com/phucbm/claude-usage-monitor",
         "created": "2026-04-28",
         "commits": 64,
         "lastCommit": "2026-06-25"
       },
-      "phucbm/nextra-blog-starter": {
-        "description": "A template for deploying Nextra blogs with built-in features like search, tags, and more.",
-        "stars": 7,
-        "url": "https://github.com/phucbm/nextra-blog-starter",
-        "created": "2025-01-30",
-        "commits": 54,
-        "lastCommit": "2025-12-07"
-      },
       "perxel/whack-a-mole": {
         "description": "🏗 Frontend Development.",
         "stars": 0,
+        "starsByYear": {},
         "url": "https://github.com/perxel/whack-a-mole",
         "created": "2021-08-29",
         "commits": 129,
         "lastCommit": "2023-11-20"
       },
-      "phucbm/nextra-docs-starter": {
-        "description": "Nextra docs template with Next.js 16, React 19, Tailwind v4 and improved search UI.",
-        "stars": 50,
-        "url": "https://github.com/phucbm/nextra-docs-starter",
-        "created": "2025-01-24",
-        "commits": 58,
-        "lastCommit": "2026-05-05"
+      "phucbm/nextra-blog-starter": {
+        "description": "A template for deploying Nextra blogs with built-in features like search, tags, and more.",
+        "stars": 7,
+        "starsByYear": {
+          "2025": 2,
+          "2026": 4
+        },
+        "url": "https://github.com/phucbm/nextra-blog-starter",
+        "created": "2025-01-30",
+        "commits": 54,
+        "lastCommit": "2025-12-07"
       },
       "phucbm/lipsum-generator": {
         "description": "🧢 A Chrome extension that generates Lorem Ipsum, trusted by 5,000 weekly users",
         "stars": 10,
+        "starsByYear": {
+          "2022": 6,
+          "2023": 3,
+          "2026": 1
+        },
         "url": "https://github.com/phucbm/lipsum-generator",
         "created": "2018-11-03",
         "commits": 101,
         "lastCommit": "2026-02-25"
       },
-      "phucbm/normalized-mouse-position": {
-        "description": "Convert mouse coordinates to normalized values relative to any origin point for smooth UI interactions and animations.",
-        "stars": 1,
-        "url": "https://github.com/phucbm/normalized-mouse-position",
-        "created": "2025-07-06",
-        "commits": 27,
-        "lastCommit": "2025-10-04"
+      "phucbm/nextra-docs-starter": {
+        "description": "Nextra docs template with Next.js 16, React 19, Tailwind v4 and improved search UI.",
+        "stars": 50,
+        "starsByYear": {
+          "2025": 38,
+          "2026": 12
+        },
+        "url": "https://github.com/phucbm/nextra-docs-starter",
+        "created": "2025-01-24",
+        "commits": 58,
+        "lastCommit": "2026-05-05"
       },
       "phucbm/magnetic-button": {
         "description": "A lightweight TypeScript library that creates smooth magnetic attraction effects for HTML elements",
         "stars": 3,
+        "starsByYear": {
+          "2025": 3
+        },
         "url": "https://github.com/phucbm/magnetic-button",
         "created": "2025-06-24",
         "commits": 66,
@@ -3626,49 +3645,281 @@
       "phucbm/cursor-effects": {
         "description": "A series of cursor effects.",
         "stars": 7,
+        "starsByYear": {
+          "2021": 3,
+          "2022": 2,
+          "2025": 2
+        },
         "url": "https://github.com/phucbm/cursor-effects",
         "created": "2021-06-26",
         "commits": 33,
         "lastCommit": "2025-06-26"
       },
+      "phucbm/normalized-mouse-position": {
+        "description": "Convert mouse coordinates to normalized values relative to any origin point for smooth UI interactions and animations.",
+        "stars": 1,
+        "starsByYear": {
+          "2025": 1
+        },
+        "url": "https://github.com/phucbm/normalized-mouse-position",
+        "created": "2025-07-06",
+        "commits": 27,
+        "lastCommit": "2025-10-04"
+      },
       "phucbm/jquery-scroll-direction-plugin": {
         "description": "↕️ A lightweight jQuery plugin to detect scroll direction.",
         "stars": 7,
+        "starsByYear": {
+          "2020": 1,
+          "2021": 3,
+          "2022": 1,
+          "2024": 1,
+          "2025": 1
+        },
         "url": "https://github.com/phucbm/jquery-scroll-direction-plugin",
         "created": "2020-12-06",
         "commits": 38,
         "lastCommit": "2025-06-26"
       },
-      "viivue/easy-select": {
-        "description": "❄️  Customizing select is easier than ever",
-        "stars": 1,
-        "url": "https://github.com/viivue/easy-select",
-        "created": "2021-08-27",
-        "commits": 210,
-        "lastCommit": "2025-06-03"
-      },
       "viivue/easy-popup": {
         "description": "Super light-weight JavaScript library to create a simple popup with mobile layout.",
         "stars": 2,
+        "starsByYear": {},
         "url": "https://github.com/viivue/easy-popup",
         "created": "2022-02-14",
         "commits": 217,
         "lastCommit": "2025-05-20"
       },
-      "viivue/overlapping-slider": {
-        "stars": 0,
-        "url": "https://github.com/viivue/overlapping-slider",
-        "created": "2022-09-23",
-        "commits": 52,
-        "lastCommit": "2022-11-02"
-      },
       "viivue/easy-tab-accordion": {
         "description": "Javascript library to create tabs or accordion.",
         "stars": 0,
+        "starsByYear": {},
         "url": "https://github.com/viivue/easy-tab-accordion",
         "created": "2022-04-04",
         "commits": 197,
         "lastCommit": "2025-05-22"
+      },
+      "viivue/easy-select": {
+        "description": "❄️  Customizing select is easier than ever",
+        "stars": 1,
+        "starsByYear": {},
+        "url": "https://github.com/viivue/easy-select",
+        "created": "2021-08-27",
+        "commits": 210,
+        "lastCommit": "2025-06-03"
+      },
+      "viivue/overlapping-slider": {
+        "stars": 0,
+        "starsByYear": {},
+        "url": "https://github.com/viivue/overlapping-slider",
+        "created": "2022-09-23",
+        "commits": 52,
+        "lastCommit": "2022-11-02"
+      }
+    },
+    "jsdelivrHitsByYear": {
+      "phucbm/samatoz": {},
+      "phucbm/baaloo": {},
+      "phucbm/lipsum-generator": {},
+      "phucbm/vnd-converter": {},
+      "phucbm/fun": {
+        "2025": 3
+      },
+      "phucbm/cursor-effects": {
+        "2025": 3
+      },
+      "phucbm/jquery-scroll-direction-plugin": {
+        "2020": 254,
+        "2021": 1531,
+        "2022": 745876,
+        "2023": 2293718,
+        "2024": 534987,
+        "2025": 359305,
+        "2026": 286839
+      },
+      "phucbm/aberto": {
+        "2025": 6
+      },
+      "phucbm/threejs-journey": {},
+      "phucbm/shaders": {},
+      "phucbm/flickity-responsive": {
+        "2021": 860200,
+        "2022": 8263042,
+        "2023": 21396592,
+        "2024": 26429549,
+        "2025": 49892463,
+        "2026": 30656544
+      },
+      "phucbm/github-markdown-css": {},
+      "phucbm/phucbm": {},
+      "phucbm/js-gist": {
+        "2021": 6,
+        "2026": 8
+      },
+      "phucbm/scroll-snooper": {
+        "2021": 141,
+        "2022": 226,
+        "2023": 140,
+        "2024": 196,
+        "2025": 817,
+        "2026": 810
+      },
+      "phucbm/gulp-cheatsheet": {},
+      "phucbm/gulp-boilerplate": {},
+      "phucbm/cursorjs": {
+        "2023": 381,
+        "2024": 1287,
+        "2025": 43179,
+        "2026": 99738
+      },
+      "phucbm/folio-2016": {},
+      "phucbm/cpu-scheduling": {},
+      "phucbm/folio-2017": {},
+      "phucbm/rwv3": {},
+      "phucbm/svelte-ohayou": {},
+      "phucbm/vue-3-forms": {},
+      "phucbm/vuex-fundamentals": {},
+      "phucbm/pwa-vue-3": {},
+      "phucbm/bg-prlx": {},
+      "phucbm/svg-fundamentals": {},
+      "phucbm/js-webpack-boilerplate": {
+        "2026": 2
+      },
+      "phucbm/pia": {
+        "2023": 1236,
+        "2024": 97,
+        "2025": 3227,
+        "2026": 1512
+      },
+      "phucbm/match-media-screen": {
+        "2022": 4,
+        "2023": 30,
+        "2024": 126,
+        "2025": 1041,
+        "2026": 653
+      },
+      "phucbm/webpack-server": {
+        "2026": 5
+      },
+      "phucbm/live-server": {
+        "2026": 2
+      },
+      "phucbm/honcau": {
+        "2023": 55,
+        "2024": 105,
+        "2025": 340,
+        "2026": 468
+      },
+      "phucbm/cuajs": {
+        "2023": 38,
+        "2024": 64,
+        "2025": 1069,
+        "2026": 707
+      },
+      "phucbm/os-util": {
+        "2025": 9,
+        "2026": 8
+      },
+      "phucbm/gfm": {
+        "2024": 16,
+        "2025": 15,
+        "2026": 13
+      },
+      "phucbm/events-manager": {
+        "2026": 42
+      },
+      "phucbm/typescript-webpack-boilerplate": {
+        "2026": 8
+      },
+      "phucbm/single-web-page-boilerplate": {
+        "2026": 3
+      },
+      "phucbm/2dwa-bennett-and-clive": {
+        "2026": 2
+      },
+      "phucbm/2dwa-slosh-seltzer": {
+        "2026": 3
+      },
+      "phucbm/get-options-from-html-attr": {
+        "2026": 5
+      },
+      "phucbm/nextjs-dashboard": {
+        "2026": 14
+      },
+      "phucbm/nextra-docs-starter": {},
+      "phucbm/nextra-blog-starter": {},
+      "phucbm/ts-nextra-boilerplate": {},
+      "phucbm/tailwindcss-style-props": {},
+      "phucbm/tailwindcss-components": {},
+      "phucbm/badges": {},
+      "phucbm/magnetic-button": {
+        "2025": 813,
+        "2026": 972
+      },
+      "phucbm/gitsheet": {},
+      "phucbm/lerp": {},
+      "phucbm/publish-npm-action": {},
+      "phucbm/gen-from": {},
+      "phucbm/npm-utils-template": {},
+      "phucbm/banner": {},
+      "phucbm/data-toggle": {},
+      "phucbm/dependabot-release-action": {},
+      "phucbm/test-pr-action": {},
+      "phucbm/normalized-mouse-position": {},
+      "phucbm/ripple-effect": {},
+      "phucbm/next-og-image": {},
+      "phucbm/ui.phucbm.com": {},
+      "phucbm/folio-2025": {},
+      "phucbm/responsive-gsap": {},
+      "phucbm/food-tour-sg": {},
+      "phucbm/misa-eshop": {},
+      "phucbm/wp-blocks-dev": {},
+      "phucbm/xue-hanzi": {
+        "2026": 5
+      },
+      "phucbm/skills": {
+        "2026": 21
+      },
+      "phucbm/claudify": {},
+      "phucbm/registry-system": {},
+      "phucbm/wp-mu-plugins": {},
+      "phucbm/react-hanzi-input": {},
+      "phucbm/claude-usage-monitor": {},
+      "phucbm/clyrics": {},
+      "phucbm/chiettu": {},
+      "phucbm/phucbm.com": {},
+      "phucbm/claskit": {},
+      "phucbm/hieu-chu-han": {
+        "2026": 4
+      },
+      "phucbm/folio-2026": {},
+      "perxel/whack-a-mole": {},
+      "viivue/easy-popup": {
+        "2023": 2656,
+        "2024": 3701,
+        "2025": 46312,
+        "2026": 20250
+      },
+      "viivue/easy-tab-accordion": {
+        "2022": 5,
+        "2023": 54,
+        "2024": 2634,
+        "2025": 1111,
+        "2026": 785
+      },
+      "viivue/easy-select": {
+        "2021": 58,
+        "2022": 56,
+        "2023": 1767,
+        "2024": 722,
+        "2025": 721,
+        "2026": 687
+      },
+      "viivue/overlapping-slider": {
+        "2023": 27,
+        "2024": 58,
+        "2025": 215,
+        "2026": 385
       }
     }
   },
@@ -3681,7 +3932,13 @@
         "created": "2022-11-14",
         "downloadsLastMonth": 186,
         "downloadsTotal": 7770,
-        "jsdelivrHitsLastMonth": 43
+        "jsdelivrHitsLastMonth": 43,
+        "jsdelivrHitsByYear": {
+          "2023": 41,
+          "2024": 124,
+          "2025": 444,
+          "2026": 394
+        }
       },
       {
         "name": "match-media-screen",
@@ -3690,34 +3947,53 @@
         "created": "2022-11-10",
         "downloadsLastMonth": 151,
         "downloadsTotal": 6982,
-        "jsdelivrHitsLastMonth": 6
+        "jsdelivrHitsLastMonth": 6,
+        "jsdelivrHitsByYear": {
+          "2023": 7,
+          "2024": 45,
+          "2025": 43,
+          "2026": 101
+        }
       },
       {
         "name": "@phucbm/magnetic-button",
         "description": "A lightweight TypeScript library that creates smooth magnetic attraction effects for HTML elements",
         "repo": "phucbm/magnetic-button",
         "created": "2025-06-24",
-        "downloadsLastMonth": 137,
-        "downloadsTotal": 2234,
-        "jsdelivrHitsLastMonth": 24
+        "downloadsLastMonth": 151,
+        "downloadsTotal": 2248,
+        "jsdelivrHitsLastMonth": 24,
+        "jsdelivrHitsByYear": {
+          "2025": 5,
+          "2026": 87
+        }
       },
       {
         "name": "@phucbm/cursorjs",
         "description": "Create custom mouse cursor with pure vanilla JS (4kb) and CSS (optional) with no dependency.",
         "repo": "phucbm/cursorjs",
         "created": "2023-04-07",
-        "downloadsLastMonth": 67,
-        "downloadsTotal": 2330,
-        "jsdelivrHitsLastMonth": 271
+        "downloadsLastMonth": 74,
+        "downloadsTotal": 2337,
+        "jsdelivrHitsLastMonth": 271,
+        "jsdelivrHitsByYear": {
+          "2023": 2,
+          "2024": 8,
+          "2025": 48,
+          "2026": 2489
+        }
       },
       {
         "name": "@phucbm/lerp",
         "description": "A lightweight TypeScript utility function for linear interpolation",
         "repo": "phucbm/lerp",
         "created": "2025-06-30",
-        "downloadsLastMonth": 58,
-        "downloadsTotal": 1354,
-        "jsdelivrHitsLastMonth": 8
+        "downloadsLastMonth": 70,
+        "downloadsTotal": 1366,
+        "jsdelivrHitsLastMonth": 8,
+        "jsdelivrHitsByYear": {
+          "2026": 114
+        }
       },
       {
         "name": "piajs",
@@ -3726,43 +4002,65 @@
         "created": "2022-10-20",
         "downloadsLastMonth": 50,
         "downloadsTotal": 1582,
-        "jsdelivrHitsLastMonth": 15
+        "jsdelivrHitsLastMonth": 15,
+        "jsdelivrHitsByYear": {
+          "2023": 5,
+          "2024": 84,
+          "2025": 161,
+          "2026": 123
+        }
       },
       {
         "name": "@phucbm/os-util",
         "description": "Utility functions for open-source projects.",
         "repo": "phucbm/os-util",
         "created": "2023-07-10",
-        "downloadsLastMonth": 43,
-        "downloadsTotal": 2506,
-        "jsdelivrHitsLastMonth": 11
+        "downloadsLastMonth": 44,
+        "downloadsTotal": 2507,
+        "jsdelivrHitsLastMonth": 11,
+        "jsdelivrHitsByYear": {
+          "2023": 2,
+          "2025": 28,
+          "2026": 151
+        }
       },
       {
         "name": "@phucbm/next-og-image",
         "description": "Tiny helpers to generate OG images and Metadata in Next.js (Edge-ready).",
         "repo": "phucbm/next-og-image",
         "created": "2025-10-10",
-        "downloadsLastMonth": 35,
-        "downloadsTotal": 659,
-        "jsdelivrHitsLastMonth": 3
+        "downloadsLastMonth": 36,
+        "downloadsTotal": 660,
+        "jsdelivrHitsLastMonth": 3,
+        "jsdelivrHitsByYear": {
+          "2026": 14
+        }
       },
       {
         "name": "cuajs",
         "description": "Crab-walk through your website with CuaJs.",
         "repo": "phucbm/cuajs",
         "created": "2023-06-29",
-        "downloadsLastMonth": 31,
-        "downloadsTotal": 1433,
-        "jsdelivrHitsLastMonth": 17
+        "downloadsLastMonth": 34,
+        "downloadsTotal": 1436,
+        "jsdelivrHitsLastMonth": 17,
+        "jsdelivrHitsByYear": {
+          "2025": 6,
+          "2026": 110
+        }
       },
       {
         "name": "@phucbm/banner",
         "description": "A TypeScript utility package",
         "repo": "phucbm/banner",
         "created": "2025-07-01",
-        "downloadsLastMonth": 30,
-        "downloadsTotal": 988,
-        "jsdelivrHitsLastMonth": 26
+        "downloadsLastMonth": 31,
+        "downloadsTotal": 989,
+        "jsdelivrHitsLastMonth": 26,
+        "jsdelivrHitsByYear": {
+          "2025": 4,
+          "2026": 58
+        }
       },
       {
         "name": "normalized-mouse-position",
@@ -3771,7 +4069,36 @@
         "created": "2025-07-06",
         "downloadsLastMonth": 28,
         "downloadsTotal": 835,
-        "jsdelivrHitsLastMonth": 5
+        "jsdelivrHitsLastMonth": 5,
+        "jsdelivrHitsByYear": {
+          "2026": 30
+        }
+      },
+      {
+        "name": "@phucbm/tailwindcss-container-queries",
+        "description": "> [!NOTE] > As of Tailwind CSS v4.0, container queries are supported in the framework by default and this plugin is no longer required.",
+        "repo": "phucbm/tailwindcss-container-queries",
+        "created": "2025-04-23",
+        "downloadsLastMonth": 27,
+        "downloadsTotal": 3423,
+        "jsdelivrHitsLastMonth": 20,
+        "jsdelivrHitsByYear": {
+          "2025": 124,
+          "2026": 93
+        }
+      },
+      {
+        "name": "@phucbm/tailwindcss-components",
+        "description": "Tailwind CSS plugin with ready-to-use helper components for common layout patterns",
+        "repo": "phucbm/tailwindcss-components",
+        "created": "2025-04-29",
+        "downloadsLastMonth": 26,
+        "downloadsTotal": 3492,
+        "jsdelivrHitsLastMonth": 8,
+        "jsdelivrHitsByYear": {
+          "2025": 57,
+          "2026": 89
+        }
       },
       {
         "name": "gen-from",
@@ -3780,7 +4107,10 @@
         "created": "2025-07-01",
         "downloadsLastMonth": 26,
         "downloadsTotal": 1025,
-        "jsdelivrHitsLastMonth": 0
+        "jsdelivrHitsLastMonth": 0,
+        "jsdelivrHitsByYear": {
+          "2026": 4
+        }
       },
       {
         "name": "responsive-gsap",
@@ -3789,25 +4119,49 @@
         "created": "2025-11-06",
         "downloadsLastMonth": 26,
         "downloadsTotal": 1063,
-        "jsdelivrHitsLastMonth": 0
+        "jsdelivrHitsLastMonth": 0,
+        "jsdelivrHitsByYear": {
+          "2026": 30
+        }
       },
       {
-        "name": "@phucbm/tailwindcss-container-queries",
-        "description": "> [!NOTE] > As of Tailwind CSS v4.0, container queries are supported in the framework by default and this plugin is no longer required.",
-        "repo": "phucbm/tailwindcss-container-queries",
-        "created": "2025-04-23",
-        "downloadsLastMonth": 26,
-        "downloadsTotal": 3422,
-        "jsdelivrHitsLastMonth": 20
+        "name": "@phucbm/ripple-effect",
+        "description": "A TypeScript utility for applying a ripple effect to a set of elements.",
+        "repo": "phucbm/ripple-effect",
+        "created": "2025-07-13",
+        "downloadsLastMonth": 22,
+        "downloadsTotal": 306,
+        "jsdelivrHitsLastMonth": 2,
+        "jsdelivrHitsByYear": {
+          "2026": 4
+        }
       },
       {
-        "name": "@phucbm/tailwindcss-components",
-        "description": "Tailwind CSS plugin with ready-to-use helper components for common layout patterns",
-        "repo": "phucbm/tailwindcss-components",
-        "created": "2025-04-29",
-        "downloadsLastMonth": 25,
-        "downloadsTotal": 3491,
-        "jsdelivrHitsLastMonth": 8
+        "name": "@phucbm/data-toggle",
+        "description": "Toggle class in elements via [data-toggle='class-name']",
+        "repo": "phucbm/data-toggle",
+        "created": "2025-07-01",
+        "downloadsLastMonth": 21,
+        "downloadsTotal": 697,
+        "jsdelivrHitsLastMonth": 0,
+        "jsdelivrHitsByYear": {
+          "2026": 19
+        }
+      },
+      {
+        "name": "@phucbm/gfm",
+        "description": "Turn markdown text into GitHub Flavoured Markdown with light/dark code syntax highlight.",
+        "repo": "phucbm/gfm",
+        "created": "2023-10-08",
+        "downloadsLastMonth": 21,
+        "downloadsTotal": 566,
+        "jsdelivrHitsLastMonth": 15,
+        "jsdelivrHitsByYear": {
+          "2023": 2,
+          "2024": 11,
+          "2025": 31,
+          "2026": 54
+        }
       },
       {
         "name": "honcau",
@@ -3816,79 +4170,80 @@
         "created": "2022-11-20",
         "downloadsLastMonth": 20,
         "downloadsTotal": 923,
-        "jsdelivrHitsLastMonth": 2
-      },
-      {
-        "name": "@phucbm/gfm",
-        "description": "Turn markdown text into GitHub Flavoured Markdown with light/dark code syntax highlight.",
-        "repo": "phucbm/gfm",
-        "created": "2023-10-08",
-        "downloadsLastMonth": 19,
-        "downloadsTotal": 564,
-        "jsdelivrHitsLastMonth": 15
-      },
-      {
-        "name": "@phucbm/data-toggle",
-        "description": "Toggle class in elements via [data-toggle='class-name']",
-        "repo": "phucbm/data-toggle",
-        "created": "2025-07-01",
-        "downloadsLastMonth": 18,
-        "downloadsTotal": 694,
-        "jsdelivrHitsLastMonth": 0
-      },
-      {
-        "name": "@phucbm/ripple-effect",
-        "description": "A TypeScript utility for applying a ripple effect to a set of elements.",
-        "repo": "phucbm/ripple-effect",
-        "created": "2025-07-13",
-        "downloadsLastMonth": 18,
-        "downloadsTotal": 302,
-        "jsdelivrHitsLastMonth": 2
+        "jsdelivrHitsLastMonth": 2,
+        "jsdelivrHitsByYear": {
+          "2023": 6,
+          "2024": 85,
+          "2025": 73,
+          "2026": 53
+        }
       },
       {
         "name": "@phucbm/tailwindcss-style-props",
         "description": "Tailwind CSS plugin for easily adding multiple inline style properties using the style utility",
         "repo": "phucbm/tailwindcss-style-props",
         "created": "2025-04-28",
-        "downloadsLastMonth": 18,
-        "downloadsTotal": 3092,
-        "jsdelivrHitsLastMonth": 2
+        "downloadsLastMonth": 19,
+        "downloadsTotal": 3093,
+        "jsdelivrHitsLastMonth": 2,
+        "jsdelivrHitsByYear": {
+          "2025": 19,
+          "2026": 16
+        }
       },
       {
         "name": "scroll-snooper",
         "description": "Pure JavaScript API that goes snooping around elements while scrolling",
         "repo": "phucbm/scroll-snooper",
         "created": "2022-10-24",
-        "downloadsLastMonth": 16,
-        "downloadsTotal": 525,
-        "jsdelivrHitsLastMonth": 10
+        "downloadsLastMonth": 18,
+        "downloadsTotal": 527,
+        "jsdelivrHitsLastMonth": 10,
+        "jsdelivrHitsByYear": {
+          "2023": 24,
+          "2024": 97,
+          "2025": 43,
+          "2026": 81
+        }
       },
       {
         "name": "bg-prlx",
         "description": "Create parallax effect for inline `background-image` or `object-fit:cover`.",
         "repo": "phucbm/bg-prlx",
         "created": "2022-05-01",
-        "downloadsLastMonth": 16,
-        "downloadsTotal": 577,
-        "jsdelivrHitsLastMonth": 0
-      },
-      {
-        "name": "@phucbm/get-options-from-html-attr",
-        "description": "Parses options from a specified attribute of a target element, with support for default values, numeric conversion, and JSON validation.",
-        "repo": "phucbm/get-options-from-html-attr",
-        "created": "2024-07-02",
-        "downloadsLastMonth": 14,
-        "downloadsTotal": 249,
-        "jsdelivrHitsLastMonth": 0
+        "downloadsLastMonth": 17,
+        "downloadsTotal": 578,
+        "jsdelivrHitsLastMonth": 0,
+        "jsdelivrHitsByYear": {
+          "2023": 2,
+          "2024": 16,
+          "2025": 54,
+          "2026": 43
+        }
       },
       {
         "name": "@phucbm/events-manager",
         "description": "A lightweight utility that simplifies custom event registration, firing, and handling.",
         "repo": "phucbm/events-manager",
         "created": "2023-12-04",
-        "downloadsLastMonth": 14,
-        "downloadsTotal": 455,
-        "jsdelivrHitsLastMonth": 0
+        "downloadsLastMonth": 15,
+        "downloadsTotal": 456,
+        "jsdelivrHitsLastMonth": 0,
+        "jsdelivrHitsByYear": {
+          "2026": 2
+        }
+      },
+      {
+        "name": "@phucbm/get-options-from-html-attr",
+        "description": "Parses options from a specified attribute of a target element, with support for default values, numeric conversion, and JSON validation.",
+        "repo": "phucbm/get-options-from-html-attr",
+        "created": "2024-07-02",
+        "downloadsLastMonth": 15,
+        "downloadsTotal": 250,
+        "jsdelivrHitsLastMonth": 0,
+        "jsdelivrHitsByYear": {
+          "2026": 10
+        }
       },
       {
         "name": "phucbm",
@@ -3896,7 +4251,12 @@
         "created": "2022-11-20",
         "downloadsLastMonth": 13,
         "downloadsTotal": 336,
-        "jsdelivrHitsLastMonth": 5
+        "jsdelivrHitsLastMonth": 5,
+        "jsdelivrHitsByYear": {
+          "2024": 46,
+          "2025": 43,
+          "2026": 62
+        }
       },
       {
         "name": "claskit",
@@ -3905,7 +4265,10 @@
         "created": "2026-05-20",
         "downloadsLastMonth": 13,
         "downloadsTotal": 693,
-        "jsdelivrHitsLastMonth": 0
+        "jsdelivrHitsLastMonth": 0,
+        "jsdelivrHitsByYear": {
+          "2026": 6
+        }
       },
       {
         "name": "react-hanzi-input",
@@ -3914,7 +4277,10 @@
         "created": "2026-04-28",
         "downloadsLastMonth": 9,
         "downloadsTotal": 214,
-        "jsdelivrHitsLastMonth": 0
+        "jsdelivrHitsLastMonth": 0,
+        "jsdelivrHitsByYear": {
+          "2026": 5
+        }
       }
     ],
     "downloadsPerMonth": [
@@ -4132,7 +4498,7 @@
       },
       {
         "month": "2026-10",
-        "downloads": 344
+        "downloads": 400
       }
     ]
   },

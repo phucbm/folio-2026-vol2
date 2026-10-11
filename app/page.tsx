@@ -8,13 +8,15 @@ import { projects } from "@/data/projects";
 import { ossRepos } from "@/data/oss";
 import { books, references } from "@/lib/live";
 import { Figure1 } from "@/components/plots/Figure1";
-import { NumCell, TableCaption } from "@/components/content/Table";
+import { NoteMark, noteMarks, NumCell, TableCaption, TableNotes } from "@/components/content/Table";
 import { exhibits, type ExhibitKind } from "@/lib/exhibits";
 import { A } from "@/components/content/A";
 import { JsonLd } from "@/components/content/JsonLd";
 import { pageMetadata, siteJsonLd } from "@/lib/seo";
 
 export const metadata = pageMetadata("/");
+
+const marks = noteMarks(numbers);
 
 // Counts shown beside a section in the contents, where the section is a list.
 const counts: Record<string, number> = {
@@ -67,6 +69,7 @@ export default function Home() {
               <tr key={row.label}>
                 <th scope="row" className="py-1.5 pr-4 text-left font-normal">
                   {row.href ? <Link href={row.href}>{row.label}</Link> : row.label}
+                  <NoteMark letter={marks.get(row)} />
                 </th>
                 <NumCell value={row.thisYear} />
                 <NumCell value={row.allTime} last />
@@ -74,6 +77,7 @@ export default function Home() {
             ))}
           </tbody>
         </table>
+        <TableNotes notes={numbers.map((row) => row.note)} />
       </section>
 
       <section aria-label="Figure 1" className="mt-14 max-w-measure">
