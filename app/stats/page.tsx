@@ -23,6 +23,7 @@ export default function StatsPage() {
   return (
     <article className="max-w-measure">
       <PageHeader
+        label="§A"
         title="Stats"
         meta={updated ? <>Fetched <span className="num">{formatDate(updated.slice(0, 10))}</span></> : undefined}
       />

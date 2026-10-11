@@ -11,7 +11,7 @@ export default function Page() {
   return (
     <article className="max-w-measure">
       <PageHeader
-        label={undefined}
+        label="§B"
         title={meta.title}
         meta={meta.updated ? <>Updated <span className="num">{formatDate(meta.updated)}</span></> : undefined}
       />

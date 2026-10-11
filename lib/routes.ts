@@ -4,8 +4,10 @@
 export interface StaticRoute {
   path: string
   title: string
-  // "§1": numbered sections of the paper. Unnumbered pages (uses, colophon) have none.
+  // "§1": numbered sections of the paper, also in the running head.
   section?: string
+  // "§A": back matter (supplement, colophon, errata), lettered as appendices. Contents only.
+  appendix?: string
   description: string
 }
 
@@ -18,8 +20,7 @@ export const staticRoutes: StaticRoute[] = [
   { path: "/reading", section: "§5", title: "Reading", description: "The books I've read, from Goodreads, as a bibliography with short reviews." },
   { path: "/references", section: "§6", title: "References", description: "Links I've saved: articles, tools and demos, as a list of references." },
   { path: "/now", section: "§7", title: "Now", description: "What I'm working on right now." },
-  { path: "/stats", title: "Stats", description: "The charts behind Table 1: commits per week, books per year, package downloads." },
-  { path: "/uses", title: "Uses", description: "Hardware, apps and tools I use." },
-  { path: "/colophon", title: "Colophon", description: "How this site is built, set and hosted." },
-  { path: "/errata", title: "Errata", description: "What changed on this site, version by version." },
+  { path: "/stats", appendix: "§A", title: "Stats", description: "The charts behind Table 1: commits per week, books per year, package downloads." },
+  { path: "/colophon", appendix: "§B", title: "Colophon", description: "How this site is built, set and hosted." },
+  { path: "/errata", appendix: "§C", title: "Errata", description: "What changed on this site, version by version." },
 ]

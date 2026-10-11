@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function ErrataPage() {
   return (
     <article className="max-w-measure">
-      <PageHeader title="Errata" />
+      <PageHeader label="§C" title="Errata" />
       <p>What changed on this site, version by version. The version is in the running head.</p>
       <ol className="mt-8 border-t border-rule">
         {errata.map((entry) => (

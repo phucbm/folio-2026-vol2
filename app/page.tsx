@@ -79,7 +79,7 @@ export default function Home() {
         <ol className="mt-4">
           {staticRoutes.filter((r) => r.path !== "/").map((route) => (
             <li key={route.path} className="flex items-baseline gap-3 py-1">
-              <span className="num w-8 shrink-0 text-ink-muted">{route.section ?? ""}</span>
+              <span className="num w-8 shrink-0 text-ink-muted">{route.section ?? route.appendix ?? ""}</span>
               <Link href={route.path}>{route.title}</Link>
               {counts[route.path] !== undefined && (
                 <>

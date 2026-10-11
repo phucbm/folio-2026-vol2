@@ -17,7 +17,7 @@ Ported from perxel-web-2026 (2026-10-11, plan 001 part 2), trimmed to one locale
 
 ## Pages and data
 
-- Single pages with prose (`/now`, `/uses`, `/colophon`, the abstract on the home page) are `content/pages/<name>.mdx`, imported statically by their route (`import Body, {meta} from "@/content/pages/now.mdx"`). Frontmatter: `title`, `description`, optional `updated`. Not a collection: no catalog entry, not linted, so check the `copywriting` skill by hand.
+- Single pages with prose (`/now`, `/colophon`, the abstract on the home page) are `content/pages/<name>.mdx`, imported statically by their route (`import Body, {meta} from "@/content/pages/now.mdx"`). Frontmatter: `title`, `description`, optional `updated`. Not a collection: no catalog entry, not linted, so check the `copywriting` skill by hand.
 - `/perxel` reads `data/perxel.ts` (one line per case study, linking to perxel.com/en/works). Contact links: `contactLinks` in `lib/site.ts`.
 - Every page is listed in `staticRoutes` (`lib/routes.ts`), which feeds the sitemap, llms.txt and the home page's contents.
 

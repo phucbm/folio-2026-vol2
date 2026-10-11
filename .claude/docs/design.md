@@ -37,7 +37,7 @@ The `label` utility (muted, small) is the one secondary style: running head, cap
 
 ## The paper's parts
 
-- **Labels** are exact and mono: `§1`, `N-047`, `Figure 3`, `Table 1`. Sections get a `§` only when they are numbered in `staticRoutes` (`lib/routes.ts`).
+- **Labels** are exact and mono: `§1`, `N-047`, `Figure 3`, `Table 1`. Sections are numbered (`§1`) and back matter lettered as appendices (`§A`), both in `staticRoutes` (`lib/routes.ts`); only the numbered ones go in the running head.
 - **Title block** (`components/content/PageHeader.tsx`): label above, serif title, a `label` meta line below.
 - **Tables**: rules only, no fills and no vertical lines. A heavy `ink` rule above and below (`border-y border-ink`), a `rule` hairline under the header. Header cells `label`, left-aligned for words, right-aligned for figures. Figures in `num`, right-aligned, `toLocaleString("en-US")`. A figure not measured yet is a blank cell (with `sr-only` text), never a typed number or a dash. MDX tables get the same through `mdx-components.tsx`.
 - **Table captions go above the table**, figure captions below the figure, as in a paper: `Table 1.` (or `Figure 3.`) in semibold ink, then one sentence in `label`.
