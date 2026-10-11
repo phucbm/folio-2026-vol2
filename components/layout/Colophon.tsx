@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { site } from "@/lib/site";
 import { staticRoutes } from "@/lib/routes";
+import { Logo } from "@/components/layout/Logo";
 
 // The back matter, in contents order: the running head has the sections, the foot the appendices.
 const appendices = staticRoutes.filter((route) => route.appendix);
@@ -9,8 +10,11 @@ export function Colophon() {
   return (
     <footer className="print:hidden w-full max-w-measure-wide mx-auto px-4 sm:px-6">
       <div className="label flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-t border-rule py-4">
-        <span>
-          © <span className="num">{new Date().getFullYear()}</span> {site.name}
+        <span className="inline-flex items-center gap-2 self-center">
+          <Logo />
+          <span>
+            © <span className="num">{new Date().getFullYear()}</span> {site.name}
+          </span>
         </span>
         <nav aria-label="Appendices">
           <ul className="flex flex-wrap gap-x-3 gap-y-1">

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { site } from "@/lib/site";
 import { staticRoutes } from "@/lib/routes";
+import { Logo } from "@/components/layout/Logo";
 
 // The numbered sections, in contents order.
 const sections = staticRoutes.filter((route) => route.section);
@@ -11,7 +12,8 @@ export function RunningHead() {
   return (
     <header className="print:hidden w-full max-w-measure-wide mx-auto px-4 sm:px-6">
       <div className="label flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-b border-rule py-3">
-        <Link href="/" className="text-ink-muted no-underline hover:text-ink">
+        <Link href="/" className="group inline-flex items-center gap-2 self-center text-ink-muted no-underline hover:text-ink">
+          <Logo />
           {site.name}
         </Link>
         <nav aria-label="Sections" className="order-last w-full sm:order-none sm:w-auto">
