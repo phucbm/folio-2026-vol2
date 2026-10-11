@@ -46,7 +46,7 @@ The site is set like a research paper; the copy follows the paper's habits, not 
 - **Abstract first.** Every entry opens with what it is and what it found, in two or three sentences. No warm-up, no "In this post I will".
 - **Results as tables.** Comparisons, measurements and before/after go in a markdown table, not in prose.
 - **Numbers are measured, never typed.** Counts that change (commits, downloads, stars, number of notes) come from the data pipeline (plan 001, "Data"); copy never hard-codes them. Don't count things that will grow (*"three packages"*): list them, or say *the packages*.
-- **Cite what you use.** A claim from somewhere else links to it. A note that builds on another note, a project or a reference says so by name, with a link (`see [A Plot You Can Pluck](/notes/a-plot-you-can-pluck)`); a part of a page by its label (`Figure 3`, `Table 1`).
+- **Cite what you use.** A claim from somewhere else links to it. A note that builds on another note, a project or a reference says so by name, with a link (`see [Rebuilding phucbm.com as a Research Paper](/notes/rebuilding-as-a-research-paper)`); a part of a page by its label (`Figure 3`, `Table 1`).
 - **Labels are exact.** Sections are `§1`, appendices `§A`, tables and figures `Table 1`, `Figure 1`. List aliases (`N-001`, `P-001`, `B-001`, `R-001`) are positions by date and shift when an older item is added, so copy never uses them: name the item instead. Linted (`alias-in-prose`).
 - **No costume.** No "herein", "we posit", "the author"; no Latin; no small-caps jokes. The structure is academic, the sentences are not.
 
