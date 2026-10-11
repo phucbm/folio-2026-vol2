@@ -37,17 +37,21 @@ The `label` utility (muted, small) is the one secondary style: running head, cap
 
 ## The paper's parts
 
-- **Labels** are exact and mono: `§1`, `N-047`, `Figure 3`, `Table 1`. Sections are numbered (`§1`) and back matter lettered as appendices (`§A`), both in `staticRoutes` (`lib/routes.ts`); only the numbered ones go in the running head.
+Checked after every build by `scripts/check-paper.mjs`; how to apply them: the `paper` skill.
+
+
+- **Labels** are exact and mono: `§1`, `N-047`, `Figure 3`, `Table 1`. List aliases (`N-`, `P-`, `B-`, `R-`) are positions by date (`.claude/docs/content.md`). Sections are numbered (`§1`) and back matter lettered as appendices (`§A`), both in `staticRoutes` (`lib/routes.ts`); only the numbered ones go in the running head.
 - **Title block** (`components/content/PageHeader.tsx`): label above, serif title, a `label` meta line below.
 - **Tables**: rules only, no fills and no vertical lines. A heavy `ink` rule above and below (`border-y border-ink`), a `rule` hairline under the header. Header cells `label`, left-aligned for words, right-aligned for figures. Figures in `num`, right-aligned, `toLocaleString("en-US")`. A figure not measured yet is a blank cell (with `sr-only` text), never a typed number or a dash. MDX tables get the same through `mdx-components.tsx`.
 - **Table captions go above the table**, figure captions below the figure, as in a paper: `Table 1.` (or `Figure 3.`) in semibold ink, then one sentence in `label`.
 - **Contents**: section label, title as a link, dotted leaders to a count in `num`. Pages without a count get no leader.
-- **Lists of entries** (`/notes`): label column, title, date in `num`, divided by `rule` hairlines.
+- **List of Tables, List of Figures** (home page, after the contents): every numbered table and figure, from `lib/exhibits.ts`. Label in `num`, the caption's first sentence as a link to its anchor, dotted leaders to the section it is in. A new table or figure goes in `lib/exhibits.ts` first; `TableCaption` / `FigureCaption` (`components/content/Table.tsx`) read their caption from there, so the list and the page never disagree. Tables in a note's MDX are not numbered.
+- **Lists of entries** (`/notes`, `/projects`, `/reading`, `/references`): one flat list, newest first, alias column in `num`, title, date in `num`, divided by `rule` hairlines. No groups: the order is the timeline, and what a group said goes in a `label` on the row (`Perxel`, `ViiVue`).
 - **Links**: `accent`, underlined at 35% and solid on hover. No buttons for navigation.
 
 ## Motion
 
-Still by default. The one live element is the pluckable line of Figure 0 (part 6), on `/stats` only; the home page shows Figure 0 as the still calendar. Pointer effects behind `FINE_POINTER` / `fine-pointer:`, all of them off under reduced motion (`.claude/docs/performance.md`).
+Still by default. The one live element is the pluckable line of Figure 1 (part 6), on `/stats` only; the home page shows Figure 1 as the still calendar. Pointer effects behind `FINE_POINTER` / `fine-pointer:`, all of them off under reduced motion (`.claude/docs/performance.md`).
 
 ## Don't
 

@@ -6,7 +6,7 @@ export interface StaticRoute {
   title: string
   // "§1": numbered sections of the paper, also in the running head.
   section?: string
-  // "§A": back matter (supplement, colophon, errata), lettered as appendices. Contents only.
+  // "§A": back matter (stats, colophon, errata), lettered as appendices. Contents only.
   appendix?: string
   description: string
 }
@@ -14,11 +14,10 @@ export interface StaticRoute {
 export const staticRoutes: StaticRoute[] = [
   { path: "/", title: "Phuc Bui", description: "Front matter: the abstract, Table 1 and the contents." },
   { path: "/notes", section: "§1", title: "Notes", description: "Lab notebook: short notes, small findings and how I built things." },
-  { path: "/archived", section: "§2", title: "Archived", description: "ViiVue work, 2017 to 2025: one figure per project, with the year, the stack and what I learned." },
-  { path: "/perxel", section: "§3", title: "Perxel", description: "Client work at Perxel, one line each, linking to the case studies on perxel.com." },
-  { path: "/oss", section: "§4", title: "Open source", description: "Packages and repos I've built and open-sourced, with stars and downloads." },
-  { path: "/reading", section: "§5", title: "Reading", description: "The books I've read, from Goodreads, as a bibliography with short reviews." },
-  { path: "/references", section: "§6", title: "References", description: "Links I've saved: articles, tools and demos, as a list of references." },
+  { path: "/projects", section: "§2", title: "Projects", description: "Every project, one line each, newest first: Perxel, freelance and ViiVue." },
+  { path: "/oss", section: "§3", title: "Open source", description: "Packages and repos I've built and open-sourced, with stars and downloads." },
+  { path: "/reading", section: "§4", title: "Reading", description: "The books I've read, from Goodreads, as a bibliography with short reviews." },
+  { path: "/references", section: "§5", title: "References", description: "Links I've saved: articles, tools and demos, as a list of references." },
   { path: "/stats", appendix: "§A", title: "Stats", description: "The charts behind Table 1: commits per week, books per year, package downloads." },
   { path: "/colophon", appendix: "§B", title: "Colophon", description: "How this site is built, set and hosted." },
   { path: "/errata", appendix: "§C", title: "Errata", description: "What changed on this site, version by version." },

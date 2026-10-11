@@ -26,7 +26,7 @@ interface Base {
 
 interface Page {
     /**
-     * Path on the site or a full URL (an archived project's live site); paths resolve against `--origin`.
+     * Path on the site or a full URL (a project's live site); paths resolve against `--origin`.
      */
     url: string
     device?: DeviceName
@@ -94,7 +94,7 @@ export interface ReuseVisual extends Base {
 export type Visual = CaptureVisual | RecordVisual | ComposeVisual | ProvideVisual | ReuseVisual
 
 export interface VisualRecipe {
-    collection: "notes" | "archived"
+    collection: "notes"
     slug: string
     visuals: Visual[]
 }

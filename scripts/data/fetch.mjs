@@ -57,7 +57,7 @@ function githubToken() {
 // The repos `/oss` lists, read from data/oss.ts so the list lives in one place.
 function ossRepos() {
   const src = readFileSync("data/oss.ts", "utf8")
-  return [...src.matchAll(/repo: "([^"]+)"/g)].map((m) => (m[1].includes("/") ? m[1] : `${GITHUB_USER}/${m[1]}`))
+  return [...src.matchAll(/^  "([^"]+)",$/gm)].map((m) => (m[1].includes("/") ? m[1] : `${GITHUB_USER}/${m[1]}`))
 }
 
 const ENTITIES = { amp: "&", lt: "<", gt: ">", quot: '"', apos: "'", nbsp: " ", reg: "®", copy: "©", trade: "™", mdash: "—", ndash: "–", rsquo: "’", lsquo: "‘", hellip: "…" }
@@ -70,7 +70,7 @@ const decode = (s) => s
 const badTitle = (title) => /attention required|just a moment|access denied|forbidden|not found|^\d{3}\b|ssl handshake/i.test(title)
 
 const sources = {
-  // Contributions per week (Figure 0a), per day for the last year (Figure 0b) and commits per year (Table 1), one GraphQL call per year:
+  // Contributions per week (Figure 1a), per day for the last year (Figure 1b) and commits per year (Table 1), one GraphQL call per year:
   // `contributionsCollection` spans at most a year. Private work counts only if the profile shares it.
   async github() {
     const token = githubToken()
@@ -118,12 +118,24 @@ const sources = {
     start.setUTCDate(start.getUTCDate() - 52 * 7)
     const calendarFrom = start.toISOString().slice(0, 10)
 
-    // Stars and descriptions for the repos on /oss.
+    // For the repos on /oss: when each started, its commits on the default branch and the last one.
     const repos = {}
     await pool(ossRepos(), 6, async (full) => {
       try {
-        const r = await json(`https://api.github.com/repos/${full}`, { headers: { Authorization: `bearer ${token}` } })
-        repos[full] = { description: r.description ?? undefined, stars: r.stargazers_count, url: r.html_url }
+        const [owner, name] = full.split("/")
+        const { repository: r } = await gql(`{ repository(owner: "${owner}", name: "${name}") {
+          description url stargazerCount createdAt
+          defaultBranchRef { target { ... on Commit { committedDate history { totalCount } } } }
+        } }`)
+        const head = r.defaultBranchRef?.target
+        repos[full] = {
+          description: r.description ?? undefined,
+          stars: r.stargazerCount,
+          url: r.url,
+          created: r.createdAt.slice(0, 10),
+          commits: head?.history.totalCount,
+          lastCommit: head?.committedDate.slice(0, 10),
+        }
       } catch (err) {
         console.warn(`  github: ${full}: ${err.message}`)
       }

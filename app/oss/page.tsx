@@ -1,9 +1,9 @@
 import type { Metadata } from "next"
-import { Fragment } from "react"
 import { PageHeader } from "@/components/content/PageHeader"
 import { NumCell, Pending, TableCaption } from "@/components/content/Table"
-import { ossGroups, repoPath } from "@/data/oss"
+import { ossRepos, repoPath } from "@/data/oss"
 import { github, npm } from "@/lib/live"
+import { formatDate } from "@/lib/utils"
 
 export const metadata: Metadata = {
   title: "Open source",
@@ -12,62 +12,58 @@ export const metadata: Metadata = {
 
 const head = "py-1.5 font-normal"
 
+// A date in a figures column: mono, right-aligned, blank until fetched (as NumCell).
+function DateCell({ value, last }: { value: string | undefined; last?: boolean }) {
+  return (
+    <td className={`num py-1.5 text-right align-baseline whitespace-nowrap ${last ? "" : "pr-4"}`}>
+      {value ?? <span className="sr-only">Not fetched yet</span>}
+    </td>
+  )
+}
+
 export default function OssPage() {
   const packages = npm?.packages ?? []
-  const npmByRepo = new Map(packages.filter((p) => p.repo).map((p) => [p.repo!, p]))
   return (
     <article className="max-w-measure">
-      <PageHeader label="§4" title="Open source" />
+      <PageHeader label="§3" title="Open source" />
       <p>
-        Tools, templates and experiments I've built and open-sourced. The UI components have their own registry
-        at <a href="https://ui.phucbm.com">ui.phucbm.com</a>.
+        Tools, templates and experiments I've built and open-sourced.
       </p>
       {!github && <Pending>run <code>pnpm data</code> for stars and descriptions</Pending>}
 
       <section aria-labelledby="table-2" className="my-6">
-        <TableCaption id="table-2" n={2}>The repos, by group, with GitHub stars and npm downloads in the last 30 days.</TableCaption>
+        <TableCaption n="2" />
         <table className="mt-2 w-full border-collapse border-y border-ink text-[0.9375rem]">
           <thead className="border-b border-rule">
             <tr className="label text-left">
               <th scope="col" className={`${head} pr-4`}>Repo</th>
               <th scope="col" className={`${head} pr-4 text-right`}>Stars</th>
-              <th scope="col" className={`${head} text-right`}>Downloads</th>
+              <th scope="col" className={`${head} pr-4 text-right`}>Commits</th>
+              <th scope="col" className={`${head} text-right`}>Last commit</th>
             </tr>
           </thead>
           <tbody>
-            {ossGroups.map((group) => (
-              <Fragment key={group.title}>
-                <tr>
-                  <th scope="rowgroup" colSpan={3} className="label pt-4 pb-1 text-left font-semibold text-ink">
-                    {group.title}
+            {ossRepos.map((repo) => {
+              const full = repoPath(repo)
+              const stats = github?.repos[full]
+              return (
+                <tr key={repo} className="border-t border-rule first:border-t-0">
+                  <th scope="row" className="py-1.5 pr-4 text-left align-baseline font-normal">
+                    <a href={stats?.url ?? `https://github.com/${full}`} className="break-all">{repo}</a>
                   </th>
+                  <NumCell value={stats?.stars} />
+                  <NumCell value={stats?.commits} />
+                  <DateCell value={stats?.lastCommit && formatDate(stats.lastCommit)} last />
                 </tr>
-                {group.repos.map(({ repo }) => {
-                  const full = repoPath(repo)
-                  const stats = github?.repos[full]
-                  return (
-                    <tr key={repo} className="border-t border-rule">
-                      <th scope="row" className="py-1.5 pr-4 text-left align-baseline font-normal">
-                        <a href={stats?.url ?? `https://github.com/${full}`}>{repo}</a>
-                        {stats?.description && <span className="block text-ink-muted">{stats.description}</span>}
-                      </th>
-                      <NumCell value={stats?.stars} />
-                      <NumCell value={npmByRepo.get(full.toLowerCase())?.downloadsLastMonth} last />
-                    </tr>
-                  )
-                })}
-              </Fragment>
-            ))}
+              )
+            })}
           </tbody>
         </table>
       </section>
 
       {packages.length > 0 && (
         <section aria-labelledby="table-3" className="my-6">
-          <TableCaption id="table-3" n={3}>
-            Every package I publish on npm, by downloads in the last 30 days. jsDelivr is the CDN, which serves
-            the same packages to browsers.
-          </TableCaption>
+          <TableCaption n="3">jsDelivr is the CDN, which serves the same packages to browsers.</TableCaption>
           <table className="mt-2 w-full border-collapse border-y border-ink text-[0.9375rem]">
             <thead className="border-b border-rule">
               <tr className="label text-left">

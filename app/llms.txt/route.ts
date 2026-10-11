@@ -2,6 +2,7 @@ import { site } from "@/lib/site"
 import { staticRoutes } from "@/lib/routes"
 import { catalogByKind } from "@/lib/content/site-catalog"
 import type { CatalogItem } from "@/lib/content/catalog"
+import { projects } from "@/data/projects"
 
 export const dynamic = "force-static"
 
@@ -19,7 +20,7 @@ export function GET() {
     `Full text of every entry, as JSON: ${site.url}/content.json`,
     section("Pages", staticRoutes.map((r) => `- [${r.title}](${site.url}${r.path}): ${r.description}`)),
     section("Notes", catalogByKind("note").map(entry)),
-    section("Archived projects", catalogByKind("archived").map(entry)),
+    section("Projects", projects.map((p) => `- ${p.href ? `[${p.label}: ${p.title}](${p.href})` : `${p.label}: ${p.title}`}${p.line ? `: ${p.line}` : ""}`)),
   ].filter(Boolean)
   return new Response(body.join("\n\n") + "\n", { headers: { "Content-Type": "text/plain; charset=utf-8" } })
 }

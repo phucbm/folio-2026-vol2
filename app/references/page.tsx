@@ -12,11 +12,11 @@ export const metadata: Metadata = {
 
 const discord = contactLinks.find((link) => link.label === "Discord")
 
-// References in citation format: number, title, source, the day I saved it and its tags. Newest first.
+// References in citation format: alias, title, source, the day I saved it and its tags. Newest first.
 export default function ReferencesPage() {
   return (
     <article className="max-w-measure">
-      <PageHeader label="§6" title="References" />
+      <PageHeader label="§5" title="References" />
       <p>
         Links I've saved: articles, tools and demos I keep coming back to. I bookmark them into a channel on my
         Discord server, and this list comes from there.
@@ -26,9 +26,9 @@ export default function ReferencesPage() {
         <Pending>run <code>pnpm data</code> for the links</Pending>
       ) : (
         <ol className="mt-8 border-t border-rule">
-          {references.map((ref, i) => (
-            <li key={ref.url} className="grid grid-cols-[2.75rem_1fr] gap-x-3 border-b border-rule py-3">
-              <span className="num pt-0.5 text-ink-muted">[{references.length - i}]</span>
+          {references.map((ref) => (
+            <li key={ref.url} className="grid grid-cols-[4.5rem_1fr] gap-x-4 border-b border-rule py-3">
+              <span className="num pt-0.5 text-ink-muted">{ref.label}</span>
               <div>
                 <p>
                   <a href={ref.url}>{ref.title}</a>. {ref.source}.

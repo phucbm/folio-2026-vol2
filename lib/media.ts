@@ -29,7 +29,7 @@ export const BELOW_LG = below(BREAKPOINTS.lg)
 export const REDUCED_MOTION = "(prefers-reduced-motion: reduce)"
 
 /**
- * The one gate for every pointer-driven effect (mouse move, hover, plucking Figure 0): a real hovering
+ * The one gate for every pointer-driven effect (mouse move, hover, plucking Figure 1): a real hovering
  * pointer on a screen at least `lg` wide. Touch devices and small screens fail it and get no pointer
  * interaction at all (a 1024px-wide iPad too: wide enough, but no hover). CSS: `fine-pointer:`, and
  * its complement `touch:`.

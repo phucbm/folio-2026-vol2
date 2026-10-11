@@ -1,5 +1,5 @@
 import { catalogByKind } from "@/lib/content/site-catalog"
-import { perxelWorks } from "@/data/perxel"
+import { projects } from "@/data/projects"
 import { books, github, npm } from "@/lib/live"
 
 // Table 1 on the home page: the numbers, this year and all time. Every figure is computed at build
@@ -15,7 +15,6 @@ export interface NumberRow {
 
 const year = new Date().getFullYear()
 const notes = catalogByKind("note")
-const archived = catalogByKind("archived")
 const sum = (values: number[]) => values.reduce((n, v) => n + v, 0)
 
 const commits = github ? Object.entries(github.commitsByYear) : null
@@ -40,9 +39,13 @@ export const numbers: NumberRow[] = [
     allTime: books.length || null,
     href: "/reading",
   },
-  { label: "Projects, archived", thisYear: archived.filter((item) => item.year === year).length, allTime: archived.length, href: "/archived" },
-  // Perxel entries carry no date, so only the all-time count.
-  { label: "Projects, Perxel", thisYear: null, allTime: perxelWorks.length, href: "/perxel" },
+  {
+    label: "Projects",
+    // Counted by date only once every project has one; until then this year is not measured.
+    thisYear: projects.every((p) => p.date) ? projects.filter((p) => p.date!.startsWith(String(year))).length : null,
+    allTime: projects.length,
+    href: "/projects",
+  },
   {
     label: "npm packages",
     thisYear: packages ? packages.filter((p) => p.created.startsWith(String(year))).length : null,

@@ -6,8 +6,8 @@
 /work/khatra https://perxel.com/en/works/khatra 301
 /work/dta-luxury https://perxel.com/en/works/dta-luxury 301
 /work/growtrics https://perxel.com/en/works/growtrics 301
-/work/page/* /perxel 301
-/work /perxel 301
+/work/page/* /projects 301
+/work /projects 301
 /about / 301
 /resume / 301
 /privacy / 301
@@ -15,6 +15,11 @@
 /cookies / 301
 /hello-world / 301
 /contact /#contact 301
+
+# This site before launch: /archived and /perxel became /projects.
+/archived/* /projects 301
+/archived /projects 301
+/perxel /projects 301
 
 # phucbm-web
 /posts/how-i-built-my-blog /notes/how-i-built-my-blog 301
@@ -28,5 +33,6 @@
 /connect /#contact 301
 /uses /colophon#tools 301
 /now / 301
-/components/* https://ui.phucbm.com 301
-/components https://ui.phucbm.com 301
+# ui.phucbm.com is offline for now; point these back at it when it returns.
+/components/* /oss 301
+/components /oss 301

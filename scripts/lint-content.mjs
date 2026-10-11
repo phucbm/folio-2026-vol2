@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Content linter.
 //
-//   pnpm content:lint              lint every .mdx under content/{notes,archived}
+//   pnpm content:lint              lint every .mdx under content/notes
 //   pnpm content:lint <file...>    lint only the given files (used by the Claude Code edit hook)
 //   pnpm content:lint --quiet      only print when there is something to report
 //

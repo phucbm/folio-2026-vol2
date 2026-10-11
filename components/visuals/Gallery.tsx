@@ -10,7 +10,7 @@ export interface GalleryProps extends TemplateSize {
   columns?: number
 }
 
-/** Several screenshots in a row on paper, e.g. an archived project on desktop and phone. */
+/** Several screenshots in a row on paper, e.g. a site on desktop and phone. */
 export default function Gallery({ width, height, images, labels = [], columns }: GalleryProps) {
   if (!Array.isArray(images) || !images.length) return <p data-visual-error="">images[] required</p>
   const cols = columns ?? images.length

@@ -4,7 +4,7 @@ import { PluckLine } from "./PluckLine"
 // A plot drawn the way matplotlib draws one with its defaults: a box of four 0.8px spines, ticks
 // pointing out, a C0 line or bars, no grid, the figures in mono. Rendered on the server as SVG, at
 // two sizes (phone and up) so the tick labels stay readable; CSS shows one. `pluck` hands the line
-// to `PluckLine`, which lets the cursor pluck it (Figure 0).
+// to `PluckLine`, which lets the cursor pluck it (Figure 1).
 
 export interface PlotProps {
   values: number[]

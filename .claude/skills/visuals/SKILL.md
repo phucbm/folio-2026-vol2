@@ -1,6 +1,6 @@
 ---
 name: visuals
-description: Plan and make the images and short videos an entry needs (notes, archived projects), consistently, from a recipe that can be re-run. Use after writing or revising any MDX content, when an entry mentions something the reader should see, or when the user says "add images", "illustrate this", "visuals for", "/visuals". Decides per spot whether to reuse an existing file, capture or record a live page, compose an image from a template, or ask the owner for a screenshot.
+description: Plan and make the images and short videos an entry needs (notes), consistently, from a recipe that can be re-run. Use after writing or revising any MDX content, when an entry mentions something the reader should see, or when the user says "add images", "illustrate this", "visuals for", "/visuals". Decides per spot whether to reuse an existing file, capture or record a live page, compose an image from a template, or ask the owner for a screenshot.
 ---
 
 # Visuals
@@ -31,14 +31,13 @@ Outputs: `public/images/<collection>/<slug>-<id>.webp|mp4`. Raw captures are cac
 | Route (`kind`) | When | Output |
 |---|---|---|
 | `reuse` | A fitting file already exists (`inventory`) | the existing path |
-| `capture` | Something visible on a live page: a screen, or one element (`selector`). `url` may be a full URL (an archived project's live site) | WebP, 2-3x sharp, max 1600px |
+| `capture` | Something visible on a live page: a screen, or one element (`selector`). `url` may be a full URL (a project's live site) | WebP, 2-3x sharp, max 1600px |
 | `record` | The motion is the point (a scroll effect, a hover) | MP4 (1120px, crf 34, silent) + poster WebP |
 | `compose` | Nothing to screenshot: screenshots side by side, code as a picture | WebP at a fixed size (`SIZES` in `lib/visuals/presets.ts`) |
 | `provide` | Only the owner can get it: old projects that are offline (ViiVue archive screenshots), anything behind a login, dashboards, results that change per run. `media: "video"` for a screen recording | same as capture / record |
 | `intermediate: true` | An input for a compose only | cache only, not in `public/` |
 
 Rules:
-- **Archived projects:** capture the live site when it still exists (`url` in frontmatter); otherwise `provide`, and `ask` names the project and the screens wanted. Never present a capture of today's site as what shipped in its year if it has changed: say so in the caption, or ask for the original.
 - **Scores and stats are `provide`** or come from the data pipeline, never captured by the runner.
 - **Real, not generated.** No AI imagery, no stock photos.
 - **Records stay short**: 5 to 8 s, start in motion, end within about a second of the effect finishing. One effect per clip.

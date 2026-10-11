@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { notesAll } from "@/content/notes/index"
-import { noteLabel } from "@/lib/content/catalog"
+import { catalogByKind } from "@/lib/content/site-catalog"
 import { displayDate } from "@/lib/content/collections"
 import { PageHeader } from "@/components/content/PageHeader"
 import { formatDate } from "@/lib/utils"
@@ -32,10 +32,12 @@ export default async function NotePage({ params }: Props) {
   if (!note) notFound()
   const { default: Body } = await import(`@/content/notes/${slug}.mdx`)
   const date = displayDate(note)!
+  // Only listed notes are numbered: a draft or unlisted note has no place in the order.
+  const label = catalogByKind("note").find((item) => item.slug === slug)?.label
   return (
     <article className="max-w-measure">
       <PageHeader
-        label={noteLabel(note.number)}
+        label={label}
         title={note.title}
         meta={
           <>

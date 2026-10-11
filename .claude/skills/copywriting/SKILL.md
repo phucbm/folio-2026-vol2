@@ -1,6 +1,6 @@
 ---
 name: copywriting
-description: The one place for every writing rule on phucbm.com. Use before writing, revising or reviewing ANY copy on this site: notes (content/notes), archived projects (content/archived), page files (app/**/page.tsx), section intros, captions, the abstract. Covers the voice (first person, plain spoken English), what goes here versus on perxel.com, the paper's conventions, banned words, MDX structure and the review checklist. Triggers: "write a note", "write up this project", "revise the copy", "review content", "/copywriting", any edit to site text.
+description: The one place for every writing rule on phucbm.com. Use before writing, revising or reviewing ANY copy on this site: notes (content/notes), the project list (data/projects.ts), page files (app/**/page.tsx), section intros, captions, the abstract. Covers the voice (first person, plain spoken English), what goes here versus on perxel.com, the paper's conventions, banned words, MDX structure and the review checklist. Triggers: "write a note", "write up this project", "revise the copy", "review content", "/copywriting", any edit to site text.
 ---
 
 # Copywriting (phucbm.com)
@@ -46,8 +46,8 @@ The site is set like a research paper; the copy follows the paper's habits, not 
 - **Abstract first.** Every entry opens with what it is and what it found, in two or three sentences. No warm-up, no "In this post I will".
 - **Results as tables.** Comparisons, measurements and before/after go in a markdown table, not in prose.
 - **Numbers are measured, never typed.** Counts that change (commits, downloads, stars, number of notes) come from the data pipeline (plan 001, "Data"); copy never hard-codes them. Don't count things that will grow (*"three packages"*): list them, or say *the packages*.
-- **Cite what you use.** A claim from somewhere else links to it. A note that builds on another note, a figure or a reference says so (`see N-012`, `Figure 3`).
-- **Labels are exact.** Notes are `N-047`, archived projects are `Figure 3`, sections are `§1`. Use them the same way everywhere.
+- **Cite what you use.** A claim from somewhere else links to it. A note that builds on another note, a project or a reference says so by name, with a link (`see [A Plot You Can Pluck](/notes/a-plot-you-can-pluck)`); a part of a page by its label (`Figure 3`, `Table 1`).
+- **Labels are exact.** Sections are `§1`, appendices `§A`, tables and figures `Table 1`, `Figure 1`. List aliases (`N-001`, `P-001`, `B-001`, `R-001`) are positions by date and shift when an older item is added, so copy never uses them: name the item instead. Linted (`alias-in-prose`).
 - **No costume.** No "herein", "we posit", "the author"; no Latin; no small-caps jokes. The structure is academic, the sentences are not.
 
 ## 3. What goes where
@@ -56,12 +56,12 @@ The site is set like a research paper; the copy follows the paper's habits, not 
 |---|---|---|
 | Engineering notes, experiments, TILs, opinions, how I built something | **here**, `/notes` | the full entry |
 | Client-facing posts (services, how Perxel works, why a client should pick X) | **perxel.com** insights | nothing, or a one-line note that links there if it is also a personal finding |
-| ViiVue work, 2017 to 2025 | **here**, `/archived` | a figure: screenshots, 2 or 3 paragraphs, stack, year, what I learned. Not a case study |
-| Current client work (Perxel) | **perxel.com** works | one line in `/perxel`, linking to the case study. Nothing written twice |
-| Open source packages | **here**, `/oss` | what it does, numbers from the pipeline, link to the repo and docs (ui.phucbm.com for components) |
+| Any project (ViiVue 2017 to 2025, freelance) | **here**, `/projects` | one line in `data/projects.ts`: title, month, role, what it is, link. No write-up |
+| Current client work (Perxel) | **perxel.com** works | one line in `/projects` under Perxel, linking to the case study. Nothing written twice |
+| Open source packages | **here**, `/oss` | what it does, numbers from the pipeline, link to the repo and docs. Don't mention ui.phucbm.com while it is offline |
 
 - **Never write the same thing in two places.** Link instead.
-- **Archived work was done at ViiVue**, not by Perxel. Never imply Perxel delivered it, and on perxel.com never present it as Perxel's.
+- **ViiVue work was done at ViiVue**, not by Perxel. Never imply Perxel delivered it, and on perxel.com never present it as Perxel's.
 - **Perxel copy follows Perxel's own `copywriting` skill** (in `perxel-web-2026`), not this one.
 
 ## 4. Banned words and structures
@@ -77,12 +77,11 @@ The site is set like a research paper; the copy follows the paper's habits, not 
 
 ## 5. MDX mechanics
 
-**Collections**: `content/notes/*.mdx` (route `/notes/<slug>`) and `content/archived/*.mdx` (route `/archived/<slug>`). The filename is the slug: short, kebab-case, English.
+**Collections**: `content/notes/*.mdx` (route `/notes/<slug>`). The filename is the slug: short, kebab-case, English.
 
 **Frontmatter** (first thing in the file, before imports; compiled to `meta`):
-- Every entry: `title`, `excerpt` (one or two sentences: the listing line, meta description and feed summary), `tags` (lowercase list, first is primary; may be empty), `status` (`"draft"` / `"published"` / `"unlisted"`). Optional: `seoTitle`, `updated`, `related` (slugs in the same collection), `projects` (archived slugs the entry is about), `featureImage`, `ogImage`.
-- Notes: `number` (the next free one: `grep -h '^number:' content/notes/*.mdx | sort -n | tail -1`, plus one; never renumber a published note) and `date`.
-- Archived: `figure` (unique, never renumbered once published), optional `year` (figures are numbered by it once known), `client`, `role` (a few words), `stack` (plain names), `url` (the live site, if it still exists).
+- Every entry: `title`, `excerpt` (one or two sentences: the listing line, meta description and feed summary), `tags` (lowercase list, first is primary; may be empty), `status` (`"draft"` / `"published"` / `"unlisted"`). Optional: `seoTitle`, `updated`, `related` (slugs in the same collection), `featureImage`, `ogImage`.
+- Notes: `date`. No `number`: `N-001` is derived from the date (linted). Notes sharing a date are numbered in the order of `noteFiles` in `content/notes/index.ts`.
 - **Quote every date** (`date: "2026-10-11"`). **No `slug` field.**
 - `updated`: set by hand when a published entry changes in a way readers should know (not typos). Never on a new entry. The hook reminds you.
 
@@ -99,7 +98,7 @@ The site is set like a research paper; the copy follows the paper's habits, not 
 
 ## 6. Linter
 
-`pnpm content:lint [files]` checks the deterministic rules: dashes, lowercase "i", buzzwords and stock phrases (warnings), frontmatter shape, unique `number` / `figure`, unknown `projects` / `related` slugs. It runs on every `.mdx` write via the hook. It cannot judge sections 1 to 3; that is what section 7 is for.
+`pnpm content:lint [files]` checks the deterministic rules: dashes, lowercase "i", buzzwords and stock phrases (warnings), frontmatter shape, no `number` field, no alias in prose, unknown `related` slugs. It runs on every `.mdx` write via the hook. It cannot judge sections 1 to 3; that is what section 7 is for.
 
 ## 7. Review checklist
 

@@ -2,7 +2,7 @@ import type { ComponentProps } from "react"
 import type { MDXComponents } from "mdx/types"
 import { reactNodeToText, slugify } from "@/lib/utils"
 
-// Prose styling for every compiled .mdx (notes, archived projects, pages). Next wires it up for
+// Prose styling for every compiled .mdx (notes, pages). Next wires it up for
 // each MDX module, so routes pass no `components`. h2/h3 get ids from their text, for anchors and
 // a contents list. The rules behind it: .claude/docs/design.md.
 const components: MDXComponents = {

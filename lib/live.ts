@@ -1,4 +1,5 @@
 import live from "@/data/live.generated.json"
+import { aliasesByDate } from "@/lib/aliases"
 
 // Every number from outside the repo, as `scripts/data/fetch.mjs` last fetched it (`pnpm data`;
 // `pnpm run deploy` runs it first). A source that has never been fetched is missing, and the pages
@@ -38,6 +39,11 @@ export interface RepoStats {
   description?: string
   stars: number
   url: string
+  // "YYYY-MM-DD". Missing in data fetched before they existed.
+  created?: string
+  // Commits on the default branch, and the day of the last one.
+  commits?: number
+  lastCommit?: string
 }
 
 interface Live {
@@ -62,5 +68,15 @@ const data = live as Live
 export const fetchedAt = data.fetchedAt
 export const github = data.github
 export const npm = data.npm
-export const books: Book[] = data.books ?? []
-export const references: Reference[] = data.references ?? []
+
+// Newest first, each with its alias by date (lib/aliases.ts): B-001 is the first book I finished,
+// R-001 the first link I saved. The source's URL is the ID.
+const newestFirst = <T extends object>(prefix: string, items: T[], dateOf: (item: T) => string | undefined) => {
+  const labels = aliasesByDate(prefix, items, dateOf)
+  return items
+    .map((item) => ({ ...item, label: labels.get(item)! }))
+    .sort((a, b) => b.label.localeCompare(a.label, "en", { numeric: true }))
+}
+
+export const books: (Book & { label: string })[] = newestFirst("B", data.books ?? [], (book) => book.read)
+export const references: (Reference & { label: string })[] = newestFirst("R", data.references ?? [], (ref) => ref.saved)

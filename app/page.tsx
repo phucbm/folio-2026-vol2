@@ -4,24 +4,24 @@ import { contactLinks, site } from "@/lib/site";
 import { staticRoutes } from "@/lib/routes";
 import { catalogByKind } from "@/lib/content/site-catalog";
 import { numbers } from "@/lib/numbers";
-import { perxelWorks } from "@/data/perxel";
-import { ossGroups } from "@/data/oss";
+import { projects } from "@/data/projects";
+import { ossRepos } from "@/data/oss";
 import { books, references } from "@/lib/live";
-import { Figure0 } from "@/components/plots/Figure0";
-import { NumCell } from "@/components/content/Table";
+import { Figure1 } from "@/components/plots/Figure1";
+import { NumCell, TableCaption } from "@/components/content/Table";
+import { exhibits, type ExhibitKind } from "@/lib/exhibits";
 
 // Counts shown beside a section in the contents, where the section is a list.
 const counts: Record<string, number> = {
   "/notes": catalogByKind("note").length,
-  "/archived": catalogByKind("archived").length,
-  "/perxel": perxelWorks.length,
-  "/oss": ossGroups.reduce((n, group) => n + group.repos.length, 0),
+  "/projects": projects.length,
+  "/oss": ossRepos.length,
   // A source never fetched gets no count.
   ...(books.length ? { "/reading": books.length } : {}),
   ...(references.length ? { "/references": references.length } : {}),
 };
 
-// The paper's front matter (plan 001, "Home page"): name, abstract, Table 1, Figure 0 (the calendar), contents,
+// The paper's front matter (plan 001, "Home page"): name, abstract, Table 1, Figure 1 (the calendar), contents,
 // contact. No lists of latest items. Ask joins after launch.
 export default function Home() {
   return (
@@ -43,9 +43,7 @@ export default function Home() {
       </section>
 
       <section aria-labelledby="table-1" className="mt-14 max-w-measure">
-        <p id="table-1" className="label">
-          <span className="font-semibold text-ink">Table 1.</span> The numbers, this year and all time, rebuilt on every deploy.
-        </p>
+        <TableCaption n="1" />
         <table className="mt-2 w-full border-collapse border-y border-ink text-[0.9375rem]">
           <thead className="border-b border-rule">
             <tr className="label text-left">
@@ -70,8 +68,8 @@ export default function Home() {
         </table>
       </section>
 
-      <section aria-label="Figure 0" className="mt-14 max-w-measure">
-        <Figure0 />
+      <section aria-label="Figure 1" className="mt-14 max-w-measure">
+        <Figure1 />
       </section>
 
       <nav aria-labelledby="contents" className="mt-14 max-w-measure">
@@ -93,6 +91,10 @@ export default function Home() {
         </ol>
       </nav>
 
+      {(["Table", "Figure"] as ExhibitKind[]).map((kind) => (
+        <ExhibitList key={kind} kind={kind} />
+      ))}
+
       <section aria-labelledby="contact" className="mt-14 max-w-measure">
         <h2 id="contact" className="text-2xl">Contact</h2>
         <p className="mt-4">I'm open to new opportunities.</p>
@@ -108,5 +110,34 @@ export default function Home() {
         </dl>
       </section>
     </article>
+  );
+}
+
+// The List of Tables and the List of Figures, after the contents as in a thesis: label, caption as a
+// link to it, and dot leaders to the section it is in (none for this page).
+function ExhibitList({ kind }: { kind: ExhibitKind }) {
+  const id = kind === "Table" ? "list-of-tables" : "list-of-figures"
+  return (
+    <nav aria-labelledby={id} className="mt-14 max-w-measure">
+      <h2 id={id} className="text-2xl">List of {kind === "Table" ? "Tables" : "Figures"}</h2>
+      <ol className="mt-4">
+        {exhibits.filter((e) => e.kind === kind).map((e) => {
+          const route = staticRoutes.find((r) => r.path === e.path);
+          const where = route?.section ?? route?.appendix;
+          return (
+            <li key={e.id} className="flex items-baseline gap-3 py-1">
+              <span className="num w-20 shrink-0 text-ink-muted">{kind} {e.n}</span>
+              <Link href={`${e.path}#${e.id}`}>{e.caption}</Link>
+              {where && (
+                <>
+                  <span aria-hidden className="mx-1 min-w-4 flex-1 -translate-y-[0.25em] border-b border-dotted border-ink-muted/60" />
+                  <span className="num text-ink-muted">{where}</span>
+                </>
+              )}
+            </li>
+          );
+        })}
+      </ol>
+    </nav>
   );
 }

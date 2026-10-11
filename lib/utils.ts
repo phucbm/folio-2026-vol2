@@ -33,3 +33,9 @@ export function formatDate(date: string): string {
   const [y, m, d] = date.split("-").map(Number)
   return `${d} ${MONTHS[m - 1]} ${y}`
 }
+
+/** "2023-05" → "May 2023". */
+export function formatMonth(month: string): string {
+  const [y, m] = month.split("-").map(Number)
+  return `${MONTHS[m - 1]} ${y}`
+}

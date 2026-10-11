@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "node scripts/content-meta.mjs && next dev",
-    "build": "node scripts/content-meta.mjs && next build",
+    "build": "node scripts/content-meta.mjs && next build && node scripts/check-paper.mjs",
+    "check:paper": "node scripts/check-paper.mjs",
     "start": "npx serve out",
     "typecheck": "node scripts/content-meta.mjs && tsc --noEmit",
     "test": "vitest run",

@@ -7,7 +7,7 @@
 
 import {readFileSync, readdirSync, existsSync} from "node:fs";
 import {fileURLToPath} from "node:url";
-import {dirname, join, basename} from "node:path";
+import {dirname, join} from "node:path";
 import {parse} from "yaml";
 import {COLLECTIONS} from "../../scripts/content-collections.mjs";
 
@@ -60,6 +60,15 @@ export const proseRules = [
     pattern: /\b(let'?s dive (?:in|into)|dive deep|delve|tapestry|testament to|in the (?:realm|world) of|in today'?s (?:fast[- ]paced|digital)|it'?s worth noting|embark on|navigat(?:e|ing) the (?:complex|ever)|not just (?:a|an) [^.\n]{0,30}, but)\b/iu,
     message: "Stock phrase of machine-written prose.",
     suggest: "Say the thing directly, the way you would to a colleague.",
+  },
+
+  // --- Labels ---------------------------------------------------------------------------------
+  {
+    id: "alias-in-prose",
+    severity: "error",
+    pattern: /\b[NPBR]-\d{3,}\b/u,
+    message: "An alias (N-001, P-001, B-001, R-001) is a position by date and shifts when an older item is added (lib/aliases.ts).",
+    suggest: "Name the item and link it: [How I Built My Blog](/notes/how-i-built-my-blog).",
   },
 ];
 
@@ -126,6 +135,12 @@ export const frontmatterRules = [
     message: "Drop `slug`: the filename is the slug.",
   },
   {
+    id: "frontmatter-number-field",
+    severity: "error",
+    test: (fm) => fm !== null && /^number:/m.test(fm),
+    message: "Drop `number`: N-001 is derived from the date (lib/aliases.ts).",
+  },
+  {
     id: "frontmatter-required",
     severity: "error",
     test: (fm) => {
@@ -168,20 +183,6 @@ function collectionOf(rel) {
   return rel.split("\\").join("/").match(/^content\/([^/]+)\//)?.[1];
 }
 
-/** A per-collection number (`number` on notes, `figure` on archived): present, a positive integer, unique. */
-function uniqueNumber(collectionName, field, label) {
-  return (fm, rel) => {
-    if (collectionOf(rel) !== collectionName) return null;
-    const data = fm !== null && parseFm(fm);
-    if (!data) return null;
-    const value = data[field];
-    if (!Number.isInteger(value) || value < 1) return `\`${field}\` must be a positive whole number (${label}).`;
-    const slug = basename(rel, ".mdx");
-    const clash = [...collection(collectionName)].find(([other, meta]) => other !== slug && meta[field] === value);
-    return clash ? `\`${field}: ${value}\` is already used by content/${collectionName}/${clash[0]}.mdx.` : null;
-  };
-}
-
 /**
  * @typedef {Object} FileRule
  * @property {string} id
@@ -191,8 +192,6 @@ function uniqueNumber(collectionName, field, label) {
 
 /** @type {FileRule[]} */
 export const fileRules = [
-  {id: "note-number", severity: "error", test: uniqueNumber("notes", "number", "the N-### of the note")},
-  {id: "archived-figure", severity: "error", test: uniqueNumber("archived", "figure", "its Figure number")},
   {
     id: "note-date",
     severity: "error",
@@ -200,26 +199,6 @@ export const fileRules = [
       if (collectionOf(rel) !== "notes") return null;
       const data = fm !== null && parseFm(fm);
       return data && !isDateString(data.date) ? "Notes need `date: \"YYYY-MM-DD\"`." : null;
-    },
-  },
-  {
-    id: "archived-year",
-    severity: "error",
-    test: (fm, rel) => {
-      if (collectionOf(rel) !== "archived") return null;
-      const data = fm !== null && parseFm(fm);
-      return data && data.year !== undefined && !(Number.isInteger(data.year) && data.year >= 2000) ? "`year` is a four-digit year (e.g. `year: 2019`)." : null;
-    },
-  },
-  {
-    id: "projects-unknown-slug",
-    severity: "error",
-    test: (fm) => {
-      const data = fm !== null && parseFm(fm);
-      if (!data || !Array.isArray(data.projects)) return null;
-      const known = collection("archived");
-      const unknown = data.projects.filter((slug) => !known.has(slug));
-      return unknown.length ? `\`projects\` names unknown archived projects: ${unknown.join(", ")} (slugs are content/archived/*.mdx filenames).` : null;
     },
   },
   {

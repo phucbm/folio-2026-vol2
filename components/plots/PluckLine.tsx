@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react"
 import { FINE_POINTER, REDUCED_MOTION } from "@/lib/media"
 
-// Figure 0's line, pluckable like a string (Perxel's `WaveLine`, the same 1D spring): the cursor
+// Figure 1's line, pluckable like a string (Perxel's `WaveLine`, the same 1D spring): the cursor
 // crossing the line sends a wave along it, which settles back onto the data. The spring runs on its
 // own grid of columns across the axes, so the wave travels at the same speed whatever the number of
 // points; each point is pushed by the columns either side of it. Still under reduced motion and on

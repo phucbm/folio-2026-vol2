@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Claude Code content hooks. PreToolUse: remind the model to load the `copywriting` skill before
-// editing a copy file. PostToolUse: run the content linter whenever an .mdx file in a collection is
+// editing a copy file, and the `paper` skill before editing a page or the paper's registries. PostToolUse: run the content linter whenever an .mdx file in a collection is
 // written or edited, and feed any findings back so they are fixed in the same turn.
 //
 // Wired in .claude/settings.json (PreToolUse and PostToolUse, matcher "Write|Edit|MultiEdit").
@@ -28,32 +28,39 @@ const rel = relative(repoRoot, abs).split("\\").join("/");
 const isContentMdx = new RegExp(`^content/(${COLLECTIONS.join("|")})/.+\\.mdx$`).test(rel);
 
 // PreToolUse: before the first write to a copy file, remind the model to load the `copywriting`
-// skill (the only place the writing rules live). Never blocks. Silent once the transcript shows the
-// skill was invoked or its SKILL.md read.
+// skill (the only place the writing rules live); before the first write to a file that shapes the
+// paper (pages, routes, tables and figures, lists), the `paper` skill. Never blocks. Each reminder is
+// silent once the transcript shows its skill was invoked or its SKILL.md read.
 if (payload.hook_event_name === "PreToolUse") {
-  const isCopyFile = isContentMdx || /^app\/.+\/page\.tsx$/.test(rel) || /^app\/page\.tsx$/.test(rel) || /^content\/pages\/.+\.mdx$/.test(rel);
-  if (!isCopyFile) process.exit(0);
-  let loaded = false;
+  const isPage = /^app\/(.+\/)?page\.tsx$/.test(rel);
+  const isCopyFile = isContentMdx || isPage || /^content\/pages\/.+\.mdx$/.test(rel);
+  const isPaperFile = isPage || /^lib\/(routes|exhibits|aliases)\.ts$/.test(rel) || /^components\/(content|plots)\//.test(rel) || /^data\/[^/]+\.ts$/.test(rel);
+  let transcript = "";
   try {
-    const transcript = readFileSync(payload.transcript_path, "utf8");
-    loaded =
-      transcript.includes('"name":"Skill","input":{"skill":"copywriting"') ||
-      transcript.includes(".claude/skills/copywriting/SKILL.md");
+    transcript = readFileSync(payload.transcript_path, "utf8");
   } catch {
     // no transcript: remind anyway
   }
-  if (loaded) process.exit(0);
-  process.stdout.write(
-    JSON.stringify({
-      hookSpecificOutput: {
-        hookEventName: "PreToolUse",
-        additionalContext:
-          `${rel} holds site copy. If you have not loaded the \`copywriting\` skill in this session, ` +
-          `load it (Skill tool, skill "copywriting") and follow it before writing: first person, plain ` +
-          `spoken English, what goes here versus on Perxel, and the revise rule (show before/after, wait for approval).`,
-      },
-    }),
-  );
+  const loaded = (skill) =>
+    transcript.includes(`"name":"Skill","input":{"skill":"${skill}"`) || transcript.includes(`.claude/skills/${skill}/SKILL.md`);
+  const notes = [];
+  if (isCopyFile && !loaded("copywriting")) {
+    notes.push(
+      `${rel} holds site copy. If you have not loaded the \`copywriting\` skill in this session, ` +
+        `load it (Skill tool, skill "copywriting") and follow it before writing: first person, plain ` +
+        `spoken English, what goes here versus on Perxel, and the revise rule (show before/after, wait for approval).`,
+    );
+  }
+  if (isPaperFile && !loaded("paper")) {
+    notes.push(
+      `${rel} shapes the paper (sections, tables, figures, lists, labels). Load the \`paper\` skill ` +
+        `(Skill tool, skill "paper") and follow it: numbering in reading order, captions from lib/exhibits.ts, ` +
+        `and \`pnpm build\` (it ends with scripts/check-paper.mjs) before saying it is done.`,
+    );
+  }
+  if (notes.length) {
+    process.stdout.write(JSON.stringify({ hookSpecificOutput: { hookEventName: "PreToolUse", additionalContext: notes.join("\n\n") } }));
+  }
   process.exit(0);
 }
 

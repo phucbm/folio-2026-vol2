@@ -1,6 +1,6 @@
 {
   "fetchedAt": {
-    "github": "2026-10-11T14:18:05.865Z",
+    "github": "2026-10-11T14:55:42.334Z",
     "npm": "2026-10-11T09:39:26.955Z",
     "goodreads": "2026-10-11T09:39:27.653Z",
     "discord": "2026-10-11T09:39:32.368Z"
@@ -3527,94 +3527,148 @@
       }
     ],
     "repos": {
-      "phucbm/claude-usage-monitor": {
-        "description": "Multiple Claude.ai accounts tracked right from your Mac menu bar.",
-        "stars": 5,
-        "url": "https://github.com/phucbm/claude-usage-monitor"
-      },
-      "phucbm/clyrics": {
-        "description": "Chinese lyrics powered by AI so anyone can learn from music they love",
-        "stars": 0,
-        "url": "https://github.com/phucbm/clyrics"
-      },
-      "phucbm/react-hanzi-input": {
-        "description": "Chinese handwriting input component for React — canvas pad, stroke capture, and candidate picker powered by Google IME.",
-        "stars": 0,
-        "url": "https://github.com/phucbm/react-hanzi-input"
-      },
-      "phucbm/food-tour-sg": {
-        "description": "Chatbot để tìm quán ăn ngon ở Sài Gòn",
-        "stars": 0,
-        "url": "https://github.com/phucbm/food-tour-sg"
-      },
       "phucbm/claudify": {
         "description": "Claude Plugin - Bootstrap .claude/ structure for any existing repo.",
         "stars": 0,
-        "url": "https://github.com/phucbm/claudify"
-      },
-      "phucbm/nextra-docs-starter": {
-        "description": "Nextra docs template with Next.js 16, React 19, Tailwind v4 and improved search UI.",
-        "stars": 50,
-        "url": "https://github.com/phucbm/nextra-docs-starter"
-      },
-      "phucbm/nextra-blog-starter": {
-        "description": "A template for deploying Nextra blogs with built-in features like search, tags, and more.",
-        "stars": 7,
-        "url": "https://github.com/phucbm/nextra-blog-starter"
-      },
-      "phucbm/lipsum-generator": {
-        "description": "🧢 A Chrome extension that generates Lorem Ipsum, trusted by 5,000 weekly users",
-        "stars": 10,
-        "url": "https://github.com/phucbm/lipsum-generator"
-      },
-      "perxel/whack-a-mole": {
-        "description": "🏗 Frontend Development.",
-        "stars": 0,
-        "url": "https://github.com/perxel/whack-a-mole"
-      },
-      "phucbm/normalized-mouse-position": {
-        "description": "Convert mouse coordinates to normalized values relative to any origin point for smooth UI interactions and animations.",
-        "stars": 1,
-        "url": "https://github.com/phucbm/normalized-mouse-position"
-      },
-      "phucbm/magnetic-button": {
-        "description": "A lightweight TypeScript library that creates smooth magnetic attraction effects for HTML elements",
-        "stars": 3,
-        "url": "https://github.com/phucbm/magnetic-button"
-      },
-      "phucbm/jquery-scroll-direction-plugin": {
-        "description": "↕️ A lightweight jQuery plugin to detect scroll direction.",
-        "stars": 7,
-        "url": "https://github.com/phucbm/jquery-scroll-direction-plugin"
+        "url": "https://github.com/phucbm/claudify",
+        "created": "2026-04-13",
+        "commits": 8,
+        "lastCommit": "2026-04-20"
       },
       "phucbm/hieu-chu-han": {
         "description": "Từ điển Trung - Hán Việt, phân tích chữ Hán, bộ thủ.",
         "stars": 2,
-        "url": "https://github.com/phucbm/xue-hanzi"
+        "url": "https://github.com/phucbm/xue-hanzi",
+        "created": "2026-04-12",
+        "commits": 172,
+        "lastCommit": "2026-08-02"
       },
-      "viivue/easy-select": {
-        "description": "❄️  Customizing select is easier than ever",
+      "phucbm/react-hanzi-input": {
+        "description": "Chinese handwriting input component for React — canvas pad, stroke capture, and candidate picker powered by Google IME.",
+        "stars": 0,
+        "url": "https://github.com/phucbm/react-hanzi-input",
+        "created": "2026-04-28",
+        "commits": 8,
+        "lastCommit": "2026-04-28"
+      },
+      "phucbm/clyrics": {
+        "description": "Chinese lyrics powered by AI so anyone can learn from music they love",
+        "stars": 0,
+        "url": "https://github.com/phucbm/clyrics",
+        "created": "2026-05-01",
+        "commits": 116,
+        "lastCommit": "2026-05-04"
+      },
+      "phucbm/food-tour-sg": {
+        "description": "Chatbot để tìm quán ăn ngon ở Sài Gòn",
+        "stars": 0,
+        "url": "https://github.com/phucbm/food-tour-sg",
+        "created": "2026-01-27",
+        "commits": 24,
+        "lastCommit": "2026-04-20"
+      },
+      "phucbm/claude-usage-monitor": {
+        "description": "Multiple Claude.ai accounts tracked right from your Mac menu bar.",
+        "stars": 5,
+        "url": "https://github.com/phucbm/claude-usage-monitor",
+        "created": "2026-04-28",
+        "commits": 64,
+        "lastCommit": "2026-06-25"
+      },
+      "phucbm/nextra-blog-starter": {
+        "description": "A template for deploying Nextra blogs with built-in features like search, tags, and more.",
+        "stars": 7,
+        "url": "https://github.com/phucbm/nextra-blog-starter",
+        "created": "2025-01-30",
+        "commits": 54,
+        "lastCommit": "2025-12-07"
+      },
+      "perxel/whack-a-mole": {
+        "description": "🏗 Frontend Development.",
+        "stars": 0,
+        "url": "https://github.com/perxel/whack-a-mole",
+        "created": "2021-08-29",
+        "commits": 129,
+        "lastCommit": "2023-11-20"
+      },
+      "phucbm/nextra-docs-starter": {
+        "description": "Nextra docs template with Next.js 16, React 19, Tailwind v4 and improved search UI.",
+        "stars": 50,
+        "url": "https://github.com/phucbm/nextra-docs-starter",
+        "created": "2025-01-24",
+        "commits": 58,
+        "lastCommit": "2026-05-05"
+      },
+      "phucbm/lipsum-generator": {
+        "description": "🧢 A Chrome extension that generates Lorem Ipsum, trusted by 5,000 weekly users",
+        "stars": 10,
+        "url": "https://github.com/phucbm/lipsum-generator",
+        "created": "2018-11-03",
+        "commits": 101,
+        "lastCommit": "2026-02-25"
+      },
+      "phucbm/normalized-mouse-position": {
+        "description": "Convert mouse coordinates to normalized values relative to any origin point for smooth UI interactions and animations.",
         "stars": 1,
-        "url": "https://github.com/viivue/easy-select"
+        "url": "https://github.com/phucbm/normalized-mouse-position",
+        "created": "2025-07-06",
+        "commits": 27,
+        "lastCommit": "2025-10-04"
       },
-      "viivue/easy-popup": {
-        "description": "Super light-weight JavaScript library to create a simple popup with mobile layout.",
-        "stars": 2,
-        "url": "https://github.com/viivue/easy-popup"
+      "phucbm/magnetic-button": {
+        "description": "A lightweight TypeScript library that creates smooth magnetic attraction effects for HTML elements",
+        "stars": 3,
+        "url": "https://github.com/phucbm/magnetic-button",
+        "created": "2025-06-24",
+        "commits": 66,
+        "lastCommit": "2025-11-08"
       },
       "phucbm/cursor-effects": {
         "description": "A series of cursor effects.",
         "stars": 7,
-        "url": "https://github.com/phucbm/cursor-effects"
+        "url": "https://github.com/phucbm/cursor-effects",
+        "created": "2021-06-26",
+        "commits": 33,
+        "lastCommit": "2025-06-26"
+      },
+      "phucbm/jquery-scroll-direction-plugin": {
+        "description": "↕️ A lightweight jQuery plugin to detect scroll direction.",
+        "stars": 7,
+        "url": "https://github.com/phucbm/jquery-scroll-direction-plugin",
+        "created": "2020-12-06",
+        "commits": 38,
+        "lastCommit": "2025-06-26"
+      },
+      "viivue/easy-select": {
+        "description": "❄️  Customizing select is easier than ever",
+        "stars": 1,
+        "url": "https://github.com/viivue/easy-select",
+        "created": "2021-08-27",
+        "commits": 210,
+        "lastCommit": "2025-06-03"
+      },
+      "viivue/easy-popup": {
+        "description": "Super light-weight JavaScript library to create a simple popup with mobile layout.",
+        "stars": 2,
+        "url": "https://github.com/viivue/easy-popup",
+        "created": "2022-02-14",
+        "commits": 217,
+        "lastCommit": "2025-05-20"
+      },
+      "viivue/overlapping-slider": {
+        "stars": 0,
+        "url": "https://github.com/viivue/overlapping-slider",
+        "created": "2022-09-23",
+        "commits": 52,
+        "lastCommit": "2022-11-02"
       },
       "viivue/easy-tab-accordion": {
         "description": "Javascript library to create tabs or accordion.",
         "stars": 0,
-        "url": "https://github.com/viivue/easy-tab-accordion"
-      },
-      "viivue/overlapping-slider": {
-        "stars": 0,
-        "url": "https://github.com/viivue/overlapping-slider"
+        "url": "https://github.com/viivue/easy-tab-accordion",
+        "created": "2022-04-04",
+        "commits": 197,
+        "lastCommit": "2025-05-22"
       }
     }
   },

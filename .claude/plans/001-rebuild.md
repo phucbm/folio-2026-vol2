@@ -16,7 +16,7 @@ Status: **closed 2026-10-11.** The site is built (parts 1 to 7), drafts and plac
 - **Conventions used:** numbered sections (§1…), a short abstract as the intro, results as tables, archived projects as numbered *figures* with captions, notes as numbered lab-notebook entries (`N-047`), books as a *bibliography* and bookmarks as *references*, both in real citation format, a version number instead of "last updated", the changelog as *errata*. Sidenotes only where an entry actually cites something (another note, a figure, a reference).
 - **Type:** one modern serif for the name and section titles, a clean sans for reading, mono only for numbers, dates and IDs. Old-style figures in text, tabular figures in tables. Self-hosted, subset (Perxel's font rules in `performance.md`).
 - **Colour:** warm off-white and ink, one accent for links. Dark mode only if it is designed properly; otherwise none.
-- **Motion:** one live element, *Figure 0*, a real plot from my own data (commits per week), drawn like a matplotlib chart, pluckable like Perxel's `WaveLine`. Everything else still. Pointer effects behind `FINE_POINTER`, off under reduced motion (Perxel's rules).
+- **Motion:** one live element, *Figure 1* (Figure 0 until 2026-10-11), a real plot from my own data (commits per week), drawn like a matplotlib chart, pluckable like Perxel's `WaveLine`. Everything else still. Pointer effects behind `FINE_POINTER`, off under reduced motion (Perxel's rules).
 
 ### Home page
 
@@ -24,7 +24,7 @@ No lists of latest items. The home page is the paper's front matter:
 
 1. Name, one line, the abstract (who I am, what this is; playful, the voice carries the warmth).
 2. **Table 1**, the numbers: this year and all time, for commits, notes, books, projects (archived / Perxel), packages (and downloads per month). Each row links to the section that backs it.
-3. Figure 0.
+3. Figure 1.
 4. **Contents**: the sections with their counts (`§1 Notes ......... 47`), each a link to its own listing page.
 5. Ask (chat) trigger, contact, colophon.
 
@@ -100,7 +100,7 @@ For the next plan (launch, or content first). Nothing here blocks the site from 
 - Copy to read: the abstract (the "tables more than hero banners" line), the intro lines on `/archived`, `/oss`, `/reading`, `/references`, notes N-002 to N-004 (drafts), the Data section on `/colophon` (links N-003: publish it or drop the link).
 - Daily rebuild: keep, make weekly, or delete `.github/workflows/rebuild.yml` (undecided). If kept, repo secrets: `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`, `GH_PAT` (the owner's own token, or private contributions drop out), `DISCORD_BOT_TOKEN`, `DISCORD_CHANNEL_ID`.
 - GA4 measurement ID (load it as perxel-web-2026 does: first input or after 15 s).
-- Not checked in a browser yet: the whole site, and Figure 0's pluck (needs a mouse on an `lg` screen).
+- Not checked in a browser yet: the whole site, and Figure 1's pluck (needs a mouse on an `lg` screen).
 
 **At launch**
 - Confirm in Cloudflare which Worker serves phucbm.com today (owner thinks `folio-2026`, `phucbm-com-2026`).
@@ -120,6 +120,9 @@ For the next plan (launch, or content first). Nothing here blocks the site from 
 ## Decided (2026-10-11)
 
 - English only (fonts still carry Vietnamese glyphs for project and place names).
+- `/archived` and `/perxel` merged into `/projects` (§2): one flat list by date (where it was done is a label on the row); title, month, role, one line, link. No entry pages or images. The archived MDX placeholders and plates are gone; intake/archived.md now only feeds `data/projects.ts`.
+- ui.phucbm.com is offline (2026-10-11): not mentioned anywhere, `/components` redirects to `/oss` until it is back.
+- Every listing's number is an alias derived from the date at build time (`N-`, `P-`, `B-`, `R-`; `lib/aliases.ts`); the slug is the ID. Notes lost their authored `number`. Rule in `.claude/docs/content.md`.
 - MCP + Ask deferred until after launch: content and layout first.
 - No newsletter for now.
 - Bookmarks: keep the Discord channel feed from `phucbm-web`.

@@ -1,24 +1,23 @@
 # Content
 
-Ported from perxel-web-2026 (2026-10-11, plan 001 part 2), trimmed to one locale and two collections.
+Ported from perxel-web-2026 (2026-10-11, plan 001 part 2), trimmed to one locale. One collection (notes); projects are a data file (2026-10-11).
 
 ## Collections
 
-| Collection | Files | Route | Number |
+| Collection | Files | Route | Alias |
 |---|---|---|---|
-| Notes (§1) | `content/notes/*.mdx` | `/notes/<slug>` | `number` → `N-047` |
-| Archived (§2) | `content/archived/*.mdx` | `/archived/<slug>` | `figure` → `Figure 3` |
+| Notes (§1) | `content/notes/*.mdx` | `/notes/<slug>` | `N-047`, by `date` |
 
-- Each has `types.ts` (extends `BaseMeta` in `lib/content/schema.ts`) and `index.ts`, which lists the filenames by hand (no `fs` at runtime) and exports the **listed** set (`notes`, `archived`: listings, feeds, related pool) and the **buildable** set (`notesAll`, `archivedAll`: `generateStaticParams` only).
+- Each has `types.ts` (extends `BaseMeta` in `lib/content/schema.ts`) and `index.ts`, which lists the filenames by hand (no `fs` at runtime) and exports the **listed** set (`notes`: listings, feeds, related pool) and the **buildable** set (`notesAll`: `generateStaticParams` only).
 - `status`: `draft` (dev only), `published`, `unlisted` (built and linkable, never listed, noindex). `splitByStatus()` in `lib/content/collections.ts`.
-- Numbers and figures are authored, not derived, so they never shift when an older entry is added. `content:lint` and `buildCatalog()` both reject a missing or repeated one.
+- **Aliases** (2026-10-11). The slug (or a source's URL) is the ID. Every listing numbers its items by date, oldest first, at build time (`lib/aliases.ts`): `N-001` notes (`date`), `P-001` projects (`date`), `B-001` books (date read), `R-001` references (date saved). An alias is a position, not an ID: adding an older item shifts the ones after it. Ties, and items with no date (counted as oldest), follow the authored order (`noteFiles` in `content/notes/index.ts`, the list in `data/projects.ts`). Only listed notes get a number. Copy names an item and links it, never its alias (`alias-in-prose` in `content:lint`). When the owner says "P023" in chat, it means whatever is at that position in the current build. Table and figure numbers (`Table 1`, `Figure 1`) stay fixed: they label parts of a page, not items in a list.
 - Frontmatter fields and writing rules: the `copywriting` skill, section 5.
 - The collection list for the scripts is `scripts/content-collections.mjs`. A new collection: add it there, give it `types.ts` and `index.ts`, add a kind to `lib/content/catalog.ts`.
 
 ## Pages and data
 
 - Single pages with prose (`/colophon`, the abstract on the home page) are `content/pages/<name>.mdx`, imported statically by their route (`import Body, {meta} from "@/content/pages/colophon.mdx"`). Frontmatter: `title`, `description`, optional `updated`. Not a collection: no catalog entry, not linted, so check the `copywriting` skill by hand.
-- `/perxel` reads `data/perxel.ts` (one line per case study, linking to perxel.com/en/works). Contact links: `contactLinks` in `lib/site.ts`.
+- `/projects` (§2) reads `data/projects.ts`: one flat list by date, one line per project (slug, title, where: Perxel, Freelance or ViiVue, `YYYY-MM` date, role, line, link). No entry pages and no images; a project with a perxel.com case study links there. Contact links: `contactLinks` in `lib/site.ts`.
 - Every page is listed in `staticRoutes` (`lib/routes.ts`), which feeds the sitemap, llms.txt and the home page's contents.
 
 ## Reading frontmatter without importing MDX
@@ -29,7 +28,7 @@ An entry route can only exist once its collection has at least one `.mdx`: with 
 
 ## Catalog
 
-`lib/content/catalog.ts` is pure (no MDX, no fs; `pnpm test` covers it): `buildCatalog()` gives one `CatalogItem` per listed entry, with its URL, label (`N-047`, `Figure 3`), year, `projects` resolved against the archived slugs and the reverse `citedBy`. `lib/content/site-catalog.ts` wires the real data in; it is the one module app code imports for cross-collection lists.
+`lib/content/catalog.ts` is pure (no MDX, no fs; `pnpm test` covers it): `buildCatalog()` gives one `CatalogItem` per listed entry, with its URL, label (`N-047`), year. `lib/content/site-catalog.ts` wires the real data in; it is the one module app code imports for cross-collection lists.
 
 Built from it, all static and rebuilt on deploy: `/content.json` (full text, for the MCP later), `/sitemap.xml` (plus `staticRoutes` in `lib/routes.ts`), `/llms.txt`, `/feed.xml` (notes, RSS 2.0), `/robots.txt`. A new section page goes in `staticRoutes`.
 
@@ -47,6 +46,6 @@ Built from it, all static and rebuilt on deploy: `/content.json` (full text, for
 
 ## Outside data
 
-`scripts/data/fetch.mjs` (`pnpm data`) writes `data/live.generated.json`; `lib/live.ts` types and exports it, `lib/figures.ts` turns it into plot series, `lib/numbers.ts` into Table 1. Sources: GitHub GraphQL (contributions per week and, for the last 53 weeks, per day (Figure 0, the calendar), both on GitHub's Sunday-first weeks; commits per year; token from `GITHUB_TOKEN` or `gh auth token`, and it must be the owner's own so private contributions count), the repos listed in `data/oss.ts` (stars, descriptions), npm (every package of the `phucbui96` account, `NPM_MAINTAINER`: full download history, jsDelivr hits), Goodreads (the public RSS of the read shelf), Discord (bookmark threads; `DISCORD_BOT_TOKEN`, `DISCORD_CHANNEL_ID` in `.env.local`). The file is committed so a build without tokens still has numbers. `.github/workflows/rebuild.yml` redeploys daily once its secrets are set.
+`scripts/data/fetch.mjs` (`pnpm data`) writes `data/live.generated.json`; `lib/live.ts` types and exports it, `lib/figures.ts` turns it into plot series, `lib/numbers.ts` into Table 1. Sources: GitHub GraphQL (contributions per week and, for the last 53 weeks, per day (Figure 1, the calendar), both on GitHub's Sunday-first weeks; commits per year; token from `GITHUB_TOKEN` or `gh auth token`, and it must be the owner's own so private contributions count), the repos listed in `data/oss.ts` (stars, descriptions), npm (every package of the `phucbui96` account, `NPM_MAINTAINER`: full download history, jsDelivr hits), Goodreads (the public RSS of the read shelf), Discord (bookmark threads; `DISCORD_BOT_TOKEN`, `DISCORD_CHANNEL_ID` in `.env.local`). The file is committed so a build without tokens still has numbers. `.github/workflows/rebuild.yml` redeploys daily once its secrets are set.
 
-Plots: `components/plots/Plot.tsx` (matplotlib defaults, server SVG at two sizes), `ContributionCalendar.tsx` (GitHub's calendar, Figure 0 on the home page), `PluckLine.tsx` (the spring of Figure 0's weekly line on `/stats`, behind `FINE_POINTER` and off under reduced motion). On `/stats` the figures are numbered S1, S2 (supplementary), never plain numbers: those belong to archived projects.
+Plots: `components/plots/Plot.tsx` (matplotlib defaults, server SVG at two sizes), `ContributionCalendar.tsx` (GitHub's calendar, Figure 1 on the home page), `PluckLine.tsx` (the spring of Figure 1's weekly line on `/stats`, behind `FINE_POINTER` and off under reduced motion).

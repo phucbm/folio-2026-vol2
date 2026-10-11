@@ -16,7 +16,7 @@ function yearTicks(keys: string[]): Series["xTicks"] {
   return ticks
 }
 
-/** Figure 0: contributions per week, from my first contribution on GitHub to this week. */
+/** Figure 1: contributions per week, from my first contribution on GitHub to this week. */
 export function contributionsPerWeek(): Series | null {
   const weeks = github?.contributionsPerWeek ?? []
   const first = weeks.findIndex((w) => w.count > 0)
