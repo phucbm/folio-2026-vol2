@@ -6,8 +6,8 @@ import { catalogByKind } from "@/lib/content/site-catalog";
 import { numbers } from "@/lib/numbers";
 import { perxelWorks } from "@/data/perxel";
 import { ossGroups } from "@/data/oss";
-import { books } from "@/data/reading";
-import { references } from "@/data/references";
+import { books, references } from "@/lib/live";
+import { Figure0 } from "@/components/plots/Figure0";
 import { NumCell } from "@/components/content/Table";
 
 // Counts shown beside a section in the contents, where the section is a list.
@@ -16,13 +16,13 @@ const counts: Record<string, number> = {
   "/archived": catalogByKind("archived").length,
   "/perxel": perxelWorks.length,
   "/oss": ossGroups.reduce((n, group) => n + group.repos.length, 0),
-  // Counted once the pipeline fills them (part 6); an empty list gets no count.
+  // A source never fetched gets no count.
   ...(books.length ? { "/reading": books.length } : {}),
   ...(references.length ? { "/references": references.length } : {}),
 };
 
 // The paper's front matter (plan 001, "Home page"): name, abstract, Table 1, Figure 0, contents,
-// contact. No lists of latest items. Figure 0 joins with the data pipeline (part 6), Ask after launch.
+// contact. No lists of latest items. Ask joins after launch.
 export default function Home() {
   return (
     <article>
@@ -44,8 +44,7 @@ export default function Home() {
 
       <section aria-labelledby="table-1" className="mt-14 max-w-measure">
         <p id="table-1" className="label">
-          <span className="font-semibold text-ink">Table 1.</span> The numbers, this year and all time. Commits,
-          books and packages are not measured yet.
+          <span className="font-semibold text-ink">Table 1.</span> The numbers, this year and all time, rebuilt on every deploy.
         </p>
         <table className="mt-2 w-full border-collapse border-y border-ink text-[0.9375rem]">
           <thead className="border-b border-rule">
@@ -69,6 +68,10 @@ export default function Home() {
             ))}
           </tbody>
         </table>
+      </section>
+
+      <section aria-label="Figure 0" className="mt-14 max-w-measure">
+        <Figure0 />
       </section>
 
       <nav aria-labelledby="contents" className="mt-14 max-w-measure">

@@ -10,9 +10,10 @@
     "test": "vitest run",
     "content:lint": "node scripts/lint-content.mjs",
     "content:meta": "node scripts/content-meta.mjs",
+    "data": "node --env-file-if-exists=.env.local scripts/data/fetch.mjs",
     "visuals": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/visuals/cli.mjs",
     "preview": "pnpm build && wrangler dev",
-    "deploy": "SHOW_DRAFTS=1 pnpm build && wrangler deploy"
+    "deploy": "pnpm data && SHOW_DRAFTS=1 pnpm build && wrangler deploy"
   },
   "pnpm": {
     "ignoredBuiltDependencies": [

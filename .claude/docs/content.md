@@ -44,3 +44,9 @@ Built from it, all static and rebuilt on deploy: `/content.json` (full text, for
 ## Visuals
 
 `pnpm visuals` (`scripts/visuals/`, `lib/visuals/`, templates in `components/visuals/`, the dev-only route `app/(visuals)/visuals/[template]/page.dev.tsx`). Workflow: the `visuals` skill. `next.config.ts` adds `dev.tsx` to `pageExtensions` and drops `output: "export"` only under `next dev`, so the route never reaches the build.
+
+## Outside data
+
+`scripts/data/fetch.mjs` (`pnpm data`) writes `data/live.generated.json`; `lib/live.ts` types and exports it, `lib/figures.ts` turns it into plot series, `lib/numbers.ts` into Table 1. Sources: GitHub GraphQL (contributions per week, commits per year; token from `GITHUB_TOKEN` or `gh auth token`, and it must be the owner's own so private contributions count), the repos listed in `data/oss.ts` (stars, descriptions), npm (every package of the `phucbui96` account, `NPM_MAINTAINER`: full download history, jsDelivr hits), Goodreads (the public RSS of the read shelf), Discord (bookmark threads; `DISCORD_BOT_TOKEN`, `DISCORD_CHANNEL_ID` in `.env.local`). The file is committed so a build without tokens still has numbers. `.github/workflows/rebuild.yml` redeploys daily once its secrets are set.
+
+Plots: `components/plots/Plot.tsx` (matplotlib defaults, server SVG at two sizes), `PluckLine.tsx` (Figure 0's spring, behind `FINE_POINTER` and off under reduced motion). On `/stats` the figures are numbered S1, S2 (supplementary), never plain numbers: those belong to archived projects.

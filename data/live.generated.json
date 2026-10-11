@@ -1,0 +1,3327 @@
+{
+  "fetchedAt": {
+    "github": "2026-10-11T09:33:28.298Z",
+    "npm": "2026-10-11T09:34:29.354Z",
+    "goodreads": "2026-10-11T09:34:29.938Z",
+    "discord": "2026-10-11T09:34:35.441Z"
+  },
+  "github": {
+    "commitsByYear": {
+      "2017": 0,
+      "2018": 92,
+      "2019": 1,
+      "2020": 23,
+      "2021": 501,
+      "2022": 789,
+      "2023": 400,
+      "2024": 203,
+      "2025": 812,
+      "2026": 2536
+    },
+    "contributionsPerWeek": [
+      {
+        "week": "2016-12-26",
+        "count": 0
+      },
+      {
+        "week": "2017-01-02",
+        "count": 0
+      },
+      {
+        "week": "2017-01-09",
+        "count": 0
+      },
+      {
+        "week": "2017-01-16",
+        "count": 0
+      },
+      {
+        "week": "2017-01-23",
+        "count": 0
+      },
+      {
+        "week": "2017-01-30",
+        "count": 0
+      },
+      {
+        "week": "2017-02-06",
+        "count": 0
+      },
+      {
+        "week": "2017-02-13",
+        "count": 0
+      },
+      {
+        "week": "2017-02-20",
+        "count": 0
+      },
+      {
+        "week": "2017-02-27",
+        "count": 0
+      },
+      {
+        "week": "2017-03-06",
+        "count": 0
+      },
+      {
+        "week": "2017-03-13",
+        "count": 0
+      },
+      {
+        "week": "2017-03-20",
+        "count": 0
+      },
+      {
+        "week": "2017-03-27",
+        "count": 0
+      },
+      {
+        "week": "2017-04-03",
+        "count": 0
+      },
+      {
+        "week": "2017-04-10",
+        "count": 0
+      },
+      {
+        "week": "2017-04-17",
+        "count": 0
+      },
+      {
+        "week": "2017-04-24",
+        "count": 0
+      },
+      {
+        "week": "2017-05-01",
+        "count": 0
+      },
+      {
+        "week": "2017-05-08",
+        "count": 0
+      },
+      {
+        "week": "2017-05-15",
+        "count": 0
+      },
+      {
+        "week": "2017-05-22",
+        "count": 0
+      },
+      {
+        "week": "2017-05-29",
+        "count": 0
+      },
+      {
+        "week": "2017-06-05",
+        "count": 0
+      },
+      {
+        "week": "2017-06-12",
+        "count": 0
+      },
+      {
+        "week": "2017-06-19",
+        "count": 0
+      },
+      {
+        "week": "2017-06-26",
+        "count": 0
+      },
+      {
+        "week": "2017-07-03",
+        "count": 0
+      },
+      {
+        "week": "2017-07-10",
+        "count": 0
+      },
+      {
+        "week": "2017-07-17",
+        "count": 0
+      },
+      {
+        "week": "2017-07-24",
+        "count": 0
+      },
+      {
+        "week": "2017-07-31",
+        "count": 0
+      },
+      {
+        "week": "2017-08-07",
+        "count": 0
+      },
+      {
+        "week": "2017-08-14",
+        "count": 0
+      },
+      {
+        "week": "2017-08-21",
+        "count": 0
+      },
+      {
+        "week": "2017-08-28",
+        "count": 0
+      },
+      {
+        "week": "2017-09-04",
+        "count": 0
+      },
+      {
+        "week": "2017-09-11",
+        "count": 0
+      },
+      {
+        "week": "2017-09-18",
+        "count": 0
+      },
+      {
+        "week": "2017-09-25",
+        "count": 0
+      },
+      {
+        "week": "2017-10-02",
+        "count": 0
+      },
+      {
+        "week": "2017-10-09",
+        "count": 0
+      },
+      {
+        "week": "2017-10-16",
+        "count": 0
+      },
+      {
+        "week": "2017-10-23",
+        "count": 0
+      },
+      {
+        "week": "2017-10-30",
+        "count": 0
+      },
+      {
+        "week": "2017-11-06",
+        "count": 0
+      },
+      {
+        "week": "2017-11-13",
+        "count": 0
+      },
+      {
+        "week": "2017-11-20",
+        "count": 0
+      },
+      {
+        "week": "2017-11-27",
+        "count": 0
+      },
+      {
+        "week": "2017-12-04",
+        "count": 0
+      },
+      {
+        "week": "2017-12-11",
+        "count": 0
+      },
+      {
+        "week": "2017-12-18",
+        "count": 0
+      },
+      {
+        "week": "2017-12-25",
+        "count": 0
+      },
+      {
+        "week": "2018-01-01",
+        "count": 6
+      },
+      {
+        "week": "2018-01-08",
+        "count": 4
+      },
+      {
+        "week": "2018-01-15",
+        "count": 10
+      },
+      {
+        "week": "2018-01-22",
+        "count": 0
+      },
+      {
+        "week": "2018-01-29",
+        "count": 0
+      },
+      {
+        "week": "2018-02-05",
+        "count": 0
+      },
+      {
+        "week": "2018-02-12",
+        "count": 0
+      },
+      {
+        "week": "2018-02-19",
+        "count": 0
+      },
+      {
+        "week": "2018-02-26",
+        "count": 0
+      },
+      {
+        "week": "2018-03-05",
+        "count": 0
+      },
+      {
+        "week": "2018-03-12",
+        "count": 0
+      },
+      {
+        "week": "2018-03-19",
+        "count": 0
+      },
+      {
+        "week": "2018-03-26",
+        "count": 0
+      },
+      {
+        "week": "2018-04-02",
+        "count": 0
+      },
+      {
+        "week": "2018-04-09",
+        "count": 13
+      },
+      {
+        "week": "2018-04-16",
+        "count": 4
+      },
+      {
+        "week": "2018-04-23",
+        "count": 54
+      },
+      {
+        "week": "2018-04-30",
+        "count": 40
+      },
+      {
+        "week": "2018-05-07",
+        "count": 24
+      },
+      {
+        "week": "2018-05-14",
+        "count": 4
+      },
+      {
+        "week": "2018-05-21",
+        "count": 8
+      },
+      {
+        "week": "2018-05-28",
+        "count": 10
+      },
+      {
+        "week": "2018-06-04",
+        "count": 10
+      },
+      {
+        "week": "2018-06-11",
+        "count": 0
+      },
+      {
+        "week": "2018-06-18",
+        "count": 2
+      },
+      {
+        "week": "2018-06-25",
+        "count": 2
+      },
+      {
+        "week": "2018-07-02",
+        "count": 2
+      },
+      {
+        "week": "2018-07-09",
+        "count": 2
+      },
+      {
+        "week": "2018-07-16",
+        "count": 2
+      },
+      {
+        "week": "2018-07-23",
+        "count": 10
+      },
+      {
+        "week": "2018-07-30",
+        "count": 4
+      },
+      {
+        "week": "2018-08-06",
+        "count": 0
+      },
+      {
+        "week": "2018-08-13",
+        "count": 0
+      },
+      {
+        "week": "2018-08-20",
+        "count": 10
+      },
+      {
+        "week": "2018-08-27",
+        "count": 8
+      },
+      {
+        "week": "2018-09-03",
+        "count": 0
+      },
+      {
+        "week": "2018-09-10",
+        "count": 4
+      },
+      {
+        "week": "2018-09-17",
+        "count": 6
+      },
+      {
+        "week": "2018-09-24",
+        "count": 18
+      },
+      {
+        "week": "2018-10-01",
+        "count": 14
+      },
+      {
+        "week": "2018-10-08",
+        "count": 2
+      },
+      {
+        "week": "2018-10-15",
+        "count": 19
+      },
+      {
+        "week": "2018-10-22",
+        "count": 27
+      },
+      {
+        "week": "2018-10-29",
+        "count": 22
+      },
+      {
+        "week": "2018-11-05",
+        "count": 9
+      },
+      {
+        "week": "2018-11-12",
+        "count": 4
+      },
+      {
+        "week": "2018-11-19",
+        "count": 13
+      },
+      {
+        "week": "2018-11-26",
+        "count": 19
+      },
+      {
+        "week": "2018-12-03",
+        "count": 5
+      },
+      {
+        "week": "2018-12-10",
+        "count": 7
+      },
+      {
+        "week": "2018-12-17",
+        "count": 4
+      },
+      {
+        "week": "2018-12-24",
+        "count": 4
+      },
+      {
+        "week": "2018-12-31",
+        "count": 6
+      },
+      {
+        "week": "2019-01-07",
+        "count": 9
+      },
+      {
+        "week": "2019-01-14",
+        "count": 1
+      },
+      {
+        "week": "2019-01-21",
+        "count": 10
+      },
+      {
+        "week": "2019-01-28",
+        "count": 7
+      },
+      {
+        "week": "2019-02-04",
+        "count": 0
+      },
+      {
+        "week": "2019-02-11",
+        "count": 0
+      },
+      {
+        "week": "2019-02-18",
+        "count": 10
+      },
+      {
+        "week": "2019-02-25",
+        "count": 8
+      },
+      {
+        "week": "2019-03-04",
+        "count": 15
+      },
+      {
+        "week": "2019-03-11",
+        "count": 3
+      },
+      {
+        "week": "2019-03-18",
+        "count": 2
+      },
+      {
+        "week": "2019-03-25",
+        "count": 4
+      },
+      {
+        "week": "2019-04-01",
+        "count": 3
+      },
+      {
+        "week": "2019-04-08",
+        "count": 4
+      },
+      {
+        "week": "2019-04-15",
+        "count": 0
+      },
+      {
+        "week": "2019-04-22",
+        "count": 3
+      },
+      {
+        "week": "2019-04-29",
+        "count": 0
+      },
+      {
+        "week": "2019-05-06",
+        "count": 1
+      },
+      {
+        "week": "2019-05-13",
+        "count": 0
+      },
+      {
+        "week": "2019-05-20",
+        "count": 0
+      },
+      {
+        "week": "2019-05-27",
+        "count": 0
+      },
+      {
+        "week": "2019-06-03",
+        "count": 0
+      },
+      {
+        "week": "2019-06-10",
+        "count": 3
+      },
+      {
+        "week": "2019-06-17",
+        "count": 27
+      },
+      {
+        "week": "2019-06-24",
+        "count": 31
+      },
+      {
+        "week": "2019-07-01",
+        "count": 1
+      },
+      {
+        "week": "2019-07-08",
+        "count": 2
+      },
+      {
+        "week": "2019-07-15",
+        "count": 1
+      },
+      {
+        "week": "2019-07-22",
+        "count": 4
+      },
+      {
+        "week": "2019-07-29",
+        "count": 0
+      },
+      {
+        "week": "2019-08-05",
+        "count": 0
+      },
+      {
+        "week": "2019-08-12",
+        "count": 5
+      },
+      {
+        "week": "2019-08-19",
+        "count": 12
+      },
+      {
+        "week": "2019-08-26",
+        "count": 3
+      },
+      {
+        "week": "2019-09-02",
+        "count": 7
+      },
+      {
+        "week": "2019-09-09",
+        "count": 0
+      },
+      {
+        "week": "2019-09-16",
+        "count": 0
+      },
+      {
+        "week": "2019-09-23",
+        "count": 1
+      },
+      {
+        "week": "2019-09-30",
+        "count": 1
+      },
+      {
+        "week": "2019-10-07",
+        "count": 2
+      },
+      {
+        "week": "2019-10-14",
+        "count": 7
+      },
+      {
+        "week": "2019-10-21",
+        "count": 0
+      },
+      {
+        "week": "2019-10-28",
+        "count": 13
+      },
+      {
+        "week": "2019-11-04",
+        "count": 6
+      },
+      {
+        "week": "2019-11-11",
+        "count": 1
+      },
+      {
+        "week": "2019-11-18",
+        "count": 0
+      },
+      {
+        "week": "2019-11-25",
+        "count": 0
+      },
+      {
+        "week": "2019-12-02",
+        "count": 1
+      },
+      {
+        "week": "2019-12-09",
+        "count": 4
+      },
+      {
+        "week": "2019-12-16",
+        "count": 8
+      },
+      {
+        "week": "2019-12-23",
+        "count": 15
+      },
+      {
+        "week": "2019-12-30",
+        "count": 42
+      },
+      {
+        "week": "2020-01-06",
+        "count": 0
+      },
+      {
+        "week": "2020-01-13",
+        "count": 10
+      },
+      {
+        "week": "2020-01-20",
+        "count": 0
+      },
+      {
+        "week": "2020-01-27",
+        "count": 2
+      },
+      {
+        "week": "2020-02-03",
+        "count": 0
+      },
+      {
+        "week": "2020-02-10",
+        "count": 5
+      },
+      {
+        "week": "2020-02-17",
+        "count": 0
+      },
+      {
+        "week": "2020-02-24",
+        "count": 1
+      },
+      {
+        "week": "2020-03-02",
+        "count": 0
+      },
+      {
+        "week": "2020-03-09",
+        "count": 0
+      },
+      {
+        "week": "2020-03-16",
+        "count": 0
+      },
+      {
+        "week": "2020-03-23",
+        "count": 0
+      },
+      {
+        "week": "2020-03-30",
+        "count": 0
+      },
+      {
+        "week": "2020-04-06",
+        "count": 0
+      },
+      {
+        "week": "2020-04-13",
+        "count": 0
+      },
+      {
+        "week": "2020-04-20",
+        "count": 0
+      },
+      {
+        "week": "2020-04-27",
+        "count": 0
+      },
+      {
+        "week": "2020-05-04",
+        "count": 0
+      },
+      {
+        "week": "2020-05-11",
+        "count": 0
+      },
+      {
+        "week": "2020-05-18",
+        "count": 0
+      },
+      {
+        "week": "2020-05-25",
+        "count": 2
+      },
+      {
+        "week": "2020-06-01",
+        "count": 0
+      },
+      {
+        "week": "2020-06-08",
+        "count": 0
+      },
+      {
+        "week": "2020-06-15",
+        "count": 0
+      },
+      {
+        "week": "2020-06-22",
+        "count": 0
+      },
+      {
+        "week": "2020-06-29",
+        "count": 0
+      },
+      {
+        "week": "2020-07-06",
+        "count": 0
+      },
+      {
+        "week": "2020-07-13",
+        "count": 0
+      },
+      {
+        "week": "2020-07-20",
+        "count": 0
+      },
+      {
+        "week": "2020-07-27",
+        "count": 0
+      },
+      {
+        "week": "2020-08-03",
+        "count": 0
+      },
+      {
+        "week": "2020-08-10",
+        "count": 0
+      },
+      {
+        "week": "2020-08-17",
+        "count": 0
+      },
+      {
+        "week": "2020-08-24",
+        "count": 0
+      },
+      {
+        "week": "2020-08-31",
+        "count": 0
+      },
+      {
+        "week": "2020-09-07",
+        "count": 0
+      },
+      {
+        "week": "2020-09-14",
+        "count": 0
+      },
+      {
+        "week": "2020-09-21",
+        "count": 0
+      },
+      {
+        "week": "2020-09-28",
+        "count": 7
+      },
+      {
+        "week": "2020-10-05",
+        "count": 2
+      },
+      {
+        "week": "2020-10-12",
+        "count": 0
+      },
+      {
+        "week": "2020-10-19",
+        "count": 0
+      },
+      {
+        "week": "2020-10-26",
+        "count": 0
+      },
+      {
+        "week": "2020-11-02",
+        "count": 0
+      },
+      {
+        "week": "2020-11-09",
+        "count": 0
+      },
+      {
+        "week": "2020-11-16",
+        "count": 0
+      },
+      {
+        "week": "2020-11-23",
+        "count": 0
+      },
+      {
+        "week": "2020-11-30",
+        "count": 12
+      },
+      {
+        "week": "2020-12-07",
+        "count": 0
+      },
+      {
+        "week": "2020-12-14",
+        "count": 0
+      },
+      {
+        "week": "2020-12-21",
+        "count": 0
+      },
+      {
+        "week": "2020-12-28",
+        "count": 0
+      },
+      {
+        "week": "2021-01-04",
+        "count": 0
+      },
+      {
+        "week": "2021-01-11",
+        "count": 0
+      },
+      {
+        "week": "2021-01-18",
+        "count": 1
+      },
+      {
+        "week": "2021-01-25",
+        "count": 0
+      },
+      {
+        "week": "2021-02-01",
+        "count": 0
+      },
+      {
+        "week": "2021-02-08",
+        "count": 13
+      },
+      {
+        "week": "2021-02-15",
+        "count": 21
+      },
+      {
+        "week": "2021-02-22",
+        "count": 0
+      },
+      {
+        "week": "2021-03-01",
+        "count": 0
+      },
+      {
+        "week": "2021-03-08",
+        "count": 0
+      },
+      {
+        "week": "2021-03-15",
+        "count": 0
+      },
+      {
+        "week": "2021-03-22",
+        "count": 8
+      },
+      {
+        "week": "2021-03-29",
+        "count": 6
+      },
+      {
+        "week": "2021-04-05",
+        "count": 0
+      },
+      {
+        "week": "2021-04-12",
+        "count": 0
+      },
+      {
+        "week": "2021-04-19",
+        "count": 0
+      },
+      {
+        "week": "2021-04-26",
+        "count": 0
+      },
+      {
+        "week": "2021-05-03",
+        "count": 0
+      },
+      {
+        "week": "2021-05-10",
+        "count": 0
+      },
+      {
+        "week": "2021-05-17",
+        "count": 0
+      },
+      {
+        "week": "2021-05-24",
+        "count": 28
+      },
+      {
+        "week": "2021-05-31",
+        "count": 3
+      },
+      {
+        "week": "2021-06-07",
+        "count": 0
+      },
+      {
+        "week": "2021-06-14",
+        "count": 18
+      },
+      {
+        "week": "2021-06-21",
+        "count": 15
+      },
+      {
+        "week": "2021-06-28",
+        "count": 48
+      },
+      {
+        "week": "2021-07-05",
+        "count": 11
+      },
+      {
+        "week": "2021-07-12",
+        "count": 8
+      },
+      {
+        "week": "2021-07-19",
+        "count": 21
+      },
+      {
+        "week": "2021-07-26",
+        "count": 6
+      },
+      {
+        "week": "2021-08-02",
+        "count": 2
+      },
+      {
+        "week": "2021-08-09",
+        "count": 13
+      },
+      {
+        "week": "2021-08-16",
+        "count": 23
+      },
+      {
+        "week": "2021-08-23",
+        "count": 16
+      },
+      {
+        "week": "2021-08-30",
+        "count": 50
+      },
+      {
+        "week": "2021-09-06",
+        "count": 39
+      },
+      {
+        "week": "2021-09-13",
+        "count": 58
+      },
+      {
+        "week": "2021-09-20",
+        "count": 22
+      },
+      {
+        "week": "2021-09-27",
+        "count": 8
+      },
+      {
+        "week": "2021-10-04",
+        "count": 11
+      },
+      {
+        "week": "2021-10-11",
+        "count": 8
+      },
+      {
+        "week": "2021-10-18",
+        "count": 5
+      },
+      {
+        "week": "2021-10-25",
+        "count": 1
+      },
+      {
+        "week": "2021-11-01",
+        "count": 71
+      },
+      {
+        "week": "2021-11-08",
+        "count": 10
+      },
+      {
+        "week": "2021-11-15",
+        "count": 26
+      },
+      {
+        "week": "2021-11-22",
+        "count": 17
+      },
+      {
+        "week": "2021-11-29",
+        "count": 16
+      },
+      {
+        "week": "2021-12-06",
+        "count": 31
+      },
+      {
+        "week": "2021-12-13",
+        "count": 13
+      },
+      {
+        "week": "2021-12-20",
+        "count": 3
+      },
+      {
+        "week": "2021-12-27",
+        "count": 47
+      },
+      {
+        "week": "2022-01-03",
+        "count": 26
+      },
+      {
+        "week": "2022-01-10",
+        "count": 29
+      },
+      {
+        "week": "2022-01-17",
+        "count": 33
+      },
+      {
+        "week": "2022-01-24",
+        "count": 1
+      },
+      {
+        "week": "2022-01-31",
+        "count": 6
+      },
+      {
+        "week": "2022-02-07",
+        "count": 27
+      },
+      {
+        "week": "2022-02-14",
+        "count": 18
+      },
+      {
+        "week": "2022-02-21",
+        "count": 0
+      },
+      {
+        "week": "2022-02-28",
+        "count": 7
+      },
+      {
+        "week": "2022-03-07",
+        "count": 12
+      },
+      {
+        "week": "2022-03-14",
+        "count": 8
+      },
+      {
+        "week": "2022-03-21",
+        "count": 6
+      },
+      {
+        "week": "2022-03-28",
+        "count": 38
+      },
+      {
+        "week": "2022-04-04",
+        "count": 26
+      },
+      {
+        "week": "2022-04-11",
+        "count": 50
+      },
+      {
+        "week": "2022-04-18",
+        "count": 85
+      },
+      {
+        "week": "2022-04-25",
+        "count": 85
+      },
+      {
+        "week": "2022-05-02",
+        "count": 71
+      },
+      {
+        "week": "2022-05-09",
+        "count": 32
+      },
+      {
+        "week": "2022-05-16",
+        "count": 37
+      },
+      {
+        "week": "2022-05-23",
+        "count": 0
+      },
+      {
+        "week": "2022-05-30",
+        "count": 45
+      },
+      {
+        "week": "2022-06-06",
+        "count": 4
+      },
+      {
+        "week": "2022-06-13",
+        "count": 7
+      },
+      {
+        "week": "2022-06-20",
+        "count": 10
+      },
+      {
+        "week": "2022-06-27",
+        "count": 18
+      },
+      {
+        "week": "2022-07-04",
+        "count": 27
+      },
+      {
+        "week": "2022-07-11",
+        "count": 1
+      },
+      {
+        "week": "2022-07-18",
+        "count": 4
+      },
+      {
+        "week": "2022-07-25",
+        "count": 1
+      },
+      {
+        "week": "2022-08-01",
+        "count": 0
+      },
+      {
+        "week": "2022-08-08",
+        "count": 2
+      },
+      {
+        "week": "2022-08-15",
+        "count": 0
+      },
+      {
+        "week": "2022-08-22",
+        "count": 15
+      },
+      {
+        "week": "2022-08-29",
+        "count": 13
+      },
+      {
+        "week": "2022-09-05",
+        "count": 7
+      },
+      {
+        "week": "2022-09-12",
+        "count": 0
+      },
+      {
+        "week": "2022-09-19",
+        "count": 51
+      },
+      {
+        "week": "2022-09-26",
+        "count": 42
+      },
+      {
+        "week": "2022-10-03",
+        "count": 41
+      },
+      {
+        "week": "2022-10-10",
+        "count": 45
+      },
+      {
+        "week": "2022-10-17",
+        "count": 52
+      },
+      {
+        "week": "2022-10-24",
+        "count": 68
+      },
+      {
+        "week": "2022-10-31",
+        "count": 65
+      },
+      {
+        "week": "2022-11-07",
+        "count": 37
+      },
+      {
+        "week": "2022-11-14",
+        "count": 44
+      },
+      {
+        "week": "2022-11-21",
+        "count": 14
+      },
+      {
+        "week": "2022-11-28",
+        "count": 25
+      },
+      {
+        "week": "2022-12-05",
+        "count": 8
+      },
+      {
+        "week": "2022-12-12",
+        "count": 2
+      },
+      {
+        "week": "2022-12-19",
+        "count": 19
+      },
+      {
+        "week": "2022-12-26",
+        "count": 35
+      },
+      {
+        "week": "2023-01-02",
+        "count": 26
+      },
+      {
+        "week": "2023-01-09",
+        "count": 40
+      },
+      {
+        "week": "2023-01-16",
+        "count": 3
+      },
+      {
+        "week": "2023-01-23",
+        "count": 5
+      },
+      {
+        "week": "2023-01-30",
+        "count": 6
+      },
+      {
+        "week": "2023-02-06",
+        "count": 8
+      },
+      {
+        "week": "2023-02-13",
+        "count": 35
+      },
+      {
+        "week": "2023-02-20",
+        "count": 5
+      },
+      {
+        "week": "2023-02-27",
+        "count": 8
+      },
+      {
+        "week": "2023-03-06",
+        "count": 21
+      },
+      {
+        "week": "2023-03-13",
+        "count": 5
+      },
+      {
+        "week": "2023-03-20",
+        "count": 15
+      },
+      {
+        "week": "2023-03-27",
+        "count": 49
+      },
+      {
+        "week": "2023-04-03",
+        "count": 31
+      },
+      {
+        "week": "2023-04-10",
+        "count": 20
+      },
+      {
+        "week": "2023-04-17",
+        "count": 1
+      },
+      {
+        "week": "2023-04-24",
+        "count": 7
+      },
+      {
+        "week": "2023-05-01",
+        "count": 3
+      },
+      {
+        "week": "2023-05-08",
+        "count": 16
+      },
+      {
+        "week": "2023-05-15",
+        "count": 40
+      },
+      {
+        "week": "2023-05-22",
+        "count": 10
+      },
+      {
+        "week": "2023-05-29",
+        "count": 19
+      },
+      {
+        "week": "2023-06-05",
+        "count": 3
+      },
+      {
+        "week": "2023-06-12",
+        "count": 36
+      },
+      {
+        "week": "2023-06-19",
+        "count": 27
+      },
+      {
+        "week": "2023-06-26",
+        "count": 43
+      },
+      {
+        "week": "2023-07-03",
+        "count": 20
+      },
+      {
+        "week": "2023-07-10",
+        "count": 9
+      },
+      {
+        "week": "2023-07-17",
+        "count": 6
+      },
+      {
+        "week": "2023-07-24",
+        "count": 13
+      },
+      {
+        "week": "2023-07-31",
+        "count": 75
+      },
+      {
+        "week": "2023-08-07",
+        "count": 53
+      },
+      {
+        "week": "2023-08-14",
+        "count": 42
+      },
+      {
+        "week": "2023-08-21",
+        "count": 7
+      },
+      {
+        "week": "2023-08-28",
+        "count": 3
+      },
+      {
+        "week": "2023-09-04",
+        "count": 32
+      },
+      {
+        "week": "2023-09-11",
+        "count": 22
+      },
+      {
+        "week": "2023-09-18",
+        "count": 26
+      },
+      {
+        "week": "2023-09-25",
+        "count": 40
+      },
+      {
+        "week": "2023-10-02",
+        "count": 53
+      },
+      {
+        "week": "2023-10-09",
+        "count": 19
+      },
+      {
+        "week": "2023-10-16",
+        "count": 39
+      },
+      {
+        "week": "2023-10-23",
+        "count": 37
+      },
+      {
+        "week": "2023-10-30",
+        "count": 5
+      },
+      {
+        "week": "2023-11-06",
+        "count": 7
+      },
+      {
+        "week": "2023-11-13",
+        "count": 4
+      },
+      {
+        "week": "2023-11-20",
+        "count": 9
+      },
+      {
+        "week": "2023-11-27",
+        "count": 34
+      },
+      {
+        "week": "2023-12-04",
+        "count": 12
+      },
+      {
+        "week": "2023-12-11",
+        "count": 10
+      },
+      {
+        "week": "2023-12-18",
+        "count": 1
+      },
+      {
+        "week": "2023-12-25",
+        "count": 11
+      },
+      {
+        "week": "2024-01-01",
+        "count": 2
+      },
+      {
+        "week": "2024-01-08",
+        "count": 11
+      },
+      {
+        "week": "2024-01-15",
+        "count": 7
+      },
+      {
+        "week": "2024-01-22",
+        "count": 12
+      },
+      {
+        "week": "2024-01-29",
+        "count": 9
+      },
+      {
+        "week": "2024-02-05",
+        "count": 0
+      },
+      {
+        "week": "2024-02-12",
+        "count": 0
+      },
+      {
+        "week": "2024-02-19",
+        "count": 25
+      },
+      {
+        "week": "2024-02-26",
+        "count": 13
+      },
+      {
+        "week": "2024-03-04",
+        "count": 6
+      },
+      {
+        "week": "2024-03-11",
+        "count": 37
+      },
+      {
+        "week": "2024-03-18",
+        "count": 3
+      },
+      {
+        "week": "2024-03-25",
+        "count": 0
+      },
+      {
+        "week": "2024-04-01",
+        "count": 7
+      },
+      {
+        "week": "2024-04-08",
+        "count": 23
+      },
+      {
+        "week": "2024-04-15",
+        "count": 2
+      },
+      {
+        "week": "2024-04-22",
+        "count": 43
+      },
+      {
+        "week": "2024-04-29",
+        "count": 42
+      },
+      {
+        "week": "2024-05-06",
+        "count": 35
+      },
+      {
+        "week": "2024-05-13",
+        "count": 34
+      },
+      {
+        "week": "2024-05-20",
+        "count": 7
+      },
+      {
+        "week": "2024-05-27",
+        "count": 7
+      },
+      {
+        "week": "2024-06-03",
+        "count": 8
+      },
+      {
+        "week": "2024-06-10",
+        "count": 2
+      },
+      {
+        "week": "2024-06-17",
+        "count": 7
+      },
+      {
+        "week": "2024-06-24",
+        "count": 15
+      },
+      {
+        "week": "2024-07-01",
+        "count": 35
+      },
+      {
+        "week": "2024-07-08",
+        "count": 31
+      },
+      {
+        "week": "2024-07-15",
+        "count": 12
+      },
+      {
+        "week": "2024-07-22",
+        "count": 5
+      },
+      {
+        "week": "2024-07-29",
+        "count": 11
+      },
+      {
+        "week": "2024-08-05",
+        "count": 6
+      },
+      {
+        "week": "2024-08-12",
+        "count": 7
+      },
+      {
+        "week": "2024-08-19",
+        "count": 14
+      },
+      {
+        "week": "2024-08-26",
+        "count": 4
+      },
+      {
+        "week": "2024-09-02",
+        "count": 29
+      },
+      {
+        "week": "2024-09-09",
+        "count": 32
+      },
+      {
+        "week": "2024-09-16",
+        "count": 42
+      },
+      {
+        "week": "2024-09-23",
+        "count": 2
+      },
+      {
+        "week": "2024-09-30",
+        "count": 10
+      },
+      {
+        "week": "2024-10-07",
+        "count": 12
+      },
+      {
+        "week": "2024-10-14",
+        "count": 65
+      },
+      {
+        "week": "2024-10-21",
+        "count": 83
+      },
+      {
+        "week": "2024-10-28",
+        "count": 34
+      },
+      {
+        "week": "2024-11-04",
+        "count": 11
+      },
+      {
+        "week": "2024-11-11",
+        "count": 13
+      },
+      {
+        "week": "2024-11-18",
+        "count": 44
+      },
+      {
+        "week": "2024-11-25",
+        "count": 24
+      },
+      {
+        "week": "2024-12-02",
+        "count": 3
+      },
+      {
+        "week": "2024-12-09",
+        "count": 11
+      },
+      {
+        "week": "2024-12-16",
+        "count": 12
+      },
+      {
+        "week": "2024-12-23",
+        "count": 28
+      },
+      {
+        "week": "2024-12-30",
+        "count": 98
+      },
+      {
+        "week": "2025-01-06",
+        "count": 49
+      },
+      {
+        "week": "2025-01-13",
+        "count": 15
+      },
+      {
+        "week": "2025-01-20",
+        "count": 35
+      },
+      {
+        "week": "2025-01-27",
+        "count": 26
+      },
+      {
+        "week": "2025-02-03",
+        "count": 19
+      },
+      {
+        "week": "2025-02-10",
+        "count": 11
+      },
+      {
+        "week": "2025-02-17",
+        "count": 18
+      },
+      {
+        "week": "2025-02-24",
+        "count": 30
+      },
+      {
+        "week": "2025-03-03",
+        "count": 55
+      },
+      {
+        "week": "2025-03-10",
+        "count": 22
+      },
+      {
+        "week": "2025-03-17",
+        "count": 17
+      },
+      {
+        "week": "2025-03-24",
+        "count": 21
+      },
+      {
+        "week": "2025-03-31",
+        "count": 4
+      },
+      {
+        "week": "2025-04-07",
+        "count": 16
+      },
+      {
+        "week": "2025-04-14",
+        "count": 2
+      },
+      {
+        "week": "2025-04-21",
+        "count": 7
+      },
+      {
+        "week": "2025-04-28",
+        "count": 13
+      },
+      {
+        "week": "2025-05-05",
+        "count": 0
+      },
+      {
+        "week": "2025-05-12",
+        "count": 3
+      },
+      {
+        "week": "2025-05-19",
+        "count": 16
+      },
+      {
+        "week": "2025-05-26",
+        "count": 15
+      },
+      {
+        "week": "2025-06-02",
+        "count": 10
+      },
+      {
+        "week": "2025-06-09",
+        "count": 41
+      },
+      {
+        "week": "2025-06-16",
+        "count": 79
+      },
+      {
+        "week": "2025-06-23",
+        "count": 101
+      },
+      {
+        "week": "2025-06-30",
+        "count": 185
+      },
+      {
+        "week": "2025-07-07",
+        "count": 29
+      },
+      {
+        "week": "2025-07-14",
+        "count": 14
+      },
+      {
+        "week": "2025-07-21",
+        "count": 4
+      },
+      {
+        "week": "2025-07-28",
+        "count": 6
+      },
+      {
+        "week": "2025-08-04",
+        "count": 19
+      },
+      {
+        "week": "2025-08-11",
+        "count": 26
+      },
+      {
+        "week": "2025-08-18",
+        "count": 66
+      },
+      {
+        "week": "2025-08-25",
+        "count": 62
+      },
+      {
+        "week": "2025-09-01",
+        "count": 114
+      },
+      {
+        "week": "2025-09-08",
+        "count": 89
+      },
+      {
+        "week": "2025-09-15",
+        "count": 23
+      },
+      {
+        "week": "2025-09-22",
+        "count": 44
+      },
+      {
+        "week": "2025-09-29",
+        "count": 35
+      },
+      {
+        "week": "2025-10-06",
+        "count": 118
+      },
+      {
+        "week": "2025-10-13",
+        "count": 89
+      },
+      {
+        "week": "2025-10-20",
+        "count": 75
+      },
+      {
+        "week": "2025-10-27",
+        "count": 98
+      },
+      {
+        "week": "2025-11-03",
+        "count": 127
+      },
+      {
+        "week": "2025-11-10",
+        "count": 72
+      },
+      {
+        "week": "2025-11-17",
+        "count": 60
+      },
+      {
+        "week": "2025-11-24",
+        "count": 0
+      },
+      {
+        "week": "2025-12-01",
+        "count": 78
+      },
+      {
+        "week": "2025-12-08",
+        "count": 161
+      },
+      {
+        "week": "2025-12-15",
+        "count": 111
+      },
+      {
+        "week": "2025-12-22",
+        "count": 118
+      },
+      {
+        "week": "2025-12-29",
+        "count": 53
+      },
+      {
+        "week": "2026-01-05",
+        "count": 136
+      },
+      {
+        "week": "2026-01-12",
+        "count": 98
+      },
+      {
+        "week": "2026-01-19",
+        "count": 124
+      },
+      {
+        "week": "2026-01-26",
+        "count": 93
+      },
+      {
+        "week": "2026-02-02",
+        "count": 152
+      },
+      {
+        "week": "2026-02-09",
+        "count": 58
+      },
+      {
+        "week": "2026-02-16",
+        "count": 152
+      },
+      {
+        "week": "2026-02-23",
+        "count": 155
+      },
+      {
+        "week": "2026-03-02",
+        "count": 171
+      },
+      {
+        "week": "2026-03-09",
+        "count": 93
+      },
+      {
+        "week": "2026-03-16",
+        "count": 195
+      },
+      {
+        "week": "2026-03-23",
+        "count": 44
+      },
+      {
+        "week": "2026-03-30",
+        "count": 50
+      },
+      {
+        "week": "2026-04-06",
+        "count": 89
+      },
+      {
+        "week": "2026-04-13",
+        "count": 88
+      },
+      {
+        "week": "2026-04-20",
+        "count": 77
+      },
+      {
+        "week": "2026-04-27",
+        "count": 261
+      },
+      {
+        "week": "2026-05-04",
+        "count": 101
+      },
+      {
+        "week": "2026-05-11",
+        "count": 4
+      },
+      {
+        "week": "2026-05-18",
+        "count": 347
+      },
+      {
+        "week": "2026-05-25",
+        "count": 593
+      },
+      {
+        "week": "2026-06-01",
+        "count": 349
+      },
+      {
+        "week": "2026-06-08",
+        "count": 175
+      },
+      {
+        "week": "2026-06-15",
+        "count": 9
+      },
+      {
+        "week": "2026-06-22",
+        "count": 33
+      },
+      {
+        "week": "2026-06-29",
+        "count": 147
+      },
+      {
+        "week": "2026-07-06",
+        "count": 75
+      },
+      {
+        "week": "2026-07-13",
+        "count": 84
+      },
+      {
+        "week": "2026-07-20",
+        "count": 81
+      },
+      {
+        "week": "2026-07-27",
+        "count": 126
+      },
+      {
+        "week": "2026-08-03",
+        "count": 208
+      },
+      {
+        "week": "2026-08-10",
+        "count": 73
+      },
+      {
+        "week": "2026-08-17",
+        "count": 130
+      },
+      {
+        "week": "2026-08-24",
+        "count": 87
+      },
+      {
+        "week": "2026-08-31",
+        "count": 88
+      },
+      {
+        "week": "2026-09-07",
+        "count": 148
+      },
+      {
+        "week": "2026-09-14",
+        "count": 91
+      },
+      {
+        "week": "2026-09-21",
+        "count": 607
+      },
+      {
+        "week": "2026-09-28",
+        "count": 276
+      },
+      {
+        "week": "2026-10-05",
+        "count": 267
+      }
+    ],
+    "repos": {
+      "phucbm/claude-usage-monitor": {
+        "description": "Multiple Claude.ai accounts tracked right from your Mac menu bar.",
+        "stars": 5,
+        "url": "https://github.com/phucbm/claude-usage-monitor"
+      },
+      "phucbm/react-hanzi-input": {
+        "description": "Chinese handwriting input component for React — canvas pad, stroke capture, and candidate picker powered by Google IME.",
+        "stars": 0,
+        "url": "https://github.com/phucbm/react-hanzi-input"
+      },
+      "phucbm/food-tour-sg": {
+        "description": "Chatbot để tìm quán ăn ngon ở Sài Gòn",
+        "stars": 0,
+        "url": "https://github.com/phucbm/food-tour-sg"
+      },
+      "phucbm/clyrics": {
+        "description": "Chinese lyrics powered by AI so anyone can learn from music they love",
+        "stars": 0,
+        "url": "https://github.com/phucbm/clyrics"
+      },
+      "phucbm/claudify": {
+        "description": "Claude Plugin - Bootstrap .claude/ structure for any existing repo.",
+        "stars": 0,
+        "url": "https://github.com/phucbm/claudify"
+      },
+      "phucbm/nextra-blog-starter": {
+        "description": "A template for deploying Nextra blogs with built-in features like search, tags, and more.",
+        "stars": 7,
+        "url": "https://github.com/phucbm/nextra-blog-starter"
+      },
+      "phucbm/hieu-chu-han": {
+        "description": "Từ điển Trung - Hán Việt, phân tích chữ Hán, bộ thủ.",
+        "stars": 2,
+        "url": "https://github.com/phucbm/xue-hanzi"
+      },
+      "phucbm/lipsum-generator": {
+        "description": "🧢 A Chrome extension that generates Lorem Ipsum, trusted by 5,000 weekly users",
+        "stars": 10,
+        "url": "https://github.com/phucbm/lipsum-generator"
+      },
+      "perxel/whack-a-mole": {
+        "description": "🏗 Frontend Development.",
+        "stars": 0,
+        "url": "https://github.com/perxel/whack-a-mole"
+      },
+      "phucbm/normalized-mouse-position": {
+        "description": "Convert mouse coordinates to normalized values relative to any origin point for smooth UI interactions and animations.",
+        "stars": 1,
+        "url": "https://github.com/phucbm/normalized-mouse-position"
+      },
+      "phucbm/nextra-docs-starter": {
+        "description": "Nextra docs template with Next.js 16, React 19, Tailwind v4 and improved search UI.",
+        "stars": 50,
+        "url": "https://github.com/phucbm/nextra-docs-starter"
+      },
+      "phucbm/jquery-scroll-direction-plugin": {
+        "description": "↕️ A lightweight jQuery plugin to detect scroll direction.",
+        "stars": 7,
+        "url": "https://github.com/phucbm/jquery-scroll-direction-plugin"
+      },
+      "phucbm/magnetic-button": {
+        "description": "A lightweight TypeScript library that creates smooth magnetic attraction effects for HTML elements",
+        "stars": 3,
+        "url": "https://github.com/phucbm/magnetic-button"
+      },
+      "phucbm/cursor-effects": {
+        "description": "A series of cursor effects.",
+        "stars": 7,
+        "url": "https://github.com/phucbm/cursor-effects"
+      },
+      "viivue/easy-select": {
+        "description": "❄️  Customizing select is easier than ever",
+        "stars": 1,
+        "url": "https://github.com/viivue/easy-select"
+      },
+      "viivue/easy-popup": {
+        "description": "Super light-weight JavaScript library to create a simple popup with mobile layout.",
+        "stars": 2,
+        "url": "https://github.com/viivue/easy-popup"
+      },
+      "viivue/easy-tab-accordion": {
+        "description": "Javascript library to create tabs or accordion.",
+        "stars": 0,
+        "url": "https://github.com/viivue/easy-tab-accordion"
+      },
+      "viivue/overlapping-slider": {
+        "stars": 0,
+        "url": "https://github.com/viivue/overlapping-slider"
+      }
+    }
+  },
+  "npm": {
+    "packages": [
+      {
+        "name": "flickity-responsive",
+        "description": "Responsive option for Flickity.",
+        "repo": "phucbm/flickity-responsive",
+        "created": "2022-11-14",
+        "downloadsLastMonth": 186,
+        "downloadsTotal": 7770,
+        "jsdelivrHitsLastMonth": 43
+      },
+      {
+        "name": "match-media-screen",
+        "description": "Observe window.resize and fire corresponding events with given object data.",
+        "repo": "phucbm/match-media-screen",
+        "created": "2022-11-10",
+        "downloadsLastMonth": 151,
+        "downloadsTotal": 6982,
+        "jsdelivrHitsLastMonth": 6
+      },
+      {
+        "name": "@phucbm/magnetic-button",
+        "description": "A lightweight TypeScript library that creates smooth magnetic attraction effects for HTML elements",
+        "repo": "phucbm/magnetic-button",
+        "created": "2025-06-24",
+        "downloadsLastMonth": 137,
+        "downloadsTotal": 2234,
+        "jsdelivrHitsLastMonth": 24
+      },
+      {
+        "name": "@phucbm/cursorjs",
+        "description": "Create custom mouse cursor with pure vanilla JS (4kb) and CSS (optional) with no dependency.",
+        "repo": "phucbm/cursorjs",
+        "created": "2023-04-07",
+        "downloadsLastMonth": 67,
+        "downloadsTotal": 2330,
+        "jsdelivrHitsLastMonth": 271
+      },
+      {
+        "name": "@phucbm/lerp",
+        "description": "A lightweight TypeScript utility function for linear interpolation",
+        "repo": "phucbm/lerp",
+        "created": "2025-06-30",
+        "downloadsLastMonth": 58,
+        "downloadsTotal": 1354,
+        "jsdelivrHitsLastMonth": 8
+      },
+      {
+        "name": "piajs",
+        "description": "Manage session storage and local storage as easy as eating a Pia cake.",
+        "repo": "phucbm/pia",
+        "created": "2022-10-20",
+        "downloadsLastMonth": 50,
+        "downloadsTotal": 1582,
+        "jsdelivrHitsLastMonth": 15
+      },
+      {
+        "name": "@phucbm/os-util",
+        "description": "Utility functions for open-source projects.",
+        "repo": "phucbm/os-util",
+        "created": "2023-07-10",
+        "downloadsLastMonth": 43,
+        "downloadsTotal": 2506,
+        "jsdelivrHitsLastMonth": 11
+      },
+      {
+        "name": "@phucbm/next-og-image",
+        "description": "Tiny helpers to generate OG images and Metadata in Next.js (Edge-ready).",
+        "repo": "phucbm/next-og-image",
+        "created": "2025-10-10",
+        "downloadsLastMonth": 35,
+        "downloadsTotal": 659,
+        "jsdelivrHitsLastMonth": 3
+      },
+      {
+        "name": "cuajs",
+        "description": "Crab-walk through your website with CuaJs.",
+        "repo": "phucbm/cuajs",
+        "created": "2023-06-29",
+        "downloadsLastMonth": 31,
+        "downloadsTotal": 1433,
+        "jsdelivrHitsLastMonth": 17
+      },
+      {
+        "name": "@phucbm/banner",
+        "description": "A TypeScript utility package",
+        "repo": "phucbm/banner",
+        "created": "2025-07-01",
+        "downloadsLastMonth": 30,
+        "downloadsTotal": 988,
+        "jsdelivrHitsLastMonth": 26
+      },
+      {
+        "name": "normalized-mouse-position",
+        "description": "Convert mouse coordinates to normalized values relative to any origin point for smooth UI interactions and animations.",
+        "repo": "phucbm/normalized-mouse-position",
+        "created": "2025-07-06",
+        "downloadsLastMonth": 28,
+        "downloadsTotal": 835,
+        "jsdelivrHitsLastMonth": 5
+      },
+      {
+        "name": "gen-from",
+        "description": "CLI tool to generate projects from GitHub template repositories",
+        "repo": "phucbm/gen-from",
+        "created": "2025-07-01",
+        "downloadsLastMonth": 26,
+        "downloadsTotal": 1025,
+        "jsdelivrHitsLastMonth": 0
+      },
+      {
+        "name": "responsive-gsap",
+        "description": "A React hook that extends useGSAP with responsive media queries, resize observation, and load-controlled playback.",
+        "repo": "phucbm/responsive-gsap",
+        "created": "2025-11-06",
+        "downloadsLastMonth": 26,
+        "downloadsTotal": 1063,
+        "jsdelivrHitsLastMonth": 0
+      },
+      {
+        "name": "@phucbm/tailwindcss-container-queries",
+        "description": "> [!NOTE] > As of Tailwind CSS v4.0, container queries are supported in the framework by default and this plugin is no longer required.",
+        "repo": "phucbm/tailwindcss-container-queries",
+        "created": "2025-04-23",
+        "downloadsLastMonth": 26,
+        "downloadsTotal": 3422,
+        "jsdelivrHitsLastMonth": 20
+      },
+      {
+        "name": "@phucbm/tailwindcss-components",
+        "description": "Tailwind CSS plugin with ready-to-use helper components for common layout patterns",
+        "repo": "phucbm/tailwindcss-components",
+        "created": "2025-04-29",
+        "downloadsLastMonth": 25,
+        "downloadsTotal": 3491,
+        "jsdelivrHitsLastMonth": 8
+      },
+      {
+        "name": "honcau",
+        "description": "Base CSS for open source developing.",
+        "repo": "phucbm/honcau",
+        "created": "2022-11-20",
+        "downloadsLastMonth": 20,
+        "downloadsTotal": 923,
+        "jsdelivrHitsLastMonth": 2
+      },
+      {
+        "name": "@phucbm/gfm",
+        "description": "Turn markdown text into GitHub Flavoured Markdown with light/dark code syntax highlight.",
+        "repo": "phucbm/gfm",
+        "created": "2023-10-08",
+        "downloadsLastMonth": 19,
+        "downloadsTotal": 564,
+        "jsdelivrHitsLastMonth": 15
+      },
+      {
+        "name": "@phucbm/data-toggle",
+        "description": "Toggle class in elements via [data-toggle='class-name']",
+        "repo": "phucbm/data-toggle",
+        "created": "2025-07-01",
+        "downloadsLastMonth": 18,
+        "downloadsTotal": 694,
+        "jsdelivrHitsLastMonth": 0
+      },
+      {
+        "name": "@phucbm/ripple-effect",
+        "description": "A TypeScript utility for applying a ripple effect to a set of elements.",
+        "repo": "phucbm/ripple-effect",
+        "created": "2025-07-13",
+        "downloadsLastMonth": 18,
+        "downloadsTotal": 302,
+        "jsdelivrHitsLastMonth": 2
+      },
+      {
+        "name": "@phucbm/tailwindcss-style-props",
+        "description": "Tailwind CSS plugin for easily adding multiple inline style properties using the style utility",
+        "repo": "phucbm/tailwindcss-style-props",
+        "created": "2025-04-28",
+        "downloadsLastMonth": 18,
+        "downloadsTotal": 3092,
+        "jsdelivrHitsLastMonth": 2
+      },
+      {
+        "name": "scroll-snooper",
+        "description": "Pure JavaScript API that goes snooping around elements while scrolling",
+        "repo": "phucbm/scroll-snooper",
+        "created": "2022-10-24",
+        "downloadsLastMonth": 16,
+        "downloadsTotal": 525,
+        "jsdelivrHitsLastMonth": 10
+      },
+      {
+        "name": "bg-prlx",
+        "description": "Create parallax effect for inline `background-image` or `object-fit:cover`.",
+        "repo": "phucbm/bg-prlx",
+        "created": "2022-05-01",
+        "downloadsLastMonth": 16,
+        "downloadsTotal": 577,
+        "jsdelivrHitsLastMonth": 0
+      },
+      {
+        "name": "@phucbm/get-options-from-html-attr",
+        "description": "Parses options from a specified attribute of a target element, with support for default values, numeric conversion, and JSON validation.",
+        "repo": "phucbm/get-options-from-html-attr",
+        "created": "2024-07-02",
+        "downloadsLastMonth": 14,
+        "downloadsTotal": 249,
+        "jsdelivrHitsLastMonth": 0
+      },
+      {
+        "name": "@phucbm/events-manager",
+        "description": "A lightweight utility that simplifies custom event registration, firing, and handling.",
+        "repo": "phucbm/events-manager",
+        "created": "2023-12-04",
+        "downloadsLastMonth": 14,
+        "downloadsTotal": 455,
+        "jsdelivrHitsLastMonth": 0
+      },
+      {
+        "name": "phucbm",
+        "description": "Alright, [here](https://youtu.be/pV3RZgpoGEU?t=33) is how to pronounce **/fʊkb buːi/** in the most pleasant way.",
+        "created": "2022-11-20",
+        "downloadsLastMonth": 13,
+        "downloadsTotal": 336,
+        "jsdelivrHitsLastMonth": 5
+      },
+      {
+        "name": "claskit",
+        "description": "Autonomous Claude Code task runner for spec-driven development",
+        "repo": "phucbm/claskit",
+        "created": "2026-05-20",
+        "downloadsLastMonth": 13,
+        "downloadsTotal": 693,
+        "jsdelivrHitsLastMonth": 0
+      },
+      {
+        "name": "react-hanzi-input",
+        "description": "Chinese handwriting input component powered by Google IME — canvas pad, stroke capture, and candidate picker in one React component",
+        "repo": "phucbm/react-hanzi-input",
+        "created": "2026-04-28",
+        "downloadsLastMonth": 9,
+        "downloadsTotal": 214,
+        "jsdelivrHitsLastMonth": 0
+      }
+    ],
+    "downloadsPerMonth": [
+      {
+        "month": "2022-05",
+        "downloads": 1
+      },
+      {
+        "month": "2022-06",
+        "downloads": 5
+      },
+      {
+        "month": "2022-07",
+        "downloads": 7
+      },
+      {
+        "month": "2022-08",
+        "downloads": 16
+      },
+      {
+        "month": "2022-09",
+        "downloads": 11
+      },
+      {
+        "month": "2022-10",
+        "downloads": 74
+      },
+      {
+        "month": "2022-11",
+        "downloads": 632
+      },
+      {
+        "month": "2022-12",
+        "downloads": 110
+      },
+      {
+        "month": "2023-01",
+        "downloads": 185
+      },
+      {
+        "month": "2023-02",
+        "downloads": 144
+      },
+      {
+        "month": "2023-03",
+        "downloads": 253
+      },
+      {
+        "month": "2023-04",
+        "downloads": 305
+      },
+      {
+        "month": "2023-05",
+        "downloads": 392
+      },
+      {
+        "month": "2023-06",
+        "downloads": 342
+      },
+      {
+        "month": "2023-07",
+        "downloads": 1137
+      },
+      {
+        "month": "2023-08",
+        "downloads": 663
+      },
+      {
+        "month": "2023-09",
+        "downloads": 532
+      },
+      {
+        "month": "2023-10",
+        "downloads": 785
+      },
+      {
+        "month": "2023-11",
+        "downloads": 520
+      },
+      {
+        "month": "2023-12",
+        "downloads": 545
+      },
+      {
+        "month": "2024-01",
+        "downloads": 427
+      },
+      {
+        "month": "2024-02",
+        "downloads": 467
+      },
+      {
+        "month": "2024-03",
+        "downloads": 356
+      },
+      {
+        "month": "2024-04",
+        "downloads": 374
+      },
+      {
+        "month": "2024-05",
+        "downloads": 474
+      },
+      {
+        "month": "2024-06",
+        "downloads": 364
+      },
+      {
+        "month": "2024-07",
+        "downloads": 696
+      },
+      {
+        "month": "2024-08",
+        "downloads": 393
+      },
+      {
+        "month": "2024-09",
+        "downloads": 297
+      },
+      {
+        "month": "2024-10",
+        "downloads": 691
+      },
+      {
+        "month": "2024-11",
+        "downloads": 314
+      },
+      {
+        "month": "2024-12",
+        "downloads": 355
+      },
+      {
+        "month": "2025-01",
+        "downloads": 683
+      },
+      {
+        "month": "2025-02",
+        "downloads": 459
+      },
+      {
+        "month": "2025-03",
+        "downloads": 601
+      },
+      {
+        "month": "2025-04",
+        "downloads": 713
+      },
+      {
+        "month": "2025-05",
+        "downloads": 476
+      },
+      {
+        "month": "2025-06",
+        "downloads": 644
+      },
+      {
+        "month": "2025-07",
+        "downloads": 2313
+      },
+      {
+        "month": "2025-08",
+        "downloads": 557
+      },
+      {
+        "month": "2025-09",
+        "downloads": 544
+      },
+      {
+        "month": "2025-10",
+        "downloads": 1587
+      },
+      {
+        "month": "2025-11",
+        "downloads": 1380
+      },
+      {
+        "month": "2025-12",
+        "downloads": 1108
+      },
+      {
+        "month": "2026-01",
+        "downloads": 1087
+      },
+      {
+        "month": "2026-02",
+        "downloads": 998
+      },
+      {
+        "month": "2026-03",
+        "downloads": 1633
+      },
+      {
+        "month": "2026-04",
+        "downloads": 1801
+      },
+      {
+        "month": "2026-05",
+        "downloads": 6259
+      },
+      {
+        "month": "2026-06",
+        "downloads": 5719
+      },
+      {
+        "month": "2026-07",
+        "downloads": 3101
+      },
+      {
+        "month": "2026-08",
+        "downloads": 1390
+      },
+      {
+        "month": "2026-09",
+        "downloads": 1034
+      },
+      {
+        "month": "2026-10",
+        "downloads": 344
+      }
+    ]
+  },
+  "books": [
+    {
+      "title": "Animal Farm",
+      "author": "George Orwell",
+      "year": 1945,
+      "read": "2026-09-30",
+      "rating": 5,
+      "url": "https://www.goodreads.com/book/show/170448"
+    },
+    {
+      "title": "Thoát khỏi địa ngục Khmer đỏ – Hồi ký của một người còn sống",
+      "author": "Denise Affonço",
+      "year": 2005,
+      "read": "2025-11-10",
+      "rating": 4,
+      "review": "Là một người Việt Nam sinh ra sau chiến tranh biên giới Việt Trung năm 89, cũng là năm mà Việt Nam rút quân tình nguyện khỏi Campuchia. Tôi và có lẽ cũng khá đông người Việt có cảm nhận rằng người Campuchia hiện nay không có nhiều cảm tình với Việt Nam. Dù cho những hi sinh của bộ đội tình nguyện khi đến Campuchia làm nhiệm vụ quốc tế, trong lúc đất nước vừa giải phóng sau năm 75 còn nhiều khó khăn. Vì sao lại như vậy? Trong 10 năm ở lại Campuchia, quân Việt Nam có làm gì khiến người dân sở tại phải hiềm khích cho đến nay? Cô Denise đã trải qua những đau đớn mất đi người thân mà không một ai trên đời này đáng phải bị. Một tội ác của Khmer đối với dân Campuchia và cả dân Việt. Thế nhưng tại sao những mất mát của người Việt, những cuộc càn quét thảm sát người Việt trên đất Việt không hề được nhắc tới. Tôi tin rằng chính vì Khmer đỏ đã tràn vào tàn sát người Việt nên quân Việt Nam mới phải đánh và đánh sâu đến tận biên giới Thái để đẩy lùi Khmer đỏ.",
+      "url": "https://www.goodreads.com/book/show/51647866"
+    },
+    {
+      "title": "All That Remains: A Life in Death",
+      "author": "Sue Black",
+      "year": 2018,
+      "read": "2025-09-19",
+      "rating": 5,
+      "review": "Cái chết không còn đáng sợ qua lời miêu tả của cô Sue Black. Mình chưa 30 tuổi, hãy vẫn còn trẻ nhưng mình muốn chuẩn bị sẵn sàng cho sự ra đi của bản thân, chắc ai cũng nên như vậy. Đó là việc mà mình sẽ lưu tâm sau khi bắt đầu đọc hơn nữa quyển sách này. Mặc dù lý do mình bắt đầu đọc là vì tò mò về những ca khám nghiệm tử thi và những câu chuyện ly kỳ xung quanh. Đọc rồi mới thấy, thật ra khi nói sợ cái chết, có lẽ chúng ta sẽ nghĩ đến những nỗi sợ thể chất như sợ đau, sợ sự dày vò thân thể, đây là nỗi sợ bản năng mà khi nó xảy ra, chúng ta ít có hành động đối phó được, hoạ chăng là tiêm morphine để giảm đau. Nỗi đau về tinh thần mới là thứ chúng ta có thể chủ động, dang tay ra sắp xếp. Vậy nên ráng sống trọn vẹn để bản thân không hối tiếc, trao đi yêu thương để không phải day dứt khi ra đi. Sống sao để mỗi ngày sống thêm là một phần thưởng chứ không phải là gần cái chết thêm một ngày. Không nhất thiết phải sống lâu, hãy sống đủ.",
+      "url": "https://www.goodreads.com/book/show/35212990"
+    },
+    {
+      "title": "Tháng Ba gãy súng",
+      "author": "Cao Xuân Huy",
+      "year": 2012,
+      "read": "2024-09-22",
+      "rating": 5,
+      "review": "Hồi ký về khoảng thời gian tầm một tháng trước giải phóng miền Nam, vỏn vẹn 12 ngày, của một lính Thuỷ Quân Lục Chiến (TQLC) thuộc chế độ Việt Nam Cộng Hoà (VNCH). \n\nMình luôn có một sự tò mò về góc nhìn của người lính VNCH đối với quân giải phóng. Rốt cuộc thì họ vẫn là những người lính, chiến đấu cho phe mà họ thuộc về, hi sinh như những con cờ của chế độ. \n\nHồi ký này viết theo kiểu thô ráp, từ ngữ không trau chuốt văn chương, vì vậy nó có vẻ thật hơn. Sự kiện rút quân khỏi Huế được kể lại thật sự có những chi tiết kinh hoàng, máu lạnh, mình phải đọc đi đọc lại cho kỹ, phải tra google xem ảnh các loại súng, phương tiện được nhắc đến để hình dung bức tranh nó đẫm máu ra sao. Bên lề một chút, sau sự kiện này, dư luận miền Nam trách móc lữ đoàn VNCH yếu kém để thiệt hại nặng nề, hồi ký này cũng mô tả rõ nguyên nhân vì sao, như một lời minh oan, lấy lại danh dự cho lính TQLC. Thông tin này mình xem ở website tqlcvn.org.\n\nSau cuộc chiến, những người lính sống sót qua trại cải tạo đều tìm đường qua bên kia đại dương. Nỗi đau thua cuộc, xa quê hương, mất người thân, đồng đội, có phải ai cũng đồng cảm được?",
+      "url": "https://www.goodreads.com/book/show/17618832"
+    },
+    {
+      "title": "Thiên Tài Bên Trái, Kẻ Điên Bên Phải",
+      "author": "Cao Minh",
+      "year": 2010,
+      "read": "2022-10-30",
+      "url": "https://www.goodreads.com/book/show/50908574"
+    },
+    {
+      "title": "Thợ xăm ở Auschwitz",
+      "author": "Heather   Morris",
+      "year": 2018,
+      "read": "2022-10-12",
+      "rating": 5,
+      "review": "Lâu lắm rồi mới có một quyển sách khiến mình đọc liền tù tì từ đầu đến cuối trong một đêm như thế này.\n\nCó những người sinh ra đã là của nhau, dù cho thời cuộc biến động, dù cho thế giới đổi thay, dù cho có lúc số phận như vuột khỏi tay mình, dù cho có khi niềm tin bị bóp nghẹt rồi vụt tan thành tro bụi, thì rồi họ vẫn sẽ tìm thấy nhau.\n\nVì họ sinh ra đã là của nhau.",
+      "url": "https://www.goodreads.com/book/show/55808268"
+    },
+    {
+      "title": "Bên Thắng Cuộc - Giải Phóng (Bên Thắng Cuộc, #1)",
+      "author": "Huy Đức",
+      "year": 2012,
+      "read": "2022-01-18",
+      "rating": 5,
+      "url": "https://www.goodreads.com/book/show/16464990"
+    },
+    {
+      "title": "Kafka bên bờ biển",
+      "author": "Haruki Murakami",
+      "year": 2002,
+      "read": "2021-12-28",
+      "url": "https://www.goodreads.com/book/show/12009048"
+    },
+    {
+      "title": "Rừng Na Uy",
+      "author": "Haruki Murakami",
+      "year": 1987,
+      "read": "2021-12-01",
+      "rating": 5,
+      "review": "Đây là quyển Murakami thứ 2 mà mình đọc, sau 1Q84. Và cũng vì mình đọc sau quyển 1Q84 nên những chương đầu của Rừng Na Uy đối với mình có một chút lỏng bỏng, nội dung không trôi vào đầu mình được. Mình đã cố gắng để đọc đến nửa quyển và phải dừng lại, nhưng rồi mọi thứ bắt đầu trở nên cuồn cuộn và mạnh mẽ hơn khi mình đọc lại sau vài tuần tạm nghỉ.\nDẫn dắt chúng ta trong quyển Rừng Na Uy này là Tōru, cậu đưa chúng ta đi qua những biến cố đã đè nén, ép chặt tâm hồn cậu. Dù đôi lần suýt bị những đợt sóng ngầm cuốn trôi, cậu vẫn luôn vững vàng và kiên nhẫn, như một thợ lặn nín thở bám vào rặn san hô dưới đáy biển để phục kích đàn cá ngừ.\n\n\n\"What happens when people open their hearts?\"\n\"They get better.\"\n- Haruki Murakami, Norwegian Wood\n\n\nKhi chúng ta có thể mở lòng mình ra, lộn ngược nó, phơi bày những mảnh kí ức đã bị vùi sâu, những dòng suy nghĩ đã bị lấp kín, đó là khi chúng ta bắt đầu được chữa lành. Thế nhưng chỉ bản thân chúng ta mở lòng ra thì có đủ không? Nếu không có một người đủ kiên nhẫn để lắng nghe, đủ chân thành để chấp nhận và tin tưởng, liệu chúng ta có đủ sức mạnh để đón nhận những cơn gió biển thổi cả muối vào lòng mình? Thậm chí khi đã quyết định mở lòng, liệu bản thân chúng ta có đủ mạnh mẽ để tự mình vượt qua những mất mát, khổ đau? Gì thì gì, mọi thứ sẽ vẫn là con số không nếu chúng ta cứ lo sợ mà không bắt đầu, nhỉ.\nHạnh phúc của chúng ta, của những người yêu thương ta, của những người ta yêu thương, ngay lúc này, mới chính là điều quan trọng.",
+      "url": "https://www.goodreads.com/book/show/12134351"
+    },
+    {
+      "title": "Ngược Chiều Vun Vút",
+      "author": "Joe Ruelle",
+      "year": 2011,
+      "read": "2021-11-28",
+      "rating": 4,
+      "review": "Mình đánh giá cao sự am hiểu của Joe về ngôn ngữ cũng như văn hoá Việt Nam, chắc sẽ không tìm được nhiều ông/bà Tây dám \"ngược chiều\" như Joe. Mục đích của mình khi quyết định đọc quyển này là để thấy được góc nhìn của một ông Tây đối với Việt Nam, và dù chưa được nghe giọng Việt của Joe, mình khá tin là giọng của chú sẽ là giọng Bắc.\nNhững mẩu chuyện về văn hoá Việt cũng như người Việt trong quyển sách này thật ra không quá lạ, dù những lúc mình phải lật nhanh đến tập khác để tua qua một màn hài hước quá đỗi gượng gạo và lê thê, trình bày với các ẩn dụ khó hiểu. Tuy nhiên, mình thật sự tập trung hơn vào những mẩu chuyện về ngôn ngữ giữa tiếng Anh và tiếng Việt. Nếu bạn có quan tâm đến chủ đề này, có thể bạn sẽ có được vài highlight đáng giá.",
+      "url": "https://www.goodreads.com/book/show/13394027"
+    },
+    {
+      "title": "Thiện, ác và Smart phone",
+      "author": "Đặng Hoàng Giang",
+      "read": "2021-11-22",
+      "url": "https://www.goodreads.com/book/show/33978709"
+    },
+    {
+      "title": "Cửa hiệu tự sát",
+      "author": "Jean Teulé",
+      "year": 2007,
+      "read": "2021-08-01",
+      "rating": 2,
+      "review": "Đọc vì cái tựa sách khá khiêu khích, nhưng đáng tiếc nội dung bên trong lại quá nhạt nhoà. Nhịp truyện cứ trôi theo từng trang sách rồi trôi luôn ra khỏi trí nhớ của mình.",
+      "url": "https://www.goodreads.com/book/show/34760396"
+    },
+    {
+      "title": "1Q84 (1Q84, #1-3)",
+      "author": "Haruki Murakami",
+      "year": 2009,
+      "read": "2021-07-26",
+      "url": "https://www.goodreads.com/book/show/10357575"
+    },
+    {
+      "title": "Để Yên Cho Bác Sĩ &quot;Hiền&quot;",
+      "author": "Ngô Đức Hùng",
+      "read": "2021-07-10",
+      "review": "Nghe các chị trong công ty nói với nhau về một bác sĩ chuyên trị những trend \"heo-thì\" lệch lạc trên facebook đã khơi sự tò mò của mình.\nGiọng văn của bác sĩ trẻ trung, dí dỏm và đời thường. Chúng ta ai cũng biết để ghi được tên vào trường Y thì đó mới chỉ là khởi đầu của một chặng đường vùi đầu vào sách vở, nhưng chẳng mấy khi biết được một người trong cuộc nghĩ gì.",
+      "url": "https://www.goodreads.com/book/show/39285026"
+    },
+    {
+      "title": "Cà Phê Cùng Tony",
+      "author": "Tony Buổi Sáng",
+      "year": 2014,
+      "read": "2021-05-22",
+      "url": "https://www.goodreads.com/book/show/23276781"
+    },
+    {
+      "title": "Sapiens: Lược sử loài người",
+      "author": "Yuval Noah Harari",
+      "year": 2011,
+      "read": "2021-01-01",
+      "url": "https://www.goodreads.com/book/show/37549506"
+    },
+    {
+      "title": "Lịch sử tôn giáo Nhật Bản",
+      "author": "Sueki Fumihiko ; Phạm Thu Giang dịch ; Phạm Hồng Thái hiệu đính",
+      "read": "2021-01-01",
+      "rating": 3,
+      "url": "https://www.goodreads.com/book/show/58784347"
+    },
+    {
+      "title": "Hoàng Tử Bé",
+      "author": "Antoine de Saint-Exupéry",
+      "year": 1943,
+      "read": "2020-12-17",
+      "url": "https://www.goodreads.com/book/show/12617037"
+    },
+    {
+      "title": "Con đường Hồi giáo",
+      "author": "Nguyễn Phương Mai",
+      "year": 2014,
+      "read": "2020-11-26",
+      "url": "https://www.goodreads.com/book/show/21474711"
+    },
+    {
+      "title": "Tâm Lý Dân Tộc An Nam",
+      "author": "Paul Giran",
+      "year": 1904,
+      "read": "2019-10-22",
+      "rating": 4,
+      "review": "Thật ngạc nhiên là dù đã được xuất bản lần đầu vào hơn một thế kỷ trước, nhưng mình nghĩ có một số quan điểm của tác giả vẫn đúng trong thời điểm hiện nay. Mình đã chuẩn bị sẵn tâm thế là sẽ có không ít sự đả kích trong quyển sách này, và thật như vậy. Là dân Sài Gòn, mình luôn được thấy những hình ảnh tân thời của một hòn ngọc viễn đông khi xưa, mà không mảy may nhận thức là tất cả sự hào nhoáng ở quá khứ đều nhờ người Pháp mang đến.\nDù đã qua nghìn năm văn hiến, nhưng dân tộc ta vẫn bị cho là lạc hậu khi so sánh với các nước phương Tây. Vì chúng ta thật chất chỉ phát triển theo chiều ngang mà không có chiều sâu. Nghìn năm qua, bị ảnh hưởng bởi văn hóa Trung Hoa, giáo dục của chúng ta chỉ hướng về những cái đã được thế hệ trước đúc kết, nền giáo dục chỉ cho ra những lớp người uyên bác về quá khứ, mà không khơi gợi niềm khao khát sự mới mẻ.\nĐọc để có thêm một góc nhìn khác về dân tộc Việt Nam chỉ mới trăm năm trước.",
+      "url": "https://www.goodreads.com/book/show/46142876"
+    },
+    {
+      "title": "Lời vàng của bố",
+      "author": "Justin Halpern",
+      "year": 2010,
+      "read": "2019-01-08",
+      "rating": 5,
+      "review": "Thô nhưng thật. Cuốn sách này thu hút mình ngay từ câu trích ở bìa sau. Nó mang lại cho mình cảm giác được bù lại những gì mình bị khuyết trong đời thật. Nó cho mình thấy những gì (có thể) xảy ra giữa một người cha và một thằng con trai, dù là ở một thế giới khác.",
+      "url": "https://www.goodreads.com/book/show/22428233"
+    },
+    {
+      "title": "Nhật Bản Duy Tân 30 Năm",
+      "author": "Đào Trinh Nhất",
+      "year": 1936,
+      "read": "2016-12-14",
+      "rating": 4,
+      "review": "Đọc quyển sách này, bạn sẽ thấy tác giả không chỉ viết về những sự kiện diễn ra trong 30 năm Minh Trị duy tân (1866-1899), mà còn về nước Nhật từ thuở sơ khai mới dựng nước. Từ gốc gác dân tộc, vị trí địa lý đến cái tinh thần, trách nhiệm của dân đối với đất nước đã đưa Nhật Bản từ một nước phong kiến lên ngang hàng với các nước phương Tây chỉ trong vỏn vẹn nửa đời người. Điều mà chúng ta đã được hỏi mỗi ngày từ lớp 1 đến bây giờ câu trả lời vẫn là “thưa Bác, vẫn chưa!”. \nDân tộc Nhật Bản đã sẵn cái tính vì nước quên thân, phải giữ thân thể cũng như danh dự luôn trong sạch, sẵn sàng gạt cái chưa tốt đã theo đuổi hàng trăm năm để học hỏi cái mới tốt đẹp hơn. Từ tầng lớp nông dân đến quan lại quyền cao chức trọng, khi nguy biến sắp đến, vận nước sắp nguy, đều nhất nhất đồng lòng cùng nhau thay đổi. \nVề cách trình bày nội dung quyển sách, tác giả Đào Trinh Nhất rất cẩn thận ghi đầy đủ tên gọi các địa danh, tên riêng của Nhật bằng từ Hán Việt lẫn Hán tự kế bên, giúp cho những ai đang học tiếng Nhật có thêm một lượng kiến thức bổ ích. Bên cạnh đó, biên tập viên còn ghi chú thêm Romaji của từ ngay bên cạnh. Tuy đôi chỗ còn chưa chính xác, thiếu trường âm nhưng vẫn giúp ích rất nhiều. Nguồn gốc chữ Hiragana, Katakana cũng được nhắc đến ở cuối quyển sách. Và với một chút hoài nghi, tò mò tự thân mình muốn tìm hiểu để rõ hơn về những mặt trái, những góc tối bên cạnh sự thay đổi thần kỳ này. Có lẽ sẽ được trả lời trong một quyển sách khác.",
+      "url": "https://www.goodreads.com/book/show/25277490"
+    }
+  ],
+  "references": [
+    {
+      "title": "Tung Du – Software Developer",
+      "url": "https://tungdu.com/",
+      "source": "tungdu.com",
+      "saved": "2026-08-17",
+      "tags": [
+        "Portfolio"
+      ]
+    },
+    {
+      "title": "jQuery WebGL Ripples",
+      "url": "https://sirxemic.github.io/jquery.ripples/",
+      "source": "sirxemic.github.io",
+      "saved": "2026-07-27",
+      "tags": [
+        "Tool",
+        "Shader"
+      ]
+    },
+    {
+      "title": "ARIA Authoring Practices Guide | APG | WAI | W3C",
+      "url": "https://www.w3.org/WAI/ARIA/apg/",
+      "source": "w3.org",
+      "saved": "2026-07-23",
+      "tags": [
+        "Tool"
+      ]
+    },
+    {
+      "title": "Olivier Larose's blog - All Tutorials",
+      "url": "https://blog.olivierlarose.com/tutorials",
+      "source": "blog.olivierlarose.com",
+      "saved": "2026-07-22",
+      "tags": [
+        "Course",
+        "Tool",
+        "Creative Web",
+        "Blog",
+        "Portfolio"
+      ]
+    },
+    {
+      "title": "Learn React Three Fiber: Build Interactive 3D Websites - Wawa Sensei",
+      "url": "https://wawasensei.dev/courses/react-three-fiber",
+      "source": "wawasensei.dev",
+      "saved": "2026-07-22",
+      "tags": [
+        "3D",
+        "Course"
+      ]
+    },
+    {
+      "title": "Playground",
+      "url": "https://experiments.thisiswhitespace.com/",
+      "source": "experiments.thisiswhitespace.com",
+      "saved": "2026-07-19",
+      "tags": [
+        "Tool"
+      ]
+    },
+    {
+      "title": "The Ultimate CSS Shapes Collection",
+      "url": "https://css-shape.com/",
+      "source": "css-shape.com",
+      "saved": "2026-07-16",
+      "tags": [
+        "Tool"
+      ]
+    },
+    {
+      "title": "Scroll-driven Animations",
+      "url": "https://scroll-driven-animations.style/",
+      "source": "scroll-driven-animations.style",
+      "saved": "2026-07-15",
+      "tags": [
+        "Tool"
+      ]
+    },
+    {
+      "title": "CSS Generators: Your CSS code with less effort",
+      "url": "https://css-generators.com/",
+      "source": "css-generators.com",
+      "saved": "2026-07-14",
+      "tags": [
+        "Tool"
+      ]
+    },
+    {
+      "title": "Vanilla List • The Vanilla JavaScript Repository",
+      "url": "https://vanillalist.top/",
+      "source": "vanillalist.top",
+      "saved": "2026-07-13",
+      "tags": [
+        "Tool"
+      ]
+    },
+    {
+      "title": "AI Engineering from Scratch | Free AI Engineering Course",
+      "url": "https://aiengineeringfromscratch.com",
+      "source": "aiengineeringfromscratch.com",
+      "saved": "2026-05-24",
+      "tags": [
+        "Course"
+      ]
+    },
+    {
+      "title": "Essays · Gwern.net",
+      "url": "https://gwern.net/",
+      "source": "gwern.net",
+      "saved": "2026-05-07",
+      "tags": [
+        "Portfolio"
+      ]
+    },
+    {
+      "title": "The Agent Skills Directory",
+      "url": "https://skills.sh/",
+      "source": "skills.sh",
+      "saved": "2026-05-01",
+      "tags": [
+        "SKILLS"
+      ]
+    },
+    {
+      "title": "Taste Skill | The Anti-Slop Frontend Framework for AI Agents",
+      "url": "https://www.tasteskill.dev/",
+      "source": "tasteskill.dev",
+      "saved": "2026-05-01",
+      "tags": [
+        "SKILLS"
+      ]
+    },
+    {
+      "title": "Agent Skills Marketplace | Codex & Claude Skills | SkillsMP",
+      "url": "https://skillsmp.com/",
+      "source": "skillsmp.com",
+      "saved": "2026-05-01",
+      "tags": [
+        "SKILLS"
+      ]
+    },
+    {
+      "title": "Website Styles & DESIGN.md Library | Refero Styles",
+      "url": "https://styles.refero.design/",
+      "source": "styles.refero.design",
+      "saved": "2026-05-01",
+      "tags": [
+        "SKILLS"
+      ]
+    },
+    {
+      "title": "Software, AI Agents & App Development in Singapore",
+      "url": "https://www.metabay.studio/",
+      "source": "metabay.studio",
+      "saved": "2026-04-28",
+      "tags": [
+        "Portfolio"
+      ]
+    },
+    {
+      "title": "Set.Studio",
+      "url": "https://set.studio/",
+      "source": "set.studio",
+      "saved": "2026-04-10",
+      "tags": [
+        "Portfolio"
+      ]
+    },
+    {
+      "title": "Animate UI - Animated React Components",
+      "url": "https://animate-ui.com/",
+      "source": "animate-ui.com",
+      "saved": "2025-11-21",
+      "tags": [
+        "UI Components"
+      ]
+    },
+    {
+      "title": "The data platform built for the demands of AI | Walrus",
+      "url": "https://www.walrus.xyz/",
+      "source": "walrus.xyz",
+      "saved": "2025-11-19",
+      "tags": [
+        "Creative Web",
+        "Animation"
+      ]
+    },
+    {
+      "title": "Pixel Art to CSS",
+      "url": "https://pixelartcss.com/",
+      "source": "pixelartcss.com",
+      "saved": "2025-11-19",
+      "tags": [
+        "Tool"
+      ]
+    },
+    {
+      "title": "Chánh Đại – Design Engineer",
+      "url": "https://chanhdai.com/",
+      "source": "chanhdai.com",
+      "saved": "2025-11-17",
+      "tags": [
+        "Portfolio"
+      ]
+    },
+    {
+      "title": "Osmo - Dev Toolkit Built to Flex",
+      "url": "https://www.osmo.supply/",
+      "source": "osmo.supply",
+      "saved": "2025-11-10",
+      "tags": [
+        "Course",
+        "Animation"
+      ]
+    },
+    {
+      "title": "chromewebstore.google.com",
+      "url": "https://chromewebstore.google.com/detail/save-all-resources/abpdnfjocnmdomablahdcfnoggeeiedb",
+      "source": "chromewebstore.google.com",
+      "saved": "2025-11-05",
+      "tags": [
+        "Browser Extensions"
+      ]
+    },
+    {
+      "title": "24/7 Artists - Making the Music Business Better",
+      "url": "https://247artists.com/",
+      "source": "247artists.com",
+      "saved": "2025-11-01",
+      "tags": [
+        "Creative Web",
+        "Animation"
+      ]
+    },
+    {
+      "title": "Josh Ellis",
+      "url": "https://joshellis.co.uk/",
+      "source": "joshellis.co.uk",
+      "saved": "2025-10-31",
+      "tags": [
+        "Portfolio"
+      ]
+    },
+    {
+      "title": "– siiconcept",
+      "url": "https://www.siiconcept.com/",
+      "source": "siiconcept.com",
+      "saved": "2025-10-31",
+      "tags": [
+        "Creative Web",
+        "Animation"
+      ]
+    },
+    {
+      "title": "Designer / Dave Smyth Studio",
+      "url": "https://davesmyth.studio/",
+      "source": "davesmyth.studio",
+      "saved": "2025-10-28",
+      "tags": [
+        "Portfolio"
+      ]
+    },
+    {
+      "title": "Guestbook · Ky Decker",
+      "url": "https://eva.town/guestbook",
+      "source": "eva.town",
+      "saved": "2025-10-28",
+      "tags": [
+        "Portfolio"
+      ]
+    },
+    {
+      "title": "Anthony Fu",
+      "url": "https://antfu.me/",
+      "source": "antfu.me",
+      "saved": "2025-10-28",
+      "tags": [
+        "Portfolio"
+      ]
+    },
+    {
+      "title": "Emil Kowalski",
+      "url": "https://emilkowal.ski/",
+      "source": "emilkowal.ski",
+      "saved": "2025-10-27",
+      "tags": [
+        "Portfolio"
+      ]
+    },
+    {
+      "title": "animations.dev",
+      "url": "https://animations.dev/",
+      "source": "animations.dev",
+      "saved": "2025-10-27",
+      "tags": [
+        "Course",
+        "Animation"
+      ]
+    },
+    {
+      "title": "React Bits — Free Animated React Components",
+      "url": "https://www.reactbits.dev/",
+      "source": "reactbits.dev",
+      "saved": "2025-10-26",
+      "tags": [
+        "UI Components"
+      ]
+    },
+    {
+      "title": "Dead Simple Sites — Minimal Web Design Inspiration & Gallery",
+      "url": "https://deadsimplesites.com/",
+      "source": "deadsimplesites.com",
+      "saved": "2025-10-25",
+      "tags": [
+        "Portfolio"
+      ]
+    },
+    {
+      "title": "Matthew Smith’s Website",
+      "url": "https://matthewsmith.website/",
+      "source": "matthewsmith.website",
+      "saved": "2025-10-25",
+      "tags": [
+        "Portfolio"
+      ]
+    },
+    {
+      "title": "lightswind.com",
+      "url": "https://lightswind.com/components",
+      "source": "lightswind.com",
+      "saved": "2025-10-20",
+      "tags": [
+        "UI Components"
+      ]
+    },
+    {
+      "title": "Rooms®",
+      "url": "https://rooms.xyz/",
+      "source": "rooms.xyz",
+      "saved": "2025-10-18",
+      "tags": [
+        "3D",
+        "Tool"
+      ]
+    },
+    {
+      "title": "L2K Room - Phòng của Long",
+      "url": "https://www.l2kroom.net/",
+      "source": "l2kroom.net",
+      "saved": "2025-10-18",
+      "tags": [
+        "3D",
+        "Portfolio"
+      ]
+    },
+    {
+      "title": "nvg8.io",
+      "url": "https://nvg8.io/",
+      "source": "nvg8.io",
+      "saved": "2025-10-18",
+      "tags": [
+        "Creative Web",
+        "Challenging layouts"
+      ]
+    },
+    {
+      "title": "Free CSS Background Patterns & Stripe Generator | 50+ Patterns | MagicPattern",
+      "url": "https://www.magicpattern.design/tools/css-backgrounds",
+      "source": "magicpattern.design",
+      "saved": "2025-10-18",
+      "tags": [
+        "Tool"
+      ]
+    },
+    {
+      "title": "Stryds",
+      "url": "https://www.stryds.com/",
+      "source": "stryds.com",
+      "saved": "2025-10-18",
+      "tags": [
+        "Creative Web",
+        "Challenging layouts"
+      ]
+    },
+    {
+      "title": "lucide-animated | Free Animated React Icons Library",
+      "url": "https://icons.pqoqubbw.dev/",
+      "source": "icons.pqoqubbw.dev",
+      "saved": "2025-10-15",
+      "tags": [
+        "SVG"
+      ]
+    },
+    {
+      "title": "Colophon",
+      "url": "https://www.pldkhoa.dev/colophon",
+      "source": "pldkhoa.dev",
+      "saved": "2025-08-30",
+      "tags": [
+        "Portfolio"
+      ]
+    },
+    {
+      "title": "Aceternity UI — React & Tailwind CSS Component Library",
+      "url": "https://ui.aceternity.com/",
+      "source": "ui.aceternity.com",
+      "saved": "2025-08-27",
+      "tags": [
+        "UI Components"
+      ]
+    },
+    {
+      "title": "Whalesync | Two-Way Data Sync Between Your Favorite Apps",
+      "url": "https://www.whalesync.com/",
+      "source": "whalesync.com",
+      "saved": "2025-08-18",
+      "tags": [
+        "Challenging layouts"
+      ]
+    },
+    {
+      "title": "daniel petho — design engineer",
+      "url": "https://www.danielpetho.com/",
+      "source": "danielpetho.com",
+      "saved": "2025-08-15",
+      "tags": [
+        "Portfolio"
+      ]
+    },
+    {
+      "title": "Fancy Components",
+      "url": "https://www.fancycomponents.dev/",
+      "source": "fancycomponents.dev",
+      "saved": "2025-08-15",
+      "tags": [
+        "Creative Web",
+        "UI Components"
+      ]
+    },
+    {
+      "title": "Discover community-made UI components | 21st",
+      "url": "https://21st.dev/components",
+      "source": "21st.dev",
+      "saved": "2025-08-14",
+      "tags": [
+        "UI Components"
+      ]
+    },
+    {
+      "title": "Convert SVG Strokes to Fills",
+      "url": "https://iconly.io/tools/svg-convert-stroke-to-fill",
+      "source": "iconly.io",
+      "saved": "2025-08-14",
+      "tags": [
+        "Tool",
+        "SVG",
+        "Font"
+      ]
+    },
+    {
+      "title": "SVGOMG - SVGO's Missing GUI for minifying SVGs",
+      "url": "https://jakearchibald.github.io/svgomg/",
+      "source": "jakearchibald.github.io",
+      "saved": "2025-08-14",
+      "tags": [
+        "SVG",
+        "Tool"
+      ]
+    },
+    {
+      "title": "openprocessing.org",
+      "url": "https://openprocessing.org/",
+      "source": "openprocessing.org",
+      "saved": "2025-08-14",
+      "tags": [
+        "3D",
+        "Creative Web",
+        "GSAP",
+        "Shader"
+      ]
+    },
+    {
+      "title": "Mastering Web Animations | VWLAB",
+      "url": "https://vwlab.io/products/web-animations",
+      "source": "vwlab.io",
+      "saved": "2025-08-07",
+      "tags": [
+        "3D",
+        "Course",
+        "GSAP",
+        "Creative Web"
+      ]
+    },
+    {
+      "title": "Web Animations Full Course | Build a GTA VI Website & Master GSAP",
+      "url": "https://jsmastery.com/course/gsap-animations-course#curriculum",
+      "source": "jsmastery.com",
+      "saved": "2025-08-07",
+      "tags": [
+        "Course",
+        "GSAP"
+      ]
+    },
+    {
+      "title": "Made With Gsap",
+      "url": "https://madewithgsap.com/",
+      "source": "madewithgsap.com",
+      "saved": "2025-08-07",
+      "tags": [
+        "Course",
+        "GSAP"
+      ]
+    },
+    {
+      "title": "Don McCurdy",
+      "url": "https://www.donmccurdy.com/",
+      "source": "donmccurdy.com",
+      "saved": "2025-08-07",
+      "tags": [
+        "3D",
+        "Creative Web",
+        "Blog",
+        "Portfolio"
+      ]
+    }
+  ]
+}

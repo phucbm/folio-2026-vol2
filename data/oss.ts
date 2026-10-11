@@ -1,11 +1,9 @@
 // §4 Open source: the repos to show, in groups (from phucbm-web's /shipped). Only the list is
-// authored; description, stars and downloads come from the data pipeline (plan 001, part 6), which
-// fills `ossStats`. Until then every figure is blank.
+// authored; descriptions, stars and downloads come from the data pipeline (`lib/live.ts`), which
+// reads this list too (`scripts/data/fetch.mjs`).
 export interface OssRepo {
   // "owner/name" on GitHub; a bare name means phucbm.
   repo: string
-  // The npm package, when there is one, for downloads.
-  npm?: string
 }
 
 export interface OssGroup {
@@ -48,14 +46,5 @@ export const ossGroups: OssGroup[] = [
     ],
   },
 ]
-
-export interface OssStats {
-  description?: string
-  stars?: number
-  downloadsPerMonth?: number
-}
-
-// Filled by the data pipeline, keyed by `repo`. Empty until part 6.
-export const ossStats: Record<string, OssStats> = {}
 
 export const repoPath = (repo: string) => (repo.includes("/") ? repo : `phucbm/${repo}`)

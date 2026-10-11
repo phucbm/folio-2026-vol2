@@ -7,7 +7,8 @@ Plan and status: `.claude/plans/001-rebuild.md`.
 - `pnpm test`: Vitest, the content catalog only (`lib/content/catalog.ts`). Not a general test suite.
 - `pnpm content:lint [files]`: prose and frontmatter rules for `content/{notes,archived}/*.mdx`; runs on every `.mdx` write through the hook in `.claude/settings.json`.
 - `pnpm visuals <inventory|status|build>`: images for entries (the `visuals` skill).
-- `pnpm run deploy`: build and deploy to Cloudflare (`pnpm deploy` alone is pnpm's own command).
+- `pnpm data [github npm goodreads discord]`: fetch the outside numbers into `data/live.generated.json` (committed; a failed source keeps its last value).
+- `pnpm run deploy`: `pnpm data`, build, deploy to Cloudflare (`pnpm deploy` alone is pnpm's own command).
 
 ## Rules
 - pnpm only. Never edit `out/` or the `*.generated.json` files.

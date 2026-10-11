@@ -1,7 +1,7 @@
 import type { ReactNode } from "react"
 
 /** A table's caption, above the table as in a paper: "Table 2." in semibold ink, then one sentence. */
-export function TableCaption({ id, n, children }: { id?: string; n: number; children: ReactNode }) {
+export function TableCaption({ id, n, children }: { id?: string; n: number | string; children: ReactNode }) {
   return (
     <p id={id} className="label">
       <span className="font-semibold text-ink">Table {n}.</span> {children}
