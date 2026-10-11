@@ -66,6 +66,22 @@ export default function CvPage() {
         </ol>
       </section>
 
+      <section aria-labelledby="education" className="mt-14">
+        <h2 id="education" className="text-2xl">Education</h2>
+        <div className="mt-4 border-y border-rule py-4">
+          <div className="flex flex-wrap items-baseline justify-between gap-x-4">
+            <p>
+              <span className="font-semibold">{cv.education.major}</span>,{" "}
+              <a href={cv.education.href}>{cv.education.school}</a>
+            </p>
+            <p className="label num">
+              {cv.education.start} to {cv.education.end}
+            </p>
+          </div>
+          <p className="mt-1">{cv.education.body}</p>
+        </div>
+      </section>
+
       <section aria-labelledby="stack" className="mt-14">
         <h2 id="stack" className="text-2xl">Stack</h2>
         <p className="mt-4">{cv.stack.join(", ")}</p>
@@ -84,6 +100,32 @@ export default function CvPage() {
         <p className="label mt-4">
           Every project is listed in <Link href="/projects">§2 Projects</Link>, every package in{" "}
           <Link href="/oss">§3 Open source</Link>.
+        </p>
+      </section>
+
+      <section aria-labelledby="certifications" className="mt-14">
+        <h2 id="certifications" className="text-2xl">Certifications</h2>
+        <ul className="mt-4 border-t border-rule">
+          {cv.certifications.map((cert) => (
+            <li key={cert.name} className="flex flex-wrap items-baseline justify-between gap-x-4 border-b border-rule py-2">
+              <p>
+                {cert.name}, {cert.issuer}
+              </p>
+              <p className="label num">{formatMonth(cert.date)}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section aria-labelledby="languages" className="mt-14">
+        <h2 id="languages" className="text-2xl">Languages</h2>
+        <p className="mt-4">
+          {cv.languages.map((language, i) => (
+            <Fragment key={language.name}>
+              {i > 0 && ", "}
+              {language.name} ({language.level})
+            </Fragment>
+          ))}
         </p>
       </section>
 

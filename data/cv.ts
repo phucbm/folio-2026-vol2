@@ -29,17 +29,27 @@ export const cv = {
       href: "https://perxel.com",
       start: "2022-04",
       body: "Founded a web studio building WordPress and Next.js websites, often from Figma designs for agencies and designers. Ships open-source WordPress plugins ([AI translation for WPML](https://perxel.com/en/products/perxel-ai-translate) through OpenRouter, [WebP image optimization](https://perxel.com/en/products/perxel-image-optimizer)) and builds MCP servers that connect AI assistants to business data ([OpenWallet](https://perxel.com/en/works/openwallet)'s card data). Owns full delivery end to end: architecture, performance, cross-browser QA, and Cloudflare deployment.",
-      note: "From April 2022 to May 2025 I worked at ViiVue and on Perxel at the same time. Perxel was registered as a company in 2026.",
+      note: "From April 2022 to July 2025 I worked at ViiVue and on Perxel at the same time. Perxel was registered as a company in 2026.",
     },
     {
       role: "Lead Frontend Engineer",
       company: "ViiVue",
       href: "https://www.viivue.com",
       start: "2017-09",
-      end: "2025-05",
+      end: "2025-07",
       body: "Delivered 300+ production websites across enterprise, education, and hospitality. Proposed and led jQuery-to-vanilla-JS migration; built the custom component libraries that replaced it. Introduced atomic-css, an in-house utility system adopted across all projects. Led a 5+ person team: CI/CD migration to GitHub Actions, code review standards, internal documentation.",
+      note: "I joined as an intern in September 2017, went part-time in December 2017, full-time as a full-stack developer in June 2018, and led the frontend team from December 2021.",
     },
   ] satisfies Job[],
+  // No degree claimed: a major and how much of it was finished (the owner's call, 2026-10-11).
+  education: {
+    school: "Ho Chi Minh City University of Education",
+    href: "https://hcmue.edu.vn",
+    major: "Software Technology",
+    start: "2014",
+    end: "2017",
+    body: "Studied for three years and finished over 80% of the curriculum.",
+  },
   stack: [
     "HTML5 / CSS3 / Vanilla JS",
     "TypeScript",
@@ -68,5 +78,21 @@ export const cv = {
     { name: "Growtrics", href: "https://perxel.com/en/works/growtrics" },
     "DMD by Sun Group",
     "Koru Education",
+    "Yadea Vietnam",
+    "Vero ASEAN",
+  ],
+  // From LinkedIn (2026-10-11). The LinkedIn Learning courses and the expired Webflow ones are left out.
+  certifications: [
+    { name: "TinaCMS Developer", issuer: "TinaCMS", date: "2026-09" },
+    { name: "Claude Code in Action", issuer: "Anthropic", date: "2026-04" },
+    { name: "Claude Code 101", issuer: "Anthropic", date: "2026-04" },
+    { name: "Claude 101", issuer: "Anthropic", date: "2026-04" },
+    { name: "Start Writing Prompts like a Pro", issuer: "Google", date: "2025-06" },
+  ],
+  languages: [
+    { name: "Vietnamese", level: "native" },
+    { name: "English", level: "professional working" },
+    { name: "Chinese", level: "limited working" },
+    { name: "Japanese", level: "elementary" },
   ],
 }
