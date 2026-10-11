@@ -18,12 +18,14 @@ export async function loadCollectionMeta<Meta extends { slug: string }>(
   return modules.map((mod, i) => ({ ...mod.meta, slug: files[i].replace(/\.mdx$/, "") }) as Meta)
 }
 
+// `SHOW_DRAFTS=1` (set by `pnpm run deploy` until launch) builds drafts too, so the preview shows
+// the whole site while entries are still placeholders.
 function isDev() {
-  return process.env.NODE_ENV !== "production"
+  return process.env.NODE_ENV !== "production" || process.env.SHOW_DRAFTS === "1"
 }
 
 // `buildable`: gets a static page. `listed`: appears in listings, feeds and related pools.
-// Drafts are in both under `next dev` and in neither in production; unlisted items are buildable only.
+// Drafts are in both under `next dev` (and `SHOW_DRAFTS=1`) and in neither in production; unlisted items are buildable only.
 export function splitByStatus<Meta extends { status: ContentStatus }>(
   items: Meta[],
 ): { buildable: Meta[]; listed: Meta[] } {

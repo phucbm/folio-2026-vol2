@@ -85,7 +85,7 @@ Deferred 2026-10-11: content and layout first; picked up after launch. Same infr
 2. ~~Content engine + lint + skills ported.~~ Done 2026-10-11: collections `notes` and `archived` (MDX, frontmatter via `content/meta.generated.json`), pure catalog with tests, `content:lint` + hook, `copywriting` and `visuals` skills rewritten for this site, visuals runner with `gallery` and `code` templates, `/content.json`, `/sitemap.xml`, `/llms.txt`, `/feed.xml`, `/robots.txt`. Details: `.claude/docs/content.md`.
 2b. ~~Move the existing content over.~~ Done 2026-10-11: N-001 (How I Built My Blog, grammar revised with the owner's approval), `/notes` + entry route, `/now` (rewritten: Perxel, OpenWallet, OpenRace, open to new opportunities), `/uses`, `/colophon` (rewritten for this stack; the old design-inspirations list dropped, the design is the owner's own idea), `/perxel` (the four folio-2026 projects are all Perxel case studies: one line each in `data/perxel.ts`), the about text on the home page, contact links. Skipped: the WordPress-stacks post (an outline only, and client-facing: Perxel), Tina's demo post.
 3. ~~Home page (abstract, Table 1, contents) and the design system written down (`.claude/docs/design.md`).~~ Done 2026-10-11: abstract drafted (`content/pages/abstract.mdx`, replaces the old about text, awaiting the owner's approval), Table 1 from `lib/numbers.ts` (notes and projects counted; commits, books, packages blank until part 6), contents with dot leaders and counts, `.claude/docs/design.md`. Figure 0 waits for part 6.
-4. `/archived` + entry pages, then the Perxel link to it. In progress: layout and 20 placeholder drafts done, text waits on `intake/archived.md`.
+4. `/archived` + entry pages, then the Perxel link to it. In progress: layout and 20 placeholder drafts done, text waits on `intake/archived.md`. Not a blocker (owner, 2026-10-11): finish the whole site first, the owner fills the gaps after seeing it.
 5. `/notes` + the first few notes.
 6. Data pipeline: Table 1, `/stats`, `/oss`, `/reading`, Figure 0.
 7. Remaining pages (`/perxel`, `/references`, `/now`, `/uses`, `/colophon`, `/errata`) and migration + redirects.
@@ -94,12 +94,13 @@ Deferred 2026-10-11: content and layout first; picked up after launch. Same infr
 
 ## Next session
 
-- Part 4 in progress (committed 2026-10-11): `app/archived/page.tsx` (figures in a two-column grid, caption below the plate), `app/archived/[slug]/page.tsx` (plate, a facts table, the body), `/archived` in `staticRoutes` as §2. The intro line on `/archived` is a draft awaiting the owner's approval. Not deployed: the build fails while every entry is a draft (below).
+- Preview builds drafts: `pnpm run deploy` sets `SHOW_DRAFTS=1` (`lib/content/collections.ts`), so placeholders show on the preview, and `robots.txt` then disallows everything. Remove the flag from the deploy script at launch (part 8). Parts 3 and 4 deployed 2026-10-11.
+- Part 4 in progress (committed 2026-10-11): `app/archived/page.tsx` (figures in a two-column grid, caption below the plate), `app/archived/[slug]/page.tsx` (plate, a facts table, the body), `/archived` in `staticRoutes` as §2. The intro line on `/archived` is a draft awaiting the owner's approval. 
 - Projects: all 20 in Perxel's `perxel-web-2026/data/portfolio/projects.ts` with `role: "Lead Frontend Developer"`, minus Growtrics (it is Perxel's). Figures numbered by year, oldest first. Plates from Perxel's captures (`public/projects/` there: full-page desktop and mobile JPGs, some MP4s), through `visuals` recipes; RMIT Experience Day 2023 has none (maybe `rmit-2024.jpg`).
-- The 20 entries exist as `draft` placeholders (`[TODO]` bodies, figures in Perxel's list order, renumber by year once known; `year` is optional now). Their plates (`public/images/archived/<slug>-plate.webp`) are quick top crops of Perxel's captures, made by hand for the layout check: redo them as `visuals` recipes. `pnpm build` fails until at least one entry is `published` (an export needs one static param).
+- The 20 entries exist as `draft` placeholders (`[TODO]` bodies, figures in Perxel's list order, renumber by year once known; `year` is optional now). Their plates (`public/images/archived/<slug>-plate.webp`) are quick top crops of Perxel's captures, made by hand for the layout check: redo them as `visuals` recipes.  A plain `pnpm build` still fails until one entry is `published` (an export needs one static param).
 - Waiting on the owner: `intake/archived.md` (gitignored), one block per project (year, url, role, team, stack, what, notes, show). Draft the entries from it, show them, then make the plates.
 - ViiVue dates (LinkedIn, checked 2026-10-11): Sep 2017 to Jul 2025. Intern Sep-Nov 2017, part-time Dec 2017-May 2018, full-stack developer Jun 2018-Dec 2021, lead front-end developer Dec 2021-Jul 2025. Perxel freelance from Apr 2022 (overlapping), full-time from Mar 2026.
-- Part 3 is committed but not deployed: `pnpm run deploy` to see it on the preview, and look at the home page in a browser (not checked visually yet).
+- The home page has not been checked in a browser yet.
 - Abstract draft to confirm: the "tables more than hero banners" line.
 - Done after part 3 (owner's go-ahead): `/uses` grammar, yt-dlp link now points to yt-dlp, "300+" dropped with the old about text.
 - The repo will be open source: no secrets, private data or local paths in commits.
@@ -117,6 +118,6 @@ Deferred 2026-10-11: content and layout first; picked up after launch. Same infr
 
 ## Open questions
 
-- Which repo serves phucbm.com today (`folio-2026` as the `phucbm-com-2026` Worker, or `phucbm-web`)? Decides the redirect list and the cutover.
+- Which repo serves phucbm.com today? Owner thinks `folio-2026` (the `phucbm-com-2026` Worker); confirm in Cloudflare before the cutover. Redirects then start from folio-2026's routes (`/work/*`).
 - Archived on perxel.com: one link from `/works`, or per-project links? (Perxel copy, `copywriting` skill applies there.)
 - GitHub "private contributions" must be on in the profile for Table 1's commit count to include private repos.
