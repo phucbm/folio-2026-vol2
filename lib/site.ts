@@ -12,9 +12,9 @@ export const site = {
 /** Where to find me, in the order they are shown (from phucbm-web's /connect). */
 export const contactLinks: { label: string; name: string; href: string }[] = [
   { label: "Email", name: site.email, href: `mailto:${site.email}` },
-  { label: "GitHub", name: "phucbm", href: "https://github.com/phucbm" },
-  { label: "LinkedIn", name: "phucbm", href: "https://www.linkedin.com/in/phucbm/" },
-  { label: "X", name: "phucbm_", href: "https://x.com/phucbm_" },
-  { label: "npm", name: "phucbm", href: "https://www.npmjs.com/org/phucbm" },
+  { label: "GitHub", name: "github.com/phucbm", href: "https://github.com/phucbm" },
+  { label: "LinkedIn", name: "linkedin.com/in/phucbm", href: "https://www.linkedin.com/in/phucbm/" },
+  { label: "X", name: "x.com/phucbm_", href: "https://x.com/phucbm_" },
+  { label: "npm", name: "npmjs.com/org/phucbm", href: "https://www.npmjs.com/org/phucbm" },
   { label: "Discord", name: "Join server", href: "https://discord.gg/9UFRcUZtPp" },
 ]
