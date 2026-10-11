@@ -3,11 +3,14 @@ import { pageMetadata } from "@/lib/seo"
 import { PageHeader } from "@/components/content/PageHeader"
 import { NumCell, Pending, TableCaption } from "@/components/content/Table"
 import { ossRepos, repoPath } from "@/data/oss"
-import { github, npm } from "@/lib/live"
+import { getLive } from "@/lib/live"
 import { formatDate } from "@/lib/utils"
 import { A } from "@/components/content/A"
 
 export const metadata: Metadata = pageMetadata("/oss")
+
+// Outside numbers (lib/live.ts): rendered again at most hourly, on a visit, after the Worker refreshes them (plan 002).
+export const revalidate = 3600
 
 const head = "py-1.5 font-normal"
 
@@ -20,7 +23,8 @@ function DateCell({ value, last }: { value: string | undefined; last?: boolean }
   )
 }
 
-export default function OssPage() {
+export default async function OssPage() {
+  const { github, npm } = await getLive()
   const packages = npm?.packages ?? []
   return (
     <article className="max-w-measure">
@@ -42,7 +46,7 @@ export default function OssPage() {
             </tr>
           </thead>
           <tbody>
-            {ossRepos.map((repo) => {
+            {ossRepos(github?.repos).map((repo) => {
               const full = repoPath(repo)
               const stats = github?.repos[full]
               return (

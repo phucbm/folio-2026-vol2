@@ -1,9 +1,28 @@
-# Static assets only: `next build` writes `out/`, Cloudflare serves it. No Worker script.
+# OpenNext on Workers (plan 002). `opennextjs-cloudflare build` writes `.open-next/`; `worker/index.ts`
+# wraps its worker to refresh the outside numbers after a visit. Static files (`.open-next/assets`)
+# are served before the Worker runs.
 name = "phucbm-com-2026-vol2"
+main = "worker/index.ts"
 compatibility_date = "2026-10-01"
+compatibility_flags = ["nodejs_compat", "global_fetch_strictly_public"]
+# www.phucbm.com redirects to the apex outside this Worker (a zone setting).
+routes = [{ pattern = "phucbm.com", custom_domain = true }]
 
 [assets]
-directory = "./out"
-# `/notes` serves `out/notes.html`; unknown URLs get `out/404.html` with a 404 status.
-html_handling = "auto-trailing-slash"
-not_found_handling = "404-page"
+directory = ".open-next/assets"
+binding = "ASSETS"
+
+# OpenNext's memory queue renders a stale page again through this (`open-next.config.ts`).
+[[services]]
+binding = "WORKER_SELF_REFERENCE"
+service = "phucbm-com-2026-vol2"
+
+# OpenNext's incremental cache: the prerendered pages, and the five that render again hourly.
+[[kv_namespaces]]
+binding = "NEXT_INC_CACHE_KV"
+id = "c05fcc08e1774abba2b8a58adba50e1c"
+
+# The outside numbers (`lib/live.ts`): keys `live`, `live:due:<deploy>`, `live:lock`.
+[[kv_namespaces]]
+binding = "LIVE"
+id = "6b293f595cd54580a927228ae2f9acf6"

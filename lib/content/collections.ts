@@ -18,7 +18,7 @@ export async function loadCollectionMeta<Meta extends { slug: string }>(
   return modules.map((mod, i) => ({ ...mod.meta, slug: files[i].replace(/\.mdx$/, "") }) as Meta)
 }
 
-// `SHOW_DRAFTS=1` (set by `pnpm run deploy` until launch) builds drafts too, so the preview shows
+// `SHOW_DRAFTS=1` (`SHOW_DRAFTS=1 pnpm run deploy`, for a preview) builds drafts too, so the preview shows
 // the whole site while entries are still placeholders.
 function isDev() {
   return process.env.NODE_ENV !== "production" || process.env.SHOW_DRAFTS === "1"

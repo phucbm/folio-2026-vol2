@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// The paper's conventions, checked against the built site (out/). Runs after `next build` (`pnpm build`)
+// The paper's conventions, checked against the prerendered pages (`.next/server/app`). Runs after `next build` (`pnpm build`)
 // and fails it. What a script can see: numbering, labels, anchors and cross-references. What it cannot
 // (is this caption one sentence, does a table belong here): the `paper` skill.
 //
@@ -9,9 +9,9 @@
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs"
 import { join, relative } from "node:path"
 
-const OUT = process.env.PAPER_OUT ?? "out"
+const OUT = process.env.PAPER_OUT ?? ".next/server/app"
 if (!existsSync(OUT)) {
-  console.error("check-paper: no out/ (run `pnpm build` first)")
+  console.error(`check-paper: no ${OUT} (run \`pnpm build\` first)`)
   process.exit(1)
 }
 
@@ -33,7 +33,7 @@ const pages = []
     const full = join(dir, name)
     if (name === "_next") continue
     if (statSync(full).isDirectory()) walk(full)
-    else if (name.endsWith(".html") && !/^(404|_not-found)\.html$/.test(name)) pages.push(full)
+    else if (name.endsWith(".html") && !/^(404|_not-found|_global-error)\.html$/.test(name)) pages.push(full)
   }
 })(OUT)
 // Visible text only: scripts (the RSC payload repeats every string) and tags dropped.

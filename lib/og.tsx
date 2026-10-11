@@ -17,14 +17,16 @@ const muted = "#625e57"
 const rule = "#d8d2c6"
 
 // Satori reads neither woff2 nor variable fonts: static TTF instances of the site's own cuts, read
-// from disk at build time (the export has no server, so nothing runs this later). Rebuild:
-// .claude/docs/performance.md.
+// from disk at build time. Read on the first card, not when the module loads: pages import this file
+// for `shareMetadata`, and the Worker has no disk (the built cards are static files there,
+// `scripts/cf-assets.mjs`). Rebuild: .claude/docs/performance.md.
 const fontDir = join(process.cwd(), "lib/fonts/og")
-const fonts = Promise.all([
+let fonts: Promise<Buffer[]> | undefined
+const loadFonts = () => (fonts ??= Promise.all([
   readFile(join(fontDir, "source-serif-4-500.ttf")),
   readFile(join(fontDir, "source-sans-3-400.ttf")),
   readFile(join(fontDir, "ibm-plex-mono-400.ttf")),
-])
+]))
 
 // The mark, as in `app/icon.svg` with the `rule` hairline of `Logo`.
 const mark = `data:image/svg+xml;base64,${Buffer.from(
@@ -41,7 +43,7 @@ export interface OgCard {
 }
 
 export async function createOgImage({ label, title, description, meta }: OgCard) {
-  const [serif, sans, mono] = await fonts
+  const [serif, sans, mono] = await loadFonts()
   return new ImageResponse(
     (
       <div

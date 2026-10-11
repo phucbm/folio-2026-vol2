@@ -1,4 +1,4 @@
-import { books, github, npm } from "@/lib/live"
+import type { LiveData } from "@/lib/live"
 
 // The series behind the plots, built from `lib/live.ts`: values plus the x ticks to label them.
 export interface Series {
@@ -17,7 +17,7 @@ function yearTicks(keys: string[]): Series["xTicks"] {
 }
 
 /** Figure 1: contributions per week, from my first contribution on GitHub to this week. */
-export function contributionsPerWeek(): Series | null {
+export function contributionsPerWeek({ github }: LiveData): Series | null {
   const weeks = github?.contributionsPerWeek ?? []
   const first = weeks.findIndex((w) => w.count > 0)
   if (first < 0) return null
@@ -27,7 +27,7 @@ export function contributionsPerWeek(): Series | null {
 }
 
 /** npm downloads per month, every package together, full months only. */
-export function downloadsPerMonth(): Series | null {
+export function downloadsPerMonth({ npm }: LiveData): Series | null {
   const thisMonth = new Date().toISOString().slice(0, 7)
   const months = (npm?.downloadsPerMonth ?? []).filter((m) => m.month < thisMonth)
   if (months.length === 0) return null
@@ -35,7 +35,7 @@ export function downloadsPerMonth(): Series | null {
 }
 
 /** Books finished per year, from the first year with one to this year (empty years kept). */
-export function booksPerYear(): Series | null {
+export function booksPerYear({ books }: LiveData): Series | null {
   const years = books.map((b) => Number(b.read?.slice(0, 4))).filter(Boolean)
   if (years.length === 0) return null
   const from = Math.min(...years)

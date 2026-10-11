@@ -5,16 +5,16 @@
   "scripts": {
     "dev": "node scripts/content-meta.mjs && next dev",
     "build": "node scripts/content-meta.mjs && next build && node scripts/check-paper.mjs && node scripts/check-seo.mjs",
+    "cf:build": "opennextjs-cloudflare build && node scripts/cf-assets.mjs",
     "check:paper": "node scripts/check-paper.mjs",
-    "start": "npx serve out",
     "typecheck": "node scripts/content-meta.mjs && tsc --noEmit",
     "test": "vitest run",
     "content:lint": "node scripts/lint-content.mjs",
     "content:meta": "node scripts/content-meta.mjs",
-    "data": "node --env-file-if-exists=.env.local scripts/data/fetch.mjs",
+    "data": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --env-file-if-exists=.env.local scripts/data/fetch.mjs",
     "visuals": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/visuals/cli.mjs",
-    "preview": "pnpm build && wrangler dev",
-    "deploy": "pnpm data && SHOW_DRAFTS=1 pnpm build && wrangler deploy"
+    "preview": "pnpm cf:build && wrangler dev",
+    "deploy": "pnpm cf:build && opennextjs-cloudflare deploy"
   },
   "pnpm": {
     "ignoredBuiltDependencies": [
@@ -26,6 +26,7 @@
     "@mdx-js/loader": "^3.1.1",
     "@mdx-js/react": "^3.1.1",
     "@next/mdx": "16.3.8",
+    "@opennextjs/cloudflare": "^1.20.10",
     "@types/mdx": "^2.0.14",
     "clsx": "^2.1.1",
     "next": "16.3.8",

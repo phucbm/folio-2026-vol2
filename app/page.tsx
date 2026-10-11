@@ -5,8 +5,8 @@ import { staticRoutes } from "@/lib/routes";
 import { catalogByKind } from "@/lib/content/site-catalog";
 import { numbers } from "@/lib/numbers";
 import { projects } from "@/data/projects";
-import { ossRepos } from "@/data/oss";
-import { books, references } from "@/lib/live";
+import { ossRepoPaths } from "@/data/oss";
+import { getLive } from "@/lib/live";
 import { Figure1 } from "@/components/plots/Figure1";
 import { NoteMark, noteMarks, NumCell, TableCaption, TableNotes } from "@/components/content/Table";
 import { exhibits, type ExhibitKind } from "@/lib/exhibits";
@@ -16,21 +16,24 @@ import { pageMetadata, siteJsonLd } from "@/lib/seo";
 
 export const metadata = pageMetadata("/");
 
-const marks = noteMarks(numbers);
-
-// Counts shown beside a section in the contents, where the section is a list.
-const counts: Record<string, number> = {
-  "/notes": catalogByKind("note").length,
-  "/projects": projects.length,
-  "/oss": ossRepos.length,
-  // A source never fetched gets no count.
-  ...(books.length ? { "/reading": books.length } : {}),
-  ...(references.length ? { "/references": references.length } : {}),
-};
+// Outside numbers (lib/live.ts): rendered again at most hourly, on a visit, after the Worker refreshes them (plan 002).
+export const revalidate = 3600;
 
 // The paper's front matter (plan 001, "Home page"): name, abstract, Table 1, Figure 1 (the calendar), contents,
 // contact. No lists of latest items. Ask joins after launch.
-export default function Home() {
+export default async function Home() {
+  const live = await getLive();
+  const rows = numbers(live);
+  const marks = noteMarks(rows);
+  // Counts shown beside a section in the contents, where the section is a list.
+  const counts: Record<string, number> = {
+    "/notes": catalogByKind("note").length,
+    "/projects": projects.length,
+    "/oss": ossRepoPaths.length,
+    // A source never fetched gets no count.
+    ...(live.books.length ? { "/reading": live.books.length } : {}),
+    ...(live.references.length ? { "/references": live.references.length } : {}),
+  };
   return (
     <article>
       <header className="max-w-measure">
@@ -65,7 +68,7 @@ export default function Home() {
             </tr>
           </thead>
           <tbody>
-            {numbers.map((row) => (
+            {rows.map((row) => (
               <tr key={row.label}>
                 <th scope="row" className="py-1.5 pr-4 text-left font-normal">
                   {row.href ? <Link href={row.href}>{row.label}</Link> : row.label}
@@ -77,11 +80,11 @@ export default function Home() {
             ))}
           </tbody>
         </table>
-        <TableNotes notes={numbers.map((row) => row.note)} />
+        <TableNotes notes={rows.map((row) => row.note)} />
       </section>
 
       <section aria-label="Figure 1" className="mt-14 max-w-measure">
-        <Figure1 />
+        <Figure1 live={live} />
       </section>
 
       <nav aria-labelledby="contents" className="mt-14 max-w-measure">

@@ -6,7 +6,7 @@ import { displayDate } from "@/lib/content/collections"
 import { formatDate } from "@/lib/utils"
 import { site } from "@/lib/site"
 
-// One share card per page and note, written to out/og/<path>.png by the export (`lib/og.tsx`).
+// One share card per page and note, drawn at build time and served as a static file (`lib/og.tsx`, `scripts/cf-assets.mjs`).
 // A plain route rather than `opengraph-image.tsx`: the export writes those without an extension.
 export const dynamic = "force-static"
 export const dynamicParams = false

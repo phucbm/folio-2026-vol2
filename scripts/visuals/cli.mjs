@@ -18,7 +18,7 @@ import {launch, openPage, pointTo, preparePage, scrollTo, serveCache, sleep, wan
 import {COLLECTIONS} from "../content-collections.mjs"
 
 // The deployed site. The preview until launch (plan 001, part 8), then https://phucbm.com.
-const ORIGIN = "https://phucbm-com-2026-vol2.bmp.workers.dev"
+const ORIGIN = "https://phucbm.com"
 const [command, target, ...rest] = process.argv.slice(2)
 const flag = (name, fallback) => rest.find((a) => a.startsWith(`--${name}=`))?.split("=").slice(1).join("=") ?? fallback
 const ids = rest.filter((a) => !a.startsWith("--"))

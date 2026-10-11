@@ -6,17 +6,17 @@ export default async function config(phase: string): Promise<NextConfig> {
   const dev = phase === PHASE_DEVELOPMENT_SERVER;
 
   const nextConfig: NextConfig = {
-    // Every page is static (Cloudflare static assets, `wrangler.toml`). Anything dynamic (Ask, forms)
-    // lives on the MCP Worker, never here. Not under `next dev`: the dev-only visuals route reads
-    // search params, which an export build cannot.
-    ...(dev ? {} : { output: "export" as const }),
+    // OpenNext on Workers (plan 002, `wrangler.toml`): every page is prerendered, and the five with
+    // outside numbers render again hourly. `SHOW_DRAFTS` is fixed at build, so a page rendered again
+    // on the Worker lists the same notes as the build.
+    env: { SHOW_DRAFTS: process.env.SHOW_DRAFTS ?? "" },
     // `*.dev.tsx` routes exist only in `next dev` (the visual templates, `app/(visuals)/`), so they
     // never reach the production build.
     pageExtensions: ["ts", "tsx", "md", "mdx", ...(dev ? ["dev.tsx"] : [])],
     // Let phones on the LAN load dev assets (otherwise the page doesn't hydrate).
     allowedDevOrigins: ["192.168.1.*"],
     images: {
-      // No image server on static assets; images are optimised at build time instead.
+      // No image server on the Worker; images are optimised at build time instead.
       unoptimized: true,
     },
   };

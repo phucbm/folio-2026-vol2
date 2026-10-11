@@ -2,17 +2,21 @@ import type { Metadata } from "next"
 import { pageMetadata } from "@/lib/seo"
 import { PageHeader } from "@/components/content/PageHeader"
 import { Pending } from "@/components/content/Table"
-import { books } from "@/lib/live"
+import { getLive } from "@/lib/live"
 import { formatDate } from "@/lib/utils"
 import { A } from "@/components/content/A"
 
 export const metadata: Metadata = pageMetadata("/reading")
 
+// Outside numbers (lib/live.ts): rendered again at most hourly, on a visit, after the Worker refreshes them (plan 002).
+export const revalidate = 3600
+
 // Vietnamese letters that English never uses: a review written in Vietnamese gets `lang="vi"`.
 const VIETNAMESE = /[ăâđêôơưạảấầẩẫậắằẳẵặẹẻẽếềểễệỉịọỏốồổỗộớờởỡợụủứừửữựỳỵỷỹ]/i
 
 // A bibliography: alias, author, year, title in italics, then the date I finished it, my rating and review.
-export default function ReadingPage() {
+export default async function ReadingPage() {
+  const { books } = await getLive()
   return (
     <article className="max-w-measure">
       <PageHeader label="§4" title="Reading" />

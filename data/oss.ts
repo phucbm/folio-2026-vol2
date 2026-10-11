@@ -1,7 +1,6 @@
 // §3 Open source: the repos to show (from phucbm-web's /shipped). Only the list is authored; the
-// rest comes from the data pipeline (`lib/live.ts`), which reads this list too
-// (`scripts/data/fetch.mjs`). The order here does not matter: /oss sorts by the day each repo started.
-import { github } from "@/lib/live"
+// rest comes from the data jobs (`lib/live/jobs.ts`), which read this list too. The order here does
+// not matter: /oss sorts by the day each repo started. No imports: `pnpm data` loads this file in Node.
 
 // "owner/name" on GitHub; a bare name means phucbm.
 const list: string[] = [
@@ -27,7 +26,9 @@ const list: string[] = [
 
 export const repoPath = (repo: string) => (repo.includes("/") ? repo : `phucbm/${repo}`)
 
+// "owner/name" of every repo, for the data jobs.
+export const ossRepoPaths: string[] = list.map(repoPath)
+
 // Newest first by the day the repo was created; a repo not fetched yet goes last.
-export const ossRepos: string[] = [...list].sort((a, b) =>
-  (github?.repos[repoPath(b)]?.created ?? "").localeCompare(github?.repos[repoPath(a)]?.created ?? ""),
-)
+export const ossRepos = (repos: Record<string, { created?: string }> | undefined): string[] =>
+  [...list].sort((a, b) => (repos?.[repoPath(b)]?.created ?? "").localeCompare(repos?.[repoPath(a)]?.created ?? ""))

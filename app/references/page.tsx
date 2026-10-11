@@ -2,17 +2,21 @@ import type { Metadata } from "next"
 import { pageMetadata } from "@/lib/seo"
 import { PageHeader } from "@/components/content/PageHeader"
 import { Pending } from "@/components/content/Table"
-import { references } from "@/lib/live"
+import { getLive } from "@/lib/live"
 import { contactLinks } from "@/lib/site"
 import { formatDate } from "@/lib/utils"
 import { A } from "@/components/content/A"
 
 export const metadata: Metadata = pageMetadata("/references")
 
+// Outside numbers (lib/live.ts): rendered again at most hourly, on a visit, after the Worker refreshes them (plan 002).
+export const revalidate = 3600
+
 const discord = contactLinks.find((link) => link.label === "Discord")
 
 // References in citation format: alias, title, source, the day I saved it and its tags. Newest first.
-export default function ReferencesPage() {
+export default async function ReferencesPage() {
+  const { references } = await getLive()
   return (
     <article className="max-w-measure">
       <PageHeader label="§5" title="References" />

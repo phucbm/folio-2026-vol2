@@ -18,3 +18,5 @@ intake/
 
 # editors
 .idea/
+/.open-next/
+.dev.vars*

@@ -1,16 +1,16 @@
 import { ContributionCalendar } from "./ContributionCalendar"
 import { Plot } from "./Plot"
 import { contributionsPerWeek } from "@/lib/figures"
-import { github } from "@/lib/live"
+import type { LiveData } from "@/lib/live"
 import { exhibit } from "@/lib/exhibits"
 import { FigureCaption } from "@/components/content/Table"
 
 /** Figure 1: my contributions per day over the last year, as GitHub's calendar lays them out, and on
  *  /stats (`weekly`) per week since the first one, pluckable: the one live element
  *  (`.claude/docs/design.md`). */
-export function Figure1({ weekly = false }: { weekly?: boolean }) {
-  const series = weekly ? contributionsPerWeek() : null
-  const days = github?.contributionsPerDay ?? []
+export function Figure1({ live, weekly = false }: { live: LiveData; weekly?: boolean }) {
+  const series = weekly ? contributionsPerWeek(live) : null
+  const days = live.github?.contributionsPerDay ?? []
   if (!series && days.length === 0) return null
   const both = series && days.length > 0
   return (

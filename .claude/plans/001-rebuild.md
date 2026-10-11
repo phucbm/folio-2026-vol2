@@ -44,7 +44,7 @@ No lists of latest items. The home page is the paper's front matter:
 
 ## Stack
 
-- Next.js 16 (App Router, TypeScript, Tailwind 4, pnpm), **static export** (`output: "export"`) on Cloudflare static assets. No OpenNext and no front Worker: every page is static, and anything dynamic (Ask, forms) lives on the MCP Worker.
+- Next.js 16 (App Router, TypeScript, Tailwind 4, pnpm), **static export** (`output: "export"`) on Cloudflare static assets. No OpenNext and no front Worker: every page is static, and anything dynamic (Ask, forms) lives on the MCP Worker. *Superseded 2026-10-12 by plan 002: OpenNext on Workers, the data pages render again hourly, numbers refreshed on visit.*
 - Copied from perxel-web-2026, trimmed for one locale and a personal site:
   - Content engine: `lib/content/` (schema, collections, catalog), `scripts/content-meta.mjs`, `meta.generated.json`, no `fs` at runtime.
   - `content:lint` and its PostToolUse hook.
@@ -61,7 +61,7 @@ All numbers computed at build time, never typed by hand. Cached in a generated J
 - Packages: npm downloads API, jsDelivr stats API, GitHub stars (`phucbm-web`'s `/stats` page already does all three; reuse its logic).
 - Books: Goodreads RSS (as `phucbm-web` does).
 - Notes, projects: from the content catalog.
-- Rebuilt on every deploy; a scheduled rebuild (GitHub Actions cron, e.g. daily) keeps the numbers fresh between posts.
+- Rebuilt on every deploy; a scheduled rebuild (GitHub Actions cron, e.g. daily) keeps the numbers fresh between posts. *Superseded by plan 002: refreshed on visit, no scheduled rebuild.*
 
 ## MCP and Ask (deferred)
 
@@ -98,16 +98,16 @@ For the next plan (launch, or content first). Nothing here blocks the site from 
 **Waiting on the owner**
 - Archived text: `intake/archived.md` (gitignored), one block per project. Then draft the 20 entries, renumber figures by year (oldest first; `year` is optional until then), and redo the plates (`public/images/archived/<slug>-plate.webp`, quick hand crops of Perxel's captures) as `visuals` recipes. RMIT Experience Day 2023 has no capture (maybe `rmit-2024.jpg`). All 20 are in Perxel's `perxel-web-2026/data/portfolio/projects.ts` (minus Growtrics, Perxel's).
 - Copy to read: the abstract (the "tables more than hero banners" line), the intro lines on `/archived`, `/oss`, `/reading`, `/references`, notes N-002 to N-004 (drafts), the Data section on `/colophon` (links N-003: publish it or drop the link).
-- Daily rebuild: keep, make weekly, or delete `.github/workflows/rebuild.yml` (undecided). If kept, repo secrets: `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`, `GH_PAT` (the owner's own token, or private contributions drop out), `DISCORD_BOT_TOKEN`, `DISCORD_CHANNEL_ID`.
+- ~~Daily rebuild~~: deleted 2026-10-12 (plan 002, refresh on visit).
 - GA4 measurement ID (load it as perxel-web-2026 does: first input or after 15 s).
 - Not checked in a browser yet: the whole site, and Figure 1's pluck (needs a mouse on an `lg` screen).
 
 **At launch**
-- Confirm in Cloudflare which Worker serves phucbm.com today (owner thinks `folio-2026`, `phucbm-com-2026`).
-- Drop `SHOW_DRAFTS=1` from the `deploy` script (`package.json`): from then on only `published` entries build, and `robots.txt` allows crawling again. A plain `pnpm build` fails while no archived entry is `published` (an export needs one static param).
-- `scripts/visuals/cli.mjs` `ORIGIN`: switch from the preview to https://phucbm.com.
+- ~~Confirm which Worker serves phucbm.com~~: it was `phucbm-com-2026` (folio-2026). Launched 2026-10-12: the custom domain moved to `phucbm-com-2026-vol2` (`routes` in `wrangler.toml`); the old Worker and its `phucbm-com-2026-session` KV deleted.
+- ~~Drop `SHOW_DRAFTS=1` from the `deploy` script~~: done 2026-10-12; only `published` entries build and `robots.txt` allows crawling. `SHOW_DRAFTS=1 pnpm run deploy` would put drafts on the live site: don't.
+- ~~`scripts/visuals/cli.mjs` `ORIGIN`~~: https://phucbm.com (2026-10-12).
 - The archived link on perxel.com: one link from `/works`, or one per project (Perxel copy, its own `copywriting` skill).
-- Archive `folio-2026` and `phucbm-web`.
+- ~~Archive `folio-2026` and `phucbm-web`~~: archived on GitHub 2026-10-12.
 
 **Notes worth keeping**
 - Cloudflare `_redirects`: a specific path loses to a splat on the same prefix (`/posts/x` went to `/posts/*`'s target), so old URLs are listed one by one where it matters.
@@ -115,7 +115,7 @@ For the next plan (launch, or content first). Nothing here blocks the site from 
 - ViiVue dates (LinkedIn, checked 2026-10-11): Sep 2017 to Jul 2025. Intern Sep-Nov 2017, part-time Dec 2017-May 2018, full-stack developer Jun 2018-Dec 2021, lead front-end developer Dec 2021-Jul 2025. Perxel freelance from Apr 2022 (overlapping), full-time from Mar 2026.
 - The repo will be open source: no secrets, private data or local paths in commits.
 - An entry route can only exist with its first `.mdx` (`.claude/docs/content.md`); every page goes in `staticRoutes` (`lib/routes.ts`).
-- Deploy with `pnpm run deploy` (`pnpm deploy` is pnpm's built-in); wrangler is logged in as the owner's account.
+- Deploy with `pnpm run deploy` (`pnpm deploy` is pnpm's built-in); wrangler is logged in as the owner's account. It deploys to phucbm.com since launch.
 
 ## Decided (2026-10-11)
 

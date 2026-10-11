@@ -1,96 +1,38 @@
-import live from "@/data/live.generated.json"
+import { cache } from "react"
+import { getCloudflareContext } from "@opennextjs/cloudflare"
+import seed from "@/data/live.generated.json"
+import { mergeStores, toLive, type Book, type Live, type Reference, type Store } from "@/lib/live/jobs"
+import { ossRepoPaths } from "@/data/oss"
 import { aliasesByDate } from "@/lib/aliases"
 
-// Every number from outside the repo, as `scripts/data/fetch.mjs` last fetched it (`pnpm data`;
-// `pnpm run deploy` runs it first). A source that has never been fetched is missing, and the pages
-// leave its figures blank.
+export type { Book, NpmPackage, Reference, RepoStats, WordpressPlugin } from "@/lib/live/jobs"
 
-export interface Book {
-  title: string
-  author: string
-  year?: number
-  // The day I finished it, or shelved it when Goodreads has no read date.
-  read?: string
-  rating?: number
-  review?: string
-  url: string
+// Every number from outside the repo (plan 002). On the site: KV (`LIVE`, key `live`), which the
+// Worker refreshes after visits (`worker/index.ts`), merged job by job with the seed this build
+// brought (`data/live.generated.json`, `pnpm data`). At build time and under `next dev` there is no
+// KV, so the seed alone. A source never fetched is missing, and the pages leave its figures blank.
+// The pages that call this set `revalidate`, so they render again with the new numbers.
+
+export interface KV {
+  get(key: string, type: "json"): Promise<unknown>
+  get(key: string): Promise<string | null>
+  put(key: string, value: string, options?: { expirationTtl?: number }): Promise<void>
 }
 
-export interface Reference {
-  title: string
-  url: string
-  source: string
-  saved: string
-  tags: string[]
-}
-
-export interface NpmPackage {
-  name: string
-  description?: string
-  // "owner/name" on GitHub, lowercased.
-  repo?: string
-  created: string
-  downloadsLastMonth: number
-  downloadsTotal: number
-  jsdelivrHitsLastMonth: number | null
-  // Calendar years with any hits. Null when jsDelivr failed; missing in data fetched before it existed.
-  jsdelivrHitsByYear?: Record<string, number> | null
-}
-
-export interface RepoStats {
-  description?: string
-  stars: number
-  // Stars by the year they were given. Missing in data fetched before it existed.
-  starsByYear?: Record<string, number>
-  url: string
-  // "YYYY-MM-DD". Missing in data fetched before they existed.
-  created?: string
-  // Commits on the default branch, and the day of the last one.
-  commits?: number
-  lastCommit?: string
-}
-
-export interface WordpressPlugin {
-  slug: string
-  name: string
-  // "YYYY-MM-DD", the day WordPress.org listed it.
-  added: string
-  // Rounded down by WordPress.org: 1000 means "1,000+".
-  activeInstalls: number
-  downloads: number
-  url: string
-}
-
-interface Live {
-  fetchedAt: Record<string, string>
-  github?: {
-    commitsByYear: Record<string, number>
-    contributionsPerWeek: { week: string; count: number }[]
-    // The last 53 weeks, Sunday first, as on a GitHub profile. Missing in data fetched before it existed.
-    contributionsPerDay?: { date: string; count: number }[]
-    repos: Record<string, RepoStats>
-    // jsDelivr hits through the GitHub route, by repo ("owner/name") then calendar year. Missing in
-    // data fetched before it existed.
-    jsdelivrHitsByYear?: Record<string, Record<string, number>>
+async function stored(): Promise<Store | null> {
+  let kv: KV | undefined
+  try {
+    kv = (getCloudflareContext().env as { LIVE?: KV }).LIVE
+  } catch {
+    return null
   }
-  npm?: {
-    packages: NpmPackage[]
-    downloadsPerMonth: { month: string; downloads: number }[]
-  }
-  wordpress?: { plugins: WordpressPlugin[] }
-  books?: Book[]
-  references?: Reference[]
+  return kv ? ((await kv.get("live", "json")) as Store | null) : null
 }
 
-const data = live as Live
-
-export const fetchedAt = data.fetchedAt
-export const github = data.github
-export const npm = data.npm
-export const wordpress = data.wordpress
-
-// Active installs as WordPress.org shows them: the floor of a bucket, so "<10", "10+", "1,000+".
-export const formatInstalls = (n: number) => (n < 10 ? "<10" : `${n.toLocaleString("en-US")}+`)
+export type LiveData = Omit<Live, "books" | "references"> & {
+  books: (Book & { label: string })[]
+  references: (Reference & { label: string })[]
+}
 
 // Newest first, each with its alias by date (lib/aliases.ts): B-001 is the first book I finished,
 // R-001 the first link I saved. The source's URL is the ID.
@@ -101,5 +43,15 @@ const newestFirst = <T extends object>(prefix: string, items: T[], dateOf: (item
     .sort((a, b) => b.label.localeCompare(a.label, "en", { numeric: true }))
 }
 
-export const books: (Book & { label: string })[] = newestFirst("B", data.books ?? [], (book) => book.read)
-export const references: (Reference & { label: string })[] = newestFirst("R", data.references ?? [], (ref) => ref.saved)
+/** The numbers, once per render. */
+export const getLive = cache(async (): Promise<LiveData> => {
+  const live = toLive(mergeStores(seed as Store, await stored()), ossRepoPaths)
+  return {
+    ...live,
+    books: newestFirst("B", live.books ?? [], (book) => book.read),
+    references: newestFirst("R", live.references ?? [], (ref) => ref.saved),
+  }
+})
+
+// Active installs as WordPress.org shows them: the floor of a bucket, so "<10", "10+", "1,000+".
+export const formatInstalls = (n: number) => (n < 10 ? "<10" : `${n.toLocaleString("en-US")}+`)

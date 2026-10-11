@@ -16,7 +16,7 @@ export interface Exhibit {
 }
 
 export const exhibits: Exhibit[] = [
-  { kind: "Table", n: "1", path: "/", id: "table-1", caption: "The numbers, this year and all time, rebuilt on every deploy." },
+  { kind: "Table", n: "1", path: "/", id: "table-1", caption: "The numbers, this year and all time, fetched again about once a day." },
   { kind: "Table", n: "2", path: "/oss", id: "table-2", caption: "The repos, newest first, with GitHub stars, commits and the day of the last one." },
   { kind: "Table", n: "3", path: "/oss", id: "table-3", caption: "Every package I publish on npm, by downloads in the last 30 days." },
   { kind: "Table", n: "4", path: "/stats", id: "table-4", caption: "Commits per year on GitHub, private repos included." },

@@ -8,17 +8,22 @@ import { exhibit } from "@/lib/exhibits"
 import { Figure1 } from "@/components/plots/Figure1"
 import { Plot } from "@/components/plots/Plot"
 import { booksPerYear, downloadsPerMonth } from "@/lib/figures"
-import { fetchedAt, formatInstalls, github, wordpress } from "@/lib/live"
+import { formatInstalls, getLive } from "@/lib/live"
 import { formatDate } from "@/lib/utils"
 
 export const metadata: Metadata = pageMetadata("/stats")
 
+// Outside numbers (lib/live.ts): rendered again at most hourly, on a visit, after the Worker refreshes them (plan 002).
+export const revalidate = 3600
+
 // The data behind Table 1. Its tables and figures are numbered with the rest of the site (lib/exhibits.ts).
-export default function StatsPage() {
-  const books = booksPerYear()
-  const downloads = downloadsPerMonth()
+export default async function StatsPage() {
+  const live = await getLive()
+  const { github, wordpress } = live
+  const books = booksPerYear(live)
+  const downloads = downloadsPerMonth(live)
   const commits = github ? Object.entries(github.commitsByYear).filter(([, n]) => n > 0).reverse() : []
-  const updated = Object.values(fetchedAt).sort().at(-1)
+  const updated = live.fetchedAt
   return (
     <article className="max-w-measure">
       <PageHeader
@@ -26,12 +31,12 @@ export default function StatsPage() {
         title="Stats"
         meta={updated ? <>Fetched <span className="num">{formatDate(updated.slice(0, 10))}</span></> : undefined}
       />
-      <p>The data behind Table 1 on the home page, fetched again from GitHub, npm, WordPress.org and Goodreads on every deploy.</p>
+      <p>The data behind Table 1 on the home page, fetched again from GitHub, npm, WordPress.org and Goodreads about once a day.</p>
 
       <section aria-labelledby="contributions" className="mt-14">
         <h2 id="contributions" className="text-2xl">Contributions</h2>
         <div className="my-6">
-          {github ? <Figure1 weekly /> : <Pending>run <code>pnpm data</code> for GitHub</Pending>}
+          {github ? <Figure1 live={live} weekly /> : <Pending>run <code>pnpm data</code> for GitHub</Pending>}
         </div>
         {commits.length > 0 && (
           <div className="my-6">
