@@ -11,6 +11,10 @@ This site is a [Next.js](https://nextjs.org/) 16 app running on [Cloudflare Work
 
 I write it in PhpStorm on a MacBook Pro 14" (M4, 2025), with pnpm as the package manager.
 
+## Search and Ask
+
+Press ⌘K (Ctrl K off a Mac) to search the site. The search runs in your browser, so typing sends nothing. Press Enter with nothing selected and the question goes to an AI model (Claude Haiku, through OpenRouter), which answers from this site's pages and numbers. The question and the conversation so far go to OpenRouter and Anthropic to write the answer; this site stores nothing. Your browser keeps the conversation for a week, and Cloudflare Turnstile checks each question for bots. The box is [@perxel/spotlight](https://github.com/perxel/perxel-spotlight), a package I built for perxel.com and this site.
+
 ## Type
 
 - **Source Serif 4** for the name and section titles.

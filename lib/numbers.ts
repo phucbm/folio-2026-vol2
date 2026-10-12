@@ -19,8 +19,8 @@ export interface NumberRow {
 
 const sum = (values: number[]) => values.reduce((n, v) => n + v, 0)
 
-export function numbers({ books, github, npm, wordpress }: LiveData): NumberRow[] {
-  const year = new Date().getFullYear()
+// `year`: the "this year" column (the current year by default; Ask's get_stats asks for others).
+export function numbers({ books, github, npm, wordpress }: LiveData, year = new Date().getFullYear()): NumberRow[] {
   const notes = catalogByKind("note")
   const commits = github ? Object.entries(github.commitsByYear) : null
   const packages = npm?.packages

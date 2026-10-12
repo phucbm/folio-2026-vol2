@@ -26,3 +26,10 @@ id = "c05fcc08e1774abba2b8a58adba50e1c"
 [[kv_namespaces]]
 binding = "LIVE"
 id = "6b293f595cd54580a927228ae2f9acf6"
+
+# Ask (perxel-web plan 018): per-IP questions per minute on /api/ask. The namespace id must be
+# unique in the Cloudflare account (perxel-mcp 3001 to 3003, perxel.com 4001).
+[[ratelimits]]
+name = "ASK_RATE_LIMITER"
+namespace_id = "5001"
+simple = { limit = 6, period = 60 }

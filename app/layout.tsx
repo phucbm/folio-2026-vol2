@@ -4,6 +4,7 @@ import { site } from "@/lib/site";
 import { shareMetadata } from "@/lib/og";
 import { RunningHead } from "@/components/layout/RunningHead";
 import { Colophon } from "@/components/layout/Colophon";
+import { Spotlight } from "@/components/spotlight/Spotlight";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -24,11 +25,13 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en" className={fontVariables}>
       <body className="min-h-dvh flex flex-col">
-        <RunningHead />
-        <main className="flex-1 w-full max-w-measure-wide mx-auto px-4 sm:px-6 pt-14 pb-24 md:pt-20">
-          {children}
-        </main>
-        <Colophon />
+        <Spotlight>
+          <RunningHead />
+          <main className="flex-1 w-full max-w-measure-wide mx-auto px-4 sm:px-6 pt-14 pb-24 md:pt-20">
+            {children}
+          </main>
+          <Colophon />
+        </Spotlight>
       </body>
     </html>
   );

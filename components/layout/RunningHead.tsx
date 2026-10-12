@@ -2,6 +2,7 @@ import Link from "next/link";
 import { site } from "@/lib/site";
 import { staticRoutes } from "@/lib/routes";
 import { Logo } from "@/components/layout/Logo";
+import { SearchTrigger } from "@/components/spotlight/SearchTrigger";
 
 // The numbered sections, in contents order.
 const sections = staticRoutes.filter((route) => route.section);
@@ -27,7 +28,10 @@ export function RunningHead() {
             ))}
           </ul>
         </nav>
-        <span className="num">v{site.version}</span>
+        <span className="flex items-baseline gap-4">
+          <SearchTrigger />
+          <span className="num">v{site.version}</span>
+        </span>
       </div>
     </header>
   );

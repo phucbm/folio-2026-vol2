@@ -51,6 +51,10 @@ Checked after every build by `scripts/check-paper.mjs`; how to apply them: the `
 - **Code blocks** (MDX's fenced code, `components/content/CodeBlock.tsx`): a `rule` hairline frame, a `label` header with the language and a "Copy" button (words, no icon), comments in `ink-muted` and everything else `ink`. No syntax colours: the site has none to spare. Not numbered: a code block is part of the text, not a figure.
 - **Links**: `accent`, underlined at 35% and solid on hover. No buttons for navigation. Every `<a>` is `A` (`components/content/A.tsx`, also MDX's `a`): an outside http(s) link opens in a new tab; `check-paper` fails the build on one that does not.
 
+## Search and Ask
+
+`@perxel/spotlight`'s headless parts (perxel-web plan 018), in this paper's style, in `components/spotlight/`: the box (`Gate.tsx`) is a block between two heavy `ink` rules on the page's paper, a run-in label ("Search or ask") before the field, results as a list of entries divided by `rule` hairlines, the highlighted row in the selection tint, matched words in the selection tint too. The answers (`Panel.tsx`) are a column with a heavy `ink` rule on its left (the whole screen on phones): questions as a run-in `Q.` label, answers as prose, sources as a numbered reference list in `label`. Words, not icons ("Close", "New", "Send"). The way in is "Search ⌘K" in the running head (`SearchTrigger`), plus ⌘K anywhere. Both are lazy chunks: a page's first load holds the provider and the trigger only.
+
 ## The mark
 
 "pb" in Source Serif 4 at 600, drawn as outlines (no font): the favicon (`app/icon.svg`, `favicon.ico`, `apple-icon.png`) and the logo before the name in the running head and the colophon (`components/layout/Logo.tsx`). Ink letters in a rounded square with a `rule` hairline; on hover the square fills with ink and the letters turn paper. The icon and the logo share one path: change them together. It is the one rounded box and the one mark beside a link.
