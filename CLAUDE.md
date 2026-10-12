@@ -9,7 +9,7 @@ Plan and status: `.claude/plans/001-rebuild.md`, then `.claude/plans/002-live-da
 - `pnpm content:lint [files]`: prose and frontmatter rules for `content/notes/*.mdx`; runs on every `.mdx` write through the hook in `.claude/settings.json`.
 - `pnpm visuals <inventory|status|build>`: images for entries (the `visuals` skill).
 - `pnpm data [github npm wordpress goodreads discord]`: run every data job into the seed, `data/live.generated.json` (committed; a failed job keeps its last value). The live site refreshes on its own; this is only the fallback and the dev data.
-- `pnpm run deploy`: `pnpm cf:build`, then deploy the Worker (`pnpm deploy` alone is pnpm's own command). Only when the code or content changes: no scheduled deploy.
+- `pnpm run deploy`: `pnpm cf:build`, then deploy the Worker (`pnpm deploy` alone is pnpm's own command). Only when the code or content changes: no scheduled deploy. A push to `main` runs it in `.github/workflows/deploy.yml` (secret `CLOUDFLARE_API_TOKEN`).
 
 ## Rules
 - pnpm only. Never edit `.next/`, `.open-next/` or the `*.generated.json` files.

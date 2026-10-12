@@ -1,0 +1,43 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+    # Pushes that only touch these paths don't change the built site.
+    paths-ignore:
+      - ".claude/**"
+      - ".idea/**"
+      - "**/*.md"
+      - "**/*.test.ts"
+      - "vitest.config.ts"
+  workflow_dispatch:
+
+# One deploy at a time; a newer push waits for the running one.
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+
+      - run: pnpm install --frozen-lockfile
+
+      # `pnpm cf:build` (next build, the paper and SEO checks, OpenNext), then `wrangler deploy`.
+      # The numbers come from the committed seed (data/live.generated.json): no data tokens here.
+      - name: Build and deploy
+        run: pnpm run deploy
+        env:
+          NODE_OPTIONS: --max_old_space_size=4096
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
