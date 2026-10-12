@@ -13,6 +13,7 @@ const list: string[] = [
   "nextra-docs-starter",
   "nextra-blog-starter",
   "lipsum-generator",
+  "perxel/perxel-social-kit",
   "perxel/whack-a-mole",
   "normalized-mouse-position",
   "magnetic-button",
