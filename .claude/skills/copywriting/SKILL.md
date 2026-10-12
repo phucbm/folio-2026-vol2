@@ -18,6 +18,14 @@ Every writing rule for this site lives in this file. The only other piece is the
 6. Run the review checklist (section 7) on your own draft before showing it.
 7. Then run the `visuals` skill to plan the images the entry needs.
 
+**Write a note with a skill** (a how-to, a setup, anything the next project's agent should follow)
+The recipe is for agents, the note is for people: never put the recipe in the note.
+1. Write the recipe as a skill in phucbm/skills first (`skills/<domain>/<name>/SKILL.md`, that repo's `/add-skill` conventions: generic, projects only as examples, an entry in `plugin.json` and the README). Push it; don't cut a release unless the owner asks.
+2. Check it installs: `npx skills@latest add phucbm/skills --list` shows the name.
+3. In the note, set `skill: "<domain>/<name>"`. The page shows the link and the install line under the title (`components/content/NoteSkill.tsx`); the body never repeats them (`skill-repeated-in-body`).
+4. The body: the abstract (what it is, where it runs), what it looks like (real outputs, through the `visuals` skill), what surprised you or broke, each in a sentence or two, and a table when several projects did it differently. Code only as a short snippet that makes a point (`skill-recipe-in-body` warns past 20 lines). Model: `content/notes/dynamic-og-images.mdx`.
+5. A note without `skill` that grows past 80 lines of code gets `recipe-without-skill`: that is the cue to split it this way.
+
 **Revise existing copy**
 - Show before → after pairs in chat and wait for approval. Never edit the file first.
 - Keep every sentence that already reads fine. Change only what is actually off. A revision that rewrites everything is worse than the original, and on a personal site it erases the owner's voice.
@@ -81,7 +89,7 @@ The site is set like a research paper; the copy follows the paper's habits, not 
 
 **Frontmatter** (first thing in the file, before imports; compiled to `meta`):
 - Every entry: `title`, `excerpt` (one or two sentences: the listing line, meta description and feed summary), `tags` (lowercase list, first is primary; may be empty), `status` (`"draft"` / `"published"` / `"unlisted"`). Optional: `seoTitle`, `updated`, `related` (slugs in the same collection), `featureImage`, `ogImage`.
-- Notes: `date`. No `number`: `N-001` is derived from the date (linted). Notes sharing a date are numbered in the order of `noteFiles` in `content/notes/index.ts`.
+- Notes: `date`. Optional `skill`: the note's recipe as an agent skill, its folder in phucbm/skills (`skill: "nextjs/og-images"`, linted). The note page shows the link and the install line under the title, so the body never repeats them and keeps only what a person would read: what happened and what surprised you. Write the skill in that repo first. No `number`: `N-001` is derived from the date (linted). Notes sharing a date are numbered in the order of `noteFiles` in `content/notes/index.ts`.
 - **Quote every date** (`date: "2026-10-11"`). **No `slug` field.**
 - `updated`: set by hand when a published entry changes in a way readers should know (not typos). Never on a new entry. The hook reminds you.
 

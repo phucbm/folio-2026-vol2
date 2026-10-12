@@ -3,6 +3,7 @@
 // wired in lib/content/site-catalog.ts.
 
 import { aliasesByDate } from "@/lib/aliases"
+import { skillRef, type SkillRef } from "@/lib/skills"
 
 export type CatalogKind = "note"
 
@@ -22,6 +23,8 @@ export interface CatalogItem {
   label: string
   year: number | null
   related: string[]
+  // The note's agent skill (lib/skills.ts), or null.
+  skill: SkillRef | null
 }
 
 // Loose input shapes: just the fields the catalog reads.
@@ -33,6 +36,7 @@ export interface CatalogSourceMeta {
   date?: string
   updated?: string
   related?: string[]
+  skill?: string
 }
 
 export interface CatalogInputs {
@@ -64,6 +68,7 @@ export function buildCatalog(inputs: CatalogInputs): CatalogItem[] {
     label: labels.get(meta)!,
     year: yearOf(meta.date),
     related: meta.related ?? [],
+    skill: meta.skill ? skillRef(meta.skill) : null,
   }))
 }
 

@@ -6,7 +6,9 @@ import { projects } from "@/data/projects"
 
 export const dynamic = "force-static"
 
-const entry = (item: CatalogItem) => `- [${item.label}: ${item.title}](${site.url}${item.url})${item.excerpt ? `: ${item.excerpt}` : ""}`
+const entry = (item: CatalogItem) =>
+  `- [${item.label}: ${item.title}](${site.url}${item.url})${item.excerpt ? `: ${item.excerpt}` : ""}` +
+  (item.skill ? ` As an agent skill: \`${item.skill.install}\` (${item.skill.url}).` : "")
 
 function section(heading: string, lines: string[]): string {
   return lines.length ? `## ${heading}\n\n${lines.join("\n")}` : ""

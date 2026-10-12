@@ -22,6 +22,24 @@ describe("urls and labels", () => {
   })
 })
 
+describe("skill", () => {
+  it("turns a note's skill path into its link and install line", () => {
+    const [withSkill, without] = buildCatalog(inputs({
+      notes: [
+        { slug: "b", title: "B", tags: [], date: "2026-10-12", skill: "nextjs/og-images" },
+        { slug: "a", title: "A", tags: [], date: "2026-10-11" },
+      ],
+    }))
+    expect(withSkill.skill).toEqual({
+      path: "nextjs/og-images",
+      name: "og-images",
+      url: "https://github.com/phucbm/skills/tree/main/skills/nextjs/og-images",
+      install: "npx skills@latest add phucbm/skills --skill og-images",
+    })
+    expect(without.skill).toBeNull()
+  })
+})
+
 describe("aliases", () => {
   it("pads to three digits and leaves longer ones alone", () => {
     expect(alias("P", 47)).toBe("P-047")

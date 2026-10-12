@@ -9,6 +9,8 @@ import { site } from "@/lib/site"
 import { shareMetadata } from "@/lib/og"
 import { alternates, noteJsonLd } from "@/lib/seo"
 import { JsonLd } from "@/components/content/JsonLd"
+import { NoteSkill } from "@/components/content/NoteSkill"
+import { skillRef } from "@/lib/skills"
 
 export const dynamicParams = false
 
@@ -64,6 +66,7 @@ export default async function NotePage({ params }: Props) {
           </>
         }
       />
+      {note.skill && <NoteSkill skill={skillRef(note.skill)} />}
       <Body />
       <JsonLd
         data={noteJsonLd({ url: `/notes/${slug}`, title: note.title, excerpt: note.excerpt, date: note.date, dateModified: note.updated ?? note.date, tags: note.tags })}

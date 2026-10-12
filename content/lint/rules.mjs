@@ -179,6 +179,25 @@ function collection(name) {
   return out;
 }
 
+/** The file without its frontmatter. */
+const body = (raw) => raw.replace(/^---\r?\n[\s\S]*?\r?\n---/, "");
+
+/** Lines inside fenced code blocks. */
+function codeLines(raw) {
+  let inside = false;
+  let n = 0;
+  for (const line of body(raw).split("\n")) {
+    if (/^\s*(```|~~~)/.test(line)) inside = !inside;
+    else if (inside) n++;
+  }
+  return n;
+}
+
+// A note with a skill may show a short snippet; past this, it is the recipe again.
+const SKILL_NOTE_CODE_MAX = 20;
+// A note without a skill and more code than this reads as a recipe for agents.
+const RECIPE_CODE_MIN = 80;
+
 function collectionOf(rel) {
   return rel.split("\\").join("/").match(/^content\/([^/]+)\//)?.[1];
 }
@@ -187,7 +206,7 @@ function collectionOf(rel) {
  * @typedef {Object} FileRule
  * @property {string} id
  * @property {"error"|"warn"} severity
- * @property {(fm: string|null, rel: string) => string|null} test  returns the message, or null when fine
+ * @property {(fm: string|null, rel: string, raw: string) => string|null} test  returns the message, or null when fine
  */
 
 /** @type {FileRule[]} */
@@ -199,6 +218,55 @@ export const fileRules = [
       if (collectionOf(rel) !== "notes") return null;
       const data = fm !== null && parseFm(fm);
       return data && !isDateString(data.date) ? "Notes need `date: \"YYYY-MM-DD\"`." : null;
+    },
+  },
+  {
+    id: "note-skill-path",
+    severity: "error",
+    test: (fm, rel) => {
+      const data = fm !== null && parseFm(fm);
+      if (!data || data.skill === undefined) return null;
+      if (collectionOf(rel) !== "notes") return "`skill` is for notes only.";
+      // Same pattern as SKILL_PATH in lib/skills.ts.
+      return typeof data.skill === "string" && /^[a-z0-9-]+\/[a-z0-9-]+$/.test(data.skill)
+        ? null
+        : "`skill` is the skill's folder in phucbm/skills, `domain/name` (`skill: \"nextjs/og-images\"`).";
+    },
+  },
+  // A note's recipe for agents lives in phucbm/skills (`skill`); the note keeps what a person reads.
+  {
+    id: "skill-repeated-in-body",
+    severity: "error",
+    test: (fm, rel, raw) => {
+      const data = fm !== null && parseFm(fm);
+      if (!data?.skill || collectionOf(rel) !== "notes") return null;
+      return /npx skills|github\.com\/phucbm\/skills/.test(body(raw))
+        ? "The note page already shows the skill's link and install line (`skill` in frontmatter): drop them from the body."
+        : null;
+    },
+  },
+  {
+    id: "skill-recipe-in-body",
+    severity: "warn",
+    test: (fm, rel, raw) => {
+      const data = fm !== null && parseFm(fm);
+      if (!data?.skill || collectionOf(rel) !== "notes") return null;
+      const lines = codeLines(raw);
+      return lines > SKILL_NOTE_CODE_MAX
+        ? `${lines} lines of code in a note with a skill: the recipe goes in the skill, the note keeps what happened and what surprised you.`
+        : null;
+    },
+  },
+  {
+    id: "recipe-without-skill",
+    severity: "warn",
+    test: (fm, rel, raw) => {
+      const data = fm !== null && parseFm(fm);
+      if (!data || data.skill || collectionOf(rel) !== "notes") return null;
+      const lines = codeLines(raw);
+      return lines > RECIPE_CODE_MIN
+        ? `${lines} lines of code: a recipe this long is for agents. Move it to phucbm/skills (its /add-skill) and set \`skill\` (copywriting skill, "Write a note with a skill").`
+        : null;
     },
   },
   {

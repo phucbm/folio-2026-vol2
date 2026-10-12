@@ -101,7 +101,7 @@ function lintFile(absPath) {
   }
   // Rules that need the file's place in its collection (unique numbers, known project slugs).
   for (const rule of fileRules) {
-    const message = rule.test(fm, rel);
+    const message = rule.test(fm, rel, raw);
     if (message) findings.push({severity: rule.severity, line: null, id: rule.id, message});
   }
 
