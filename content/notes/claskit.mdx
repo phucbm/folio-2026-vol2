@@ -1,0 +1,18 @@
+---
+title: "claskit: Task Specs for Claude Code"
+excerpt: "claskit runs Claude Code on a folder of Markdown task specs, one after another, now or at a time I pick, and moves each spec to done when it passes. Why I wrote it and what a spec needs to work unattended."
+tags: ["ai", "claude-code", "npm"]
+date: "2026-05-22"
+status: "published"
+skill: "meta/claskit"
+---
+
+[claskit](https://github.com/phucbm/claskit) is a small CLI. I write what I want as Markdown files in `.claude/tasks/todo/`, run `npx claskit`, pick the tasks and a time, and it starts Claude Code with them. Claude orders them by their dependencies, implements each, checks its acceptance criteria, runs the build, and moves the spec to `done/`. It stops and reports at the first failure. I wrote it to queue work before I step away and let Claude go through it while I'm gone.
+
+## What a spec needs
+
+A spec that works when nobody is watching has one concern, criteria Claude can check by itself (a file exists, a test passes, the page shows X), and its dependencies written down, because the order is Claude's call. Vague criteria get a confident "done".
+
+## The catch
+
+It runs Claude with `--dangerously-skip-permissions`, since nobody is there to approve anything. I only use it in a repo that is committed and backed up. On macOS it keeps the machine awake with `caffeinate` until the scheduled time.

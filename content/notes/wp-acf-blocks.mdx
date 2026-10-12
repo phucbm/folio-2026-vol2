@@ -1,0 +1,18 @@
+---
+title: "ACF Blocks with Tailwind"
+excerpt: "How I build custom Gutenberg blocks for WordPress: one folder per block, ACF fields as JSON, Tailwind v4 and TypeScript, three mu-plugins that load it all, and agent skills that plan, scaffold and audit the blocks."
+tags: ["wordpress", "tailwind"]
+date: "2026-06-30"
+status: "published"
+skill: "wordpress/wp-acf-blocks"
+---
+
+This is how I build blocks for Perxel's WordPress themes. Each block is a folder in `blocks/<slug>/` with its `block.json`, its ACF fields in `fields.json` and a `render.php`. Three mu-plugins register every block listed in `blocks.json`, route ACF's local JSON into each block's folder and load the Tailwind build. Scripts are `*.entry.ts` files that tsup compiles.
+
+The skill is the biggest in the repo because it ships the boilerplate itself, and five commands: `setup` for a new theme, `plan-block` to turn a discussion into a GitHub issue, `add-block` to scaffold blocks from those issues, and two audits.
+
+## What surprised me
+
+- **ACF ignores a `fields.json` it thinks is old.** The file carries a `modified` timestamp, and an edit that doesn't bump it is never synced into the admin. Every field change updates it (`date +%s`), and the audit checks it.
+- **Two developers, one generated CSS file, constant git conflicts.** Each developer builds to their own `style.<name>.generated.css`, picked by `TAILWIND_USER`, and generated files stay out of git.
+- **Audits catch what review misses.** A block without `get_block_wrapper_attributes()` on its wrapper loses the editor's alignment and classes. The fast audit is a script; the deep one also has an agent read titles, fields and empty states.

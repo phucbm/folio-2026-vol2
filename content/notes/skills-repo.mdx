@@ -1,0 +1,42 @@
+---
+title: "A Skills Repo for My Agents"
+excerpt: "Every pattern I had to figure out twice now lives in phucbm/skills, one folder per skill, installable in any project. This note is the index: what is in it, how a skill gets in, and the notes that tell the story behind each one."
+tags: ["ai", "claude-code"]
+date: "2026-04-19"
+status: "published"
+---
+
+[phucbm/skills](https://github.com/phucbm/skills) is where I keep what I learn on real projects, written for an agent instead of for me. Each skill is one `SKILL.md`: when to use it, the steps, the gotchas. The next project installs it and the agent follows it, so I don't explain the same thing again. I started it because I kept explaining the same setup to Claude in every new project.
+
+## Install
+
+The repo works with the skills CLI and as a Claude Code plugin marketplace:
+
+```shell
+npx skills@latest add phucbm/skills
+/plugin marketplace add phucbm/skills
+/plugin install skills@phucbm
+```
+
+## How a skill gets in
+
+Three skills maintain the repo itself. `add-skill` writes a new one from what the current project just did, `update-skill` changes an existing one with a diff first, and `learn` scans a repo I am visiting and lists what is worth saving. All three show the file and wait before pushing: an agent writing into my own knowledge base without asking is the one thing I didn't want.
+
+Two rules came from using it. A skill is generic, and a project appears only as an example, never as a fact. And everything goes in the one `SKILL.md`; the first version split skills into a thin wrapper plus shared "knowledge" files; one file per skill is simpler to keep up to date.
+
+## The notes
+
+Each skill has a note here that keeps what a person would read: where it came from and what broke.
+
+| Note | Skills | From |
+|---|---|---|
+| [A RAG Chatbot for Saigon Food](/notes/rag-pipeline) | rag, pinecone, vercel-ai-gateway, groq | food-tour-sg, OpenWallet |
+| [Discord as a Backend](/notes/discord-as-backend) | discord-as-backend | this site, Hiểu Chữ Hán |
+| [A GitHub Repo as a Database](/notes/github-as-db) | github-as-db | clyrics |
+| [Next.js on Cloudflare](/notes/nextjs-on-cloudflare) | cloudflare-pages | my Next.js apps |
+| [Publishing npm Packages on Release](/notes/publish-npm-on-release) | publish-npm | publish-npm-action |
+| [Local-First with Dexie](/notes/dexie-local-first) | dexie | a client app |
+| [Hit Counters without Analytics](/notes/counterapi) | counterapi | Hiểu Chữ Hán |
+| [claskit: Task Specs for Claude Code](/notes/claskit) | claskit | claskit |
+| [ACF Blocks with Tailwind](/notes/wp-acf-blocks) | wp-acf-blocks | Perxel's WordPress themes |
+| [Dynamic OG Images on Next.js and Cloudflare Workers](/notes/dynamic-og-images) | og-images | this site, perxel.com, OpenRace |

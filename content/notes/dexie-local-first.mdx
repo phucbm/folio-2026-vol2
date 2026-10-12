@@ -1,0 +1,17 @@
+---
+title: "Local-First with Dexie"
+excerpt: "A client app of mine keeps its data in the browser with Dexie, a small wrapper around IndexedDB, and React re-renders on its own when the data changes. What I'd tell myself before the first schema change."
+tags: ["react", "nextjs"]
+date: "2026-04-19"
+status: "published"
+skill: "backend/dexie"
+---
+
+A client app of mine keeps its data in the browser, in IndexedDB, through Dexie. It is a lot more room than `localStorage` (gigabytes instead of about 5 MB), queries are async, and `useLiveQuery` re-renders a component whenever the table it read changes, so there is no state library in between.
+
+## What I'd tell myself
+
+- **Schema versions only go up, and the old ones stay.** A user who last opened the app three versions ago runs every upgrade in order. Delete version 1 from the code and their data has nowhere to come from.
+- **Only index what you filter or sort on.** Everything else is stored anyway; indexes only slow the writes.
+- **`useLiveQuery` starts with `undefined`.** That is the loading state, not an empty list.
+- **It never runs on the server.** IndexedDB is a browser API, so every component that touches the database is a client component, and nothing in a server component or `generateStaticParams` can read it.

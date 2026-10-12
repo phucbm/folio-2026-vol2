@@ -1,0 +1,23 @@
+---
+title: "Discord as a Backend"
+excerpt: "The references on this site are threads in a Discord forum, and the bug reports in Hiểu Chữ Hán land in a Discord channel. Two ways to use Discord as a database you already have open, and what changed when the reader moved onto a Worker."
+tags: ["discord", "nextjs"]
+date: "2026-04-30"
+status: "published"
+skill: "backend/discord-as-backend"
+---
+
+I didn't want to run a database for a list of links, so a Discord forum is the database. Each link is a thread in a forum channel: the thread's name is the title, its tags are the tags, its first message holds the URL. A bot token reads the channel, and [the references](/references) on this site are that channel. The other direction is a webhook: [Hiểu Chữ Hán](https://github.com/phucbm/hieu-chu-han)'s "report an issue" form posts into a channel, with no bot and no auth beyond the webhook URL.
+
+| | Forum as a database | Webhook as an inbox |
+|---|---|---|
+| Direction | read from Discord | write to Discord |
+| Auth | bot token | the webhook URL (a secret) |
+| Used for | the references on this site, phucbm-web's bookmarks | Hiểu Chữ Hán's reports |
+
+## What broke
+
+- **Active and archived threads are two calls.** Archived ones come from the channel; active ones only from the whole server, so they have to be filtered by `parent_id`. Miss one and half the links disappear depending on when Discord archived them.
+- **Archived threads come 100 at a time.** phucbm-web read the first page and stopped. This site pages through them with `before`, because the channel passed 100.
+- **One request per thread adds up.** The first message is a separate call per thread. On a Cloudflare Worker that is a budget (50 outside requests a run on the free plan), so this site reads the URL from the thread's name when it is there, and remembers the ones it had to look up.
+- **The webhook URL is a password.** Anyone with it can post to the channel, so it stays on the server and the form goes through an API route.

@@ -1,0 +1,28 @@
+---
+title: "A RAG Chatbot for Saigon Food"
+excerpt: "food-tour-sg answers questions about where to eat in Saigon from its own data: chunks embedded into Pinecone, the closest ones pasted into the prompt, models behind Vercel's AI Gateway. What I learned building it, and why the retrieval is not a tool call."
+tags: ["ai", "nextjs"]
+date: "2026-04-20"
+status: "published"
+skill: "ai/rag"
+---
+
+[food-tour-sg](https://github.com/phucbm/food-tour-sg) is a chatbot that finds places to eat in Saigon from a list of restaurants, instead of from what the model remembers. The data lives in CSV and Markdown files in the repo; an ingest script embeds them into Pinecone, and every message pulls the closest chunks into the system prompt before the chat model answers. The recipe is split across four skills: `rag` for the pipeline, `pinecone` for the store, `vercel-ai-gateway` for the models, and `groq` for streaming from Groq directly, which came from OpenWallet's admin. I built it to learn RAG on data I know: where I eat in Saigon.
+
+## What I didn't expect
+
+- **The vector DB doesn't answer anything.** It returns the chunks closest to the question, as text. The chat model never sees Pinecone; it only reads what I paste into the prompt. Once I saw it that way, the two API keys (one for embeddings, one for chat, often different providers) made sense.
+- **Retrieval goes in the prompt, not in a tool.** I search on every message and inject the result, so the model doesn't decide whether to look. It is one round trip less and the model can't skip it.
+- **Filters cost recall.** A metadata filter (a dish, a district) runs before ranking, so a top 5 that was fine without filters returns too little with one. I raise K to 10-30 when a filter is on.
+- **Vietnamese names need tokens.** People type "com tam" and "quan 1" without accents, which doesn't embed close to "cơm tấm" and "Quận 1". Each chunk stores normalised tokens and the query matches them with `$in`; no match falls back to plain semantic search.
+
+## Re-ingesting
+
+A GitHub Action re-runs the ingest when anything under `data/` changes on `main`, so a new place is in the bot after a push. Re-embedding every chunk is the expensive step, so it only runs when the data changes.
+
+## Models
+
+| | Through | Why |
+|---|---|---|
+| food-tour-sg | Vercel AI Gateway | one key for every provider, and a mock provider for Playwright tests |
+| OpenWallet admin | Groq, directly | fast and OpenAI-compatible, streamed by hand |

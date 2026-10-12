@@ -1,0 +1,21 @@
+---
+title: "A GitHub Repo as a Database"
+excerpt: "clyrics lets anyone add song lyrics from the web app without a GitHub account: a GitHub App opens the pull request, I merge it, and the build compiles every record into one JSON file. No database, no auth service, and moderation comes free."
+tags: ["github", "oss"]
+date: "2026-05-04"
+status: "published"
+skill: "backend/github-as-db"
+---
+
+[clyrics](https://github.com/phucbm/clyrics) is a library of Chinese song lyrics with pinyin and translation, for people learning the language. It keeps the lyrics as JSON files in its own repo. A visitor adds a song in the app; a GitHub App bot makes a branch, commits the file and opens a pull request, and the song is live once I merge it. Reads never touch the API: a script compiles every file into `public/data/index.json` before each build.
+
+## Why a repo
+
+The pull request is the moderation step, git history is the audit log, and issues are the support queue. I pay for none of them. It only works because the data is public, small and written rarely; anything private, real-time or relational needs a real database.
+
+## What broke
+
+- **`btoa` breaks on Chinese.** The API wants file content in base64, and `btoa` only takes Latin-1, so the first song with a Chinese title threw. `btoa(unescape(encodeURIComponent(json)))` fixes it.
+- **Reading each file through the API burns the rate limit.** 60 requests an hour without a token, one per song. The build-time index turns it into one static file.
+- **Every update needs the file's current SHA.** Without it GitHub answers 422, so an update or a delete reads the file first.
+- **The private key in the browser.** clyrics is a Vite app, so the App's key ships in the bundle. I accepted it because the repo is public, the App can only touch that one repo, and the worst it can do is open a pull request I still have to merge. In Next.js the same flow goes in a server action instead.

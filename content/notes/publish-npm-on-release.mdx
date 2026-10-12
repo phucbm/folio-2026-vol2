@@ -1,0 +1,24 @@
+---
+title: "Publishing npm Packages on Release"
+excerpt: "My packages publish themselves when I make a GitHub release, through one composite action, publish-npm-action. Trusted publishing with OIDC means no npm token in the repo. The gotchas that cost me a release each."
+tags: ["npm", "github-actions"]
+date: "2026-04-28"
+status: "published"
+skill: "deploy/publish-npm"
+---
+
+I publish a package by making a GitHub release. [publish-npm-action](https://github.com/phucbm/publish-npm-action) does the rest: installs, runs the tests if there are any, sets the version from the tag (`v1.2.3` becomes `1.2.3`), builds, commits `package.json` and `dist/` back to `main`, and publishes. Since npm's trusted publishing went live in July 2025, the repo doesn't hold an npm token at all: the job gets a short-lived one through OIDC, and the package gets provenance for free. I wrote the action in June 2025.
+
+## What broke
+
+- **Checking out the tag.** A release event checks out the tag, which is a detached HEAD, so pushing the build back failed. The workflow checks out `main`.
+- **A shallow clone.** Run by hand, the action asks `gh release list` for the version, which needs the history: `fetch-depth: 0`.
+- **An empty token is not no token.** `setup-node` writes an `.npmrc` that reads `NODE_AUTH_TOKEN`. Set it to an empty string and npm tries the empty token instead of OIDC; leave it unset and OIDC works.
+- **The runner's npm is too old.** Trusted publishing needs npm 11.5.1, newer than what GitHub's runners ship, so the action updates npm first.
+- **`dist/` is gitignored.** Committing it back needs `git add --force`; without it the commit skips the build silently and the published files are stale.
+
+| | npm token | OIDC |
+|---|---|---|
+| Secret in the repo | `NPM_TOKEN` | none |
+| Provenance | no | yes |
+| Setup on npmjs.com | create a token | add the repo as a trusted publisher |

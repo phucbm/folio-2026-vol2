@@ -1,0 +1,18 @@
+---
+title: "Hit Counters without Analytics"
+excerpt: "Hiểu Chữ Hán counts its visits and installs with counterapi.dev: two numbers, two HTTP calls, no dashboard and no cookie banner. When that is enough, and the rules that keep it out of the way."
+tags: ["analytics", "pwa"]
+date: "2026-04-19"
+status: "published"
+skill: "backend/counterapi"
+---
+
+I wanted two numbers for [Hiểu Chữ Hán](https://github.com/phucbm/hieu-chu-han): how many times it is opened and how many people installed it as an app. GA4, PostHog and Umami all do far more than that and ask for a dashboard or a consent banner. [counterapi.dev](https://counterapi.dev) is a counter behind a URL: call `/up` to add one, read it back as `{ count }`. The app shows both numbers in a small badge.
+
+## The rules
+
+- **Never count in development.** Every reload while I work would be a visit, so the increment only runs in production.
+- **Never throw.** The counter is a nice-to-have. Every call is wrapped and fails silently; reads fall back to zero.
+- **Show nothing rather than a zero.** The badge renders only once a number arrives, so a slow or failed call leaves no "0 visits".
+
+What it can't do: no referrers, no pages, nothing per day.

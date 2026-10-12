@@ -1,0 +1,30 @@
+---
+title: "Next.js on Cloudflare"
+excerpt: "I tried moving Next.js apps off Vercel to Cloudflare. A small one fits; a big one doesn't, because OpenNext puts the whole app in one Worker and the Worker has a size limit. How to tell before you try."
+tags: ["nextjs", "cloudflare"]
+date: "2026-04-30"
+status: "published"
+skill: "deploy/cloudflare-pages"
+---
+
+In April I tried to move my Next.js apps from Vercel to Cloudflare. There are two adapters. `@cloudflare/next-on-pages` wants `runtime = "edge"` on every dynamic route, and Next.js refuses `edge` together with `generateStaticParams`, so a content site can't build at all. `@opennextjs/cloudflare` runs the app as Node with `nodejs_compat` and builds fine. Then it hits the size limit.
+
+## The Worker size
+
+OpenNext bundles the whole server into one `handler.mjs`, and Cloudflare caps a Worker at 3 MiB compressed on the free plan, 10 MiB on the paid one. Measure it before anything else:
+
+```shell
+opennextjs-cloudflare build
+du -sh .open-next/server-functions/default/handler.mjs
+```
+
+| App | Worker | Fits |
+|---|---|---|
+| A small Nextra docs site | about 4 MB | paid plan only |
+| A full app with Sandpack, GSAP and Radix | about 42 MB | no plan |
+
+What counts is the `node_modules` that server code imports. Static chunks and Shiki's language files are served as assets and don't count; `@vercel/og` alone adds about 3.6 MB of WASM.
+
+## Six months later
+
+This site runs on Cloudflare Workers through OpenNext, and so do perxel.com and OpenRace. They fit because they were built for it: every page is prerendered, the server imports little, and the share cards are drawn at build time (see [Dynamic OG Images on Next.js and Cloudflare Workers](/notes/dynamic-og-images)). So my conclusion changed from "not for big apps" to "decide at the start, not when migrating".
