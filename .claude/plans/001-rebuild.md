@@ -65,6 +65,8 @@ All numbers computed at build time, never typed by hand. Cached in a generated J
 
 ## MCP and Ask (deferred)
 
+*Superseded 2026-10-12 for Ask by perxel-web-2026 plan 018 (`@perxel/spotlight`): this site's Ask runs on its own Worker from its pages (`contentSource`) and live data (`toolSource`), no MCP. An MCP for the site (below) stays possible later, from the kit, if other agents should reach its data.*
+
 Deferred 2026-10-11: content and layout first; picked up after launch. Same infra as Perxel: the perxel-mcp kit (`kit/core`, `kit/ask`), deployed a second time.
 
 - `phucbm-mcp` Worker at `mcp.phucbm.com`, its own `mcp.config.ts` (`slug`, tools, `ask` with `allowedOrigins: ["https://phucbm.com"]`, a personal system prompt, handoff to email and socials).
