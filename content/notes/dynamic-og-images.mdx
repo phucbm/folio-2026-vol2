@@ -1,0 +1,274 @@
+---
+title: "Dynamic OG Images on Next.js and Cloudflare Workers"
+excerpt: "How perxel.com draws one share card per page with next/og, on a Worker that has no disk: the card module, fonts and logos as base64, which route file to use, and what to check before shipping."
+tags: ["nextjs", "cloudflare"]
+date: "2026-10-12"
+status: "draft"
+---
+
+Every page on perxel.com has its own share card: a 1200×630 PNG drawn from the page's data (title, excerpt, category, tech used) with `next/og`. The site runs on Cloudflare Workers through OpenNext, which has no filesystem, so the usual examples that read a font with `fs` break there. This note is the guide I'll follow on the next project.
+
+## What it looks like
+
+One module holds the whole design, `lib/og.tsx`. Each card route is about ten lines: get the data, call a helper. Fonts and logos live in `.ts` files as base64 strings, so nothing is read from disk at request time.
+
+```txt
+lib/
+  og.tsx               OG_SIZE, createOgImage(), one small helper per kind of page
+  og-assets/
+    fonts.ts           export const interRegular = "<base64>"
+    logos.ts           export const siteLogo = "data:image/svg+xml;base64,..."
+app/
+  about/opengraph-image.tsx                          a static page
+  insights/opengraph-image.tsx                       a listing
+  insights/category/[category]/opengraph-image.tsx   a category
+  insights/[slug]/og/route.tsx                       a detail page (plain route, see below)
+```
+
+Perxel got its cards in September 2026. This site, phucbm.com, uses the same layout with a different way of serving the files.
+
+## Two ways to serve the cards
+
+| | perxel.com | phucbm.com |
+|---|---|---|
+| Data | MDX and TS files in the repo | MDX and TS files in the repo |
+| Route export | `force-static` + `generateStaticParams` | `force-static`, `dynamicParams = false` |
+| Drawn | At build | At build |
+| Served from | OpenNext's cache (`x-opennext-cache: HIT`) | Static assets, as plain files |
+| Fonts | base64 in `.ts` | TTF files, read at build only |
+
+Both draw every card at build, because all their content is in the repo. If a card shows something that goes stale between deploys (counts, dates, new items), swap `force-static` for the page's own `revalidate`, and return a fallback card when the fetch fails: a card route must always return an image.
+
+**Even a `force-static` route must not read from disk.** OpenNext can run a "static" route module again on a cache miss, so a `readFile` that works in `next build` throws in production. That is why Perxel embeds every asset. This site gets away with `fs` only because the Worker never serves its cards: a script copies them into the static assets after the build.
+
+## The card module
+
+One function takes plain options and returns an `ImageResponse`. Perxel's card is a white box with a 1px border and a 24px radius on a light-gray canvas, three rows spread top to bottom: logo and tagline, title and excerpt, then category pills or tech logos.
+
+```tsx
+import { ImageResponse } from "next/og"
+import { interRegular, interMedium, manropeLight } from "@/lib/og-assets/fonts"
+import { siteLogo } from "@/lib/og-assets/logos"
+
+export const OG_SIZE = { width: 1200, height: 630 }
+
+// base64 string to ArrayBuffer, the format `fonts[].data` takes.
+function b64(data: string) {
+  return Uint8Array.from(Buffer.from(data, "base64")).buffer
+}
+
+interface OgImageOptions {
+  title: string
+  excerpt?: string
+  categories?: string[]
+  secondaryLine?: string // a date, a count
+}
+
+export function createOgImage({ title, excerpt, categories = [], secondaryLine }: OgImageOptions) {
+  return new ImageResponse(
+    (
+      <div style={{ width: "1200px", height: "630px", display: "flex", background: "#f5f5f5", padding: "40px", fontFamily: "Inter" }}>
+        <div
+          style={{
+            width: "100%", height: "100%", display: "flex", flexDirection: "column",
+            justifyContent: "space-between", background: "#fff",
+            border: "1px solid #e5e5e5", borderRadius: "24px", padding: "56px",
+          }}
+        >
+          <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+            <img src={siteLogo} width={130} height={27} alt="" />
+            <div style={{ fontSize: "20px", fontWeight: 500, color: "#777169" }}>Tagline</div>
+          </div>
+
+          <div style={{ display: "flex", flexDirection: "column", gap: "24px", maxWidth: "920px" }}>
+            <div style={{ fontFamily: "Manrope", fontWeight: 300, fontSize: "64px", lineHeight: 1.2, color: "#111" }}>{title}</div>
+            {excerpt && <div style={{ fontSize: "24px", lineHeight: 1.5, color: "#4e4e4e" }}>{excerpt}</div>}
+          </div>
+
+          {categories.length || secondaryLine ? (
+            <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "12px" }}>
+              {categories.map((c) => (
+                <span key={c} style={{ display: "flex", background: "#f5f2ef", borderRadius: "9999px", padding: "8px 18px", fontSize: "20px" }}>{c}</span>
+              ))}
+              {secondaryLine && <span style={{ fontSize: "20px", color: "#777169" }}>{secondaryLine}</span>}
+            </div>
+          ) : (
+            <div /> // keeps space-between from pulling the title down
+          )}
+        </div>
+      </div>
+    ),
+    {
+      ...OG_SIZE,
+      fonts: [
+        { name: "Inter", data: b64(interRegular), weight: 400, style: "normal" },
+        { name: "Inter", data: b64(interMedium), weight: 500, style: "normal" },
+        { name: "Manrope", data: b64(manropeLight), weight: 300, style: "normal" },
+      ],
+    },
+  )
+}
+```
+
+Then one small helper per kind of page, so a route file never builds options itself. The detail helper takes `undefined` when a slug doesn't resolve, because the route still has to return an image:
+
+```tsx
+export const createPageOgImage = (page: { title: string; description: string }) =>
+  createOgImage({ title: page.title, excerpt: page.description })
+
+export function createDetailOgImage(
+  item: { title: string; excerpt?: string; categories: string[] } | undefined,
+  fallback: { title: string; description: string },
+) {
+  if (!item) return createOgImage({ title: fallback.title, excerpt: fallback.description })
+  return createOgImage({ title: item.title, excerpt: item.excerpt, categories: item.categories.slice(0, 1) })
+}
+```
+
+Perxel's listing card fills the last row with every category of the collection, and its detail card adds a row of tech logos.
+
+**Copy the site's look, not its CSS.** The card is drawn by Satori, outside the page, so Tailwind classes and CSS variables don't exist there. Use the site's real fonts and hex values, inline. If the card needs a colour the site also uses, keep the hex in one TS module that both the CSS and the card import, so they can't drift.
+
+## Fonts
+
+Satori reads TTF, OTF and WOFF. It can't read WOFF2, which is what every site ships, and it can't read variable fonts. So the card needs one static file per weight, cut down to the characters it draws.
+
+From Google Fonts, two tricks do it: `text=` cuts the font down to the characters you list, and an old Safari user agent makes Google send `.woff` instead of `.woff2`. This script writes `fonts.ts` in one go. I tested it on 2026-10-12 with Geist at four weights (about 17.5 KB each) and drew a Vietnamese title with it:
+
+```js
+// node og-fonts.mjs "Geist" 300,400,500,600 > lib/og-assets/fonts.ts
+const [family = "Geist", weights = "400"] = process.argv.slice(2)
+
+const ascii = Array.from({ length: 95 }, (_, i) => String.fromCharCode(32 + i)).join("")
+const vi =
+  "àáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ" +
+  "ÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ"
+const punct = "–—‘’“”…•·×→←©®™€₫°"
+const text = encodeURIComponent([...new Set(ascii + vi + punct)].join(""))
+
+// An old Safari: Google then sends .woff, not .woff2.
+const UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8) AppleWebKit/534.57.2 (KHTML, like Gecko) Version/5.1.7 Safari/534.57.2"
+const css = await (await fetch(
+  `https://fonts.googleapis.com/css2?family=${family.replace(/ /g, "+")}:wght@${weights.replace(/,/g, ";")}&text=${text}`,
+  { headers: { "User-Agent": UA } },
+)).text()
+
+const faces = [...css.matchAll(/@font-face\s*{([^}]*)}/g)].map(([, body]) => ({
+  weight: body.match(/font-weight:\s*(\d+)/)[1],
+  url: body.match(/url\(([^)]+)\)/)[1],
+}))
+if (!faces.length) throw new Error(`no @font-face in:\n${css}`)
+
+const id = family.replace(/\W/g, "").replace(/^./, (c) => c.toLowerCase())
+for (const { weight, url } of faces) {
+  const buf = Buffer.from(await (await fetch(url)).arrayBuffer())
+  if (buf.subarray(0, 4).toString("latin1") === "wOF2") throw new Error(`${url} is woff2`)
+  console.log(`export const ${id}${weight} = "${buf.toString("base64")}"`)
+}
+```
+
+From your own font files (what this site does): cut a static instance with fonttools and drop the WOFF2 wrapping.
+
+```sh
+fonttools varLib.instancer site-serif.woff2 wght=500 -o serif-500.ttf
+python -c "from fontTools.ttLib import TTFont; f=TTFont('serif-500.ttf'); f.flavor=None; f.save('serif-500.ttf')"
+```
+
+- **Use the site's own typeface.** Perxel's card is set in Inter and Manrope, like the site, so a shared link looks like the page it opens.
+- **Embed only the weights the card uses.** Every one ends up in the Worker bundle: Perxel's three faces are 78 KB of `.ts`.
+- A character outside the cut is not drawn at all, so add any symbol your titles use. The name in `fonts[].name` must match `fontFamily` in the JSX exactly.
+
+## Logos and images
+
+- **SVG**: inline it as a `data:image/svg+xml;base64,...` string. Satori draws it as is (Perxel's logo).
+- **PNG or JPEG**: a base64 data URI, resized first. Perxel's tech icons are capped at 128 px.
+- **WebP crashes Satori**, a hard error rather than a missing image. Perxel keeps WebP on the site and separate PNG copies for the card.
+- Every `<img>` needs `width` and `height`.
+
+## Route files
+
+**A static page** is the file convention, `app/about/opengraph-image.tsx`:
+
+```tsx
+import { createPageOgImage, OG_SIZE } from "@/lib/og"
+import { aboutPage } from "@/data/pages"
+
+export const dynamic = "force-static"
+export const size = OG_SIZE
+export const contentType = "image/png"
+
+export default function Image() {
+  return createPageOgImage(aboutPage)
+}
+```
+
+A dynamic segment (`category/[category]`) adds `generateStaticParams`, built from the same list as its page.
+
+**A detail page is a plain route.** A file-based `opengraph-image` overrides whatever `generateMetadata` returns for `openGraph.images`, so an entry could never have its own hand-made share image. Perxel moved its detail cards to `[slug]/og/route.tsx`, and the page picks between the entry's `ogImage` and the generated card:
+
+```tsx
+// app/works/[slug]/og/route.tsx
+export const dynamic = "force-static"
+export const dynamicParams = false
+
+export function generateStaticParams() {
+  return worksAll.map((work) => ({ slug: work.slug }))
+}
+
+export async function GET(_req: Request, { params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  return createDetailOgImage(worksAll.find((work) => work.slug === slug), worksPage)
+}
+```
+
+```ts
+// in generateMetadata: the entry's own image wins, else the card
+const url = work.ogImage ?? `/works/${work.slug}/og`
+const image = { url: new URL(url, "https://perxel.com").href, width: 1200, height: 630 }
+// openGraph: { ...ogBase, images: [image] }, twitter: { images: [image.url] }
+```
+
+If no entry will ever need its own image, `opengraph-image.tsx` everywhere is simpler.
+
+**One route for every card** (this site): `app/og/[...path]/route.tsx`, where `generateStaticParams` lists every page and note as a path ending in `.png`. A plain route because the build writes `opengraph-image` files without an extension. After `opennextjs-cloudflare build`, `scripts/cf-assets.mjs` copies every route output into the static assets, so Cloudflare serves the cards as files and the Worker never wakes up for one.
+
+## Metadata
+
+- Set `metadataBase` in the root layout. Perxel has two root layouts and no top-level one, so it sets it on every page and writes detail card URLs as absolute.
+- Set `twitter.card` to `summary_large_image` once. A sibling `opengraph-image.tsx` fills both `og:image` and `twitter:image`; a plain route fills neither, so the page sets both itself.
+- **A page's `openGraph` replaces the layout's whole object**, not field by field. Spread a shared base into every page (`{ type: "website", siteName: "Perxel" }`), or pages lose `og:type` and `og:site_name`. Perxel's pages had lost them before the fix.
+- Don't put a default `openGraph.images` on a page that has its own card. Perxel's `resolveOgImage()` returns `undefined` when a page has no image of its own, so `images` is left out and the card fills it.
+- A page can still opt out: Perxel's two home pages use a hand-made image (the site on three devices) and have no card route.
+
+## Two languages
+
+Perxel has one root layout per language (`app/(vi)` and `app/en`), so each language has its own card files, fed from `data/pages.ts` and `data/pages.en.ts`. The card module has no text in either language: everything on the card comes in as an argument.
+
+## Satori's layout rules
+
+- Every element with more than one child needs `display: "flex"`. No grid.
+- Inline `style` only, no `className`.
+- Cap the title's width (920 to 1000 px) and step its size down for long titles (`title.length > 48 ? "60px" : "72px"` here). A two-line clamp is `lineClamp: 2` with `display: "block"`.
+- A pill next to a long line: `flexShrink: 0` and `whiteSpace: "nowrap"`, so the line wraps instead of the pill.
+- No emoji. Say it in words.
+
+## Before shipping
+
+1. Build, then open the PNGs and look at them, not only at the status code. Try the longest title you have and Vietnamese marks (Đ, ạ, ổ).
+2. **The `og:image` URL must answer 200 by itself**, not redirect: some crawlers don't follow redirects. A locale prefix or a renamed route can do it. `curl -sI` the exact URL from the HTML.
+3. On the Worker (`wrangler dev`, then production), every card answers `image/png`.
+4. Paste a link into opengraph.xyz, the Facebook Sharing Debugger or LinkedIn's Post Inspector. They cache, so scrape again after a change.
+5. Watch the Worker size: everything in `og-assets` ships with it. Perxel's `logos.ts` alone is 280 KB.
+
+## Checklist for the next project
+
+- [ ] Pick build time or per request by the data; each card's caching matches its page.
+- [ ] `lib/og.tsx`: `OG_SIZE`, `createOgImage()`, one helper per kind of page, a fallback for a missing entry.
+- [ ] `fonts.ts` from the script above: the site's own font, only the weights used, Latin and Vietnamese.
+- [ ] `logos.ts`: SVG or resized PNG, never WebP.
+- [ ] Colours imported from one TS palette, not copied from CSS.
+- [ ] A card next to every `page.tsx`, including dynamic segments and every language.
+- [ ] Detail pages that may need their own image: a plain `[slug]/og/route.tsx`.
+- [ ] `metadataBase`, `summary_large_image`, a shared `openGraph` base on every page.
+- [ ] A line in the project's docs telling the next session to add a card with every new page.
+- [ ] Look at the images, and check every `og:image` answers 200.
