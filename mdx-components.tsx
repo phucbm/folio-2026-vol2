@@ -1,6 +1,7 @@
 import type { ComponentProps } from "react"
 import type { MDXComponents } from "mdx/types"
 import { A } from "@/components/content/A"
+import { CodeBlock } from "@/components/content/CodeBlock"
 import { reactNodeToText, slugify } from "@/lib/utils"
 
 // Prose styling for every compiled .mdx (notes, pages). Next wires it up for
@@ -29,9 +30,7 @@ const components: MDXComponents = {
     // eslint-disable-next-line @next/next/no-img-element
     <img alt={alt ?? ""} className="my-6 block w-full border border-rule" loading="lazy" {...props} />
   ),
-  pre: (props: ComponentProps<"pre">) => (
-    <pre className="my-6 overflow-x-auto border-y border-rule py-4 text-[0.8125rem] leading-[1.7]" {...props} />
-  ),
+  pre: CodeBlock,
   // Results as tables: horizontal rules only, figures in mono (the `num` utility in globals.css).
   table: (props: ComponentProps<"table">) => (
     <div className="my-6 overflow-x-auto">
