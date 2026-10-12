@@ -26,6 +26,15 @@ export function contributionsPerWeek({ github }: LiveData): Series | null {
   return { values: shown.map((w) => w.count), xTicks: yearTicks(shown.map((w) => w.week)).filter((t) => t.at > 0) }
 }
 
+/** Commits per year, from the first year with one to this year (empty years between kept). */
+export function commitsPerYear({ github }: LiveData): Series | null {
+  const years = Object.entries(github?.commitsByYear ?? {}).sort(([a], [b]) => a.localeCompare(b))
+  const first = years.findIndex(([, n]) => n > 0)
+  if (first < 0) return null
+  const shown = years.slice(first)
+  return { values: shown.map(([, n]) => n), xTicks: shown.map(([y], i) => ({ at: i, label: y })) }
+}
+
 /** npm downloads per month, every package together, full months only. */
 export function downloadsPerMonth({ npm }: LiveData): Series | null {
   const thisMonth = new Date().toISOString().slice(0, 7)

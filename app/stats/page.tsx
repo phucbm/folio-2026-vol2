@@ -7,7 +7,7 @@ import { FigureCaption, NumCell, Pending, TableCaption } from "@/components/cont
 import { exhibit } from "@/lib/exhibits"
 import { Figure1 } from "@/components/plots/Figure1"
 import { Plot } from "@/components/plots/Plot"
-import { booksPerYear, downloadsPerMonth } from "@/lib/figures"
+import { booksPerYear, commitsPerYear, downloadsPerMonth } from "@/lib/figures"
 import { formatInstalls, getLive } from "@/lib/live"
 import { formatDate } from "@/lib/utils"
 
@@ -22,7 +22,7 @@ export default async function StatsPage() {
   const { github, wordpress } = live
   const books = booksPerYear(live)
   const downloads = downloadsPerMonth(live)
-  const commits = github ? Object.entries(github.commitsByYear).filter(([, n]) => n > 0).reverse() : []
+  const commits = commitsPerYear(live)
   const updated = live.fetchedAt
   return (
     <article className="max-w-measure">
@@ -38,35 +38,20 @@ export default async function StatsPage() {
         <div className="my-6">
           {github ? <Figure1 live={live} weekly /> : <Pending>run <code>pnpm data</code> for GitHub</Pending>}
         </div>
-        {commits.length > 0 && (
-          <div className="my-6">
-            <TableCaption n="4" />
-            <table className="mt-2 w-full border-collapse border-y border-ink text-[0.9375rem]">
-              <thead className="border-b border-rule">
-                <tr className="label text-left">
-                  <th scope="col" className="py-1.5 pr-4 font-normal">Year</th>
-                  <th scope="col" className="py-1.5 text-right font-normal">Commits</th>
-                </tr>
-              </thead>
-              <tbody>
-                {commits.map(([year, n]) => (
-                  <tr key={year}>
-                    <th scope="row" className="num py-1.5 pr-4 text-left font-normal">{year}</th>
-                    <NumCell value={n} last />
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+        {commits && (
+          <figure id={exhibit("Figure", "2").id} className="my-6 scroll-mt-6">
+            <Plot {...commits} kind="bar" labels partialLast={commits.xTicks.at(-1)?.label === String(new Date().getFullYear())} yLabel="Commits" title={`Bar chart of commits per year: ${commits.xTicks.map((t) => `${t.label}, ${commits.values[t.at].toLocaleString("en-US")}`).join("; ")}`} />
+            <FigureCaption n="2">The outlined bar is this year so far.</FigureCaption>
+          </figure>
         )}
       </section>
 
       <section aria-labelledby="books" className="mt-14">
         <h2 id="books" className="text-2xl">Books</h2>
         {books ? (
-          <figure id={exhibit("Figure", "2").id} className="my-6 scroll-mt-6">
-            <Plot {...books} kind="bar" yLabel="Books" title="Bar chart of books I finished per year" />
-            <FigureCaption n="2">A book with no read date counts in the year I shelved it.</FigureCaption>
+          <figure id={exhibit("Figure", "3").id} className="my-6 scroll-mt-6">
+            <Plot {...books} kind="bar" partialLast={books.xTicks.at(-1)?.label === String(new Date().getFullYear())} yLabel="Books" title="Bar chart of books I finished per year" />
+            <FigureCaption n="3">A book with no read date counts in the year I shelved it; the outlined bar is this year so far.</FigureCaption>
           </figure>
         ) : (
           <Pending>run <code>pnpm data</code> for Goodreads</Pending>
@@ -76,9 +61,9 @@ export default async function StatsPage() {
       <section aria-labelledby="downloads" className="mt-14">
         <h2 id="downloads" className="text-2xl">Downloads</h2>
         {downloads ? (
-          <figure id={exhibit("Figure", "3").id} className="my-6 scroll-mt-6">
+          <figure id={exhibit("Figure", "4").id} className="my-6 scroll-mt-6">
             <Plot {...downloads} kind="line" yLabel="Downloads" title="Line plot of npm downloads per month, all my packages together" />
-            <FigureCaption n="3">
+            <FigureCaption n="4">
               The packages one by one are in <Link href="/oss">§3</Link>.
             </FigureCaption>
           </figure>
@@ -91,7 +76,7 @@ export default async function StatsPage() {
         <h2 id="plugins" className="text-2xl">WordPress plugins</h2>
         {wordpress ? (
           <div className="my-6">
-            <TableCaption n="5">Installs are rounded down, as WordPress.org shows them.</TableCaption>
+            <TableCaption n="4">Installs are rounded down, as WordPress.org shows them.</TableCaption>
             <table className="mt-2 w-full border-collapse border-y border-ink text-[0.9375rem]">
               <thead className="border-b border-rule">
                 <tr className="label text-left">

@@ -19,11 +19,11 @@ export const exhibits: Exhibit[] = [
   { kind: "Table", n: "1", path: "/", id: "table-1", caption: "The numbers, this year and all time, fetched again about once a day." },
   { kind: "Table", n: "2", path: "/oss", id: "table-2", caption: "The repos, newest first, with GitHub stars, commits and the day of the last one." },
   { kind: "Table", n: "3", path: "/oss", id: "table-3", caption: "Every package I publish on npm, by downloads in the last 30 days." },
-  { kind: "Table", n: "4", path: "/stats", id: "table-4", caption: "Commits per year on GitHub, private repos included." },
-  { kind: "Table", n: "5", path: "/stats", id: "table-5", caption: "My plugins on WordPress.org, by active installs." },
+  { kind: "Table", n: "4", path: "/stats", id: "table-4", caption: "My plugins on WordPress.org, by active installs." },
   { kind: "Figure", n: "1", path: "/", id: "figure-1", caption: "My GitHub contributions: commits, pull requests, issues and reviews, private repos included." },
-  { kind: "Figure", n: "2", path: "/stats", id: "figure-2", caption: "Books I finished per year, from Goodreads." },
-  { kind: "Figure", n: "3", path: "/stats", id: "figure-3", caption: "npm downloads per month, all my packages together, full months only." },
+  { kind: "Figure", n: "2", path: "/stats", id: "figure-2", caption: "Commits per year on GitHub, private repos included." },
+  { kind: "Figure", n: "3", path: "/stats", id: "figure-3", caption: "Books I finished per year, from Goodreads." },
+  { kind: "Figure", n: "4", path: "/stats", id: "figure-4", caption: "npm downloads per month, all my packages together, full months only." },
 ]
 
 export function exhibit(kind: ExhibitKind, n: string): Exhibit {

@@ -298,7 +298,7 @@ interface Job {
 }
 
 // Contributions per week (Figure 1a), per day for the last year (Figure 1b) and commits per year
-// (Table 1, Table 4); the /oss repos (Table 2); my public repos (for jsDelivr). One GraphQL call:
+// (Table 1, Figure 2); the /oss repos (Table 2); my public repos (for jsDelivr). One GraphQL call:
 // `contributionsCollection` spans at most a year, so one alias per year. Private work counts only if
 // the profile shares it and the token is mine.
 const githubJob = (ossRepos: string[]): Job => ({

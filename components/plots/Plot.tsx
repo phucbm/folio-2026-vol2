@@ -4,7 +4,8 @@ import { PluckLine } from "./PluckLine"
 // A plot drawn the way matplotlib draws one with its defaults: a box of four 0.8px spines, ticks
 // pointing out, a C0 line or bars, no grid, the figures in mono. Rendered on the server as SVG, at
 // two sizes (phone and up) so the tick labels stay readable; CSS shows one. `pluck` hands the line
-// to `PluckLine`, which lets the cursor pluck it (Figure 1).
+// to `PluckLine`, which lets the cursor pluck it (Figure 1). Bars can carry their value on top
+// (`labels`), and `partialLast` draws the last bar as an outline: a period not over yet.
 
 export interface PlotProps {
   values: number[]
@@ -13,6 +14,8 @@ export interface PlotProps {
   xTicks: { at: number; label: string }[]
   yLabel?: string
   pluck?: boolean
+  labels?: boolean
+  partialLast?: boolean
   // What the plot shows, for screen readers (the caption says it again below the figure).
   title: string
 }
@@ -32,7 +35,7 @@ export function Plot(props: PlotProps) {
   )
 }
 
-function PlotSvg({ values, kind = "line", xTicks, yLabel, pluck, w, h, className, every }: PlotProps & { w: number; h: number; className: string; every: number }) {
+function PlotSvg({ values, kind = "line", xTicks, yLabel, pluck, labels, partialLast, w, h, className, every }: PlotProps & { w: number; h: number; className: string; every: number }) {
   // Room for the tick labels: left for the y axis (and its label), bottom for the x axis.
   const left = yLabel ? 52 : 40
   const box = { x0: left, x1: w - 8, y0: 8, y1: h - 24 }
@@ -43,7 +46,7 @@ function PlotSvg({ values, kind = "line", xTicks, yLabel, pluck, w, h, className
 
   // Bars stand on the axis (matplotlib's sticky edges); a line gets the margin at both ends.
   const x = kind === "bar" ? linear(-0.5, n - 0.5, box.x0, box.x1, 0) : linear(0, n - 1, box.x0, box.x1)
-  const y = kind === "bar" ? linear(0, yTop * 1.05, box.y1, box.y0, 0) : linear(0, max, box.y1, box.y0)
+  const y = kind === "bar" ? linear(0, yTop * (labels ? 1.12 : 1.05), box.y1, box.y0, 0) : linear(0, max, box.y1, box.y0)
   const points = values.map((v, i) => [x(i), y(v)] as [number, number])
   const barW = ((box.x1 - box.x0) / n) * 0.8
 
@@ -70,9 +73,21 @@ function PlotSvg({ values, kind = "line", xTicks, yLabel, pluck, w, h, className
       </g>
 
       {kind === "bar"
-        ? points.map(([px, py], i) => (
-            <rect key={i} x={px - barW / 2} y={py} width={barW} height={box.y1 - py} className="fill-plot" />
-          ))
+        ? points.map(([px, py], i) => {
+            const partial = partialLast && i === n - 1
+            return (
+              <g key={i}>
+                {partial
+                  ? <rect x={px - barW / 2 + 0.6} y={py + 0.6} width={barW - 1.2} height={Math.max(box.y1 - py - 0.6, 0)} fill="none" className="stroke-plot" strokeWidth={1.2} />
+                  : <rect x={px - barW / 2} y={py} width={barW} height={box.y1 - py} className="fill-plot" />}
+                {labels && (
+                  <text x={px} y={py - 4} textAnchor="middle" className="fill-ink font-mono" fontSize={10}>
+                    {values[i].toLocaleString("en-US")}
+                  </text>
+                )}
+              </g>
+            )
+          })
         : pluck
           ? <PluckLine points={points} box={box} />
           : <path d={toPath(points)} className="stroke-plot" fill="none" strokeWidth={1.5} strokeLinejoin="round" />}
