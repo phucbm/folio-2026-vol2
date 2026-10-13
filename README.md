@@ -49,7 +49,8 @@ To put your own version online:
 2. Delete my notes in `content/notes/` and list yours in `content/notes/index.ts`.
 3. Create two KV namespaces (`pnpm exec wrangler kv namespace create LIVE`, same for `NEXT_INC_CACHE_KV`) and put their ids in `wrangler.toml`.
 4. Add `GITHUB_TOKEN` (and the Discord ones, if you bookmark there) with `pnpm exec wrangler secret put`, and in `.env.local` for `pnpm data`.
-5. `pnpm run deploy`, or push to `main` with `CLOUDFLARE_API_TOKEN` set in GitHub Actions (`.github/workflows/deploy.yml`).
+5. For Ask (⌘K, then Enter): `OPENROUTER_API_KEY` and `TURNSTILE_SECRET` the same way (paste each value at the prompt), your Turnstile site key in `components/spotlight/Spotlight.tsx`, and both in `.dev.vars` for `pnpm dev`. `/api/ask?check` answers 204 when they work.
+6. `pnpm run deploy`, or push to `main` with `CLOUDFLARE_API_TOKEN` set in GitHub Actions (`.github/workflows/deploy.yml`).
 
 The code is [MIT](LICENSE): take it. The writing and the data in `content/` and `data/` are mine, so bring your own.
 
