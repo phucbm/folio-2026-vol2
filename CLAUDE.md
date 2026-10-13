@@ -12,7 +12,7 @@ Plan and status: `.claude/plans/001-rebuild.md`, then `.claude/plans/002-live-da
 - `pnpm run deploy`: `pnpm cf:build`, then deploy the Worker (`pnpm deploy` alone is pnpm's own command). Only when the code or content changes: no scheduled deploy. A push to `main` runs it in `.github/workflows/deploy.yml` (secret `CLOUDFLARE_API_TOKEN`).
 
 ## Search and Ask
-- `@perxel/spotlight` (npm, perxel-web plan 018; repo `../../perxel/perxel-spotlight`). Search documents: `lib/search.ts`, served as `/search.json`. Ask: `app/api/ask/route.ts` (the pages through `contentSource`, the live numbers through `lib/ask/tools.ts`), stateless, nothing stored. Secrets `OPENROUTER_API_KEY`, `TURNSTILE_SECRET` (Worker secrets in production; `.dev.vars` for `pnpm preview`; `next dev` reads `process.env`, so put them in `.env.local` to try Ask there).
+- `@perxel/spotlight` (npm, perxel-web plan 018; repo `../../perxel/perxel-spotlight`). Search documents: `lib/search.ts`, served as `/search.json`. Ask: `app/api/ask/route.ts` (the pages through `contentSource`, the live numbers through `lib/ask/tools.ts`), stateless, nothing stored. Secrets `OPENROUTER_API_KEY`, `TURNSTILE_SECRET`: Worker secrets in production, `.dev.vars` locally (`next dev` reads it through `initOpenNextCloudflareForDev` in `next.config.ts`, and `pnpm preview`). `GET /api/ask?check` says whether both are set and OpenRouter takes the key; the deploy runs it. Set a secret with `wrangler secret put` and paste the value at the prompt (never pipe a variable that may be empty).
 
 ## Rules
 - pnpm only. Never edit `.next/`, `.open-next/` or the `*.generated.json` files.

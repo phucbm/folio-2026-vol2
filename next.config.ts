@@ -28,8 +28,12 @@ export default async function config(phase: string): Promise<NextConfig> {
     },
   });
 
-  // Keep content/meta.generated.json (the collections' frontmatter) in step with MDX edits.
   if (dev) {
+    // The Worker's bindings and secrets under `next dev` (`.dev.vars`, local KV), as on the site:
+    // without it, Ask has no OpenRouter key or Turnstile secret here.
+    const { initOpenNextCloudflareForDev } = await import("@opennextjs/cloudflare");
+    await initOpenNextCloudflareForDev();
+    // Keep content/meta.generated.json (the collections' frontmatter) in step with MDX edits.
     const { watchContentMeta } = await import("./scripts/content-meta.mjs");
     watchContentMeta();
   }

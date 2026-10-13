@@ -30,7 +30,12 @@ function env(): AskEnv {
 const docs = searchDocs().map((doc) => (doc.kind === "note" ? { ...doc, body: (bodies as Record<string, string>)[`notes/${doc.id.slice(5)}.mdx`] } : doc))
 
 const handler = createAskHandler({
-  model: () => createOpenRouter({ apiKey: env().OPENROUTER_API_KEY })("anthropic/claude-haiku-5.5", { usage: { include: true }, provider: { data_collection: "deny" } }),
+  // No key: refuse up front (`config`, the cause in the log) instead of failing at OpenRouter.
+  model: () => {
+    const apiKey = env().OPENROUTER_API_KEY
+    if (!apiKey) throw new Error("OPENROUTER_API_KEY is empty (a Worker secret; `.dev.vars` under `next dev`)")
+    return createOpenRouter({ apiKey })("anthropic/claude-haiku-5.5", { usage: { include: true }, provider: { data_collection: "deny" } })
+  },
   system: askInstructions,
   sources: [contentSource({ docs, baseUrl: site.url, about: "phucbm.com (my notes, projects and pages)" }), toolSource(liveTools())],
   verify: (ctx: AskContext) => turnstile({ secret: env().TURNSTILE_SECRET })(ctx),
@@ -47,7 +52,20 @@ const handler = createAskHandler({
 
 export const POST = handler
 
-/** A wake-up call: the box sends one when it opens, so the Worker is warm when Enter is pressed. */
-export function GET() {
-  return new Response(null, { status: 204, headers: { "cache-control": "no-store" } })
+/**
+ * A wake-up call: the box sends one when it opens, so the Worker is warm when Enter is pressed.
+ * `?check`: whether Ask can answer (both secrets set, OpenRouter accepts the key; free, no model
+ * call), 503 with what is wrong otherwise. The deploy runs it, so an empty secret fails the deploy.
+ */
+export async function GET(request: Request) {
+  const headers = { "cache-control": "no-store" }
+  if (!new URL(request.url).searchParams.has("check")) return new Response(null, { status: 204, headers })
+  const { OPENROUTER_API_KEY: key, TURNSTILE_SECRET: secret } = env()
+  const keyOk =
+    !!key &&
+    (await fetch("https://openrouter.ai/api/v1/key", { headers: { authorization: `Bearer ${key}` } })
+      .then((r) => r.ok)
+      .catch(() => false))
+  const problems = [...(keyOk ? [] : ["OPENROUTER_API_KEY empty or refused"]), ...(secret ? [] : ["TURNSTILE_SECRET empty"])]
+  return problems.length ? Response.json({ code: "config", problems }, { status: 503, headers }) : new Response(null, { status: 204, headers })
 }

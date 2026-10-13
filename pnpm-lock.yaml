@@ -30,8 +30,8 @@ importers:
         specifier: 3.1.0
         version: 3.1.0(ai@7.0.116(zod@4.6.5))(zod@4.6.5)
       '@perxel/spotlight':
-        specifier: ^0.1.0
-        version: 0.1.0(@ai-sdk/react@4.0.119(react@19.3.0)(zod@4.6.5))(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(ai@7.0.116(zod@4.6.5))(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+        specifier: ^0.1.1
+        version: 0.1.1(@ai-sdk/react@4.0.119(react@19.3.0)(zod@4.6.5))(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(ai@7.0.116(zod@4.6.5))(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       '@radix-ui/react-scroll-area':
         specifier: ^1.4.0
         version: 1.4.0(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
@@ -877,8 +877,8 @@ packages:
   '@oxc-project/types@0.153.0':
     resolution: {integrity: sha512-jSNrRIyvPVLL5E1z/tS5zLAprosGz/FuI1PWwEOz59j3E4TTTzSpqKb/RDGqJhhW0QHYISGXxq582wGx6T11Tw==}
 
-  '@perxel/spotlight@0.1.0':
-    resolution: {integrity: sha512-FDg1ZrWemxjAxSPnlE549K53V3Qlq0GqvnOWVkcuLWDTJt+lYFfg4JlplYGupFJ5OQH1y+N9yYlHMGyrBoBHxw==}
+  '@perxel/spotlight@0.1.1':
+    resolution: {integrity: sha512-wxkQpH5IXIEazhJJUF3S0KK2Lz4jbRZPQxjXXZ2+NhXQMmJTuD0kL8IFnGGvpmNfB0DwiQT8PsvG+ej+sFchzA==}
     peerDependencies:
       '@ai-sdk/react': '>=4'
       ai: '>=7'
@@ -4396,7 +4396,7 @@ snapshots:
 
   '@oxc-project/types@0.153.0': {}
 
-  '@perxel/spotlight@0.1.0(@ai-sdk/react@4.0.119(react@19.3.0)(zod@4.6.5))(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(ai@7.0.116(zod@4.6.5))(react-dom@19.3.0(react@19.3.0))(react@19.3.0)':
+  '@perxel/spotlight@0.1.1(@ai-sdk/react@4.0.119(react@19.3.0)(zod@4.6.5))(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(ai@7.0.116(zod@4.6.5))(react-dom@19.3.0(react@19.3.0))(react@19.3.0)':
     dependencies:
       '@radix-ui/react-dialog': 1.3.0(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       react: 19.3.0
